@@ -8,7 +8,7 @@
     },
     "mapping": {
         "y": {
-            "column": "rm7",
+            "column": "value",
             "type": "numeric",
             "scale": {
                 "type": "linear",
@@ -27,7 +27,7 @@
             }
         },
         "type": {
-            "column": "variable",
+            "column": "type",
             "legend": {
                 "symbol": {
                     "size": 16,

@@ -93,6 +93,7 @@ const collections = {
         name: "Others",
         menu: false,
         vis: [
+            "others/economic-activity",
             "electricity/load-hourly",
             "electricity/generation-hourly",
             "electricity/price-hourly",

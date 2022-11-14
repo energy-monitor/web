@@ -2,7 +2,7 @@
     "parent": "/data/shared.json",
     "mapping": {
         "y": {
-            "column": "rm7",
+            "column": "value",
             "type": "numeric",
             "scale": {
                 "type": "linear",
