@@ -19,7 +19,8 @@ export default {
     watch: { 
         '$route.name': {
             handler: function(n) {
-                this.vis = collections[n.substring(11)].vis;
+                if (n != 'map')
+                    this.vis = collections[n.substring(11)].vis;
                 // console.log(this.vis)
             },
             immediate: true

@@ -10,6 +10,7 @@ import { collections } from '@/globals.js';
 import Single from '@/Single.vue'
 import Include from '@/Include.vue'
 import Collection from '@/Collection.vue'
+import EuropeMap from '@/EuropeMap.vue'
 
 const routes = Object.entries(collections).map(([k, c]) => (
     { path: `/${k}`, component: Collection, name: `collection-${k}` }
@@ -20,8 +21,12 @@ const routes = Object.entries(collections).map(([k, c]) => (
     ]
 );
 
-routes[0].alias = '/';
-// console.log(routes)
+
+// NOTE: (un)comment for setting home
+// routes[0].alias = '/';
+routes.push(
+    { path: '/', component: EuropeMap, name: 'map' }
+)
 
 const router = createRouter({
     history: createWebHistory(),

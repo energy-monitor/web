@@ -100,10 +100,19 @@ h1 a {
             border: none;
         }
     }
+    // color: #e6211e
 }
+
 
 .visualisations {
     margin: 10px;
+    .mapEntry {
+        margin: 25px auto;
+        text-align: center;
+        svg {
+            display: inline-block;
+        }
+    }
     .visEntry {
          margin: 25px 0 45px;
          .vis {
