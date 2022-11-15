@@ -1,73 +1,138 @@
 <template>
     <div class="visualisations">
         <div class='mapEntry'>
+            <div class="sources">
+                <div v-for="(name, key) in sources">
+                    <!-- {{ source }} -->
+                    <!-- <input type="radio" :id="key" name="source" :value="key" checked> -->
+                    <input type="radio" v-model="selected.source" :value="key" :id="key">
+                    <label :for="key">{{ name }}</label>
+                </div>
+            </div>
+
             <svg ref="svg" width="580px" height="520px">
-                <!-- <rect width="100%" height="100%" fill="red"/> -->
                 <g class="countries"/>
             </svg>
-            <div ref="info" class="info">
-                <span class="value"></span>
+            <div v-if="selected" ref="info" class="info">
+                <span class="country">{{ selected }} </span>
+                <span class="value"> {{ d3.format(".0%")(values[selected.id]) }}</span>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-
 import * as d3 from 'd3';
 import * as topojson from "topojson-client"
 
-const projection = d3.geoConicEquidistant()
-    .rotate([-20.0, 0.0])
-    .center([21, 52])
-    .parallels([35.0, 65.0])
-    .scale(780)
-
-const geoPath = d3.geoPath()
-    .projection(projection);
-
-const data = {
-    map: `/geo/europe.json`,
-}
-
 export default {
     // props: ['src'],
+    data: () => ({
+        selected: {
+            id: null,
+            source: "Renewable",
+            year: 2021,
+        },
+        sources: {
+            "Renewable": "Renewable",
+            "Non-Renewable": "Non-Renewable",
+            "Nuclear": "Nuclear",
+        },
+        values: {},
+        d3: d3,
+        data: null,
+    }),
     mounted() {
-        console.log('mounted')
-        const svg = d3.select(this.$refs.svg);
-        const info = d3.select(this.$refs.info);
+        const self = this;
 
-        const values = {
-            AT: 4,
-            DE: 6,
-            IT: 3,
-            FR: 8,
-        }
+        this.svg = d3.select(this.$refs.svg);
 
-        const scale = d3.scaleLinear()
-            .domain([0, 10])
-            .range(["white", "#e6211e"])
+        d3.json(`/geo/europe.json`).then(map => {
+            this.init(map);
+            
+            d3.csv('/data/electricity/generation-year-g2.csv').then((res) => {
+                const data = res.map(d => ({
+                    id: d.country,
+                    type: d.type,
+                    year: +d.year,
+                    value: +d.value,
+                    share: +d.share,
+                }))
+                this.data = data;
+                this.update();
+            })
+        });
+    },
+    methods: {
+        init(map) {
+            const projection = d3.geoConicEquidistant()
+                .rotate([-20.0, 0.0])
+                .center([21, 52])
+                .parallels([35.0, 65.0])
+                .scale(780)
 
-        d3.json(data.map).then(map_raw => {
+            const geoPath = d3.geoPath()
+                .projection(projection);
 
-            svg.select("g.countries").selectAll("path")
-                .data(topojson.feature(map_raw, map_raw.objects.europe).features)
+            const countries = Object.fromEntries(
+                topojson.feature(map, map.objects.europe).features.map(
+                    d => [d.id, d]
+                )
+            );
+
+            this.svg.select("g.countries").selectAll("path")
+                .data(Object.keys(countries))
                 .enter()
                 .append("path")
-                .attr("id", d => `country-${d.id}`)
-                .attr("d", geoPath)
+                .attr("data-id", d => d.id)
+                .attr("d", d => geoPath(countries[d]))
                 .attr("stroke", "white")
-                .attr("fill", d => d.id in values ? scale(values[d.id]) : '#DADADA')
-                // .classed("member", d => d.id in contacts)
-                .on("click", (_, d) => d.id in values ? switchCountry(d.id) : _)
+                .attr("fill", '#DADADA')
+                .on("mouseenter", (_, d) => d in this.values ? this.select(d) : _)
+        },
+        update() {
+            const self = this;
+            const dataFiltered = this.data.filter(
+                d => d.year == this.selected.year & d.type == this.selected.source
+            )
 
-            const switchCountry = id => {
-                console.log(id)
-                info.select(".value")
-                    .text(values[id]) 
+            this.values = Object.fromEntries(dataFiltered.map(d => [d.id, d.share]))
 
-            };
-        });
-    }
+            const scale = d3.scaleLinear()
+                .domain([0, 1])
+                .range(["white", "#e6211e"])
+
+            this.svg.select("g.countries").selectAll("path")
+                .data(Object.keys(this.values), d => d)
+                .join(
+                    _ => {},
+                    update => update.attr("fill", d => scale(this.values[d])),
+                    exit => exit.attr("fill", '#DADADA')
+                )
+        },
+        select(id) {
+            this.selected.id = id;
+        },
+    },
+    watch: {
+        'selected.source'() {
+            this.update();
+        }
+    },
 }
 </script>
+
+<style lang="scss">
+.mapEntry {
+    .info {
+        span {
+            display: inline-block;
+            margin: 5px;
+        }
+    }
+    .sources div {
+        display: inline-block;
+        margin-right: 5px;
+    }
+}
+</style>
