@@ -2,10 +2,10 @@
     "parent": "/data/shared-base.json",
     "data": "load-international.csv",
     "options": {
-        "height": 200,
+        "height": 190,
         "margins": {"top": 5, "right": 15, "bottom": 35, "left": 45},
         "title": "Stromkonsum",
-        "subtitle": "in GWh",
+        "subtitle": "täglich (rollierender 7-Tages Durchschnitt), in GWh",
         "footer": "Source: ENTSO-E - Actual Total Load 6.1.A"
     },
     "globals": {
