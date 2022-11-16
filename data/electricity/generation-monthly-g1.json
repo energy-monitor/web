@@ -1,5 +1,5 @@
 {
-    "data": "generation.csv",
+    "data": "generation-monthly-g1.csv",
     "options": {
         "height": {
             "prop": "steps",

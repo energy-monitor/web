@@ -1,15 +1,11 @@
 {
     "parent": "/data/shared-base.json",
-    "data": "generation-facets.csv",
     "options": {
         "height": 190,
-        "margins": {"top": 0, "right": 15, "bottom": 35, "left": 45},
+        "margins": {"top": 5, "right": 15, "bottom": 35, "left": 45},
         "title": "Stromproduktion",
         "subtitle": "nach Quellen, täglich (rollierender 4-Wochen Durchschnitt), in GWh",
         "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
-    },
-    "globals": {
-        "shareScale": ["x"]
     },
     "formElements": [{
         "id": "scale",
@@ -43,17 +39,7 @@
             }
         },
         "source": {
-            "column": "source.group",
-            "props": {
-                "manual": {
-                    "Wind":   { "name": "Wind" },
-                    "Solar":  { "name": "Solar" },
-                    "Hydro":  { "name": "Hydro" },
-                    "Gas":    { "name": "Erdgas" },
-                    "Coal":   { "name": "Kohle" },
-                    "others": { "name": "Andere" }
-                }
-            }
+            "column": "source.group"
         }
     },
     "facets": {

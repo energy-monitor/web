@@ -1,0 +1,29 @@
+{
+    "parent": "/data/electricity/shared-generation-g.json",
+    "data": "generation-g2.csv",
+    "options": {
+        "height": 220
+    },
+    "globals": {
+        "shareScale": ["x"]
+    },
+    "mapping": {
+        "source": {
+            "column": "source.group",
+            "props": {
+                "manual": {
+                    "Renewable":   { "name": "Renewable" },
+                    "Non-Renewable":  { "name": "Non-Renewable" }
+                }
+            }
+        }
+    },
+    "facets": {
+        "cols": {
+            "steps": [
+                {"cut":    0, "value": 1},
+                {"cut":  550, "value": 2}
+            ]
+        }
+    }
+}

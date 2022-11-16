@@ -35,10 +35,9 @@ const collections = {
             "gas/consumption-aggm",
             "gas/price",
             "gas/storage-AT",
-            // "gas/storage",
             "electricity/generation-gas",
-            "electricity/generation",
-            "electricity/generation-facets",
+            "electricity/generation-monthly-g1",
+            "electricity/generation-g1",
         ]
     }, 
     prices: {
@@ -70,8 +69,9 @@ const collections = {
         vis: [
             "electricity/load",
             "electricity/price",
-            "electricity/generation-facets",
-            "electricity/generation",
+            "electricity/generation-monthly-g1",
+            "electricity/generation-g1",
+            "electricity/generation-g2",
         ]
     }, 
     international: {
