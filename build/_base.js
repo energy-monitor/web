@@ -37,6 +37,7 @@ module.exports = {
                 { from: 'data', to: 'data' },
                 { from: 'assets/logos', to: 'assets' },
                 { from: "assets/.htaccess", to: "" },
+                { from: "assets/geo", to: "geo" },
             ]
         }),
         new HtmlWebpackPlugin({

@@ -100,10 +100,62 @@ h1 a {
             border: none;
         }
     }
+    // color: #e6211e
 }
+
 
 .visualisations {
     margin: 10px;
+
+
+    .mapEntry {
+        margin: 25px auto;
+
+        svg {
+            display: inline-block;
+        }
+
+        .vis-header {
+            margin-bottom: 10px;
+            .title {
+                font-size: 22px;
+                font-weight: bold;
+            }
+            .subtitle {
+                font-size: 13px;
+                margin-top: -1px !important;
+                margin-bottom: -2px !important;
+            }
+        }
+        .vis-footer {
+            font-size: 13px;
+        }
+
+        .vis-inner {
+            text-align: center;
+        }
+
+        .vis-form-elements {
+            margin-top: -2px;
+            margin-bottom: 4px;
+            .formElement {
+                .title {
+                    font-weight: bold;
+                    margin-right: 5px;
+                    display: inline-block;
+                }
+                .entries {
+                    display: inline-block;
+                    > div {
+                        display: inline-block;
+                        margin-right: 5px;
+                    }
+                }
+                font-size: 13px;
+            }
+        }
+    }
+    
     .visEntry {
          margin: 25px 0 45px;
          .vis {
