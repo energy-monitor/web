@@ -78,9 +78,9 @@ const collections = {
         name: "International",
         menu: true,
         vis: [
-            { type: "europeMap"},
             { type: "genVis", src: "electricity/load-international"},
             { type: "genVis", src: "gas/storage-EU"},
+            { type: "europeMap"},
         ]
     }, 
     test: {
@@ -97,7 +97,7 @@ const collections = {
             { type: "genVis", src: "others/economic-activity"},
             { type: "genVis", src: "electricity/load-hourly"},
             { type: "genVis", src: "electricity/generation-hourly"},
-            { type: "genVis", src: "electricity/price-hourly"},
+            // { type: "genVis", src: "electricity/price-hourly"},
             { type: "genVis", src: "others/dollar"},
         ]
     }, 

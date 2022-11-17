@@ -1,12 +1,14 @@
 <template>
     <div id="include">
         <div v-for="v in vis" class="entry">
-            <a :href="url(v)" target="_blank">{{ v }}</a>
-            <div class="code">
-                Code:
-                <pre>{{ iframe(v) }}</pre>
-            </div>
-            <div v-html="iframe(v)"/>
+            <template v-if="v.type == 'genVis'">
+                <a :href="url(v.src)" target="_blank">{{ v.src }}</a>
+                <div class="code">
+                    Code:
+                    <pre>{{ iframe(v.src) }}</pre>
+                </div>
+                <div v-html="iframe(v.src)"/>
+            </template>
         </div>
     </div>
 </template>
