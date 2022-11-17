@@ -15,14 +15,14 @@
                 </div>
             </div>
         </div>
-        <div class="vis-inner">
+        <div class="vis-inner" ref="inner">
             <div ref="info" class="info" style="position: absolute;">
                 <template v-if="selected.id">
-                    <span class="country">{{ selected.id }}: </span>
-                    <span class="value"> {{ d3.format(".0%")(values[selected.id]) }}</span>
+                    <span class="country">{{ selected.id }}:</span>
+                    <span class="value">{{ d3.format(".0%")(values[selected.id]) }}</span>
                 </template>
             </div>
-            <svg ref="svg" width="580px" height="520px">
+            <svg ref="svg" viewBox="0 0 580 520">
                 <g class="countries"/>
             </svg>
         </div>
@@ -57,8 +57,13 @@ export default {
     mounted() {
         const self = this;
 
+        const width = Math.min(this.$refs.inner.getBoundingClientRect().width, 620);
+
         this.svg = d3.select(this.$refs.svg);
         this.info = d3.select(this.$refs.info);
+
+        this.svg.attr("width", width)
+            .attr("height", width/580*520)
 
         d3.json(`/geo/europe.json`).then(map => {
             this.init(map);
@@ -142,18 +147,3 @@ export default {
     },
 }
 </script>
-
-<style lang="scss">
-.mapEntry {
-    .info {
-        span {
-            display: inline-block;
-            margin: 5px;
-        }
-    }
-    .sources div {
-        display: inline-block;
-        margin-right: 5px;
-    }
-}
-</style>

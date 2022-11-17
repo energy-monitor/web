@@ -133,6 +133,13 @@ h1 a {
 
         .vis-inner {
             text-align: center;
+            .info {
+                span {
+                    display: inline-block;
+                    margin: 3px;
+                    font-weight: bold;
+                }
+            }
         }
 
         .vis-form-elements {

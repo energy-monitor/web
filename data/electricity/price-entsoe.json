@@ -1,0 +1,79 @@
+{
+    "parent": "/data/shared-base.json",
+    "data": "price-entsoe.csv",
+    "options": {
+        "title": "Strompreis",
+        "subtitle": "Day Ahead, täglich (rollierender 7-Tages Durchschnitt), in €/MWh",
+        "footer": "Source: ENTSO-E - Day Ahead Prices 12.1.D"
+    },
+    "mapping": {
+        "y": {
+            "column": "value",
+            "type": "numeric",
+            "scale": {
+                "type": "linear",
+                "domain": [null, null],
+                "domainRel": [-0.1, 0.1],
+                "orientation": "vertical"
+            },
+            "axis": {
+                "ticks": 6,
+                "position": "left",
+                "grid": true,
+                "format": ",.0f"
+            },
+            "hover": {
+                "format": ",.1f"
+            }
+        },
+        "year": {
+            "props": {
+                "manual": {
+                    "2019": { "visible": false},
+                    "2020": { "visible": false}
+                }
+            }
+        },
+        "type": {
+            "column": "type",
+            "legend": {
+                "symbol": {
+                    "size": 16,
+                    "elements": [{
+                        "type": "line",
+                        "props": {
+                            "x1": 0, "x2": 16, "y1": 8, "y2": 8,
+                            "stroke": "#000", "stroke-width": 2,
+                            "stroke-dasharray": "@stroke-dasharray"
+                        }
+                    }]
+                }
+            },
+            "props": {
+                "manual": {
+                    "mean": {
+                        "name": "⌀",
+                        "stroke-dasharray": 0
+                    },
+                    "min": {
+                        "name": "min",
+                        "stroke-dasharray": "1, 3"
+                    },
+                    "max": {
+                        "name": "max",
+                        "stroke-dasharray": "2, 2"
+                    }
+                }
+            },
+            "hover": {
+
+            }
+        }
+    },
+    "plot": {
+        "categories": ["year", "type"],
+        "props": {
+            "stroke-dasharray": "@stroke-dasharray"
+        }
+    }
+}
