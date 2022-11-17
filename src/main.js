@@ -23,10 +23,10 @@ const routes = Object.entries(collections).map(([k, c]) => (
 
 
 // NOTE: (un)comment for setting home
-// routes[0].alias = '/';
-routes.push(
-    { path: '/', component: EuropeMap, name: 'map' }
-)
+routes[0].alias = '/';
+// routes.push(
+//     { path: '/', component: EuropeMap, name: 'map' }
+// )
 
 const router = createRouter({
     history: createWebHistory(),

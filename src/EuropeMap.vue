@@ -1,22 +1,33 @@
 <template>
-    <div class="visualisations">
-        <div class='mapEntry'>
-            <div class="sources">
-                <div v-for="(name, key) in sources">
-                    <!-- {{ source }} -->
-                    <!-- <input type="radio" :id="key" name="source" :value="key" checked> -->
-                    <input type="radio" v-model="selected.source" :value="key" :id="key">
-                    <label :for="key">{{ name }}</label>
+    <div class='mapEntry'>
+        <div class="vis-header">
+            <div class="title">Stromproduktion</div>
+            <div class="subtitle">nach Quellen, Anteile im Jahr 2021</div>
+        </div>
+        <div class="vis-form-elements">
+            <div class="formElement">
+                <div class="title">Quelle:</div>
+                <div class="entries">
+                    <div v-for="(name, key) in sources">
+                        <input type="radio" v-model="selected.source" :value="key" :id="key">
+                        <label :for="key">{{ name }}</label>
+                    </div>
                 </div>
             </div>
-
+        </div>
+        <div class="vis-inner">
+            <div ref="info" class="info" style="position: absolute;">
+                <template v-if="selected.id">
+                    <span class="country">{{ selected.id }}: </span>
+                    <span class="value"> {{ d3.format(".0%")(values[selected.id]) }}</span>
+                </template>
+            </div>
             <svg ref="svg" width="580px" height="520px">
                 <g class="countries"/>
             </svg>
-            <div v-if="selected" ref="info" class="info">
-                <span class="country">{{ selected }} </span>
-                <span class="value"> {{ d3.format(".0%")(values[selected.id]) }}</span>
-            </div>
+        </div>
+        <div class="vis-footer">
+            <span>Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C</span>
         </div>
     </div>
 </template>
@@ -34,9 +45,10 @@ export default {
             year: 2021,
         },
         sources: {
-            "Renewable": "Renewable",
-            "Non-Renewable": "Non-Renewable",
+            "Renewable": "Erneuerbar",
+            "Non-Renewable": "Fossil",
             "Nuclear": "Nuclear",
+            "others": "Andere",
         },
         values: {},
         d3: d3,
@@ -46,6 +58,7 @@ export default {
         const self = this;
 
         this.svg = d3.select(this.$refs.svg);
+        this.info = d3.select(this.$refs.info);
 
         d3.json(`/geo/europe.json`).then(map => {
             this.init(map);
@@ -65,6 +78,7 @@ export default {
     },
     methods: {
         init(map) {
+            const self = this;
             const projection = d3.geoConicEquidistant()
                 .rotate([-20.0, 0.0])
                 .center([21, 52])
@@ -88,7 +102,17 @@ export default {
                 .attr("d", d => geoPath(countries[d]))
                 .attr("stroke", "white")
                 .attr("fill", '#DADADA')
-                .on("mouseenter", (_, d) => d in this.values ? this.select(d) : _)
+                .on("mouseenter", (e, d) => { 
+                    // console.log(this.info)
+                    if (d in this.values) {
+                        this.info.style("top", `${e.pageY - 30}px`)
+                            .style("left", `${e.pageX - 50}px`)
+                            // .style("color", `red`)
+
+                        this.selected.id = d;
+                    }
+                })
+                .on("mouseleave", () => { this.selected.id = null })
         },
         update() {
             const self = this;
@@ -100,7 +124,7 @@ export default {
 
             const scale = d3.scaleLinear()
                 .domain([0, 1])
-                .range(["white", "#e6211e"])
+                .range(["#fcd2d2", "#e6211e"])
 
             this.svg.select("g.countries").selectAll("path")
                 .data(Object.keys(this.values), d => d)
@@ -109,9 +133,6 @@ export default {
                     update => update.attr("fill", d => scale(this.values[d])),
                     exit => exit.attr("fill", '#DADADA')
                 )
-        },
-        select(id) {
-            this.selected.id = id;
         },
     },
     watch: {

@@ -1,6 +1,9 @@
 <template>
     <div class="visualisations">
-        <gen-vis v-for="v in vis" :src="`/data/${v}.json`"/>
+        <template v-for="v in vis">
+            <gen-vis v-if="v.type == 'genVis'" :src="`/data/${v.src}.json`"/>
+            <europe-map v-if="v.type == 'europeMap'"/>
+        </template>
     </div>
 </template>
 
@@ -8,13 +11,14 @@
 import { collections } from '@/globals.js';
 
 import GenVis from '@/GenVis.vue';
+import EuropeMap from '@/EuropeMap.vue';
 
 export default {
     data: () => ({
         vis: [],
     }),
     components: {
-        GenVis
+        GenVis, EuropeMap
     },
     watch: { 
         '$route.name': {
