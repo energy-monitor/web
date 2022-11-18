@@ -4,6 +4,7 @@
 
 <script>
 import axios from 'axios';
+import {stories} from '@/globals.js'
 
 import {unified} from 'unified';
 import remarkParse from 'remark-parse';
@@ -13,17 +14,13 @@ import rehypeRewrite from 'rehype-rewrite';
 import rehypeStringify from 'rehype-stringify';
 
 export default {
-    props: {
-        src: {
-            default: 'explaining-the-gas-model'
-        }
-    },
+    props: ['id'],
     data: () => ({
         content: null,
     }),
     mounted() {
         const self = this;
-        axios.get(`/data/md/${self.src}.md`)
+        axios.get(`/data/md/${stories[self.id].src}.md`)
             .then(function (response) {
                 unified()
                     .use(remarkParse)
@@ -31,15 +28,11 @@ export default {
                     // .use(rehypeFormat)
                     .use(rehypeStringify)
                     .use(rehypeRewrite, {
-                        rewrite: (node, index, parent) => {
+                        rewrite: node => {
                             if (node.tagName == 'img') {
-                                console.log(node);
+                                // console.log(node);
                                 node.properties.src = `/data/md/${node.properties.src}`
                             }
-                            
-                            // if(node.type == 'text' && node.value == 'header') {
-                            //     node.value = ''
-                            // }
                         }
                     })
                     .process(response.data)

@@ -14,6 +14,7 @@ import GenVis from '@/GenVis.vue';
 import EuropeMap from '@/EuropeMap.vue';
 
 export default {
+    props: ["id"],
     data: () => ({
         vis: [],
     }),
@@ -24,7 +25,7 @@ export default {
         '$route.name': {
             handler: function(n) {
                 if (n != 'map')
-                    this.vis = collections[n.substring(11)].vis;
+                    this.vis = collections[this.id].vis;
                 // console.log(this.vis)
             },
             immediate: true

@@ -1,4 +1,4 @@
-export { genVis, collections };
+export { genVis, collections, stories };
 
 const genVis = {
     // path: './data/gen-vis/gen-vis',
@@ -17,6 +17,13 @@ const genVis = {
 //     }
 // }
 
+const stories = {
+    'gas-savings': {
+        name: 'Gas Einsparungen',
+        menu: true,
+        src: 'explaining-the-gas-model'
+    },
+}
 
 const collections = {
     // bla: {
