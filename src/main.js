@@ -10,7 +10,7 @@ import { collections } from '@/globals.js';
 import Single from '@/Single.vue'
 import Include from '@/Include.vue'
 import Collection from '@/Collection.vue'
-import EuropeMap from '@/EuropeMap.vue'
+import Story from '@/Story.vue'
 
 const routes = Object.entries(collections).map(([k, c]) => (
     { path: `/${k}`, component: Collection, name: `collection-${k}` }
@@ -18,6 +18,7 @@ const routes = Object.entries(collections).map(([k, c]) => (
     [
         { path: '/single/:id', component: Single, name: 'single' },
         { path: '/include', component: Include, name: 'include' },
+        { path: '/gas-model', component: Story, name: 'story' }
     ]
 );
 
@@ -25,7 +26,7 @@ const routes = Object.entries(collections).map(([k, c]) => (
 // NOTE: (un)comment for setting home
 routes[0].alias = '/';
 // routes.push(
-//     { path: '/', component: EuropeMap, name: 'map' }
+//     { path: '/', component: Story, name: 'story' }
 // )
 
 const router = createRouter({

@@ -13,22 +13,27 @@
     "name": "Peter Reschenhofer",
     "email": "peter.reschenhofer@wifo.ac.at"
   },
-  "dependencies": {
+  "devDependencies": {
     "@preschen/gen-vis": "^0.3.0",
     "axios": "^1",
     "copy-webpack-plugin": "^11",
     "css-loader": "^6",
     "d3": "^7",
     "html-webpack-plugin": "^5",
+    "rehype-rewrite": "^3",
+    "rehype-stringify": "^9",
+    "remark-parse": "^10",
+    "remark-rehype": "^10",
     "sass": "^1",
     "sass-loader": "^13",
     "style-loader": "^3",
     "topojson-client": "^3",
+    "unified": "^10",
     "vue": "^3",
     "vue-loader": "^17",
     "vue-router": "^4",
     "webpack": "^5",
-    "webpack-cli": "^4",
+    "webpack-cli": "^5.0.0",
     "webpack-dev-server": "^4"
   }
 }
