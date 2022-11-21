@@ -8,7 +8,12 @@ import {stories} from '@/globals.js'
 
 import {unified} from 'unified';
 import remarkParse from 'remark-parse';
+// import remarkSupersub from 'remark-supersub'
 import remarkRehype from 'remark-rehype';
+import remarkMath from 'remark-math'
+import remarkGfm from 'remark-gfm'
+import rehypeKatex from 'rehype-katex'
+import rehypeRaw from 'rehype-raw'
 // import rehypeFormat from 'rehype-format'
 import rehypeRewrite from 'rehype-rewrite';
 import rehypeStringify from 'rehype-stringify';
@@ -24,8 +29,13 @@ export default {
             .then(function (response) {
                 unified()
                     .use(remarkParse)
-                    .use(remarkRehype)
+                    .use(remarkMath)
+                    // .use(remarkSupersub)
+                    .use(remarkGfm)
+                    .use(remarkRehype, {allowDangerousHtml: true})
                     // .use(rehypeFormat)
+                    .use(rehypeKatex)
+                    .use(rehypeRaw)
                     .use(rehypeStringify)
                     .use(rehypeRewrite, {
                         rewrite: node => {
@@ -33,6 +43,20 @@ export default {
                                 // console.log(node);
                                 node.properties.src = `/data/md/${node.properties.src}`
                             }
+                            if (node.tagName == 'a') {
+                                if ('dataFootnoteBackref' in node.properties || 'dataFootnoteRef' in node.properties) {
+                                } else {
+                                    node.properties.target = '_blank'
+                                }
+                            }
+                            if (node.tagName == 'h2') {
+                                if (node.properties.id == "footnote-label") {
+                                    node.children = [{
+                                        type: "text",
+                                        value: "Fußnoten"
+                                    }]
+                                }
+                            }                            
                         }
                     })
                     .process(response.data)

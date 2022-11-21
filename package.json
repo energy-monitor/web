@@ -21,10 +21,15 @@
     "css-loader": "^6",
     "d3": "^7",
     "html-webpack-plugin": "^5",
+    "rehype-katex": "^6",
+    "rehype-raw": "^6",
     "rehype-rewrite": "^3",
     "rehype-stringify": "^9",
+    "remark-gfm": "^3",
+    "remark-math": "^5",
     "remark-parse": "^10",
     "remark-rehype": "^10",
+    "remark-supersub": "^1",
     "sass": "^1",
     "sass-loader": "^13",
     "style-loader": "^3",
@@ -34,7 +39,7 @@
     "vue-loader": "^17",
     "vue-router": "^4",
     "webpack": "^5",
-    "webpack-cli": "^5.0.0",
+    "webpack-cli": "^5",
     "webpack-dev-server": "^4"
   }
 }

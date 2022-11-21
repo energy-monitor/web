@@ -21,24 +21,23 @@ const stories = {
     'gas-savings': {
         name: 'Gas Einsparungen',
         menu: true,
-        src: 'explaining-the-gas-model'
+        src: 'gas-savings'
+    },
+    'test': {
+        name: 'Test',
+        menu: false,
+        src: 'test'
     },
 }
 
 const collections = {
-    // bla: {
-    //     name: "Bla",
-    //     menu: true,
-    //     vis: [
-            
-    //     ]
-    // },
     preset: {
         name: "Preset",
         menu: true,
         vis: [
             { type: "genVis", src: "electricity/load"},
-            { type: "genVis", src: "electricity/price"},
+            // { type: "genVis", src: "electricity/price"},
+            { type: "genVis", src: "electricity/price-entsoe"},
             { type: "genVis", src: "gas/consumption-aggm"},
             { type: "genVis", src: "gas/price"},
             { type: "genVis", src: "gas/storage-AT"},
@@ -51,7 +50,8 @@ const collections = {
         name: "Energiepreise",
         menu: true,
         vis: [
-            { type: "genVis", src: "electricity/price"},
+            // { type: "genVis", src: "electricity/price"},
+            { type: "genVis", src: "electricity/price-entsoe"},
             { type: "genVis", src: "gas/price"},
             { type: "genVis", src: "others/brent"},
             { type: "genVis", src: "others/sprit"},
@@ -75,7 +75,7 @@ const collections = {
         menu: true,
         vis: [
             { type: "genVis", src: "electricity/load"},
-            { type: "genVis", src: "electricity/price"},
+            // { type: "genVis", src: "electricity/price"},
             { type: "genVis", src: "electricity/price-entsoe"},
             { type: "genVis", src: "electricity/generation-monthly-g1"},
             { type: "genVis", src: "electricity/generation-g1"},
