@@ -13,12 +13,43 @@
         </div>
         
         <div class="menu">
-            <span class="title">Sammlung:</span>
-            <template v-for="[k, c] in Object.entries(menu)">
-                <span class="entry" v-if="c.menu">
-                    <router-link :to="{ name: `collection-${k}`}">{{ c.name }}</router-link>
-                </span>
-            </template>
+            <table>
+                <tr>
+                    <td class="title">Indikatoren:</td>
+                    <td class="entries">
+                        <template v-for="[k, c] in Object.entries(menu.collections)">
+                            <span class="entry" v-if="c.menu">
+                                <router-link :to="{ name: 'collection', params: {id: k}}">{{ c.name }}</router-link>
+                            </span>
+                        </template>
+                    </td>
+                </tr><tr>
+                    <td class="title">Analysen:</td>
+                    <td class="entries">
+                        <template v-for="[k, c] in Object.entries(menu.stories)">
+                            <span class="entry" v-if="c.menu">
+                                <router-link :to="{ name: 'story', params: {id: k}}">{{ c.name }}</router-link>
+                            </span>
+                        </template>
+                    </td>
+                </tr>
+            </table>
+            <!-- <div class="row">
+                <span class="title">Indikatorensammlung:</span>
+                <template v-for="[k, c] in Object.entries(menu.collections)">
+                    <span class="entry" v-if="c.menu">
+                        <router-link :to="{ name: `collection-${k}`}">{{ c.name }}</router-link>
+                    </span>
+                </template>
+            </div>
+            <div class="row">
+                <span class="title">Analysen:</span>
+                <template v-for="[k, c] in Object.entries(menu.stories)">
+                    <span class="entry" v-if="c.menu">
+                        <router-link :to="{ name: `story`, params: {src: c.src}}">{{ c.name }}</router-link>
+                    </span>
+                </template>
+            </div> -->
         </div>
 
         <router-view :key="$route.path"/>
@@ -34,11 +65,11 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 
 import About from '@/About.vue';
 
-import { genVis, collections } from '@/globals.js';
+import { genVis, collections, stories } from '@/globals.js';
 
 export default {
     components: {
@@ -47,7 +78,7 @@ export default {
     data: () => ({
         updated: null,
         genVis: genVis,
-        menu: collections
+        menu: { collections, stories },
     }),
     mounted() {
         const self = this;

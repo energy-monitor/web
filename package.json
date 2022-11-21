@@ -6,29 +6,40 @@
   "scripts": {
     "dev": "webpack serve --config build/dev.js",
     "build": "rm -rf dist && webpack --config build/prod.js",
-    "upload": "rsync -arv --delete --exclude 'data' dist/ energy.abteil.org:/www/htdocs/w01d48d9/energy.abteil.org/",
-    "deploy": "npm run build && npm run upload"
+    "upload-abteil": "rsync -arv --delete --exclude 'data' dist/ energy.abteil.org:/www/htdocs/w01d48d9/energy.abteil.org/",
+    "upload-wifo": "rsync -arv --delete dist/ hades.wsr.ac.at:~/energie/htdocs/",
+    "deploy": "npm run build && npm run upload-wifo"
   },
   "author": {
     "name": "Peter Reschenhofer",
     "email": "peter.reschenhofer@wifo.ac.at"
   },
-  "dependencies": {
+  "devDependencies": {
     "@preschen/gen-vis": "^0.3.0",
     "axios": "^1",
     "copy-webpack-plugin": "^11",
     "css-loader": "^6",
     "d3": "^7",
     "html-webpack-plugin": "^5",
+    "rehype-katex": "^6",
+    "rehype-raw": "^6",
+    "rehype-rewrite": "^3",
+    "rehype-stringify": "^9",
+    "remark-gfm": "^3",
+    "remark-math": "^5",
+    "remark-parse": "^10",
+    "remark-rehype": "^10",
+    "remark-supersub": "^1",
     "sass": "^1",
     "sass-loader": "^13",
     "style-loader": "^3",
     "topojson-client": "^3",
+    "unified": "^10",
     "vue": "^3",
     "vue-loader": "^17",
     "vue-router": "^4",
     "webpack": "^5",
-    "webpack-cli": "^4",
+    "webpack-cli": "^5",
     "webpack-dev-server": "^4"
   }
 }
