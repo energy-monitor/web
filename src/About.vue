@@ -7,14 +7,14 @@
 
                 Diese Seite wurde in Kooperation erstellt von:
                 <div class="entry johannes">
-                    <a href="https://homepage.boku.ac.at/jschmidt/" target="_blank"><img class="logo" src="assets/boku.svg"></a>
+                    <a href="https://homepage.boku.ac.at/jschmidt/" target="_blank"><img class="logo" src="/assets/boku.svg"></a>
                     <span class="name">Johannes Schmidt</span><br/>
                     Assoziierter Professor<br/>
                     Institut für Nachhaltige Wirtschaftsentwicklung<br/>
                     Universität für Bodenkultur Wien
                 </div>
                 <div class="entry peter">
-                    <a href="https://www.wifo.ac.at/peter_reschenhofer" target="_blank"><img class="logo" src="assets/wifo.svg"></a>
+                    <a href="https://www.wifo.ac.at/peter_reschenhofer" target="_blank"><img class="logo" src="/assets/wifo.svg"></a>
                     <span class="name">Peter Reschenhofer</span><br/>
                     Data Scientist<br/>
                     Österreichisches Institut für Wirtschaftsforschung
