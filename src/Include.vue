@@ -16,7 +16,7 @@
 <script>
 
 // const urlSingle = "/single/";
-const urlSingle = "https://energy.abteil.org/single/";
+const urlSingle = "https://energie.wifo.ac.at/single/";
 
 import { collections } from '@/globals.js';
 
@@ -33,6 +33,7 @@ export default {
             return urlSingle + this.escaped(id);
         },
         iframe (id) {
+            // return `<iframe width="100%" height="100%" frameBorder="0" src="${this.url(id)}"/>`
             return `<iframe width="100%" height="450px" frameBorder="0" src="${this.url(id)}"/>`
         }
     },

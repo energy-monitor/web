@@ -23,10 +23,15 @@ const stories = {
         menu: true,
         src: 'gas-savings'
     },
-    'test': {
-        name: 'Test',
+    'gas-availability': {
+        name: 'Gas Verfügbarkeit',
         menu: false,
-        src: 'test'
+        src: 'gas-availability'
+    },
+    'report-gas-savings-and-storage': {
+        name: 'Report',
+        menu: false,
+        src: 'report-english'
     },
 }
 
