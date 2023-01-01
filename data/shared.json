@@ -54,14 +54,15 @@
                 "common": {
                     "stroke-width": 2,
                     "highlight-stroke-width": 3,
-                    "opacity": 0.9, 
+                    "opacity": 0.8, 
                     "highlight-opacity": 1
                 },
                 "manual": {
                     "2019": { "color": "#f3d039"},
                     "2020": { "color": "#b5c969"},
                     "2021": { "color": "#86cae7"},
-                    "2022": { "color": "#c3423f", "opacity": 1}
+                    "2022": { "color": "#c3423f", "opacity": 1},
+                    "2023": { "color": "#cf8e02", "opacity": 1}
                 }
             },
             "hover": {}

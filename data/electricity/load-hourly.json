@@ -1,8 +1,7 @@
 {
+    "parent": "/data/shared-base.json",
     "data": "load-hourly.csv",
     "options": {
-        "height": 350,
-        "margins": {"top": 30, "right": 30, "bottom": 35, "left": 50},
         "title": "Stromkonsum im Tagesverlauf",
         "subtitle": "in MWh",
         "footer": "Source: ENTSO-E - Actual Total Load 6.1.A"
@@ -31,53 +30,11 @@
             }
         },
         "y": {
-            "column": "value",
-            "type": "numeric",
-            "scale": {
-                "type": "linear",
-                "domain": [0, null],
-                "domainRel": [0, 0.1],
-                "orientation": "vertical"
-            },
             "axis": {
-                "ticks": 6,
-                "position": "left",
-                "grid": true,
+                "format": ",.1f"
+            },
+            "hover": {
                 "format": ",.2f"
-            },
-            "hover": {
-                "format": ",.3f"
-            }
-        },
-        "year": {
-            "column": "year",
-            "legend": {
-                "symbol": {
-                    "size": 16,
-                    "elements": [{
-                        "type": "line",
-                        "props": {
-                            "x1": 0, "x2": 16, "y1": 8, "y2": 8,
-                            "stroke": "@color", "stroke-width": "@stroke-width",
-                            "opacity": "@opacity"
-                        }
-                    }]
-                }
-            },
-            "props": {
-                "common": {
-                    "stroke-width": 2,
-                    "opacity": 0.9
-                },
-                "manual": {
-                    "2022": { "color": "#C3423F", "opacity": 1 },
-                    "2021": { "color": "#BBD7EE" },
-                    "2020": { "color": "#F3D039" },
-                    "2019": { "color": "#ABD6A9" }
-                }
-            },
-            "hover": {
-
             }
         }
     },

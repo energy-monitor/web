@@ -73,11 +73,11 @@
              }
              .vis-legends {
                 position: relative;
-                .legend[data-dim='type'] {
-                    position: absolute;
-                    top: -4px;
-                    left: 270px;
-                }
+                // .legend[data-dim='type'] {
+                //     position: absolute;
+                //     top: -4px;
+                //     left: 270px;
+                // }
 
                 .legend[data-dim='country'] {
                     svg {

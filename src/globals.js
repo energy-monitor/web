@@ -19,14 +19,14 @@ const genVis = {
 
 const stories = {
     'gas-savings': {
-        name: 'Gas Einsparungen',
+        name: 'Einsparungen des Gaskonsums',
         menu: true,
         src: 'gas-savings'
     },
-    'gas-availability': {
-        name: 'Gas Verfügbarkeit',
-        menu: false,
-        src: 'gas-availability'
+    'gas-storage': {
+        name: 'Entwicklung des Gasspeichers',
+        menu: true,
+        src: 'gas-storage'
     },
     'report-gas-savings-and-storage': {
         name: 'Report',
@@ -82,6 +82,8 @@ const collections = {
             { type: "genVis", src: "electricity/load"},
             // { type: "genVis", src: "electricity/price"},
             { type: "genVis", src: "electricity/price-entsoe"},
+            // { type: "genVis", src: "electricity/price-hourly"},
+            { type: "genVis", src: "electricity/load-hourly"},
             { type: "genVis", src: "electricity/generation-monthly-g1"},
             { type: "genVis", src: "electricity/generation-g1"},
             { type: "genVis", src: "electricity/generation-g2"},
