@@ -39,6 +39,10 @@
     table {
         font-size: 14px;
         margin: 10px 10px 35px;
+        width: auto !important;
+        display: block;
+        max-width: 90%;
+        overflow-x: scroll;
         // min-width: 50%;
         border-collapse: collapse;
         // table-layout: fixed;
@@ -69,6 +73,11 @@
                 border-right: 1px solid #AAA;
                 padding-left: 10px;
                 // width: 20%;
+            }
+
+
+            td:first-child {
+                white-space: nowrap;
             }
         }
         tr:nth-child(even){
