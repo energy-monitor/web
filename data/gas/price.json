@@ -4,6 +4,6 @@
     "options": {
         "title": "Gaspreis",
         "subtitle": "CEGH, täglich (rollierender 7-Tages Durchschnitt), in €/MWh",
-        "footer": "Source: CEGH - Central European Gas Hub"
+        "footer": "Source: cismo"
     }
 }
