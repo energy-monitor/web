@@ -3,7 +3,7 @@
     "data": "load-hourly.csv",
     "options": {
         "title": "Stromkonsum im Tagesverlauf",
-        "subtitle": "in MWh",
+        "subtitle": "laufendes Jahr nicht um saisonale Effekte bereinigt, in GW",
         "footer": "Source: ENTSO-E - Actual Total Load 6.1.A"
     },
     "mapping": {
