@@ -101,7 +101,7 @@
                 "width": {
                     "prop": "relative",
                     "ref": "innerWidth",
-                    "ratio": 0.017
+                    "ratio": 0.013
                 }
             }
         }
