@@ -109,6 +109,7 @@ const collections = {
         name: "Others",
         menu: false,
         vis: [
+            { type: "genVis", src: "others/supply-trans-prod"},
             { type: "genVis", src: "others/economic-activity"},
             { type: "genVis", src: "electricity/load-hourly"},
             { type: "genVis", src: "electricity/generation-hourly"},
