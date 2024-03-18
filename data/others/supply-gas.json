@@ -1,0 +1,70 @@
+{
+    "data": "supply-gas.csv",
+    "parent": "/data/shared-base.json",
+    "options": {
+        "height": 220,
+        "title": "Absatz von Erdgas",
+        "subtitle": "in millionen Kubikmetern",
+        "footer": "Source: eurostat - nrg_cb_gasm"
+    },
+    "mapping": {
+        "x": {
+            "hover": {
+                "format": "%b"
+            }
+        },
+        "y": {
+            "column": "value",
+            "axis": {
+                "format": ",.1f"
+            },
+            "hover": {
+                "format": ",.2f"
+            }
+        },
+        "year": {
+            "props": {
+                "manual": {
+                    "avg13-18": {
+                        "color": "#444", "name": "Ø&nbsp'13&nbsp-&nbsp'18"
+                    }
+                }
+            }
+        },
+        "type": {
+            "column": "product",
+            "legend": {
+                "symbol": {
+                    "size": 0
+                }
+            },
+            "props": {
+                "manual": {
+                    "total": {
+                        "name": "Gesamt", "visible": true
+                    }
+                }
+            },
+            "hover": {
+
+            }
+        }
+    },
+    "facets": {
+        "dim": ["type"],
+        "cols": {
+            "prop": "steps",
+            "ref": "totalWidth",
+            "steps": [
+                {"cut":   0, "value": 1},
+                {"cut": 550, "value": 2}
+            ]
+        }
+    },
+    "plot": {
+        "categories": ["year", "type"],
+        "props": {
+            "stroke-dasharray": "@stroke-dasharray"
+        }
+    }
+}

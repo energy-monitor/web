@@ -88,6 +88,15 @@ const collections = {
             { type: "genVis", src: "electricity/generation-g1"},
             { type: "genVis", src: "electricity/generation-g2"},
         ]
+    },
+    fossil: {
+        name: "Fossile Brennstoffe",
+        menu: false,
+        vis: [
+            { type: "genVis", src: "others/supply-oil"},
+            { type: "genVis", src: "others/supply-gas"},
+            { type: "genVis", src: "others/supply-coal"},
+        ]
     }, 
     international: {
         name: "International",
@@ -109,7 +118,6 @@ const collections = {
         name: "Others",
         menu: false,
         vis: [
-            { type: "genVis", src: "others/supply-trans-prod"},
             { type: "genVis", src: "others/economic-activity"},
             { type: "genVis", src: "electricity/load-hourly"},
             { type: "genVis", src: "electricity/generation-hourly"},
