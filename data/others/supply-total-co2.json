@@ -1,11 +1,11 @@
 {
-    "data": "supply-coal.csv",
+    "data": "supply-total.csv",
     "parent": "/data/shared-base.json",
     "options": {
         "height": 220,
-        "title": "Absatz von Kohle",
-        "subtitle": "in tausend Tonnen",
-        "footer": "Source: eurostat - nrg_cb_sffm"
+        "title": "Absatz von fossilen Energieträgern",
+        "subtitle": "nach Emissionen in Gigatonnen CO²",
+        "footer": "Source: eurostat, eigene Berechnungen"
     },
     "mapping": {
         "x": {
@@ -14,7 +14,7 @@
             }
         },
         "y": {
-            "column": "value",
+            "column": "gt.co2",
             "axis": {
                 "format": ",.1f"
             },
@@ -41,21 +41,17 @@
             },
             "props": {
                 "manual": {
-                    "total": {
-                        "name": "Gesamt", "visible": true
+                    "gas": {
+                        "name": "Erdgas", "visible": true
                     },
-                    "stein": {
-                        "name": "Steinkohle", "visible": true
+                    "coal": {
+                        "name": "Kohle", "visible": true
                     },
-                    "braun": {
-                        "name": "Braunkohle", "visible": false
-                    },
-                    "koks": {
-                        "name": "Koks", "visible": false
+                    "oil": {
+                        "name": "Mineralöl", "visible": true
                     }
                 }
             },
-
             "hover": {
 
             }
@@ -68,7 +64,7 @@
             "ref": "totalWidth",
             "steps": [
                 {"cut":   0, "value": 1},
-                {"cut": 550, "value": 2}
+                {"cut": 550, "value": 3}
             ]
         }
     },

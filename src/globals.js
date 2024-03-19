@@ -93,9 +93,13 @@ const collections = {
         name: "Fossile Brennstoffe",
         menu: false,
         vis: [
+            { type: "textMd", src: "fossil/intro"},
             { type: "genVis", src: "others/supply-oil"},
             { type: "genVis", src: "others/supply-gas"},
             { type: "genVis", src: "others/supply-coal"},
+            { type: "textMd", src: "fossil/combined"},
+            { type: "genVis", src: "others/supply-total-j"},
+            { type: "genVis", src: "others/supply-total-co2"},
         ]
     }, 
     international: {

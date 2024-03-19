@@ -35,24 +35,25 @@
             "column": "product",
             "legend": {
                 "symbol": {
-                    "size": 0
+                    "size": 0,
+                    "elements": []
                 }
             },
             "props": {
                 "manual": {
-                    "total.fossil": {
+                    "total": {
                         "name": "Gesamt", "visible": true
                     },
-                    "gasoline.fossil": {
+                    "gasoline": {
                         "name": "Benzin", "visible": false
                     },
-                    "diesel.fossil": {
+                    "diesel": {
                         "name": "Diesel", "visible": true
                     },
-                    "heating.fossil": {
+                    "heating": {
                         "name": "Heizöl", "visible": false
                     },
-                    "kerosin.fossil": {
+                    "kerosin": {
                         "name": "Kerosin", "visible": false
                     }
                 }

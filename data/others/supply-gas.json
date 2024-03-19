@@ -35,7 +35,8 @@
             "column": "product",
             "legend": {
                 "symbol": {
-                    "size": 0
+                    "size": 0,
+                    "elements": []
                 }
             },
             "props": {
