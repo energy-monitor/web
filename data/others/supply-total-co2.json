@@ -4,9 +4,23 @@
     "options": {
         "height": 220,
         "title": "Absatz von fossilen Energieträgern",
-        "subtitle": "nach Emissionen in Gigatonnen CO²",
+        "subtitle": "nach Emissionen in Megatonnen CO₂",
         "footer": "Source: eurostat, eigene Berechnungen"
     },
+    "globals": {
+        "shareScale": ["x", "y"]
+    },
+    "formElements": [{
+        "id": "scaleCo2",
+        "name": "Y-Skala",
+        "ref": "shareScale",
+
+        "type": "switch",
+        "values": [
+            { "id": "shareAxisOff", "value": ["x"], "name": "Getrennt" },
+            { "id": "shareAxisOn", "value": ["x", "y"], "name": "Geteilt" }
+        ]
+    }],
     "mapping": {
         "x": {
             "hover": {
@@ -14,7 +28,7 @@
             }
         },
         "y": {
-            "column": "gt.co2",
+            "column": "mt.co2",
             "axis": {
                 "format": ",.1f"
             },
@@ -59,6 +73,10 @@
     },
     "facets": {
         "dim": ["type"],
+        "scales": {
+            "prop": "ref",
+            "ref": "shareScale"
+        },
         "cols": {
             "prop": "steps",
             "ref": "totalWidth",

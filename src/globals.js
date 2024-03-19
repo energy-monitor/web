@@ -98,7 +98,7 @@ const collections = {
             { type: "genVis", src: "others/supply-gas"},
             { type: "genVis", src: "others/supply-coal"},
             { type: "textMd", src: "fossil/combined"},
-            { type: "genVis", src: "others/supply-total-j"},
+            { type: "genVis", src: "others/supply-total-twh"},
             { type: "genVis", src: "others/supply-total-co2"},
         ]
     }, 

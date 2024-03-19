@@ -7,6 +7,20 @@
         "subtitle": "in tausend Tonnen",
         "footer": "Source: eurostat - nrg_cb_oilm"
     },
+    "globals": {
+        "shareScale": ["x", "y"]
+    },
+    "formElements": [{
+        "id": "scaleOil",
+        "name": "Y-Skala",
+        "ref": "shareScale",
+
+        "type": "switch",
+        "values": [
+            { "id": "shareAxisOff", "value": ["x"], "name": "Getrennt" },
+            { "id": "shareAxisOn", "value": ["x", "y"], "name": "Geteilt" }
+        ]
+    }],
     "mapping": {
         "x": {
             "hover": {
@@ -65,6 +79,10 @@
     },
     "facets": {
         "dim": ["type"],
+        "scales": {
+            "prop": "ref",
+            "ref": "shareScale"
+        },
         "cols": {
             "prop": "steps",
             "ref": "totalWidth",
