@@ -83,7 +83,7 @@ const collections = {
             // { type: "genVis", src: "electricity/price"},
             { type: "genVis", src: "electricity/price-entsoe"},
             // { type: "genVis", src: "electricity/price-hourly"},
-            { type: "genVis", src: "electricity/load-hourly"},
+            //{ type: "genVis", src: "electricity/load-hourly"},
             { type: "genVis", src: "electricity/generation-monthly-g1"},
             { type: "genVis", src: "electricity/generation-g1"},
             { type: "genVis", src: "electricity/generation-g2"},
