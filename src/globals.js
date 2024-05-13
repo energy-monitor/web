@@ -33,6 +33,11 @@ const stories = {
         menu: false,
         src: 'report-english'
     },
+    'value-renewables': {
+        name: 'Wert von Erneuerbaren & Flexibilität',
+        menu: true,
+        src: 'value-renewables'
+    },
 }
 
 const collections = {
