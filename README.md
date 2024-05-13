@@ -1,4 +1,4 @@
-# [Energy Monitor (energy.abteil.org)](https://energy.abteil.org)
+# [Energy Monitor (energie.wifo.ac.at)](https://energie.wifo.ac.at/)
 
 Joint project by [Johannes Schmidt](https://github.com/joph) and me. This repository provides the frontend code for the monitor webpage.
 
