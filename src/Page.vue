@@ -14,25 +14,27 @@
         
         <div class="menu">
             <table>
-                <tr>
-                    <td class="title">Indikatoren:</td>
-                    <td class="entries">
-                        <template v-for="[k, c] in Object.entries(menu.collections)">
-                            <span class="entry" v-if="c.menu">
-                                <router-link :to="{ name: 'collection', params: {id: k}}">{{ c.name }}</router-link>
-                            </span>
-                        </template>
-                    </td>
-                </tr><tr>
-                    <td class="title">Analysen:</td>
-                    <td class="entries">
-                        <template v-for="[k, c] in Object.entries(menu.stories)">
-                            <span class="entry" v-if="c.menu">
-                                <router-link :to="{ name: 'story', params: {id: k}}">{{ c.name }}</router-link>
-                            </span>
-                        </template>
-                    </td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td class="title">Indikatoren:</td>
+                        <td class="entries">
+                            <template v-for="[k, c] in Object.entries(menu.collections)">
+                                <span class="entry" v-if="c.menu">
+                                    <router-link :to="{ name: 'collection', params: {id: k}}">{{ c.name }}</router-link>
+                                </span>
+                            </template>
+                        </td>
+                    </tr><tr>
+                        <td class="title">Analysen:</td>
+                        <td class="entries">
+                            <template v-for="[k, c] in Object.entries(menu.stories)">
+                                <span class="entry" v-if="c.menu">
+                                    <router-link :to="{ name: 'story', params: {id: k}}">{{ c.name }}</router-link>
+                                </span>
+                            </template>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
             <!-- <div class="row">
                 <span class="title">Indikatorensammlung:</span>
