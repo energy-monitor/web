@@ -23,11 +23,11 @@ const stories = {
         menu: true,
         src: 'gas-savings'
     },
-    'gas-storage': {
-        name: 'Entwicklung des Gasspeichers',
-        menu: true,
-        src: 'gas-storage'
-    },
+    // 'gas-storage': {
+    //     name: 'Entwicklung des Gasspeichers',
+    //     menu: true,
+    //     src: 'gas-storage'
+    // },
     'report-gas-savings-and-storage': {
         name: 'Report',
         menu: false,

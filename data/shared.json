@@ -84,5 +84,5 @@
             "highlight-opacity": "@highlight-opacity",
             "highlight-stroke-width": "@highlight-stroke-width"
         }
-}
+    }
 }
