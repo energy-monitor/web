@@ -117,12 +117,14 @@ const collections = {
         ]
     }, 
     test: {
-        name: "Gaskonsum Model",
+        name: "Test",
         menu: false,
         vis: [
-            { type: "genVis", src: "pred-gas-cons"},
+            // { type: "genVis", src: "pred-gas-cons"},
+            { type: "genVis", src: "electricity/load"},
+            { type: "genVis", src: "electricity/flows"},
         ]
-    }, 
+    },
     others: {
         name: "Others",
         menu: false,

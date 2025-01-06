@@ -58,12 +58,13 @@
                     "highlight-opacity": 1
                 },
                 "manual": {
-                    "2019": { "color": "#cf90f0", "opacity": 0.4},
-                    "2020": { "color": "#86cae7", "opacity": 0.5},
-                    "2021": { "color": "#b5c969", "opacity": 0.6},
-                    "2022": { "color": "#f3d039", "opacity": 0.7},
-                    "2023": { "color": "#cf8e02", "opacity": 0.8},
-                    "2024": { "color": "#c3423f", "opacity": 1}
+                    "2025": { "color": "#c3423f", "opacity": 1.0},
+                    "2024": { "color": "#cf8e02", "opacity": 0.7},
+                    "2023": { "color": "#f3d039", "opacity": 0.6},
+                    "2022": { "color": "#b5c969", "opacity": 0.5},
+                    "2021": { "color": "#86cae7", "opacity": 0.2},
+                    "2020": { "color": "#cf90f0", "opacity": 0.2},
+                    "2019": { "color": "#AAAAAA", "opacity": 0.2}
                 }
             },
             "hover": {}

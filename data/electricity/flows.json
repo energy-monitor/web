@@ -1,0 +1,17 @@
+{
+    "parent": "/data/shared-base.json",
+    "data": "flows.csv",
+    "options": {
+        "title": "Netto Stromexporte",
+        "subtitle": "täglich (rollierender 14-Tages Durchschnitt), in GWh",
+        "footer": "Source: ENTSO-E - Physical Flows"
+    },
+    "mapping": {
+        "y": {
+            "scale": {
+                "domain": [null, null],
+                "domainRel": [-0.1, 0.1]
+            }
+        }
+    }
+}
