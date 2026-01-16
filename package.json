@@ -6,9 +6,8 @@
   "scripts": {
     "dev": "webpack serve --config build/dev.js",
     "build": "rm -rf dist && webpack --config build/prod.js",
-    "upload-wifo": "rsync -arv --delete  dist/ hades.wsr.ac.at:~/energie/htdocs/",
-    "upload-pepi": "rsync -arv --delete --exclude 'data' dist/ /srv/http/petres/energy",
-    "deploy-pepi": "npm run build && npm run upload-pepi"
+    "upload": "rsync -arv --delete  dist/ energy.wifo.ac.at:~/energie/htdocs/",
+    "deploy": "npm run build && npm run upload"
   },
   "author": {
     "name": "Peter Reschenhofer",
