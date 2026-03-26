@@ -10,7 +10,7 @@
                 {"cut": 600, "value": 300}
             ]
         },
-        "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50},
+        "margins": {"top": 5, "right": 30, "bottom": 45, "left": 50},
         "title": "Stromproduktion",
         "subtitle": "nach Quellen, in TWh",
         "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
@@ -32,6 +32,7 @@
                 },
                 "label": "Year",
                 "position": "bottom",
+                "rotate": 35,
                 "format": "%b %y"
             },
             "hover": {
@@ -101,7 +102,7 @@
                 "width": {
                     "prop": "relative",
                     "ref": "innerWidth",
-                    "ratio": 0.013
+                    "ratio": 0.008
                 }
             }
         }
