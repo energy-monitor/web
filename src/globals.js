@@ -28,11 +28,11 @@ const stories = {
     //     menu: true,
     //     src: 'gas-storage'
     // },
-    'report-gas-savings-and-storage': {
-        name: 'Report',
-        menu: false,
-        src: 'report-english'
-    },
+    //'report-gas-savings-and-storage': {
+    //    name: 'Report',
+    //    menu: false,
+    //    src: 'report-english'
+    //},
     'value-renewables': {
         name: 'Wert von Erneuerbaren & Flexibilität',
         menu: true,
@@ -46,7 +46,6 @@ const collections = {
         menu: true,
         vis: [
             { type: "genVis", src: "electricity/load"},
-            // { type: "genVis", src: "electricity/price"},
             { type: "genVis", src: "electricity/price-entsoe"},
             { type: "genVis", src: "gas/consumption-aggm"},
             { type: "genVis", src: "gas/price"},
@@ -63,10 +62,10 @@ const collections = {
             // { type: "genVis", src: "electricity/price"},
             { type: "genVis", src: "electricity/price-entsoe"},
             { type: "genVis", src: "gas/price"},
-            { type: "genVis", src: "others/brent"},
+            //{ type: "genVis", src: "others/brent"},
             { type: "genVis", src: "others/sprit"},
-            { type: "genVis", src: "others/coal"},
-            { type: "genVis", src: "others/eua"},
+            //{ type: "genVis", src: "others/coal"},
+            //{ type: "genVis", src: "others/eua"},
         ]
     }, 
     gas: {
@@ -85,10 +84,7 @@ const collections = {
         menu: true,
         vis: [
             { type: "genVis", src: "electricity/load"},
-            // { type: "genVis", src: "electricity/price"},
             { type: "genVis", src: "electricity/price-entsoe"},
-            // { type: "genVis", src: "electricity/price-hourly"},
-            //{ type: "genVis", src: "electricity/load-hourly"},
             { type: "genVis", src: "electricity/generation-monthly-g1"},
             { type: "genVis", src: "electricity/generation-g1"},
             { type: "genVis", src: "electricity/generation-g2"},
