@@ -17,7 +17,9 @@
         "year": {
             "props": {
                 "manual": {
-                    "avg40-18": { "color": "#444", "name": "Ø&nbsp1940&nbsp-&nbsp2018"}
+                    "avg40-60": { "color": "#777", "opacity": 0.2, "name": "Ø&nbsp1940&nbsp-&nbsp1960"},
+                    "avg60-90": { "color": "#222", "opacity": 0.2, "name": "Ø&nbsp1960&nbsp-&nbsp1990"},
+                    "avg90-20": { "color": "#000", "opacity": 1, "name": "Ø&nbsp1990&nbsp-&nbsp2020"}
                 }
             }
         }
