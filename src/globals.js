@@ -53,6 +53,7 @@ const collections = {
             { type: "genVis", src: "electricity/generation-gas"},
             { type: "genVis", src: "electricity/generation-monthly-g1"},
             { type: "genVis", src: "electricity/generation-g1"},
+             { type: "genVis", src: "electricity/generation-g2"},
         ]
     }, 
     prices: {

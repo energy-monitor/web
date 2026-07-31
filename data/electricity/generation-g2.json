@@ -1,8 +1,12 @@
 {
     "parent": "/data/electricity/shared-generation-g.json",
     "data": "generation-g2.csv",
-    "options": {
-        "height": 220
+      "options": {
+        "height": 220,
+        "margins": {"top": 5, "right": 15, "bottom": 35, "left": 45},
+        "title": "Stromproduktion",
+        "subtitle": "nach erneuerbar|nicht erneuerbar, täglich (rollierender 4-Wochen Durchschnitt), in GWh",
+        "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
     },
     "globals": {
         "shareScale": ["x"]
