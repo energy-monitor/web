@@ -4,6 +4,6 @@
     "options": {
         "title": "EUA Future",
         "subtitle": "Emissionsberechtigungen, täglich (rollierender 7-Tages Durchschnitt), in €/(Tonne CO₂)",
-        "footer": "Source: Macrobond, NASDAQ OMX Commodities"
+        "footer": "Source: Macrobond, Intercontinental Exchange (ICE)"
     }
 }
