@@ -4,7 +4,7 @@
     "options": {
         "margins": {"top": 30, "right": 30, "bottom": 35, "left": 50},
         "title": "Kohle Preis, Rotterdam",
-        "subtitle": "täglich (rollierender 7-Tages Durchschnitt), in $/Tonne",
+        "subtitle": "täglich (rollierender 3-Tages Durchschnitt), in $/Tonne",
         "footer": "Source: Macrobond, Intercontinental Exchange (ICE)"
     }
 }

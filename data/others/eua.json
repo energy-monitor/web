@@ -3,7 +3,7 @@
     "parent": "/data/shared-base.json",
     "options": {
         "title": "EUA Future",
-        "subtitle": "Emissionsberechtigungen, täglich (rollierender 7-Tages Durchschnitt), in €/(Tonne CO₂)",
+        "subtitle": "Emissionsberechtigungen, täglich (rollierender 3-Tages Durchschnitt), in €/(Tonne CO₂)",
         "footer": "Source: Macrobond, Intercontinental Exchange (ICE)"
     }
 }

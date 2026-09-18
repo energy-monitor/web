@@ -63,10 +63,12 @@ const collections = {
             // { type: "genVis", src: "electricity/price"},
             { type: "genVis", src: "electricity/price-entsoe"},
             { type: "genVis", src: "gas/price"},
+            { type: "genVis", src: "gas/price-lng"},
             { type: "genVis", src: "others/brent"},
             { type: "genVis", src: "others/sprit"},
             { type: "genVis", src: "others/coal"},
             { type: "genVis", src: "others/eua"},
+            { type: "genVis", src: "others/dollar"},
         ]
     }, 
     gas: {
