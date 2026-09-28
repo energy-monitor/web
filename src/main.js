@@ -24,7 +24,8 @@ const routes = [
     { path: '/prices', redirect: '/collection/prices' },
     { path: '/gas', redirect: '/collection/gas' },
     { path: '/energy', redirect: '/collection/energy' },
-    { path: '/international', redirect: '/collection/international' },
+    { path: '/international', redirect: '/collection/electricity' },
+    { path: '/collection/international', redirect: '/collection/electricity' },
 ];
 
 const router = createRouter({

@@ -1,33 +1,72 @@
 <template>
     <div class='mapEntry'>
-        <div class="vis-header">
-            <div class="title">Stromproduktion</div>
-            <div class="subtitle">nach Quellen, Anteile im Jahr 2021</div>
-        </div>
-        <div class="vis-form-elements">
-            <div class="formElement">
-                <div class="title">Quelle:</div>
-                <div class="entries">
-                    <div v-for="(name, key) in sources">
-                        <input type="radio" v-model="selected.source" :value="key" :id="key">
-                        <label :for="key">{{ name }}</label>
+        <template v-if="def">
+            <div class="vis-header">
+                <div class="title">{{ def.title }}</div>
+                <div class="subtitle">{{ subtitle }}</div>
+            </div>
+            <div class="vis-form-elements">
+                <div v-if="Object.keys(series).length > 1" class="formElement">
+                    <div class="title">{{ def.series.name }}:</div>
+                    <div class="entries">
+                        <div v-for="(s, key) in series">
+                            <input type="radio" v-model="selected.series" :value="key" :id="`${uid}-series-${key}`">
+                            <label :for="`${uid}-series-${key}`">{{ s.name }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="formElement">
+                    <div class="title">{{ def.types.name }}:</div>
+                    <div class="entries">
+                        <div v-for="(t, key) in def.types.values">
+                            <input type="radio" v-model="selected.type" :value="key" :id="`${uid}-type-${key}`">
+                            <label :for="`${uid}-type-${key}`">{{ t.name }}</label>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="def.yearSelect && years.length > 1" class="formElement">
+                    <div class="title">Jahr:</div>
+                    <div class="entries">
+                        <input type="range" v-model.number="selected.year" :min="years[0]" :max="years[years.length - 1]" step="1">
+                        <span class="year">{{ yearLabel(selected.year) }}</span>
                     </div>
                 </div>
             </div>
-        </div>
+        </template>
         <div class="vis-inner" ref="inner">
             <div ref="info" class="info" style="position: absolute;">
                 <template v-if="selected.id">
-                    <span class="country">{{ selected.id }}:</span>
-                    <span class="value">{{ d3.format(".0%")(values[selected.id]) }}</span>
+                    <span class="country">{{ countryName(selected.id) }}:</span>
+                    <span class="value">{{ format(values[selected.id].value) }}{{ def.unit ? ` ${def.unit}` : '' }}</span>
+                    <span v-if="def.count" class="abs">({{ countFormat(values[selected.id].count) }} {{ def.count.unit }})</span>
+                    <span v-if="values[selected.id].date && values[selected.id].date != latestDate" class="abs">(Stand {{ formatDate(values[selected.id].date) }})</span>
                 </template>
             </div>
             <svg ref="svg" viewBox="0 0 580 520">
                 <g class="countries"/>
             </svg>
+            <svg v-if="legend" class="legend" :width="legend.width + 130" height="38">
+                <defs>
+                    <linearGradient :id="`${uid}-gradient`">
+                        <stop offset="0%" :stop-color="legend.range[0]"/>
+                        <stop offset="100%" :stop-color="legend.range[1]"/>
+                    </linearGradient>
+                </defs>
+                <g transform="translate(10, 6)">
+                    <rect :width="legend.width" height="10" :fill="`url(#${uid}-gradient)`"/>
+                    <g v-for="t in legend.ticks" :transform="`translate(${t.x}, 0)`">
+                        <line y1="10" y2="14" stroke="#777"/>
+                        <text y="26" text-anchor="middle">{{ t.label }}</text>
+                    </g>
+                    <g :transform="`translate(${legend.width + 25}, 0)`">
+                        <rect width="10" height="10" :fill="noData"/>
+                        <text x="15" y="9">keine Daten</text>
+                    </g>
+                </g>
+            </svg>
         </div>
         <div class="vis-footer">
-            <span>Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C</span>
+            <span v-if="def" v-html="def.footer"/>
         </div>
     </div>
 </template>
@@ -36,27 +75,47 @@
 import * as d3 from 'd3';
 import * as topojson from "topojson-client"
 
+const locale = d3.formatLocale({ decimal: ",", thousands: ".", grouping: [3], currency: ["", " €"] });
+const regionNames = new Intl.DisplayNames(['de'], { type: 'region' });
+const currentYear = new Date().getFullYear();
+
+let count = 0;
+
 export default {
-    // props: ['src'],
+    // src of the definition, relative to /data, e.g. `electricity/generation-year-g2-map`
+    props: ['src'],
     data: () => ({
+        def: null,
         selected: {
             id: null,
-            source: "Renewable",
-            year: 2021,
+            series: null,
+            type: null,
+            year: null,
         },
-        sources: {
-            "Renewable": "Erneuerbar",
-            "Non-Renewable": "Fossil",
-            "Nuclear": "Nuclear",
-            "others": "Andere",
-        },
+        data: {},
         values: {},
-        d3: d3,
-        data: null,
+        legend: null,
+        noData: '#DADADA',
     }),
+    computed: {
+        // a definition either has one `data` file or several `series`
+        series() { return this.def.series ? this.def.series.values : { default: { data: this.def.data } } },
+        years() {
+            const rows = this.data[this.selected.series] ?? [];
+            return [...new Set(rows.map(d => d.year).filter(y => y !== null))].sort();
+        },
+        latestDate() { return d3.max(Object.values(this.data).flat(), d => d.date) },
+        // `{date}` is replaced by the latest date of the data
+        subtitle() {
+            return this.def.subtitle.replace('{date}', this.latestDate ? this.formatDate(this.latestDate) : '');
+        },
+        format() { return locale.format(this.def.format ?? ".0%") },
+        countFormat() { return this.def.count ? locale.format(this.def.count.format) : null },
+    },
+    created() {
+        this.uid = `map-${count++}`;
+    },
     mounted() {
-        const self = this;
-
         const width = Math.min(this.$refs.inner.getBoundingClientRect().width, 620);
 
         this.svg = d3.select(this.$refs.svg);
@@ -65,23 +124,55 @@ export default {
         this.svg.attr("width", width)
             .attr("height", width/580*520)
 
-        d3.json(`/geo/europe.json`).then(map => {
+        const dir = this.src.substring(0, this.src.lastIndexOf('/'));
+
+        Promise.all([
+            d3.json(`/geo/europe.json`),
+            d3.json(`/data/${this.src}.json`),
+        ]).then(([map, def]) => {
+            this.def = def;
+            this.selected.series = Object.keys(this.series)[0];
+            this.selected.type = Object.keys(def.types.values)[0];
+            this.selected.year = def.year ?? null;
             this.init(map);
-            
-            d3.csv('/data/electricity/generation-year-g2.csv').then((res) => {
-                const data = res.map(d => ({
-                    id: d.country,
-                    type: d.type,
-                    year: +d.year,
-                    value: +d.value,
-                    share: +d.share,
-                }))
-                this.data = data;
-                this.update();
-            })
+
+            // csv columns, by default the layout of `generation-year-g2.csv`
+            const columns = { country: "country", type: "type", year: "year", date: "date", value: "share", ...def.columns };
+
+            return Promise.all(Object.entries(this.series).map(([key, s]) =>
+                d3.csv(`/data/${dir}/${s.data}`).then(res => [key, res.map(d => ({
+                    id: d[columns.country],
+                    type: d[columns.type],
+                    year: d[columns.year] === undefined ? null : +d[columns.year],
+                    date: d[columns.date],
+                    value: +d[columns.value],
+                    count: def.count ? +d[def.count.column] : null,
+                }))])
+            ));
+        }).then(data => {
+            this.data = Object.fromEntries(data);
+            // default to the latest complete year, the current one is only year to date
+            if (this.selected.year === null && this.years.length > 0) {
+                const complete = this.years.filter(y => y < currentYear);
+                this.selected.year = complete.length > 0 ? complete[complete.length - 1] : this.years[this.years.length - 1];
+            }
+            this.update();
         });
     },
     methods: {
+        formatDate(date) {
+            return d3.timeFormat("%d.%m.%Y")(new Date(date));
+        },
+        yearLabel(year) {
+            return year == currentYear ? `${year} (laufendes Jahr)` : year;
+        },
+        countryName(id) {
+            try {
+                return regionNames.of(id);
+            } catch {
+                return id;
+            }
+        },
         init(map) {
             const self = this;
             const projection = d3.geoConicEquidistant()
@@ -103,11 +194,11 @@ export default {
                 .data(Object.keys(countries))
                 .enter()
                 .append("path")
-                .attr("data-id", d => d.id)
+                .attr("data-id", d => d)
                 .attr("d", d => geoPath(countries[d]))
                 .attr("stroke", "white")
-                .attr("fill", '#DADADA')
-                .on("mouseenter", (e, d) => { 
+                .attr("fill", this.noData)
+                .on("mouseenter", (e, d) => {
                     // console.log(this.info)
                     if (d in this.values) {
                         this.info.style("top", `${e.pageY - 30}px`)
@@ -120,30 +211,59 @@ export default {
                 .on("mouseleave", () => { this.selected.id = null })
         },
         update() {
-            const self = this;
-            const dataFiltered = this.data.filter(
-                d => d.year == this.selected.year & d.type == this.selected.source
-            )
+            const rows = this.data[this.selected.series];
+            if (!rows)
+                return;
 
-            this.values = Object.fromEntries(dataFiltered.map(d => [d.id, d.share]))
+            const rowsType = rows.filter(d => d.type == this.selected.type);
+            this.values = Object.fromEntries(
+                rowsType.filter(d => d.year === null || d.year == this.selected.year).map(d => [d.id, d])
+            );
 
-            const scale = d3.scaleLinear()
-                .domain([0, 1])
-                .range(["#fcd2d2", "#e6211e"])
+            // open ends are the extent over all years, so years stay comparable
+            const domain = [...(this.def.domain ?? [0, null])];
+            domain[0] ??= d3.min(rowsType, d => d.value);
+            domain[1] ??= d3.max(rowsType, d => d.value);
+            const range = this.def.types.values[this.selected.type].range ?? this.def.range;
+
+            // `sqrt` spreads the low values, if a single country is far ahead
+            const scale = (this.def.scale == "sqrt" ? d3.scaleSqrt() : d3.scaleLinear())
+                .domain(domain)
+                .range(range)
+
+            const legendScale = scale.copy().range([0, 240]);
+            let ticks = legendScale.ticks(5);
+            if (this.def.scale == "sqrt") {
+                // ticks of a sqrt scale crowd at the upper end, use 1, 2, 5 steps with some space instead
+                const candidates = [0, ...[-3, -2, -1, 0].flatMap(e => [1, 2, 5].map(m => m * 10 ** e))];
+                ticks = [];
+                candidates.filter(t => t >= domain[0] && t <= domain[1]).forEach(t => {
+                    if (ticks.length == 0 || legendScale(t) - legendScale(ticks[ticks.length - 1]) >= 30)
+                        ticks.push(t);
+                });
+            }
+            this.legend = {
+                width: 240,
+                range: range,
+                ticks: ticks.map(t => ({
+                    x: legendScale(t),
+                    label: locale.format(this.def.legendFormat ?? ".0%")(t),
+                })),
+            };
 
             this.svg.select("g.countries").selectAll("path")
                 .data(Object.keys(this.values), d => d)
                 .join(
                     _ => {},
-                    update => update.attr("fill", d => scale(this.values[d])),
-                    exit => exit.attr("fill", '#DADADA')
+                    update => update.attr("fill", d => scale(this.values[d].value)),
+                    exit => exit.attr("fill", this.noData)
                 )
         },
     },
     watch: {
-        'selected.source'() {
-            this.update();
-        }
+        'selected.series'() { this.update() },
+        'selected.type'() { this.update() },
+        'selected.year'() { this.update() },
     },
 }
 </script>

@@ -1,0 +1,116 @@
+{
+    "data": "car-registrations.csv",
+    "parent": "/data/shared-base.json",
+    "options": {
+        "height": 220,
+        "title": "Pkw-Neuzulassungen",
+        "subtitle": "nach Kraftstoffart bzw. Energiequelle, monatlich",
+        "footer": "Source: Statistik Austria - Kfz-Neuzulassungen"
+    },
+    "globals": {
+        "values": "abs",
+        "shareScale": ["x"]
+    },
+    "formElements": [{
+        "id": "valuesCarReg",
+        "name": "Werte",
+        "ref": "values",
+
+        "type": "switch",
+        "values": [
+            { "id": "valuesAbs", "value": "abs", "name": "Anzahl" },
+            {
+                "id": "valuesShare", "value": "share", "name": "Anteil",
+                "mapping": {
+                    "y": {
+                        "column": "share",
+                        "axis": { "format": ".0%" },
+                        "hover": { "format": ".1%" }
+                    }
+                }
+            }
+        ]
+    }, {
+        "id": "scaleCarReg",
+        "name": "Y-Skala",
+        "ref": "shareScale",
+
+        "type": "switch",
+        "values": [
+            { "id": "shareAxisOff", "value": ["x"], "name": "Getrennt" },
+            { "id": "shareAxisOn", "value": ["x", "y"], "name": "Geteilt" }
+        ]
+    }],
+    "mapping": {
+        "x": {
+            "hover": {
+                "format": "%b"
+            }
+        },
+        "y": {
+            "column": "value",
+            "axis": {
+                "format": ",.0f"
+            },
+            "hover": {
+                "format": ",.0f"
+            }
+        },
+        "type": {
+            "column": "type",
+            "legend": {
+                "symbol": {
+                    "size": 0,
+                    "elements": []
+                }
+            },
+            "props": {
+                "manual": {
+                    "bev": {
+                        "name": "Elektro", "visible": true
+                    },
+                    "diesel": {
+                        "name": "Diesel", "visible": true
+                    },
+                    "hybrid": {
+                        "name": "Hybrid (ohne Plug-in)", "visible": true
+                    },
+                    "other": {
+                        "name": "Sonstige", "visible": false
+                    },
+                    "petrol": {
+                        "name": "Benzin", "visible": true
+                    },
+                    "phev": {
+                        "name": "Plug-in-Hybrid", "visible": true
+                    },
+                    "total": {
+                        "name": "Gesamt", "visible": false
+                    }
+                }
+            },
+            "hover": {
+
+            }
+        }
+    },
+    "facets": {
+        "dim": ["type"],
+        "scales": {
+            "prop": "ref",
+            "ref": "shareScale"
+        },
+        "cols": {
+            "prop": "steps",
+            "ref": "totalWidth",
+            "steps": [
+                {"cut":    0, "value": 1},
+                {"cut":  550, "value": 2},
+                {"cut": 1000, "value": 3}
+            ]
+        }
+    },
+    "plot": {
+        "categories": ["year", "type"]
+    }
+}

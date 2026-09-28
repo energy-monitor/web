@@ -1,0 +1,19 @@
+{
+    "title": "Spritpreise in Europa",
+    "subtitle": "inkl. Steuern, in €/Liter, Stand {date}",
+    "footer": "Source: EC Weekly Oil Bulletin",
+    "data": "gas-oil-europe.csv",
+    "columns": { "type": "variable", "value": "value" },
+    "types": {
+        "name": "Kraftstoff",
+        "values": {
+            "euroSuper95": { "name": "Benzin", "range": ["#d2b08e", "#8f5608"] },
+            "gasOil":      { "name": "Diesel", "range": ["#bf9f8c", "#6b3610"] },
+            "heatingOil":  { "name": "Heizöl", "range": ["#d29e98", "#8e2a2a"] }
+        }
+    },
+    "domain": [null, null],
+    "format": ",.2f",
+    "unit": "€/l",
+    "legendFormat": ",.1f"
+}

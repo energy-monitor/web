@@ -2,7 +2,7 @@
     <div class="visualisations">
         <template v-for="v in vis">
             <gen-vis v-if="v.type == 'genVis'" :src="`/data/${v.src}.json`"/>
-            <europe-map v-if="v.type == 'europeMap'"/>
+            <europe-map v-if="v.type == 'europeMap'" :src="v.src"/>
             <text-md v-if="v.type == 'textMd'" :src="v.src"/>
         </template>
     </div>

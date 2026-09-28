@@ -1,0 +1,9 @@
+{
+    "data": "price-lng.csv",
+    "parent": "/data/shared-base.json",
+    "options": {
+        "title": "LNG Preis, EU",
+        "subtitle": "Spotpreis, täglich (rollierender 3-Tages Durchschnitt), in €/MWh",
+        "footer": "Source: Macrobond, ACER"
+    }
+}
