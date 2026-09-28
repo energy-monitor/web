@@ -1,0 +1,147 @@
+{
+    "data": "emissions-nid.csv",
+    "options": {
+        "height": {
+            "prop": "steps",
+            "ref": "totalWidth",
+            "steps": [
+                {"cut":   0, "value": 220},
+                {"cut": 550, "value": 260},
+                {"cut": 600, "value": 300}
+            ]
+        },
+        "margins": {"top": 5, "right": 30, "bottom": 45, "left": 50},
+        "title": "Vergleich mit der Treibhausgas-Inventur",
+        "subtitle": "CO₂-Emissionen pro Jahr, eigene Berechnung (links) und NID (rechts), in Megatonnen CO₂",
+        "footer": "Source: eurostat; Umweltbundesamt - NID 2026, Treibhausgas-Emissionen nach CRT; eigene Berechnungen"
+    },
+    "globals": {
+        "shareScale": ["x"]
+    },
+    "formElements": [{
+        "id": "scaleNid",
+        "name": "Y-Skala",
+        "ref": "shareScale",
+
+        "type": "switch",
+        "values": [
+            { "id": "shareAxisOff", "value": ["x"], "name": "Getrennt" },
+            { "id": "shareAxisOn", "value": ["x", "y"], "name": "Geteilt" }
+        ]
+    }],
+    "mapping": {
+        "x": {
+            "column": "date",
+            "type": "date",
+            "scale": {
+                "type": "time",
+                "orientation": "horizontal",
+                "domainAbs": [-5000000000, 5000000000]
+            },
+            "axis": {
+                "ticks": {
+                    "prop": "relative",
+                    "ref": "innerWidth",
+                    "ratio": 0.017
+                },
+                "label": "Year",
+                "position": "bottom",
+                "rotate": 0,
+                "format": "%Y"
+            },
+            "hover": {
+                "format": "%Y"
+            }
+        },
+        "y": {
+            "column": "value",
+            "type": "numeric",
+            "scale": {
+                "type": "linear",
+                "orientation": "vertical",
+                "domain": [0, null],
+                "domainRel": [0, 0.13]
+            },
+            "stacked": ["source", "fuel"],
+            "axis": {
+                "ticks": 7,
+                "position": "left",
+                "grid": true,
+                "format": ",.1f"
+            },
+            "hover": {
+                "format": ",.2f"
+            }
+        },
+        "fuel": {
+            "column": "fuel",
+            "props": {
+                "manual": {
+                    "total":       { "name": "Gesamt (Erdgas, Mineralöl, Kohle)" },
+                    "oil":         { "name": "Mineralöl" },
+                    "gas":         { "name": "Erdgas" },
+                    "coal":        { "name": "Kohle" },
+                    "intaviation": { "name": "Internationaler Flugverkehr" }
+                }
+            }
+        },
+        "source": {
+            "column": "source",
+            "legend": {
+                "symbol": {
+                    "size": 16,
+                    "elements": [{
+                        "type": "rect",
+                        "props": {
+                            "x": 0, "y": 0, "width": 16, "height": 15,
+                            "fill": "@color", "rx": 2
+                        }
+                    }]
+                }
+            },
+            "props": {
+                "common": {
+                    "size": 2
+                },
+                "manual": {
+                    "own": { "color": "#cf8e02", "name": "Eigene Berechnung" },
+                    "nid": { "color": "#4D4D4D", "name": "NID 2026" }
+                }
+            },
+            "hover": {
+            }
+        }
+    },
+    "facets": {
+        "dim": ["fuel"],
+        "scales": {
+            "prop": "ref",
+            "ref": "shareScale"
+        },
+        "cols": {
+            "prop": "steps",
+            "ref": "totalWidth",
+            "steps": [
+                {"cut":   0, "value": 1},
+                {"cut": 550, "value": 2}
+            ]
+        }
+    },
+    "plot": [
+        {
+            "type": "stackedBar",
+            "categories": ["source"],
+            "props": {
+                "fill": "@color",
+                "opacity": 0.9,
+                "x": "@x",
+                "y": "@y",
+                "width": {
+                    "prop": "relative",
+                    "ref": "innerWidth",
+                    "ratio": 0.02
+                }
+            }
+        }
+    ]
+}

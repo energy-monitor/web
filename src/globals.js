@@ -116,6 +116,7 @@ const collections = {
             { type: "genVis", src: "others/emissions-total-year"},
             { type: "genVis", src: "others/emissions-oil"},
             { type: "genVis", src: "others/emissions-aviation"},
+            { type: "genVis", src: "others/emissions-nid"},
         ]
     },
     test: {
