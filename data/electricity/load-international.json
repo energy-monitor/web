@@ -12,7 +12,7 @@
         "shareScale": ["x"]
     },
     "formElements": [{
-        "id": "scale",
+        "id": "scaleLoadInt",
         "name": "Y-Skala",
         "ref": "shareScale",
 

@@ -1,0 +1,19 @@
+{
+    "title": "Stromproduktion",
+    "subtitle": "nach Quellen, Anteile, jährlich",
+    "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C",
+    "data": "generation-year-g2.csv",
+    "yearSelect": true,
+    "types": {
+        "name": "Quelle",
+        "values": {
+            "Renewable":     { "name": "Erneuerbar" },
+            "Non-Renewable": { "name": "Fossil" },
+            "Nuclear":       { "name": "Nuclear" },
+            "others":        { "name": "Andere" }
+        }
+    },
+    "domain": [0, 1],
+    "range": ["#fcd2d2", "#e6211e"],
+    "format": ".0%"
+}

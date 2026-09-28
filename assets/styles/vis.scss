@@ -32,6 +32,16 @@
                     margin: 3px;
                     font-weight: bold;
                 }
+                span.abs {
+                    font-weight: normal;
+                }
+            }
+            svg.legend {
+                display: block;
+                margin: 4px auto 0;
+                text {
+                    font-size: 12px;
+                }
             }
         }
 
@@ -49,6 +59,13 @@
                     > div {
                         display: inline-block;
                         margin-right: 5px;
+                    }
+                    input[type=range] {
+                        vertical-align: middle;
+                        width: 200px;
+                    }
+                    .year {
+                        margin-left: 5px;
                     }
                 }
                 font-size: 13px;
