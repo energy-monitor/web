@@ -3,7 +3,7 @@ export { genVis, collections, stories };
 const genVis = {
     // path: './data/gen-vis/gen-vis',
     path: 'https://data-science.wifo.ac.at/gen-vis/gen-vis',
-    version: '0.3.0'
+    version: '0.4.0'
 }
 
 // const vis = {
