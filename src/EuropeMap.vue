@@ -39,6 +39,7 @@
                     <span class="country">{{ countryName(selected.id) }}:</span>
                     <span class="value">{{ format(values[selected.id].value) }}{{ def.unit ? ` ${def.unit}` : '' }}</span>
                     <span v-if="def.count" class="abs">({{ countFormat(values[selected.id].count) }} {{ def.count.unit }})</span>
+                    <span v-if="values[selected.id].date && values[selected.id].date != latestDate" class="abs">(Stand {{ formatDate(values[selected.id].date) }})</span>
                 </template>
             </div>
             <svg ref="svg" viewBox="0 0 580 520">
@@ -103,10 +104,10 @@ export default {
             const rows = this.data[this.selected.series] ?? [];
             return [...new Set(rows.map(d => d.year).filter(y => y !== null))].sort();
         },
+        latestDate() { return d3.max(Object.values(this.data).flat(), d => d.date) },
         // `{date}` is replaced by the latest date of the data
         subtitle() {
-            const dates = Object.values(this.data).flat().map(d => d.date).filter(d => d);
-            return this.def.subtitle.replace('{date}', dates.length > 0 ? d3.timeFormat("%d.%m.%Y")(new Date(d3.max(dates))) : '');
+            return this.def.subtitle.replace('{date}', this.latestDate ? this.formatDate(this.latestDate) : '');
         },
         format() { return locale.format(this.def.format ?? ".0%") },
         countFormat() { return this.def.count ? locale.format(this.def.count.format) : null },
@@ -159,6 +160,9 @@ export default {
         });
     },
     methods: {
+        formatDate(date) {
+            return d3.timeFormat("%d.%m.%Y")(new Date(date));
+        },
         yearLabel(year) {
             return year == currentYear ? `${year} (laufendes Jahr)` : year;
         },
