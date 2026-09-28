@@ -107,19 +107,6 @@ const collections = {
             { type: "europeMap", src: "others/gas-oil-europe-map"},
         ]
     },
-    fossil: {
-        name: "Fossile Brennstoffe",
-        menu: true,
-        vis: [
-            { type: "textMd", src: "fossil/intro"},
-            { type: "genVis", src: "others/supply-oil"},
-            { type: "genVis", src: "others/supply-gas"},
-            { type: "genVis", src: "others/supply-coal"},
-            { type: "textMd", src: "fossil/combined"},
-            { type: "genVis", src: "others/supply-total-twh"},
-            { type: "genVis", src: "others/supply-total-co2"},
-        ]
-    },
     emissions: {
         name: "CO₂-Emissionen",
         menu: true,

@@ -26,6 +26,7 @@ const routes = [
     { path: '/energy', redirect: '/collection/energy' },
     { path: '/international', redirect: '/collection/electricity' },
     { path: '/collection/international', redirect: '/collection/electricity' },
+    { path: '/collection/fossil', redirect: '/collection/emissions' },
 ];
 
 const router = createRouter({
