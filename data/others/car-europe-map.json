@@ -1,0 +1,29 @@
+{
+    "title": "Pkw in Europa",
+    "subtitle": "Anteile nach Kraftstoffart bzw. Energiequelle, jährlich",
+    "footer": "Source: eurostat - road_eqr_carpda (Neuzulassungen), road_eqs_carpda (Bestand)",
+    "series": {
+        "name": "Daten",
+        "values": {
+            "registrations": { "name": "Neuzulassungen", "data": "car-registrations-europe.csv" },
+            "stock":         { "name": "Bestand",        "data": "car-stock-europe.csv" }
+        }
+    },
+    "yearSelect": true,
+    "types": {
+        "name": "Kraftstoff",
+        "values": {
+            "bev":    { "name": "Elektro",               "range": ["#9cbda7", "#1f6f45"] },
+            "phev":   { "name": "Plug-in-Hybrid",        "range": ["#9cbdb7", "#1d7066"] },
+            "hybrid": { "name": "Hybrid (ohne Plug-in)", "range": ["#a2b9d1", "#23699b"] },
+            "petrol": { "name": "Benzin",                "range": ["#d2b08e", "#8f5608"] },
+            "diesel": { "name": "Diesel",                "range": ["#bf9f8c", "#6b3610"] },
+            "other":  { "name": "Sonstige",              "range": ["#b0a1c2", "#533a7a"] }
+        }
+    },
+    "domain": [0, null],
+    "scale": "sqrt",
+    "format": ".1%",
+    "legendFormat": ".2~%",
+    "count": { "column": "value", "format": ",.0f", "unit": "Pkw" }
+}
