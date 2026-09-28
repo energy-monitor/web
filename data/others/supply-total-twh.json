@@ -63,6 +63,9 @@
                     },
                     "oil": {
                         "name": "Mineralöl", "visible": true
+                    },
+                    "total": {
+                        "name": "Gesamt", "visible": true
                     }
                 }
             },
@@ -82,7 +85,7 @@
             "ref": "totalWidth",
             "steps": [
                 {"cut":   0, "value": 1},
-                {"cut": 550, "value": 3}
+                {"cut": 550, "value": 2}
             ]
         }
     },

@@ -5,7 +5,7 @@
         "height": 220,
         "title": "Absatz von fossilen Energieträgern",
         "subtitle": "nach Emissionen in Megatonnen CO₂",
-        "footer": "Source: eurostat, eigene Berechnungen"
+        "footer": "Source: eurostat; Umweltbundesamt - NID 2026; eigene Berechnungen"
     },
     "globals": {
         "shareScale": ["x", "y"]
@@ -63,6 +63,9 @@
                     },
                     "oil": {
                         "name": "Mineralöl", "visible": true
+                    },
+                    "total": {
+                        "name": "Gesamt", "visible": true
                     }
                 }
             },
@@ -82,7 +85,7 @@
             "ref": "totalWidth",
             "steps": [
                 {"cut":   0, "value": 1},
-                {"cut": 550, "value": 3}
+                {"cut": 550, "value": 2}
             ]
         }
     },

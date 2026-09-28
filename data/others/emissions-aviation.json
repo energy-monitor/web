@@ -1,0 +1,35 @@
+{
+    "data": "emissions-aviation.csv",
+    "parent": "/data/shared-base.json",
+    "options": {
+        "height": 220,
+        "title": "CO₂-Emissionen des internationalen Flugverkehrs",
+        "subtitle": "Kerosin-Absatz für internationale Flüge (Bunker), monatlich, in Kilotonnen CO₂",
+        "footer": "Source: eurostat - nrg_cb_oilm; Umweltbundesamt - NID 2026; eigene Berechnungen"
+    },
+    "mapping": {
+        "x": {
+            "hover": {
+                "format": "%b"
+            }
+        },
+        "y": {
+            "column": "value",
+            "axis": {
+                "format": ",.0f"
+            },
+            "hover": {
+                "format": ",.0f"
+            }
+        },
+        "year": {
+            "props": {
+                "manual": {
+                    "avg13-18": {
+                        "color": "#444", "name": "Ø&nbsp'13&nbsp-&nbsp'18"
+                    }
+                }
+            }
+        }
+    }
+}
