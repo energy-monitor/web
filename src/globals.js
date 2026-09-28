@@ -118,6 +118,12 @@ const collections = {
             { type: "textMd", src: "fossil/combined"},
             { type: "genVis", src: "others/supply-total-twh"},
             { type: "genVis", src: "others/supply-total-co2"},
+        ]
+    },
+    emissions: {
+        name: "CO₂-Emissionen",
+        menu: true,
+        vis: [
             { type: "textMd", src: "fossil/emissions"},
             { type: "genVis", src: "others/emissions-total"},
             { type: "genVis", src: "others/emissions-total-year"},
