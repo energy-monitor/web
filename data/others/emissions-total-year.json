@@ -1,10 +1,9 @@
 {
     "data": "emissions-total-year.csv",
-    "parent": "/data/shared-base.json",
+    "parent": "/data/shared-facet.json",
     "options": {
-        "height": 220,
         "title": "CO₂-Emissionen aus fossilen Energieträgern gesamt",
-        "subtitle": "Summe aus Erdgas, Mineralöl und Kohle, monatlich, in Megatonnen CO₂",
+        "subtitle": "Summe aus Erdgas, Mineralöl und Kohle, in Megatonnen CO₂",
         "footer": "Source: eurostat - nrg_cb_gasm, nrg_cb_oilm, nrg_cb_sffm; Umweltbundesamt - NID 2026; eigene Berechnungen"
     },
     "mapping": {
@@ -20,6 +19,18 @@
             },
             "hover": {
                 "format": ",.2f"
+            }
+        },
+        "type": {
+            "props": {
+                "manual": {
+                    "month": {
+                        "name": "monatlich"
+                    },
+                    "cum": {
+                        "name": "Summe seit Jahresbeginn"
+                    }
+                }
             }
         },
         "year": {
