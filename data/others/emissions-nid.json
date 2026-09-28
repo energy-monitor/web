@@ -11,24 +11,10 @@
             ]
         },
         "margins": {"top": 5, "right": 30, "bottom": 45, "left": 50},
-        "title": "Vergleich mit der Treibhausgas-Inventur",
-        "subtitle": "CO₂-Emissionen pro Jahr, eigene Berechnung (links) und NID (rechts), in Megatonnen CO₂",
+        "title": "Abweichung von der Treibhausgas-Inventur",
+        "subtitle": "Eigene Berechnung der CO₂-Emissionen im Vergleich zur NID, pro Jahr, in %",
         "footer": "Source: eurostat; Umweltbundesamt - NID 2026, Treibhausgas-Emissionen nach CRT; eigene Berechnungen"
     },
-    "globals": {
-        "shareScale": ["x"]
-    },
-    "formElements": [{
-        "id": "scaleNid",
-        "name": "Y-Skala",
-        "ref": "shareScale",
-
-        "type": "switch",
-        "values": [
-            { "id": "shareAxisOff", "value": ["x"], "name": "Getrennt" },
-            { "id": "shareAxisOn", "value": ["x", "y"], "name": "Geteilt" }
-        ]
-    }],
     "mapping": {
         "x": {
             "column": "date",
@@ -36,7 +22,7 @@
             "scale": {
                 "type": "time",
                 "orientation": "horizontal",
-                "domainAbs": [-5000000000, 5000000000]
+                "domainAbs": [-15000000000, 15000000000]
             },
             "axis": {
                 "ticks": {
@@ -59,18 +45,17 @@
             "scale": {
                 "type": "linear",
                 "orientation": "vertical",
-                "domain": [0, null],
-                "domainRel": [0, 0.13]
+                "domain": [-0.05, 0.05]
             },
-            "stacked": ["source", "fuel"],
+            "stacked": ["sign", "fuel"],
             "axis": {
                 "ticks": 7,
                 "position": "left",
                 "grid": true,
-                "format": ",.1f"
+                "format": "+.0%"
             },
             "hover": {
-                "format": ",.2f"
+                "format": "+.1%"
             }
         },
         "fuel": {
@@ -85,8 +70,8 @@
                 }
             }
         },
-        "source": {
-            "column": "source",
+        "sign": {
+            "column": "sign",
             "legend": {
                 "symbol": {
                     "size": 16,
@@ -104,8 +89,8 @@
                     "size": 2
                 },
                 "manual": {
-                    "own": { "color": "#cf8e02", "name": "Eigene Berechnung" },
-                    "nid": { "color": "#4D4D4D", "name": "NID 2026" }
+                    "higher": { "color": "#cf8e02", "name": "Eigene Berechnung höher" },
+                    "lower":  { "color": "#3b95d0", "name": "Eigene Berechnung niedriger" }
                 }
             },
             "hover": {
@@ -114,10 +99,7 @@
     },
     "facets": {
         "dim": ["fuel"],
-        "scales": {
-            "prop": "ref",
-            "ref": "shareScale"
-        },
+        "scales": ["x", "y"],
         "cols": {
             "prop": "steps",
             "ref": "totalWidth",
@@ -130,7 +112,7 @@
     "plot": [
         {
             "type": "stackedBar",
-            "categories": ["source"],
+            "categories": ["sign"],
             "props": {
                 "fill": "@color",
                 "opacity": 0.9,
@@ -139,7 +121,7 @@
                 "width": {
                     "prop": "relative",
                     "ref": "innerWidth",
-                    "ratio": 0.02
+                    "ratio": 0.035
                 }
             }
         }
