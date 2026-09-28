@@ -120,6 +120,7 @@ const collections = {
             { type: "genVis", src: "others/supply-total-co2"},
             { type: "textMd", src: "fossil/emissions"},
             { type: "genVis", src: "others/emissions-total"},
+            { type: "genVis", src: "others/emissions-total-year"},
             { type: "genVis", src: "others/emissions-oil"},
             { type: "genVis", src: "others/emissions-aviation"},
         ]
