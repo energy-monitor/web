@@ -46,7 +46,7 @@
                 "orientation": "vertical",
                 "domain": [0, 1]
             },
-            "stacked": ["type"],
+            "stacked": true,
             "axis": {
                 "ticks": 5,
                 "position": "left",

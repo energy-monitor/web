@@ -21,7 +21,6 @@
                     "ref": "innerWidth",
                     "ratio": 0.017
                 },
-                "label": "Year",
                 "position": "bottom",
                 "format": "c"
             },
@@ -38,7 +37,7 @@
                 "domain": [0, null],
                 "domainRel": [0, 0.13]
             },
-            "stacked": ["source"],
+            "stacked": true,
             "axis": {
                 "ticks": 7,
                 "position": "left",
