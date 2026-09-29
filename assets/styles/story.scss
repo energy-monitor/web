@@ -37,7 +37,8 @@
         overflow-y: auto;
     }
 
-    table {
+    // the tables of the text, not e.g. the hover of the charts
+    > table {
         font-size: 14px;
         margin: 10px 10px 35px;
         width: auto !important;

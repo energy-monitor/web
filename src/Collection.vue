@@ -3,7 +3,7 @@
         <template v-for="v in vis">
             <gen-vis v-if="v.type == 'genVis'" class="visEntry" :def-file="`/data/${v.src}.json`"/>
             <europe-map v-if="v.type == 'europeMap'" :src="v.src"/>
-            <text-md v-if="v.type == 'textMd'" :src="v.src"/>
+            <markdown v-if="v.type == 'markdown'" :url="`/data/page/${v.src}.md`"/>
         </template>
     </div>
 </template>
@@ -13,7 +13,7 @@ import { collections } from '@/globals.js';
 
 import { GenVis } from '@preschen/gen-vis';
 import EuropeMap from '@/EuropeMap.vue';
-import TextMd from '@/TextMd.vue';
+import Markdown from '@/Markdown.vue';
 
 export default {
     props: ["id"],
@@ -21,7 +21,7 @@ export default {
         vis: [],
     }),
     components: {
-        GenVis, EuropeMap, TextMd
+        GenVis, EuropeMap, Markdown
     },
     watch: { 
         '$route.name': {

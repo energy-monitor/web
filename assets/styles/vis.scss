@@ -1,6 +1,17 @@
 .visualisations {
     margin: 10px;
 
+    // the texts of the collections, e.g. data/page/fossil.md
+    .markdown {
+        margin: 20px 0 40px;
+        text-align: justify;
+        font-size: 16px;
+        line-height: 1.75;
+    }
+}
+
+// the charts of the collections and of the markdown texts
+.visualisations, .markdown {
     .mapEntry {
         margin: 25px auto;
 
@@ -111,4 +122,12 @@
          }
     }
 
+}
+
+// charts in markdown texts do not use their text styles
+.markdown {
+    .visEntry, .mapEntry {
+        text-align: left;
+        line-height: normal;
+    }
 }

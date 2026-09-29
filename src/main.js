@@ -5,16 +5,21 @@ import { createWebHistory, createRouter } from 'vue-router'
 
 import App from '@/App.vue'
 
-// import { collections } from '@/globals.js';
+import { stories } from '@/globals.js';
 
 import Single from '@/Single.vue'
 import Include from '@/Include.vue'
 import Collection from '@/Collection.vue'
-import Story from '@/Story.vue'
+import Markdown from '@/Markdown.vue'
 
 const routes = [
     { path: `/collection/:id`, component: Collection, name: `collection`, props: true },
-    { path: '/analysis/:id', component: Story, name: 'story', props: true },
+    // the markdown of the story, class falls through to the root element,
+    // unknown stories redirect to the start page
+    { path: '/analysis/:id', component: Markdown, name: 'story', props: route => ({
+        url: `/data/md/${stories[route.params.id].src}.md`,
+        class: 'story',
+    }), beforeEnter: to => to.params.id in stories || '/' },
     { path: '/single/:id', component: Single, name: 'single' },
     { path: '/include', component: Include, name: 'include' },
 
