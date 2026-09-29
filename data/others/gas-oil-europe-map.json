@@ -7,8 +7,8 @@
     "types": {
         "name": "Kraftstoff",
         "values": {
-            "euroSuper95": { "name": "Benzin", "range": ["#d2b08e", "#8f5608"] },
-            "gasOil":      { "name": "Diesel", "range": ["#bf9f8c", "#6b3610"] },
+            "euroSuper95": { "name": "Benzin", "range": ["#feca95", "#a9702b"] },
+            "gasOil":      { "name": "Diesel", "range": ["#ada5a0", "#4e453f"] },
             "heatingOil":  { "name": "Heizöl", "range": ["#d29e98", "#8e2a2a"] }
         }
     },

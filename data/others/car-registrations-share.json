@@ -10,7 +10,7 @@
                 {"cut": 600, "value": 300}
             ]
         },
-        "margins": {"top": 5, "right": 30, "bottom": 45, "left": 50},
+        "margins": {"top": 15, "right": 30, "bottom": 45, "left": 50},
         "title": "Anteile an den Pkw-Neuzulassungen",
         "subtitle": "nach Kraftstoffart bzw. Energiequelle, monatlich, in %, AT",
         "footer": "Source: Statistik Austria - Kfz-Neuzulassungen"
@@ -73,12 +73,12 @@
             },
             "props": {
                 "manual": {
-                    "bev":    { "color": "#2e8b57", "name": "Elektro" },
-                    "diesel": { "color": "#8B4513", "name": "Diesel" },
-                    "hybrid": { "color": "#3b95d0", "name": "Hybrid (ohne Plug-in)" },
-                    "other":  { "color": "#6b4c9a", "name": "Sonstige" },
-                    "petrol": { "color": "#c47a00", "name": "Benzin" },
-                    "phev":   { "color": "#2a9d8f", "name": "Plug-in-Hybrid" }
+                    "bev":    { "color": "#3FA45B", "name": "Elektro" },
+                    "phev":   { "color": "#7ACDB5", "name": "Plug-in-Hybrid" },
+                    "hybrid": { "color": "#4A96D4", "name": "Hybrid (ohne Plug-in)" },
+                    "petrol": { "color": "#F2A03D", "name": "Benzin" },
+                    "diesel": { "color": "#6F625A", "name": "Diesel" },
+                    "other":  { "color": "#DDDDDD", "name": "Sonstige" }
                 }
             },
             "hover": {
