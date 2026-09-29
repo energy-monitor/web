@@ -10,11 +10,34 @@
                 {"cut": 600, "value": 300}
             ]
         },
-        "margins": {"top": 5, "right": 30, "bottom": 45, "left": 50},
+        "margins": {"top": 15, "right": 30, "bottom": 45, "left": 50},
         "title": "Stromproduktion",
-        "subtitle": "nach Quellen, in TWh",
+        "subtitle": "nach Quellen, in TWh bzw. Anteile",
         "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
     },
+    "globals": {
+        "values": "abs"
+    },
+    "formElements": [{
+        "id": "valuesGenMonthly",
+        "name": "Werte",
+        "ref": "values",
+        "type": "switch",
+        "values": [
+            { "id": "valuesGenMonthlyAbs", "value": "abs", "name": "TWh" },
+            {
+                "id": "valuesGenMonthlyShare", "value": "share", "name": "Anteil",
+                "mapping": {
+                    "y": {
+                        "column": "share",
+                        "scale": { "domain": [0, 1], "domainRel": [0, 0] },
+                        "axis": { "format": ".0%" },
+                        "hover": { "format": ".1%" }
+                    }
+                }
+            }
+        ]
+    }],
     "mapping": {
         "x": {
             "column": "date",
@@ -77,9 +100,9 @@
                     "size": 2
                 },
                 "manual": {
-                    "Wind":   { "color": "#BBD7EE", "name": "Wind" },
-                    "Solar":  { "color": "#F3D039", "name": "Solar" },
                     "Hydro":  { "color": "#5BC5F2", "name": "Hydro" },
+                    "Solar":  { "color": "#F3D039", "name": "Solar" },
+                    "Wind":   { "color": "#BBD7EE", "name": "Wind" },
                     "Gas":    { "color": "#C3423F", "name": "Erdgas" },
                     "Coal":   { "color": "#8B4513", "name": "Kohle" },
                     "others": { "color": "#CCC",    "name": "Andere" }
