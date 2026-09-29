@@ -1,11 +1,11 @@
 <template>
     <div class='visEntry'>
-        <gen-vis :src="`/data/${$route.params.id.replaceAll('~', '/')}.json`"/>
+        <gen-vis :def-file="`/data/${$route.params.id.replaceAll('~', '/')}.json`"/>
     </div>
 </template>
 
 <script>
-import GenVis from '@/GenVis.vue';
+import { GenVis } from '@preschen/gen-vis';
 
 export default {
     components: {
