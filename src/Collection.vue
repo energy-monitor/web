@@ -1,18 +1,17 @@
 <template>
     <div class="visualisations">
         <template v-for="v in vis">
-            <gen-vis v-if="v.type == 'genVis'" class="visEntry" :def-file="`/data/${v.src}.json`"/>
-            <europe-map v-if="v.type == 'europeMap'" :src="v.src"/>
-            <markdown v-if="v.type == 'markdown'" :url="`/data/page/${v.src}.md`"/>
+            <markdown v-if="v.type == 'markdown'" :url="`/data/page/${v.src}.md`" pins/>
+            <vis-entry v-else :vis="v"/>
         </template>
     </div>
 </template>
 
 <script>
 import { collections } from '@/globals.js';
+import { favorites, customized } from '@/favorites.js';
 
-import { GenVis } from '@preschen/gen-vis';
-import EuropeMap from '@/EuropeMap.vue';
+import VisEntry from '@/VisEntry.vue';
 import Markdown from '@/Markdown.vue';
 
 export default {
@@ -21,17 +20,27 @@ export default {
         vis: [],
     }),
     components: {
-        GenVis, EuropeMap, Markdown
+        VisEntry, Markdown
     },
-    watch: { 
+    computed: {
+        customized() { return customized.value },
+    },
+    watch: {
         '$route.name': {
             handler: function(n) {
+                // the start page shows the selection of the user, unselected
+                // charts stay until the page is opened again
                 if (n != 'map')
-                    this.vis = collections[this.id].vis;
+                    this.vis = this.id == 'preset' ? [...favorites.value] : collections[this.id].vis;
                 // console.log(this.vis)
             },
             immediate: true
-        }
+        },
+        // reset in the footer or in another tab
+        customized(c) {
+            if (!c && this.id == 'preset')
+                this.vis = [...favorites.value];
+        },
     }
 }
 </script>

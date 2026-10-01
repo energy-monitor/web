@@ -201,8 +201,11 @@ export default {
                 .on("mouseenter", (e, d) => {
                     // console.log(this.info)
                     if (d in this.values) {
-                        this.info.style("top", `${e.pageY - 30}px`)
-                            .style("left", `${e.pageX - 50}px`)
+                        // relative to the positioned ancestor of the info, e.g.
+                        // the entry with the paperclip or the story
+                        const [x, y] = d3.pointer(e, this.$refs.info.offsetParent);
+                        this.info.style("top", `${y - 30}px`)
+                            .style("left", `${x - 50}px`)
                             // .style("color", `red`)
 
                         this.selected.id = d;

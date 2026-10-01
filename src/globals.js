@@ -36,7 +36,7 @@ const stories = {
 
 const collections = {
     preset: {
-        name: "Preset",
+        name: "Auswahl",
         menu: true,
         vis: [
             { type: "genVis", src: "electricity/load"},

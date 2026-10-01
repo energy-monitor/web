@@ -1,5 +1,6 @@
 .visualisations {
-    margin: 10px;
+    // room for the paperclips of the charts on the left
+    margin: 10px 10px 10px 30px;
 
     // the texts of the collections, e.g. data/page/fossil.md
     .markdown {
@@ -12,6 +13,36 @@
 
 // the charts of the collections and of the markdown texts
 .visualisations, .markdown {
+    // the paperclip to add a chart to the start page, in the margin left of
+    // the title, the top margin of the entries collapses with the one of the
+    // wrapper
+    .favEntry {
+        position: relative;
+        > .fav {
+            position: absolute;
+            top: 6px;
+            left: -20px;
+            padding: 0;
+            border: 0;
+            background: none;
+            cursor: pointer;
+            svg {
+                display: block;
+                fill: none;
+                stroke: #BBB;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+            &:hover svg {
+                stroke: #777;
+            }
+            &.active svg {
+                stroke: #222;
+            }
+        }
+    }
+
     // the maps use the class names of gen-vis but not its styles
     .mapEntry {
         margin: 25px auto;
@@ -39,6 +70,10 @@
         .vis-inner {
             text-align: center;
             .info {
+                // white halo around the letters, readable above dark countries
+                text-shadow:
+                    -1px -1px 1px #FFF, 1px -1px 1px #FFF,
+                    -1px 1px 1px #FFF, 1px 1px 1px #FFF;
                 span {
                     display: inline-block;
                     margin: 3px;

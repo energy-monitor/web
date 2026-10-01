@@ -13,14 +13,13 @@ import rehypeRaw from 'rehype-raw'
 import rehypeRewrite from 'rehype-rewrite';
 import { find, html, svg } from 'property-information';
 
-import { GenVis } from '@preschen/gen-vis';
-import EuropeMap from '@/EuropeMap.vue';
+import VisEntry from '@/VisEntry.vue';
 
 // leaf directives which are rendered as components, e.g. ::gen-vis{src="gas/price"},
-// src is relative to /data as in the collections
+// src is relative to /data as in the collections, pin adds the paperclip
 const components = {
-    'gen-vis': a => h(GenVis, { class: 'visEntry', defFile: `/data/${a.src}.json` }),
-    'europe-map': a => h(EuropeMap, { src: a.src }),
+    'gen-vis': (a, pin) => h(VisEntry, { vis: { type: 'genVis', src: a.src }, pin }),
+    'europe-map': (a, pin) => h(VisEntry, { vis: { type: 'europeMap', src: a.src }, pin }),
 };
 
 // the directives of the components become elements, all others are text
@@ -71,23 +70,27 @@ const attributes = (properties, schema) => Object.fromEntries(Object.entries(pro
     }));
 
 // the hast tree as vnodes, so the components are part of the vue app
-const toVNodes = (node, schema = html) => {
+const toVNodes = (node, pin, schema = html) => {
     if (node.type == 'text')
         return node.value;
     if (node.type == 'root')
-        return node.children.map(c => toVNodes(c, schema));
+        return node.children.map(c => toVNodes(c, pin, schema));
     if (node.type != 'element')
         return null;
     if (node.tagName in components)
-        return components[node.tagName](node.properties);
+        return components[node.tagName](node.properties, pin);
     if (node.tagName == 'svg')
         schema = svg;
-    return h(node.tagName, attributes(node.properties, schema), node.children.map(c => toVNodes(c, schema)));
+    return h(node.tagName, attributes(node.properties, schema), node.children.map(c => toVNodes(c, pin, schema)));
 };
 
 export default {
-    // url of the markdown file
-    props: ['url'],
+    props: {
+        // url of the markdown file
+        url: String,
+        // paperclips to add the charts to the start page, not in the stories
+        pins: Boolean,
+    },
     data: () => ({
         tree: null,
     }),
@@ -109,7 +112,7 @@ export default {
         },
     },
     render() {
-        return h('div', { class: 'markdown' }, this.tree ? toVNodes(this.tree) : []);
+        return h('div', { class: 'markdown' }, this.tree ? toVNodes(this.tree, this.pins) : []);
     },
 }
 </script>
