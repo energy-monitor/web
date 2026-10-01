@@ -60,6 +60,7 @@
             <span><a href="#about-modal">about</a></span>
             <span><a href="mailto:contact@energy.abteil.org" target="_blank">contact</a></span>
             <span><a href="https://github.com/energy-monitor" target="_blank">code</a></span>
+            <span><router-link :to="{ name: 'include' }" title="Code zum Einbinden der Grafiken in andere Seiten">include</router-link></span>
             <span>Vis Library: <a href="https://github.com/petres/gen-vis" target="_blank">gen-vis</a></span>
             <span v-if="customized"><a href="#" @click.prevent="resetSettings" title="Auswahl der Startseite und Einstellungen der Grafiken zurücksetzen">Reset</a></span>
         </div>
