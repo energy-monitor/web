@@ -12,6 +12,7 @@
 
 // the charts of the collections and of the markdown texts
 .visualisations, .markdown {
+    // the maps use the class names of gen-vis but not its styles
     .mapEntry {
         margin: 25px auto;
 
@@ -27,8 +28,8 @@
             }
             .subtitle {
                 font-size: 13px;
-                margin-top: -1px !important;
-                margin-bottom: -2px !important;
+                margin-top: -1px;
+                margin-bottom: -2px;
             }
         }
         .vis-footer {
@@ -60,6 +61,7 @@
             margin-top: -2px;
             margin-bottom: 4px;
             .formElement {
+                font-size: 13px;
                 .title {
                     font-weight: bold;
                     margin-right: 5px;
@@ -79,49 +81,34 @@
                         margin-left: 5px;
                     }
                 }
-                font-size: 13px;
             }
         }
     }
-    
+
+    // the styles of gen-vis are in the cascade layer gen-vis, so these
+    // override them without more specific selectors
     .visEntry {
-         margin: 25px 0 45px;
-         .vis {
-             .subtitle {
-                 margin-top: -1px !important;
-                 margin-bottom: -2px !important;
-             }
-             .facet-title {
-                 font-weight: 400;
-                 text-align: center;
-             }
-             .vis-form-elements {
-                margin-top: -2px;
-                margin-bottom: 4px;
-             }
-             .vis-legends {
-                position: relative;
-                // .legend[data-dim='type'] {
-                //     position: absolute;
-                //     top: -4px;
-                //     left: 270px;
-                // }
+        margin: 25px 0 45px;
 
-                .legend[data-dim='country'] {
-                    svg {
-                        display: none;
-                    }
-                }
-             }
-
-             svg {
-                 g.axis-position-left text{
-                     transform: translate(3px, 0);
-                 }
-             }
-         }
+        .subtitle {
+            margin-top: -1px;
+            margin-bottom: -2px;
+        }
+        .facet-title {
+            font-weight: 400;
+            text-align: center;
+        }
+        .vis-form-elements {
+            margin-top: -2px;
+            margin-bottom: 4px;
+        }
+        .legend[data-dim='country'] svg {
+            display: none;
+        }
+        g.axis-position-left text {
+            transform: translate(3px, 0);
+        }
     }
-
 }
 
 // charts in markdown texts do not use their text styles
