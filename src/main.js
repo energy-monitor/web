@@ -5,7 +5,7 @@ import { createWebHistory, createRouter } from 'vue-router'
 
 import App from '@/App.vue'
 
-import { stories, aliases } from '@/globals.js';
+import { collections, stories, aliases } from '@/globals.js';
 
 import Single from '@/Single.vue'
 import Include from '@/Include.vue'
@@ -13,7 +13,9 @@ import Collection from '@/Collection.vue'
 import Markdown from '@/Markdown.vue'
 
 const routes = [
-    { path: `/collection/:id`, component: Collection, name: `collection`, props: true },
+    // unknown collections redirect to the start page
+    { path: `/collection/:id`, component: Collection, name: `collection`, props: true,
+        beforeEnter: to => to.params.id in collections || '/' },
     // the markdown of the story, class falls through to the root element,
     // unknown stories redirect to the start page
     { path: '/analysis/:id', component: Markdown, name: 'story', props: route => ({
@@ -29,12 +31,8 @@ const routes = [
 
     { path: '/', redirect: '/collection/preset' },
 
-    // KEEP OLD URLS WORKING
-    { path: '/prices', redirect: '/collection/prices' },
-    { path: '/gas', redirect: '/collection/gas' },
-    { path: '/energy', redirect: '/collection/energy' },
-    { path: '/international', redirect: '/collection/electricity' },
-    { path: '/collection/international', redirect: '/collection/electricity' },
+    // all other urls, e.g. former ones as /gas, redirect to the start page
+    { path: '/:path(.*)*', redirect: '/' },
 ];
 
 const router = createRouter({
