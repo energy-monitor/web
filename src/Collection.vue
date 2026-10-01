@@ -1,7 +1,7 @@
 <template>
     <div class="visualisations">
         <template v-for="v in vis">
-            <markdown v-if="v.type == 'markdown'" :url="`/data/page/${v.src}.md`" pins/>
+            <markdown v-if="v.type == 'markdown'" :url="`/data/page/${v.src}.md`" settings/>
             <vis-entry v-else :vis="v"/>
         </template>
     </div>
@@ -9,7 +9,7 @@
 
 <script>
 import { collections } from '@/globals.js';
-import { favorites, customized } from '@/favorites.js';
+import { favorites, customized } from '@/settings.js';
 
 import VisEntry from '@/VisEntry.vue';
 import Markdown from '@/Markdown.vue';

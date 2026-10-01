@@ -10,7 +10,7 @@
                     <div class="title">{{ def.series.name }}:</div>
                     <div class="entries">
                         <div v-for="(s, key) in series">
-                            <input type="radio" v-model="selected.series" :value="key" :id="`${uid}-series-${key}`">
+                            <input type="radio" v-model="selected.series" :value="key" :id="`${uid}-series-${key}`" @change="changed">
                             <label :for="`${uid}-series-${key}`">{{ s.name }}</label>
                         </div>
                     </div>
@@ -19,7 +19,7 @@
                     <div class="title">{{ def.types.name }}:</div>
                     <div class="entries">
                         <div v-for="(t, key) in def.types.values">
-                            <input type="radio" v-model="selected.type" :value="key" :id="`${uid}-type-${key}`">
+                            <input type="radio" v-model="selected.type" :value="key" :id="`${uid}-type-${key}`" @change="changed">
                             <label :for="`${uid}-type-${key}`">{{ t.name }}</label>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                 <div v-if="def.yearSelect && years.length > 1" class="formElement">
                     <div class="title">Jahr:</div>
                     <div class="entries">
-                        <input type="range" v-model.number="selected.year" :min="years[0]" :max="years[years.length - 1]" step="1">
+                        <input type="range" v-model.number="selected.year" :min="years[0]" :max="years[years.length - 1]" step="1" @change="changed">
                         <span class="year">{{ yearLabel(selected.year) }}</span>
                     </div>
                 </div>
@@ -83,7 +83,10 @@ let count = 0;
 
 export default {
     // src of the definition, relative to /data, e.g. `electricity/generation-year-g2-map`
-    props: ['src'],
+    // state are the changes of the user as with gen-vis, e.g. { year: 2023 },
+    // with v-model:state it is updated on every change
+    props: ['src', 'state'],
+    emits: ['update:state'],
     data: () => ({
         def: null,
         selected: {
@@ -96,6 +99,8 @@ export default {
         values: {},
         legend: null,
         noData: '#DADADA',
+        // the selection of the definition, set after loading
+        defaults: null,
     }),
     computed: {
         // a definition either has one `data` file or several `series`
@@ -156,10 +161,32 @@ export default {
                 const complete = this.years.filter(y => y < currentYear);
                 this.selected.year = complete.length > 0 ? complete[complete.length - 1] : this.years[this.years.length - 1];
             }
+            this.defaults = this.currentSelection();
+            this.applyState(this.state);
             this.update();
         });
     },
     methods: {
+        currentSelection() {
+            return { series: this.selected.series, type: this.selected.type, year: this.selected.year };
+        },
+        // the entries which differ from the defaults
+        currentState() {
+            return Object.fromEntries(Object.entries(this.currentSelection()).filter(([k, v]) => v !== this.defaults[k]));
+        },
+        changed() {
+            this.$emit('update:state', this.currentState());
+        },
+        // unknown series, types and years are ignored, e.g. of older data
+        applyState(state) {
+            Object.assign(this.selected, this.defaults);
+            if (state?.series in this.series)
+                this.selected.series = state.series;
+            if (state?.type in this.def.types.values)
+                this.selected.type = state.type;
+            if (this.years.includes(state?.year))
+                this.selected.year = state.year;
+        },
         formatDate(date) {
             return d3.timeFormat("%d.%m.%Y")(new Date(date));
         },
@@ -264,6 +291,14 @@ export default {
         },
     },
     watch: {
+        // only if it differs, the own updates of v-model come back unchanged
+        state: {
+            handler(state) {
+                if (this.defaults && JSON.stringify(state ?? {}) != JSON.stringify(this.currentState()))
+                    this.applyState(state);
+            },
+            deep: true,
+        },
         'selected.series'() { this.update() },
         'selected.type'() { this.update() },
         'selected.year'() { this.update() },

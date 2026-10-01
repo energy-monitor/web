@@ -61,7 +61,7 @@
             <span><a href="mailto:contact@energy.abteil.org" target="_blank">contact</a></span>
             <span><a href="https://github.com/energy-monitor" target="_blank">code</a></span>
             <span>Vis Library: <a href="https://github.com/petres/gen-vis" target="_blank">gen-vis</a></span>
-            <span v-if="customized"><a href="#" @click.prevent="resetFavorites" title="Standardauswahl der Startseite wiederherstellen">Reset</a></span>
+            <span v-if="customized"><a href="#" @click.prevent="resetSettings" title="Auswahl der Startseite und Einstellungen der Grafiken zurücksetzen">Reset</a></span>
         </div>
         <about/>
     </div>
@@ -73,7 +73,7 @@
 import About from '@/About.vue';
 
 import { collections, stories } from '@/globals.js';
-import { customized, resetFavorites } from '@/favorites.js';
+import { customized, resetSettings } from '@/settings.js';
 
 export default {
     components: {
@@ -87,7 +87,7 @@ export default {
         customized() { return customized.value },
     },
     methods: {
-        resetFavorites,
+        resetSettings,
     },
     mounted() {
         const self = this;

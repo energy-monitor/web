@@ -16,10 +16,10 @@ import { find, html, svg } from 'property-information';
 import VisEntry from '@/VisEntry.vue';
 
 // leaf directives which are rendered as components, e.g. ::gen-vis{src="gas/price"},
-// src is relative to /data as in the collections, pin adds the paperclip
+// src is relative to /data as in the collections, see VisEntry for settings
 const components = {
-    'gen-vis': (a, pin) => h(VisEntry, { vis: { type: 'genVis', src: a.src }, pin }),
-    'europe-map': (a, pin) => h(VisEntry, { vis: { type: 'europeMap', src: a.src }, pin }),
+    'gen-vis': (a, settings) => h(VisEntry, { vis: { type: 'genVis', src: a.src }, settings }),
+    'europe-map': (a, settings) => h(VisEntry, { vis: { type: 'europeMap', src: a.src }, settings }),
 };
 
 // the directives of the components become elements, all others are text
@@ -70,26 +70,26 @@ const attributes = (properties, schema) => Object.fromEntries(Object.entries(pro
     }));
 
 // the hast tree as vnodes, so the components are part of the vue app
-const toVNodes = (node, pin, schema = html) => {
+const toVNodes = (node, settings, schema = html) => {
     if (node.type == 'text')
         return node.value;
     if (node.type == 'root')
-        return node.children.map(c => toVNodes(c, pin, schema));
+        return node.children.map(c => toVNodes(c, settings, schema));
     if (node.type != 'element')
         return null;
     if (node.tagName in components)
-        return components[node.tagName](node.properties, pin);
+        return components[node.tagName](node.properties, settings);
     if (node.tagName == 'svg')
         schema = svg;
-    return h(node.tagName, attributes(node.properties, schema), node.children.map(c => toVNodes(c, pin, schema)));
+    return h(node.tagName, attributes(node.properties, schema), node.children.map(c => toVNodes(c, settings, schema)));
 };
 
 export default {
     props: {
         // url of the markdown file
         url: String,
-        // paperclips to add the charts to the start page, not in the stories
-        pins: Boolean,
+        // paperclips of the charts and their kept changes, not in the stories
+        settings: Boolean,
     },
     data: () => ({
         tree: null,
@@ -112,7 +112,7 @@ export default {
         },
     },
     render() {
-        return h('div', { class: 'markdown' }, this.tree ? toVNodes(this.tree, this.pins) : []);
+        return h('div', { class: 'markdown' }, this.tree ? toVNodes(this.tree, this.settings) : []);
     },
 }
 </script>
