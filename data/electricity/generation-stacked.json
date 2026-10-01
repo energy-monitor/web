@@ -1,0 +1,36 @@
+{
+    "parent": ["../_stacked.json", "../_share-switch.json"],
+    "data": "generation-stacked.csv",
+    "options": {
+        "title": "Stromproduktion",
+        "subtitle": "nach Quellen, in TWh bzw. Anteile",
+        "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
+    },
+    "mapping": {
+        "y": {
+            "scale": {
+                "domainRel": [0, 0.13]
+            },
+            "axis": {
+                "ticks": 7,
+                "format": ".2f"
+            },
+            "hover": {
+                "format": ".2f"
+            }
+        },
+        "type": {
+            "column": "source.group",
+            "props": {
+                "manual": {
+                    "Hydro":  { "color": "#5BC5F2", "name": "Hydro" },
+                    "Solar":  { "color": "#F3D039", "name": "Solar" },
+                    "Wind":   { "color": "#BBD7EE", "name": "Wind" },
+                    "Gas":    { "color": "#C3423F", "name": "Erdgas" },
+                    "Coal":   { "color": "#8B4513", "name": "Kohle" },
+                    "others": { "color": "#CCC",    "name": "Andere" }
+                }
+            }
+        }
+    }
+}

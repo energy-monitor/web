@@ -1,0 +1,19 @@
+{
+    "parent": "../_stacked.json",
+    "data": "supply-stacked.csv",
+    "options": {
+        "title": "Absatz von Erdgas",
+        "subtitle": "monatlich, in Millionen Kubikmetern",
+        "footer": "Source: eurostat - nrg_cb_gasm"
+    },
+    "mapping": {
+        "type": {
+            "column": "product",
+            "props": {
+                "manual": {
+                    "total": { "color": "#C3423F", "name": "Erdgas" }
+                }
+            }
+        }
+    }
+}

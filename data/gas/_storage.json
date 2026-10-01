@@ -1,0 +1,37 @@
+{
+    "parent": ["../_years.json", "../_facets.json"],
+    "options": {
+        "title": "Gasspeicher",
+        "subtitle": "in TWh",
+        "footer": "Source: GIE – Gas Infrastructure Europe"
+    },
+    "mapping": {
+        "y": {
+            "scale": {
+                "domain": [null, null],
+                "domainRel": [-0.1, 0.1]
+            }
+        },
+        "facet": {
+            "column": "type",
+            "props": {
+                "manual": {
+                    "stock": {
+                        "name": "Speicherstand, täglich"
+                    },
+                    "flow": {
+                        "name": "Veränderung, 7-Tages Differenz"
+                    }
+                }
+            }
+        }
+    },
+    "facets": {
+        "cols": {
+            "steps": [
+                {"cut":   0, "value": 1},
+                {"cut": 850, "value": 2}
+            ]
+        }
+    }
+}

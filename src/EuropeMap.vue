@@ -82,7 +82,7 @@ const currentYear = new Date().getFullYear();
 let count = 0;
 
 export default {
-    // src of the definition, relative to /data, e.g. `electricity/generation-year-g2-map`
+    // src of the definition, relative to /data, e.g. `electricity/generation-map`
     // state are the changes of the user as with gen-vis, e.g. { year: 2023 },
     // with v-model:state it is updated on every change
     props: ['src', 'state'],
@@ -141,7 +141,7 @@ export default {
             this.selected.year = def.year ?? null;
             this.init(map);
 
-            // csv columns, by default the layout of `generation-year-g2.csv`
+            // csv columns, by default the layout of `electricity/generation-map.csv`
             const columns = { country: "country", type: "type", year: "year", date: "date", value: "share", ...def.columns };
 
             return Promise.all(Object.entries(this.series).map(([key, s]) =>

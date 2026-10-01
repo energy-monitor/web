@@ -1,0 +1,22 @@
+{
+    "parent": ["../_stacked.json", "../_share-switch.json"],
+    "data": "supply-stacked.csv",
+    "options": {
+        "title": "Absatz von Mineralöl",
+        "subtitle": "monatlich, nach Produkten, in tausend Tonnen bzw. Anteile",
+        "footer": "Source: eurostat - nrg_cb_oilm"
+    },
+    "mapping": {
+        "type": {
+            "column": "product",
+            "props": {
+                "manual": {
+                    "diesel":   { "color": "#6F625A", "name": "Diesel" },
+                    "gasoline": { "color": "#F2A03D", "name": "Benzin" },
+                    "kerosin":  { "color": "#86CAE7", "name": "Kerosin" },
+                    "heating":  { "color": "#F3D039", "name": "Heizöl" }
+                }
+            }
+        }
+    }
+}

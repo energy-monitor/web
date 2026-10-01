@@ -1,0 +1,40 @@
+{
+    "parent": ["../_years.json", "../_facets.json"],
+    "options": {
+        "height": 220
+    },
+    "mapping": {
+        "x": {
+            "hover": {
+                "format": "%b"
+            }
+        },
+        "y": {
+            "axis": {
+                "format": ",.1f"
+            },
+            "hover": {
+                "format": ",.2f"
+            }
+        },
+        "facet": {
+            "column": "product",
+            "legend": {
+                "symbol": {
+                    "size": 0,
+                    "elements": []
+                }
+            },
+            "hover": {
+            }
+        }
+    },
+    "facets": {
+        "cols": {
+            "steps": [
+                {"cut":   0, "value": 1},
+                {"cut": 550, "value": 2}
+            ]
+        }
+    }
+}

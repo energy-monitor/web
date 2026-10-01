@@ -1,9 +1,0 @@
-{
-    "parent": "/data/shared-facet.json",
-    "data": "consumption-aggm.csv",
-    "options": {
-        "title": "Gaskonsum",
-        "subtitle": "in TWh",
-        "footer": "Source: AGGM - Austrian Gas Grid Management"
-    }
-}

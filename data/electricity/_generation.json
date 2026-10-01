@@ -1,0 +1,33 @@
+{
+    "parent": ["../_years.json", "../_facets.json", "../_scale-switch.json"],
+    "options": {
+        "height": 190,
+        "margins": {"top": 5, "right": 15, "bottom": 35, "left": 45},
+        "title": "Stromproduktion",
+        "subtitle": "nach Quellen, täglich (rollierender 4-Wochen Durchschnitt), in GWh",
+        "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
+    },
+    "mapping": {
+        "y": {
+            "column": "rm28",
+            "scale": {
+                "domainRel": [0, 0.15]
+            },
+            "axis": {
+                "ticks": 4,
+                "format": ".1f"
+            },
+            "hover": {
+                "format": ".2f"
+            }
+        },
+        "facet": {
+            "column": "source.group"
+        }
+    },
+    "plot": {
+        "props": {
+            "highlight-stroke-width": 2.5
+        }
+    }
+}

@@ -1,7 +1,0 @@
-{
-    "data": "storage-EU.csv",
-    "options": {
-        "title": "Gasspeicher, EU Gesamt"
-    },
-    "parent": "/data/shared-storage.json"
-}

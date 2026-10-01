@@ -5,7 +5,7 @@ import { createWebHistory, createRouter } from 'vue-router'
 
 import App from '@/App.vue'
 
-import { stories } from '@/globals.js';
+import { stories, aliases } from '@/globals.js';
 
 import Single from '@/Single.vue'
 import Include from '@/Include.vue'
@@ -20,7 +20,11 @@ const routes = [
         url: `/data/md/${stories[route.params.id].src}.md`,
         class: 'story',
     }), beforeEnter: to => to.params.id in stories || '/' },
-    { path: '/single/:id', component: Single, name: 'single' },
+    // former ids of the charts redirect to the current ones, `/` is `~` in the id
+    { path: '/single/:id', component: Single, name: 'single', beforeEnter: to => {
+        const id = aliases[to.params.id.replaceAll('~', '/')];
+        return id ? { name: 'single', params: { id: id.replaceAll('/', '~') } } : true;
+    } },
     { path: '/include', component: Include, name: 'include' },
 
     { path: '/', redirect: '/collection/preset' },

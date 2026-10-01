@@ -1,0 +1,31 @@
+{
+    "parent": ["../fossil/_supply.json", "../_scale-switch.json"],
+    "data": "supply.csv",
+    "options": {
+        "title": "Absatz von Kohle",
+        "subtitle": "in tausend Tonnen",
+        "footer": "Source: eurostat - nrg_cb_sffm"
+    },
+    "globals": {
+        "shareScale": ["x", "y"]
+    },
+    "mapping": {
+        "year": {
+            "props": {
+                "manual": {
+                    "avg13-18": { "color": "#444", "name": "Ø&nbsp'13&nbsp-&nbsp'18" }
+                }
+            }
+        },
+        "facet": {
+            "props": {
+                "manual": {
+                    "total": { "name": "Gesamt", "visible": true },
+                    "stein": { "name": "Steinkohle", "visible": true },
+                    "braun": { "name": "Braunkohle", "visible": false },
+                    "koks":  { "name": "Koks", "visible": false }
+                }
+            }
+        }
+    }
+}

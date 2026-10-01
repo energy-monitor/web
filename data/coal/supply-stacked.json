@@ -1,0 +1,21 @@
+{
+    "parent": ["../_stacked.json", "../_share-switch.json"],
+    "data": "supply-stacked.csv",
+    "options": {
+        "title": "Absatz von Kohle",
+        "subtitle": "monatlich, nach Sorten, in tausend Tonnen bzw. Anteile",
+        "footer": "Source: eurostat - nrg_cb_sffm"
+    },
+    "mapping": {
+        "type": {
+            "column": "product",
+            "props": {
+                "manual": {
+                    "stein": { "color": "#4D4D4D", "name": "Steinkohle" },
+                    "koks":  { "color": "#A0A0A0", "name": "Koks" },
+                    "braun": { "color": "#8B4513", "name": "Braunkohle" }
+                }
+            }
+        }
+    }
+}

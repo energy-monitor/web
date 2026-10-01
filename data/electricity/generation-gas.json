@@ -1,5 +1,5 @@
 {
-    "parent": "/data/shared-facet.json",
+    "parent": "../_years-cum.json",
     "data": "generation-gas.csv",
     "options": {
         "title": "Stromproduktion aus Gas",

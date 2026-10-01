@@ -1,0 +1,16 @@
+{
+    "parent": "../_years.json",
+    "data": "economic-activity.csv",
+    "options": {
+        "title": "Ökonomische Aktivität",
+        "subtitle": "???",
+        "footer": "Source: Statistik Austria"
+    },
+    "mapping": {
+        "x": {
+            "hover": {
+                "format": "%b"
+            }
+        }
+    } 
+}

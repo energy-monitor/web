@@ -1,0 +1,25 @@
+{
+    "parent": "_generation.json",
+    "data": "generation-renewable.csv",
+    "options": {
+        "height": 220
+    },
+    "mapping": {
+        "facet": {
+            "props": {
+                "manual": {
+                    "Renewable":     { "name": "Renewable" },
+                    "Non-Renewable": { "name": "Non-Renewable" }
+                }
+            }
+        }
+    },
+    "facets": {
+        "cols": {
+            "steps": [
+                {"cut":   0, "value": 1},
+                {"cut": 550, "value": 2}
+            ]
+        }
+    }
+}

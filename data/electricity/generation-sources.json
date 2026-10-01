@@ -1,0 +1,18 @@
+{
+    "parent": "_generation.json",
+    "data": "generation-sources.csv",
+    "mapping": {
+        "facet": {
+            "props": {
+                "manual": {
+                    "Wind":   { "name": "Wind" },
+                    "Solar":  { "name": "Solar" },
+                    "Hydro":  { "name": "Hydro" },
+                    "Gas":    { "name": "Erdgas" },
+                    "Coal":   { "name": "Kohle" },
+                    "others": { "name": "Andere" }
+                }
+            }
+        }
+    }
+}

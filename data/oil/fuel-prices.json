@@ -1,28 +1,23 @@
 {
     "parent": "../_years.json",
-    "data": "price.csv",
+    "data": "fuel-prices.csv",
     "options": {
-        "title": "Strompreis",
-        "subtitle": "Day Ahead, täglich (rollierender 7-Tages Durchschnitt), in €/MWh",
-        "footer": "Source: ENTSO-E - Day Ahead Prices 12.1.D"
+        "title": "Spritpreise",
+        "subtitle": "in €/Liter",
+        "footer": "Source: EC Weekly Oil Bulletin"
     },
     "mapping": {
         "y": {
-            "scale": {
-                "domain": [null, null],
-                "domainRel": [-0.1, 0.1]
-            }
-        },
-        "year": {
-            "props": {
-                "manual": {
-                    "2019": { "visible": false},
-                    "2020": { "visible": false}
-                }
+            "column": "last",
+            "axis": {
+                "format": ",.1f"
+            },
+            "hover": {
+                "format": ",.2f"
             }
         },
         "type": {
-            "column": "type",
+            "column": "variable",
             "legend": {
                 "symbol": {
                     "size": 16,
@@ -38,17 +33,18 @@
             },
             "props": {
                 "manual": {
-                    "mean": {
-                        "name": "⌀",
+                    "euroSuper95": {
+                        "name": "Benzin",
                         "stroke-dasharray": 0
                     },
-                    "min": {
-                        "name": "min",
-                        "stroke-dasharray": "1, 3"
+                    "gasOil": {
+                        "name": "Diesel",
+                        "stroke-dasharray": "4, 2"
                     },
-                    "max": {
-                        "name": "max",
-                        "stroke-dasharray": "2, 2"
+                    "heatingOil": {
+                        "name": "Heizöl",
+                        "stroke-dasharray": "5, 5",
+                        "visible": false
                     }
                 }
             },
@@ -64,3 +60,4 @@
         }
     }
 }
+

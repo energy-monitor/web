@@ -1,0 +1,59 @@
+{
+    "parent": "../_stacked.json",
+    "data": "supply-stacked.csv",
+    "options": {
+        "title": "Absatz von fossilen Energieträgern",
+        "subtitle": "monatlich, nach Energiegehalt in TWh bzw. Emissionen in Mt CO₂, oder Anteile",
+        "footer": "Source: eurostat, eigene Berechnungen"
+    },
+    "globals": {
+        "unit": "twh",
+        "share": ""
+    },
+    "formElements": [{
+        "id": "unit",
+        "name": "Einheit",
+        "ref": "unit",
+        "type": "switch",
+        "values": [
+            { "id": "unitTwh", "value": "twh", "name": "TWh" },
+            { "id": "unitCo2", "value": "mt.co2", "name": "Mt CO₂" }
+        ]
+    }, {
+        "id": "values",
+        "name": "Werte",
+        "ref": "share",
+        "type": "switch",
+        "values": [
+            { "id": "valuesAbs", "value": "", "name": "Absolut" },
+            {
+                "id": "valuesShare", "value": ".share", "name": "Anteil",
+                "mapping": {
+                    "y": {
+                        "scale": { "domain": [0, 1], "domainRel": [0, 0] },
+                        "axis": { "format": ".0%" },
+                        "hover": { "format": ".1%" }
+                    }
+                }
+            }
+        ]
+    }],
+    "mapping": {
+        "y": {
+            "column": "{unit}{share}",
+            "hover": {
+                "format": ",.2f"
+            }
+        },
+        "type": {
+            "column": "product",
+            "props": {
+                "manual": {
+                    "oil":  { "color": "#6F625A", "name": "Mineralöl" },
+                    "coal": { "color": "#F2A03D", "name": "Kohle" },
+                    "gas":  { "color": "#86CAE7", "name": "Erdgas" }
+                }
+            }
+        }
+    }
+}

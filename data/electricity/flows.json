@@ -1,5 +1,5 @@
 {
-    "parent": "/data/shared-base.json",
+    "parent": "../_years.json",
     "data": "flows.csv",
     "options": {
         "title": "Netto Stromexporte",

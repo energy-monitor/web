@@ -1,0 +1,32 @@
+{
+    "parent": ["../fossil/_supply.json", "../_scale-switch.json"],
+    "data": "supply.csv",
+    "options": {
+        "title": "Absatz von Mineralöl",
+        "subtitle": "in tausend Tonnen",
+        "footer": "Source: eurostat - nrg_cb_oilm"
+    },
+    "globals": {
+        "shareScale": ["x", "y"]
+    },
+    "mapping": {
+        "year": {
+            "props": {
+                "manual": {
+                    "avg13-18": { "color": "#444", "name": "Ø&nbsp'13&nbsp-&nbsp'18" }
+                }
+            }
+        },
+        "facet": {
+            "props": {
+                "manual": {
+                    "total":    { "name": "Gesamt", "visible": true },
+                    "gasoline": { "name": "Benzin", "visible": false },
+                    "diesel":   { "name": "Diesel", "visible": true },
+                    "heating":  { "name": "Heizöl", "visible": false },
+                    "kerosin":  { "name": "Kerosin", "visible": false }
+                }
+            }
+        }
+    }
+}

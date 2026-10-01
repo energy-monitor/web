@@ -1,7 +1,7 @@
 <template>
     <div class="visualisations">
         <template v-for="v in vis">
-            <markdown v-if="v.type == 'markdown'" :url="`/data/page/${v.src}.md`" settings/>
+            <markdown v-if="v.type == 'markdown'" :url="`/data/pages/${v.src}.md`" settings/>
             <vis-entry v-else :vis="v"/>
         </template>
     </div>

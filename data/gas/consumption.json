@@ -1,0 +1,9 @@
+{
+    "parent": "../_years-cum.json",
+    "data": "consumption.csv",
+    "options": {
+        "title": "Gaskonsum",
+        "subtitle": "in TWh",
+        "footer": "Source: AGGM - Austrian Gas Grid Management"
+    }
+}

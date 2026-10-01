@@ -1,0 +1,41 @@
+{
+    "parent": ["_supply.json", "../_scale-switch.json"],
+    "data": "supply.csv",
+    "options": {
+        "title": "Absatz von fossilen Energieträgern",
+        "subtitle": "nach Energiegehalt in TWh",
+        "footer": "Source: eurostat, eigene Berechnungen"
+    },
+    "globals": {
+        "shareScale": ["x", "y"]
+    },
+    "mapping": {
+        "y": {
+            "column": "twh"
+        },
+        "year": {
+            "props": {
+                "manual": {
+                    "avg14-18": { "color": "#444", "name": "Ø&nbsp'14&nbsp-&nbsp'18" }
+                }
+            }
+        },
+        "facet": {
+            "props": {
+                "manual": {
+                    "oil":  { "name": "Mineralöl", "visible": true },
+                    "coal": { "name": "Kohle", "visible": true },
+                    "gas":  { "name": "Erdgas", "visible": true }
+                }
+            }
+        }
+    },
+    "facets": {
+        "cols": {
+            "steps": [
+                {"cut":   0, "value": 1},
+                {"cut": 550, "value": 3}
+            ]
+        }
+    }
+}

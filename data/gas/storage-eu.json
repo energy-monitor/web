@@ -1,0 +1,7 @@
+{
+    "parent": "_storage.json",
+    "data": "storage-eu.csv",
+    "options": {
+        "title": "Gasspeicher, EU Gesamt"
+    }
+}
