@@ -1,24 +1,18 @@
 {
-    "parent": "../_stacked.json",
+    "parent": ["../_stacked.json", "../_share-switch.json"],
     "data": "registrations.csv",
     "options": {
-        "title": "Anteile an den Pkw-Neuzulassungen",
-        "subtitle": "nach Kraftstoffart bzw. Energiequelle, monatlich, in %, AT",
+        "title": "Pkw-Neuzulassungen",
+        "subtitle": "nach Kraftstoffart bzw. Energiequelle, monatlich, Anteile bzw. Anzahl, AT",
         "footer": "Source: Statistik Austria - Kfz-Neuzulassungen"
+    },
+    "globals": {
+        "values": "share"
     },
     "mapping": {
         "y": {
-            "column": "share",
-            "scale": {
-                "domain": [0, 1],
-                "domainRel": [0, 0]
-            },
-            "axis": {
-                "ticks": 5,
-                "format": ".0%"
-            },
             "hover": {
-                "format": ".1%"
+                "format": ",.0f"
             }
         },
         "type": {

@@ -21,7 +21,7 @@
                 "id": "valuesShare", "value": "share", "name": "Anteil",
                 "mapping": {
                     "y": {
-                        "column": "share",
+                        "column": "value.share",
                         "axis": { "format": ".0%" },
                         "hover": { "format": ".1%" }
                     }
