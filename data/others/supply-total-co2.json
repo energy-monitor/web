@@ -39,8 +39,8 @@
         "year": {
             "props": {
                 "manual": {
-                    "avg13-18": {
-                        "color": "#444", "name": "Ø&nbsp'13&nbsp-&nbsp'18"
+                    "avg14-18": {
+                        "color": "#444", "name": "Ø&nbsp'14&nbsp-&nbsp'18"
                     }
                 }
             }
@@ -55,14 +55,14 @@
             },
             "props": {
                 "manual": {
-                    "gas": {
-                        "name": "Erdgas", "visible": true
+                    "oil": {
+                        "name": "Mineralöl", "visible": true
                     },
                     "coal": {
                         "name": "Kohle", "visible": true
                     },
-                    "oil": {
-                        "name": "Mineralöl", "visible": true
+                    "gas": {
+                        "name": "Erdgas", "visible": true
                     }
                 }
             },
