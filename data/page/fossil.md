@@ -7,9 +7,15 @@ der implizit für den inländischen Konsum von Energie und Gütern in Österreic
 
 ::gen-vis{src="others/supply-oil"}
 
+::gen-vis{src="others/supply-oil-stacked"}
+
 ::gen-vis{src="others/supply-gas"}
 
+::gen-vis{src="others/supply-gas-stacked"}
+
 ::gen-vis{src="others/supply-coal"}
+
+::gen-vis{src="others/supply-coal-stacked"}
 
 Um die verschiedenen Energieträger untereinander vergleichbar zu machen, müssen
 die Mengeneinheiten in eine gemeinsame Einheit umgerechnet werden. Hierfür
@@ -19,3 +25,5 @@ andererseits die CO₂-Emissionen die bei der energetischen Verwendung entstehen
 ::gen-vis{src="others/supply-total-twh"}
 
 ::gen-vis{src="others/supply-total-co2"}
+
+::gen-vis{src="others/supply-total-stacked"}

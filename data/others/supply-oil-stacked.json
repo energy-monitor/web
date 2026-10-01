@@ -1,0 +1,127 @@
+{
+    "data": "supply-oil-monthly.csv",
+    "options": {
+        "height": {
+            "prop": "steps",
+            "ref": "totalWidth",
+            "steps": [
+                {"cut":   0, "value": 220},
+                {"cut": 550, "value": 260},
+                {"cut": 600, "value": 300}
+            ]
+        },
+        "margins": {"top": 15, "right": 30, "bottom": 45, "left": 50},
+        "title": "Absatz von Mineralöl",
+        "subtitle": "monatlich, nach Produkten, in tausend Tonnen bzw. Anteile",
+        "footer": "Source: eurostat - nrg_cb_oilm"
+    },
+    "globals": {
+        "values": "abs"
+    },
+    "formElements": [{
+        "id": "valuesSupplyOilStacked",
+        "name": "Werte",
+        "ref": "values",
+        "type": "switch",
+        "values": [
+            { "id": "valuesSupplyOilStackedAbs", "value": "abs", "name": "Tonnen" },
+            {
+                "id": "valuesSupplyOilStackedShare", "value": "share", "name": "Anteil",
+                "mapping": {
+                    "y": {
+                        "column": "value.share",
+                        "scale": { "domain": [0, 1], "domainRel": [0, 0] },
+                        "axis": { "format": ".0%" },
+                        "hover": { "format": ".1%" }
+                    }
+                }
+            }
+        ]
+    }],
+    "mapping": {
+        "x": {
+            "column": "date",
+            "type": "date",
+            "scale": {
+                "type": "time",
+                "orientation": "horizontal",
+                "domainAbs": [-2000000000, 2000000000]
+            },
+            "axis": {
+                "ticks": {
+                    "prop": "relative",
+                    "ref": "innerWidth",
+                    "ratio": 0.017
+                },
+                "position": "bottom",
+                "rotate": 35,
+                "format": "%b %y"
+            },
+            "hover": {
+                "format": "%b %y"
+            }
+        },
+        "y": {
+            "column": "value",
+            "type": "numeric",
+            "scale": {
+                "type": "linear",
+                "orientation": "vertical",
+                "domain": [0, null],
+                "domainRel": [0, 0.1]
+            },
+            "stacked": true,
+            "axis": {
+                "ticks": 6,
+                "position": "left",
+                "grid": true,
+                "format": ",.0f"
+            },
+            "hover": {
+                "format": ",.1f"
+            }
+        },
+        "type": {
+            "column": "product",
+            "legend": {
+                "symbol": {
+                    "size": 16,
+                    "elements": [{
+                        "type": "rect",
+                        "props": {
+                            "x": 0, "y": 0, "width": 16, "height": 15,
+                            "fill": "@color", "rx": 2
+                        }
+                    }]
+                }
+            },
+            "props": {
+                "manual": {
+                    "diesel":   { "color": "#6F625A", "name": "Diesel" },
+                    "gasoline": { "color": "#F2A03D", "name": "Benzin" },
+                    "kerosin":  { "color": "#86CAE7", "name": "Kerosin" },
+                    "heating":  { "color": "#F3D039", "name": "Heizöl" }
+                }
+            },
+            "hover": {
+            }
+        }
+    },
+    "plot": [
+        {
+            "type": "stackedBar",
+            "categories": ["type"],
+            "props": {
+                "fill": "@color",
+                "opacity": 0.9,
+                "x": "@x",
+                "y": "@y",
+                "width": {
+                    "prop": "relative",
+                    "ref": "innerWidth",
+                    "ratio": 0.008
+                }
+            }
+        }
+    ]
+}
