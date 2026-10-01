@@ -17,6 +17,13 @@
                 "format": ",.2f"
             }
         },
+        "year": {
+            "props": {
+                "manual": {
+                    "avg14-18": { "color": "#444", "name": "Ø&nbsp'14&nbsp-&nbsp'18" }
+                }
+            }
+        },
         "facet": {
             "column": "product",
             "legend": {

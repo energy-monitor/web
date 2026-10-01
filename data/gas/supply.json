@@ -7,13 +7,6 @@
         "footer": "Source: eurostat - nrg_cb_gasm"
     },
     "mapping": {
-        "year": {
-            "props": {
-                "manual": {
-                    "avg13-18": { "color": "#444", "name": "Ø&nbsp'13&nbsp-&nbsp'18" }
-                }
-            }
-        },
         "facet": {
             "props": {
                 "manual": {
