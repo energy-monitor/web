@@ -5,9 +5,9 @@
         "facet": {
             "props": {
                 "manual": {
+                    "Hydro":  { "name": "Hydro" },
                     "Wind":   { "name": "Wind" },
                     "Solar":  { "name": "Solar" },
-                    "Hydro":  { "name": "Hydro" },
                     "Gas":    { "name": "Erdgas" },
                     "Coal":   { "name": "Kohle" },
                     "others": { "name": "Andere" }
