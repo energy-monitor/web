@@ -15,13 +15,14 @@
 
 <script>
 
-// const urlSingle = "/single/";
-const urlSingle = "https://energie.wifo.ac.at/single/";
+// on the host of the page, so the code and the preview show the deployed
+// charts, e.g. https://energie.wifo.ac.at/single/ or locally the current ones
+const urlSingle = `${location.origin}/single/`;
 
 import { collections } from '@/globals.js';
 
-const vis = [...new Set(Object.values(collections).map(v => v.vis).flat())]
-// console.log(vis)
+// every chart once, several collections contain the same ones
+const vis = [...new Map(Object.values(collections).flatMap(c => c.vis).map(v => [v.src, v])).values()]
 
 
 export default {
