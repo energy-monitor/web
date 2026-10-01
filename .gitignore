@@ -2,3 +2,4 @@
 /dist
 data/**/*.csv
 data/md/*
+/.claude
