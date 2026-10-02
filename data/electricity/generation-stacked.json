@@ -1,5 +1,5 @@
 {
-    "parent": ["../_stacked.json", "../_share-switch.json"],
+    "parent": ["../_stacked.json", "../_share-switch.json", "_sources.json"],
     "data": "generation-stacked.csv",
     "options": {
         "title": "Stromproduktion",
@@ -20,15 +20,9 @@
             }
         },
         "type": {
-            "column": "source.group",
             "props": {
                 "manual": {
-                    "Hydro":  { "color": "#5BC5F2", "name": "Hydro" },
-                    "Wind":   { "color": "#BBD7EE", "name": "Wind" },
-                    "Solar":  { "color": "#F3D039", "name": "Solar" },
-                    "Gas":    { "color": "#C3423F", "name": "Erdgas" },
-                    "Coal":   { "color": "#8B4513", "name": "Kohle" },
-                    "others": { "color": "#CCC",    "name": "Andere" }
+                    "others": { "color": "#CCC", "name": "Andere" }
                 }
             }
         }

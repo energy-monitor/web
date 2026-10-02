@@ -1,4 +1,5 @@
 {
+    "parent": "_sources.json",
     "data": "generation-hourly.csv",
     "options": {
         "height": 350,
@@ -48,8 +49,7 @@
                 "format": ".2f"
             }
         },
-        "source": {
-            "column": "source.group",
+        "type": {
             "legend": {
                 "symbol": {
                     "size": 16,
@@ -67,12 +67,7 @@
                     "size": 2
                 },
                 "manual": {
-                    "Wind":   { "color": "#BBD7EE", "name": "Wind" },
-                    "Solar":  { "color": "#F3D039", "name": "Solar" },
-                    "Hydro":  { "color": "#5BC5F2", "name": "Hydro" },
-                    "Gas":    { "color": "#C3423F", "name": "Erdgas" },
                     "Waste":  { "color": "#ABD6A9", "name": "Müll" },
-                    "Coal":   { "color": "#8B4513", "name": "Kohle" },
                     "Oil":    { "color": "#000",    "name": "Erdöl" },
                     "others": { "color": "#CCC",    "name": "Andere" }
                 }
@@ -84,7 +79,7 @@
     "plot": [
         {
             "type": "stackedBar",
-            "categories": ["source"],
+            "categories": ["type"],
             "props": {
                 "fill": "@color",
                 "opacity": 0.9,

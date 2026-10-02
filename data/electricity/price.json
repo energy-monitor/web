@@ -1,5 +1,5 @@
 {
-    "parent": "../_years.json",
+    "parent": ["../_years.json", "../_line-types.json"],
     "data": "price.csv",
     "options": {
         "title": "Strompreis",
@@ -22,20 +22,6 @@
             }
         },
         "type": {
-            "column": "type",
-            "legend": {
-                "symbol": {
-                    "size": 16,
-                    "elements": [{
-                        "type": "line",
-                        "props": {
-                            "x1": 0, "x2": 16, "y1": 8, "y2": 8,
-                            "stroke": "#000", "stroke-width": 2,
-                            "stroke-dasharray": "@stroke-dasharray"
-                        }
-                    }]
-                }
-            },
             "props": {
                 "manual": {
                     "mean": {
@@ -51,16 +37,7 @@
                         "stroke-dasharray": "2, 2"
                     }
                 }
-            },
-            "hover": {
-
             }
-        }
-    },
-    "plot": {
-        "categories": ["year", "type"],
-        "props": {
-            "stroke-dasharray": "@stroke-dasharray"
         }
     }
 }

@@ -1,5 +1,5 @@
 {
-    "parent": ["../_years.json", "../_facets.json", "../_scale-switch.json"],
+    "parent": ["../_years.json", "../_facets.json", "../_scale-switch.json", "../_facet-toggle.json"],
     "data": "traffic.csv",
     "options": {
         "height": 220,
@@ -26,20 +26,12 @@
         },
         "facet": {
             "column": "vehicle",
-            "legend": {
-                "symbol": {
-                    "size": 0,
-                    "elements": []
-                }
-            },
             "props": {
                 "manual": {
                     "all":   { "name": "Gesamt", "visible": true },
                     "heavy": { "name": "Schwer (über 3,5 t)", "visible": true },
                     "light": { "name": "Leicht (bis 3,5 t)", "visible": false }
                 }
-            },
-            "hover": {
             }
         }
     },

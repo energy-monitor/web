@@ -1,5 +1,5 @@
 {
-    "parent": ["../_years.json", "../_facets.json", "../_scale-switch.json"],
+    "parent": ["../_years.json", "../_facets.json", "../_scale-switch.json", "../_facet-toggle.json"],
     "data": "registrations.csv",
     "options": {
         "height": 220,
@@ -51,12 +51,6 @@
         },
         "facet": {
             "column": "type",
-            "legend": {
-                "symbol": {
-                    "size": 0,
-                    "elements": []
-                }
-            },
             "props": {
                 "manual": {
                     "bev":    { "name": "Elektro", "visible": true },
@@ -67,8 +61,6 @@
                     "other":  { "name": "Sonstige", "visible": false },
                     "total":  { "name": "Gesamt", "visible": false }
                 }
-            },
-            "hover": {
             }
         }
     }

@@ -1,5 +1,5 @@
 {
-    "parent": ["../_years.json", "../_facets.json"],
+    "parent": ["../_years.json", "../_facets.json", "../_facet-toggle.json"],
     "options": {
         "height": 220
     },
@@ -25,15 +25,7 @@
             }
         },
         "facet": {
-            "column": "product",
-            "legend": {
-                "symbol": {
-                    "size": 0,
-                    "elements": []
-                }
-            },
-            "hover": {
-            }
+            "column": "product"
         }
     },
     "facets": {
