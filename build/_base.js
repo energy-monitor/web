@@ -20,8 +20,11 @@ module.exports = {
     entry: {
         code: './src/main.js',
     },
+    // the names change with the content, so the bundles can be cached for long,
+    // the markdown parsers are a chunk of their own, see src/lazy.js
     output: {
-        filename: 'code.[fullhash].js',
+        filename: 'code.[contenthash].js',
+        chunkFilename: 'chunk.[name].[contenthash].js',
     },
     module: {
         rules: [{

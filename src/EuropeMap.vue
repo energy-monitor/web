@@ -85,6 +85,13 @@ const defaultRange = ["#fcd2d2", "#e6211e", "#7a0f0d"];
 
 let count = 0;
 
+// the borders, one request for all maps of a page
+let geo = null;
+const loadGeo = () => geo ??= d3.json(`/geo/europe.json`).catch(error => {
+    geo = null;
+    throw error;
+});
+
 export default {
     // src of the definition, relative to /data, e.g. `electricity/generation-map`
     // state are the changes of the user as with gen-vis, e.g. { year: 2023 },
@@ -136,7 +143,7 @@ export default {
         const dir = this.src.substring(0, this.src.lastIndexOf('/'));
 
         Promise.all([
-            d3.json(`/geo/europe.json`),
+            loadGeo(),
             d3.json(`/data/${this.src}.json`),
         ]).then(([map, def]) => {
             this.def = def;

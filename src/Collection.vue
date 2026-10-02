@@ -8,11 +8,13 @@
 </template>
 
 <script>
+import { defineAsyncComponent } from 'vue';
+
 import { collections } from '@/globals.js';
 import { favorites, customized } from '@/settings.js';
 
 import VisEntry from '@/VisEntry.vue';
-import Markdown from '@/Markdown.vue';
+import { markdown } from '@/lazy.js';
 
 export default {
     props: ["id"],
@@ -20,7 +22,7 @@ export default {
         vis: [],
     }),
     components: {
-        VisEntry, Markdown
+        VisEntry, Markdown: defineAsyncComponent(markdown),
     },
     computed: {
         customized() { return customized.value },

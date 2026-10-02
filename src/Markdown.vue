@@ -1,6 +1,5 @@
 <script>
 import { h, markRaw } from 'vue';
-import axios from 'axios';
 
 import {unified} from 'unified';
 import remarkParse from 'remark-parse';
@@ -106,7 +105,10 @@ export default {
     methods: {
         async load() {
             const url = this.url;
-            const text = (await axios.get(url)).data;
+            const res = await fetch(url);
+            if (!res.ok)
+                throw new Error(`Could not load '${url}': ${res.status} ${res.statusText}`);
+            const text = await res.text();
             const p = processor(url);
             const tree = await p.run(p.parse(text), text);
             // a newer url was loaded in the meantime

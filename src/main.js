@@ -10,7 +10,7 @@ import { collections, stories, aliases } from '@/globals.js';
 import Single from '@/Single.vue'
 import Include from '@/Include.vue'
 import Collection from '@/Collection.vue'
-import Markdown from '@/Markdown.vue'
+import { markdown } from '@/lazy.js'
 
 const routes = [
     // unknown collections redirect to the start page
@@ -18,7 +18,7 @@ const routes = [
         beforeEnter: to => to.params.id in collections || '/' },
     // the markdown of the story, class falls through to the root element,
     // unknown stories redirect to the start page
-    { path: '/analysis/:id', component: Markdown, name: 'story', props: route => ({
+    { path: '/analysis/:id', component: markdown, name: 'story', props: route => ({
         url: `/data/md/${stories[route.params.id].src}.md`,
         class: 'story',
     }), beforeEnter: to => to.params.id in stories || '/' },
