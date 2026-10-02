@@ -103,6 +103,12 @@
     // a positioned ancestor
     .vis-inner {
         text-align: center;
+        // the width of the page, also after a resize
+        svg.map {
+            width: 100%;
+            max-width: 620px;
+            height: auto;
+        }
         position: relative;
         .info {
             // white halo around the letters, readable above dark countries

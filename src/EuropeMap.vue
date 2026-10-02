@@ -35,14 +35,15 @@
         </template>
         <div class="vis-inner" ref="inner">
             <div ref="info" class="info" style="position: absolute;">
-                <template v-if="selected.id">
+                <!-- the selected country may have no value after a change of the data, e.g. on touch screens -->
+                <template v-if="selected.id && values[selected.id]">
                     <span class="country">{{ countryName(selected.id) }}:</span>
                     <span class="value">{{ format(values[selected.id].value) }}{{ def.unit ? ` ${def.unit}` : '' }}</span>
                     <span v-if="def.count" class="abs">({{ countFormat(values[selected.id].count) }} {{ def.count.unit }})</span>
                     <span v-if="values[selected.id].date && values[selected.id].date != latestDate" class="abs">(Stand {{ formatDate(values[selected.id].date) }})</span>
                 </template>
             </div>
-            <svg ref="svg" viewBox="0 0 580 520">
+            <svg ref="svg" class="map" viewBox="0 0 580 520">
                 <g class="countries"/>
             </svg>
             <svg v-if="legend" class="legend" :width="legend.width + 130" height="38">
@@ -132,13 +133,8 @@ export default {
         this.uid = `map-${count++}`;
     },
     mounted() {
-        const width = Math.min(this.$refs.inner.getBoundingClientRect().width, 620);
-
         this.svg = d3.select(this.$refs.svg);
         this.info = d3.select(this.$refs.info);
-
-        this.svg.attr("width", width)
-            .attr("height", width/580*520)
 
         const dir = this.src.substring(0, this.src.lastIndexOf('/'));
 
