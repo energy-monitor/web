@@ -2,7 +2,7 @@ export { favorites, customized, isFavorite, toggleFavorite, chartState, setChart
 
 import { ref, computed } from 'vue';
 
-import { collections, aliases } from '@/globals.js';
+import { charts, collections, aliases } from '@/globals.js';
 
 // the settings of the user, kept in the local storage of the browser: the
 // charts of the start page, a list of `{ type, src }` as in the collections,
@@ -31,11 +31,13 @@ const save = (key, value) => {
     } catch {}
 };
 
-// former ids of the charts are replaced by the current ones
+// former ids of the charts are replaced by the current ones, removed charts are dropped
 const renamed = src => aliases[src] ?? src;
 const loadFavorites = () => {
     const favorites = load(keys.favorites);
-    return Array.isArray(favorites) ? favorites.map(v => ({ ...v, src: renamed(v.src) })) : null;
+    return Array.isArray(favorites)
+        ? favorites.map(v => renamed(v.src)).filter(src => src in charts).map(src => ({ type: charts[src], src }))
+        : null;
 };
 const loadStates = () => Object.fromEntries(Object.entries(load(keys.states) ?? {}).map(([src, s]) => [renamed(src), s]));
 

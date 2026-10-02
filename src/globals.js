@@ -1,4 +1,7 @@
-export { collections, stories, aliases };
+export { charts, collections, stories, aliases };
+
+// all charts of data/ by their id, e.g. { "gas/price": "genVis" }, see build/_base.js
+const charts = CHARTS;
 
 // the former ids of the charts, e.g. in embedded /single/ urls or in the
 // settings of the users
@@ -69,72 +72,74 @@ const stories = {
     },
 }
 
+// the entries of a collection are the ids of charts or markdown pages of
+// data/pages/, e.g. { type: "markdown", src: "fossil" }, see `entry`
 const collections = {
     preset: {
         name: "Auswahl",
         menu: true,
         vis: [
-            { type: "genVis", src: "electricity/load"},
-            { type: "genVis", src: "electricity/price"},
-            { type: "genVis", src: "gas/consumption"},
-            { type: "genVis", src: "gas/price"},
-            { type: "genVis", src: "gas/storage"},
-            { type: "genVis", src: "electricity/generation-gas"},
-            { type: "genVis", src: "electricity/generation-stacked"},
-            { type: "genVis", src: "electricity/generation-sources"},
+            "electricity/load",
+            "electricity/price",
+            "gas/consumption",
+            "gas/price",
+            "gas/storage",
+            "electricity/generation-gas",
+            "electricity/generation-stacked",
+            "electricity/generation-sources",
         ]
     },
     prices: {
         name: "Energiepreise",
         menu: true,
         vis: [
-            { type: "genVis", src: "electricity/price"},
-            { type: "genVis", src: "gas/price"},
-            { type: "genVis", src: "gas/price-lng"},
-            { type: "genVis", src: "oil/price-brent"},
-            { type: "genVis", src: "oil/fuel-prices"},
-            { type: "genVis", src: "coal/price"},
-            { type: "genVis", src: "economy/eua"},
-            { type: "genVis", src: "economy/dollar"},
+            "electricity/price",
+            "gas/price",
+            "gas/price-lng",
+            "oil/price-brent",
+            "oil/fuel-prices",
+            "coal/price",
+            "economy/eua",
+            "economy/dollar",
         ]
     },
     gas: {
         name: "Gas",
         menu: true,
         vis: [
-            { type: "genVis", src: "gas/consumption"},
-            { type: "genVis", src: "weather/hdd"},
-            { type: "genVis", src: "weather/temperature"},
-            { type: "genVis", src: "gas/price"},
-            { type: "genVis", src: "gas/storage"},
-            { type: "genVis", src: "gas/storage-eu"},
+            "gas/consumption",
+            "weather/hdd",
+            "weather/temperature",
+            "gas/price",
+            "gas/storage",
+            "gas/storage-eu",
         ]
     },
     electricity: {
         name: "Strom",
         menu: true,
         vis: [
-            { type: "genVis", src: "electricity/load"},
-            { type: "genVis", src: "electricity/load-countries"},
-            { type: "genVis", src: "electricity/price"},
-            //{ type: "genVis", src: "electricity/load-hourly"},
-            { type: "genVis", src: "electricity/generation-stacked"},
-            { type: "genVis", src: "electricity/generation-sources"},
-            { type: "genVis", src: "electricity/generation-renewable"},
-            { type: "europeMap", src: "electricity/generation-map"},
+            "electricity/load",
+            "electricity/load-countries",
+            "electricity/price",
+            //"electricity/load-hourly",
+            "electricity/generation-stacked",
+            "electricity/generation-sources",
+            "electricity/generation-renewable",
+            "electricity/generation-map",
         ]
     },
     mobility: {
         name: "Mobilität",
         menu: true,
-      vis: [
-            { type: "genVis", src: "mobility/registrations-stacked" },
-            { type: "europeMap", src: "mobility/cars-map"},
-            { type: "genVis", src: "mobility/registrations"},
-            { type: "genVis", src: "mobility/traffic"},
-            { type: "genVis", src: "mobility/traffic-years"},
-            { type: "genVis", src: "oil/fuel-prices"},
-            { type: "europeMap", src: "oil/fuel-prices-map"},
+        vis: [
+            "mobility/registrations-stacked",
+            "mobility/cars-map",
+            "mobility/registrations",
+            "mobility/traffic",
+            "mobility/traffic-years",
+            "oil/fuel-prices",
+            "oil/fuel-prices-map",
         ]
     },
     fossil: {
@@ -148,18 +153,28 @@ const collections = {
         name: "Test",
         menu: false,
         vis: [
-            { type: "genVis", src: "electricity/load"},
-            { type: "genVis", src: "electricity/flows"},
+            "electricity/load",
+            "electricity/flows",
         ]
     },
     others: {
         name: "Others",
         menu: false,
         vis: [
-            { type: "genVis", src: "economy/economic-activity"},
-            { type: "genVis", src: "electricity/load-hourly"},
-            { type: "genVis", src: "electricity/generation-hourly"},
-            { type: "genVis", src: "economy/dollar"},
+            "economy/economic-activity",
+            "electricity/load-hourly",
+            "electricity/generation-hourly",
+            "economy/dollar",
         ]
     },
 }
+
+// the charts as { type, src }, as the markdown pages
+const entry = v => {
+    if (typeof v != 'string')
+        return v;
+    if (!(v in charts))
+        console.warn(`Unknown chart '${v}' in the collections`);
+    return { type: charts[v], src: v };
+};
+Object.values(collections).forEach(c => c.vis = c.vis.map(entry));

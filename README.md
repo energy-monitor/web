@@ -33,5 +33,6 @@ The charts are [gen-vis](https://github.com/petres/gen-vis) definitions in `data
   - `_facets.json`: facets by the mapping `facet`
   - `_scale-switch.json`: switch between separate and shared y scales of the facets
   - `_share-switch.json`: switch between the values and their shares, the column `value.share`
+- All definitions are charts, the ones with `types` are maps (`src/EuropeMap.vue`), the list is created by the build (`build/_base.js`). The collections in `src/globals.js` list their ids.
 - Former ids are mapped to the current ones in `aliases` of `src/globals.js`, e.g. for embedded `/single/` urls.
 - Markdown pages of the collections are in `data/pages/`.

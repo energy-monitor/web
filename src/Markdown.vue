@@ -14,12 +14,15 @@ import rehypeRewrite from 'rehype-rewrite';
 import { find, html, svg } from 'property-information';
 
 import VisEntry from '@/VisEntry.vue';
+import { charts } from '@/globals.js';
 
 // leaf directives which are rendered as components, e.g. ::gen-vis{src="gas/price"},
-// src is relative to /data as in the collections, see VisEntry for settings
+// src is relative to /data as in the collections, see VisEntry for settings, both
+// show charts and maps, the type is the one of the chart
+const chart = (a, settings) => h(VisEntry, { vis: { type: charts[a.src] ?? 'genVis', src: a.src }, settings });
 const components = {
-    'gen-vis': (a, settings) => h(VisEntry, { vis: { type: 'genVis', src: a.src }, settings }),
-    'europe-map': (a, settings) => h(VisEntry, { vis: { type: 'europeMap', src: a.src }, settings }),
+    'gen-vis': chart,
+    'europe-map': chart,
 };
 
 // the directives of the components become elements, all others are text

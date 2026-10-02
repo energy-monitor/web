@@ -23,10 +23,10 @@ const urlSingle = `${location.origin}/single/`;
 // the maps are higher than the charts
 const heights = { genVis: 450, europeMap: 720 };
 
-import { collections } from '@/globals.js';
+import { charts } from '@/globals.js';
 
-// every chart once, several collections contain the same ones
-const vis = [...new Map(Object.values(collections).flatMap(c => c.vis).map(v => [v.src, v])).values()]
+// all charts, also the ones of the markdown pages
+const vis = Object.entries(charts).map(([src, type]) => ({ type, src }));
 
 
 export default {

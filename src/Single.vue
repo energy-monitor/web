@@ -9,11 +9,7 @@
 import { GenVis } from '@preschen/gen-vis';
 import EuropeMap from '@/EuropeMap.vue';
 
-import { collections } from '@/globals.js';
-
-// the types of the charts by their src, e.g. `europeMap`, charts which are in
-// no collection are gen-vis charts
-const types = Object.fromEntries(Object.values(collections).flatMap(c => c.vis).map(v => [v.src, v.type]));
+import { charts } from '@/globals.js';
 
 export default {
     components: {
@@ -21,7 +17,8 @@ export default {
     },
     computed: {
         src() { return this.$route.params.id.replaceAll('~', '/') },
-        type() { return types[this.src] ?? 'genVis' },
+        // unknown ones show the error of gen-vis
+        type() { return charts[this.src] ?? 'genVis' },
     },
 }
 </script>
