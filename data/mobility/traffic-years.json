@@ -1,0 +1,54 @@
+{
+    "parent": ["../_years.json", "../_facets.json", "../_scale-switch.json"],
+    "data": "traffic.csv",
+    "options": {
+        "height": 220,
+        "title": "Verkehrsaufkommen",
+        "subtitle": "Autobahnen und Schnellstraßen, durchschnittlicher täglicher Verkehr, monatlich, Index (2025 = 100)",
+        "footer": "Source: ASFINAG - Dauerzählstellen"
+    },
+    "globals": {
+        "shareScale": ["x", "y"]
+    },
+    "mapping": {
+        "x": {
+            "hover": {
+                "format": "%b"
+            }
+        },
+        "road": {
+            "column": "road",
+            "props": {
+                "manual": {
+                    "total": { "name": "Österreich" }
+                }
+            }
+        },
+        "facet": {
+            "column": "vehicle",
+            "legend": {
+                "symbol": {
+                    "size": 0,
+                    "elements": []
+                }
+            },
+            "props": {
+                "manual": {
+                    "all":   { "name": "Gesamt", "visible": true },
+                    "heavy": { "name": "Schwer (über 3,5 t)", "visible": true },
+                    "light": { "name": "Leicht (bis 3,5 t)", "visible": false }
+                }
+            },
+            "hover": {
+            }
+        }
+    },
+    "facets": {
+        "cols": {
+            "steps": [
+                {"cut":   0, "value": 1},
+                {"cut": 550, "value": 2}
+            ]
+        }
+    }
+}

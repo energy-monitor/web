@@ -131,6 +131,8 @@ const collections = {
             { type: "genVis", src: "mobility/registrations-stacked" },
             { type: "europeMap", src: "mobility/cars-map"},
             { type: "genVis", src: "mobility/registrations"},
+            { type: "genVis", src: "mobility/traffic"},
+            { type: "genVis", src: "mobility/traffic-years"},
             { type: "genVis", src: "oil/fuel-prices"},
             { type: "europeMap", src: "oil/fuel-prices-map"},
         ]
