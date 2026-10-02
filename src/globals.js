@@ -38,17 +38,6 @@ const aliases = {
     'others/economic-activity': 'economy/economic-activity',
 };
 
-// const vis = {
-//     'gas-price': {
-//         "tags": ["preset", "gas", "prices"],
-//         "options": {
-//             "title": "Gaspreis",
-//             "subtitle": "CEGH, täglich (rollierender 7-Tages Durchschnitt), in €/MWh",
-//             "footer": "Source: CEGH - Central European Gas Hub"
-//         },
-//     }
-// }
-
 const stories = {
     'gas-savings': {
         name: 'Einsparungen des Gaskonsums',

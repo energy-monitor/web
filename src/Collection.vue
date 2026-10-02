@@ -32,9 +32,7 @@ export default {
             handler: function(n) {
                 // the start page shows the selection of the user, unselected
                 // charts stay until the page is opened again
-                if (n != 'map')
-                    this.vis = this.id == 'preset' ? [...favorites.value] : collections[this.id].vis;
-                // console.log(this.vis)
+                this.vis = this.id == 'preset' ? [...favorites.value] : collections[this.id].vis;
             },
             immediate: true
         },

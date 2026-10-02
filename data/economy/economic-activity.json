@@ -3,7 +3,7 @@
     "data": "economic-activity.csv",
     "options": {
         "title": "Ökonomische Aktivität",
-        "subtitle": "???",
+        "subtitle": "Produktionsindex, monatlich, 2015 = 100",
         "footer": "Source: Statistik Austria"
     },
     "mapping": {
