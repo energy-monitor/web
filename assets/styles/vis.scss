@@ -99,8 +99,11 @@
         font-size: 13px;
     }
 
+    // the info is positioned relative to the map, also in /single/ without
+    // a positioned ancestor
     .vis-inner {
         text-align: center;
+        position: relative;
         .info {
             // white halo around the letters, readable above dark countries
             text-shadow:

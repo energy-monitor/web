@@ -232,8 +232,7 @@ export default {
                 .on("mouseenter", (e, d) => {
                     // console.log(this.info)
                     if (d in this.values) {
-                        // relative to the positioned ancestor of the info, e.g.
-                        // the entry with the paperclip or the story
+                        // relative to the positioned ancestor of the info, the .vis-inner
                         const [x, y] = d3.pointer(e, this.$refs.info.offsetParent);
                         this.info.style("top", `${y - 30}px`)
                             .style("left", `${x - 50}px`)
