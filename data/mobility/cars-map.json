@@ -13,12 +13,12 @@
     "types": {
         "name": "Kraftstoff",
         "values": {
-            "bev":    { "name": "Elektro",               "range": ["#9bcda3", "#2c7340"] },
-            "phev":   { "name": "Plug-in-Hybrid",        "range": ["#b8e4d6", "#55907f"] },
-            "hybrid": { "name": "Hybrid (ohne Plug-in)", "range": ["#a3c4e8", "#346994"] },
-            "petrol": { "name": "Benzin",                "range": ["#feca95", "#a9702b"] },
-            "diesel": { "name": "Diesel",                "range": ["#ada5a0", "#4e453f"] },
-            "other":  { "name": "Sonstige",              "range": ["#ececec", "#7d7d7d"] }
+            "bev":    { "name": "Elektro" },
+            "phev":   { "name": "Plug-in-Hybrid" },
+            "hybrid": { "name": "Hybrid (ohne Plug-in)" },
+            "petrol": { "name": "Benzin" },
+            "diesel": { "name": "Diesel" },
+            "other":  { "name": "Sonstige" }
         }
     },
     "domain": [0, null],

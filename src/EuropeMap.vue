@@ -48,12 +48,13 @@
             <svg v-if="legend" class="legend" :width="legend.width + 130" height="38">
                 <defs>
                     <linearGradient :id="`${uid}-gradient`">
-                        <stop offset="0%" :stop-color="legend.range[0]"/>
-                        <stop offset="100%" :stop-color="legend.range[1]"/>
+                        <stop v-for="s in legend.stops" :offset="s.offset" :stop-color="s.color"/>
                     </linearGradient>
                 </defs>
                 <g transform="translate(10, 6)">
                     <rect :width="legend.width" height="10" :fill="`url(#${uid}-gradient)`"/>
+                    <polygon v-if="legend.extend[0]" points="0,0 -8,5 0,10" :fill="legend.stops[0].color"/>
+                    <polygon v-if="legend.extend[1]" :points="`${legend.width},0 ${legend.width + 8},5 ${legend.width},10`" :fill="legend.stops[legend.stops.length - 1].color"/>
                     <g v-for="t in legend.ticks" :transform="`translate(${t.x}, 0)`">
                         <line y1="10" y2="14" stroke="#777"/>
                         <text y="26" text-anchor="middle">{{ t.label }}</text>
@@ -78,6 +79,9 @@ import * as topojson from "topojson-client"
 const locale = d3.formatLocale({ decimal: ",", thousands: ".", grouping: [3], currency: ["", " €"] });
 const regionNames = new Intl.DisplayNames(['de'], { type: 'region' });
 const currentYear = new Date().getFullYear();
+// the same colors for all maps and types, a definition may override them with `range`,
+// dark red at the end for more contrast between the high values
+const defaultRange = ["#fcd2d2", "#e6211e", "#7a0f0d"];
 
 let count = 0;
 
@@ -250,18 +254,24 @@ export default {
                 rowsType.filter(d => d.year === null || d.year == this.selected.year).map(d => [d.id, d])
             );
 
-            // open ends are the extent over all years, so years stay comparable
+            // open ends are the extent over all years, so years stay comparable,
+            // with `trim` the quantiles instead, so single outliers don't take up the gradient
+            const sorted = rowsType.map(d => d.value).sort(d3.ascending);
+            const trim = this.def.trim ?? 0;
             const domain = [...(this.def.domain ?? [0, null])];
-            domain[0] ??= d3.min(rowsType, d => d.value);
-            domain[1] ??= d3.max(rowsType, d => d.value);
-            const range = this.def.types.values[this.selected.type].range ?? this.def.range;
+            domain[0] ??= d3.quantileSorted(sorted, trim);
+            domain[1] ??= d3.quantileSorted(sorted, 1 - trim);
+            const range = this.def.types.values[this.selected.type].range ?? this.def.range ?? defaultRange;
 
+            // two or more colors, interpolated in Lab for an even change of the lightness
+            const interpolate = d3.piecewise(d3.interpolateLab, range);
             // `sqrt` spreads the low values, if a single country is far ahead
-            const scale = (this.def.scale == "sqrt" ? d3.scaleSqrt() : d3.scaleLinear())
+            const position = (this.def.scale == "sqrt" ? d3.scaleSqrt() : d3.scaleLinear())
                 .domain(domain)
-                .range(range)
+                .clamp(true);
+            const color = v => interpolate(position(v));
 
-            const legendScale = scale.copy().range([0, 240]);
+            const legendScale = position.copy().range([0, 240]);
             let ticks = legendScale.ticks(5);
             if (this.def.scale == "sqrt") {
                 // ticks of a sqrt scale crowd at the upper end, use 1, 2, 5 steps with some space instead
@@ -272,9 +282,12 @@ export default {
                         ticks.push(t);
                 });
             }
+            const shown = Object.values(this.values).map(d => d.value);
             this.legend = {
                 width: 240,
-                range: range,
+                stops: d3.range(11).map(i => ({ offset: `${i * 10}%`, color: interpolate(i / 10) })),
+                // arrows at the ends, if values beyond the domain are clamped
+                extend: [d3.min(shown) < domain[0], d3.max(shown) > domain[1]],
                 ticks: ticks.map(t => ({
                     x: legendScale(t),
                     label: locale.format(this.def.legendFormat ?? ".0%")(t),
@@ -285,7 +298,7 @@ export default {
                 .data(Object.keys(this.values), d => d)
                 .join(
                     _ => {},
-                    update => update.attr("fill", d => scale(this.values[d].value)),
+                    update => update.attr("fill", d => color(this.values[d].value)),
                     exit => exit.attr("fill", this.noData)
                 )
         },
