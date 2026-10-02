@@ -1,5 +1,5 @@
 {
-    "parent": "../_stacked.json",
+    "parent": ["../_stacked.json", "_unit-switch.json"],
     "data": "supply-stacked.csv",
     "options": {
         "title": "Absatz von fossilen Energieträgern",
@@ -7,19 +7,9 @@
         "footer": "Source: eurostat, eigene Berechnungen"
     },
     "globals": {
-        "unit": "twh",
         "share": ""
     },
     "formElements": [{
-        "id": "unit",
-        "name": "Einheit",
-        "ref": "unit",
-        "type": "switch",
-        "values": [
-            { "id": "unitTwh", "value": "twh", "name": "TWh" },
-            { "id": "unitCo2", "value": "mt.co2", "name": "Mt CO₂" }
-        ]
-    }, {
         "id": "values",
         "name": "Werte",
         "ref": "share",
@@ -50,8 +40,8 @@
             "props": {
                 "manual": {
                     "oil":  { "color": "#6F625A", "name": "Mineralöl" },
-                    "coal": { "color": "#F2A03D", "name": "Kohle" },
-                    "gas":  { "color": "#86CAE7", "name": "Erdgas" }
+                    "coal": { "color": "#8B4513", "name": "Kohle" },
+                    "gas":  { "color": "#C3423F", "name": "Erdgas" }
                 }
             }
         }

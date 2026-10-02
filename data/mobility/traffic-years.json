@@ -1,5 +1,5 @@
 {
-    "parent": ["../_years.json", "../_facets.json", "../_scale-switch.json", "../_facet-toggle.json"],
+    "parent": ["../_years.json", "../_facets.json", "../_scale-switch.json", "../_facet-toggle.json", "../_monthly.json"],
     "data": "traffic.csv",
     "options": {
         "height": 220,
@@ -11,11 +11,6 @@
         "shareScale": ["x", "y"]
     },
     "mapping": {
-        "x": {
-            "hover": {
-                "format": "%b"
-            }
-        },
         "road": {
             "column": "road",
             "props": {

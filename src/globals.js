@@ -25,8 +25,8 @@ const aliases = {
     'others/coal': 'coal/price',
     'others/supply-coal': 'coal/supply',
     'others/supply-coal-stacked': 'coal/supply-stacked',
-    'others/supply-total-twh': 'fossil/supply-twh',
-    'others/supply-total-co2': 'fossil/supply-co2',
+    'others/supply-total-twh': 'fossil/supply',
+    'others/supply-total-co2': 'fossil/supply',
     'others/supply-total-stacked': 'fossil/supply-stacked',
     'others/car-registrations': 'mobility/registrations',
     'others/car-registrations-share': 'mobility/registrations-stacked',
@@ -36,6 +36,8 @@ const aliases = {
     'others/eua': 'economy/eua',
     'others/dollar': 'economy/dollar',
     'others/economic-activity': 'economy/economic-activity',
+    'fossil/supply-twh': 'fossil/supply',
+    'fossil/supply-co2': 'fossil/supply',
 };
 
 const stories = {

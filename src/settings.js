@@ -31,12 +31,13 @@ const save = (key, value) => {
     } catch {}
 };
 
-// former ids of the charts are replaced by the current ones, removed charts are dropped
+// former ids of the charts are replaced by the current ones, removed charts are
+// dropped, several former ids of one chart are one entry
 const renamed = src => aliases[src] ?? src;
 const loadFavorites = () => {
     const favorites = load(keys.favorites);
     return Array.isArray(favorites)
-        ? favorites.map(v => renamed(v.src)).filter(src => src in charts).map(src => ({ type: charts[src], src }))
+        ? [...new Set(favorites.map(v => renamed(v.src)))].filter(src => src in charts).map(src => ({ type: charts[src], src }))
         : null;
 };
 const loadStates = () => Object.fromEntries(Object.entries(load(keys.states) ?? {}).map(([src, s]) => [renamed(src), s]));

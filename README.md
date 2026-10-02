@@ -35,6 +35,7 @@ The charts are [gen-vis](https://github.com/petres/gen-vis) definitions in `data
   - `_scale-switch.json`: switch between separate and shared y scales of the facets
   - `_share-switch.json`: switch between the values and their shares, the column `value.share`
   - `_facet-toggle.json`: the facets can be switched on and off in the legend
+  - `_monthly.json`: monthly data of `_years`, the month in the hover, smoothed lines (`monotoneX`)
   - `_line-types.json`: line styles (`stroke-dasharray`) of the mapping `type` in addition to the years, e.g. mean, min and max
 - Parents of a topic are in its folder, e.g. `electricity/_sources.json` with the colors of the energy sources.
 - All definitions are charts, the ones with `types` are maps (`src/EuropeMap.vue`), the list is created by the build (`build/_base.js`). The collections in `src/globals.js` list their ids.

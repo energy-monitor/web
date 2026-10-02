@@ -1,14 +1,9 @@
 {
-    "parent": ["../_years.json", "../_facets.json", "../_facet-toggle.json"],
+    "parent": ["../_years.json", "../_facets.json", "../_facet-toggle.json", "../_monthly.json"],
     "options": {
         "height": 220
     },
     "mapping": {
-        "x": {
-            "hover": {
-                "format": "%b"
-            }
-        },
         "y": {
             "axis": {
                 "format": ",.1f"

@@ -56,6 +56,7 @@
     },
     "plot": {
         "type": "svg:path",
+        "curve": "monotoneX",
         "categories": ["road", "vehicle"],
         "props": {
             "stroke-width": "@stroke-width",

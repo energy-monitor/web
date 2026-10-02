@@ -1,16 +1,9 @@
 {
-    "parent": "../_years.json",
+    "parent": ["../_years.json", "../_monthly.json"],
     "data": "economic-activity.csv",
     "options": {
         "title": "Ökonomische Aktivität",
         "subtitle": "Produktionsindex, monatlich, 2015 = 100",
         "footer": "Source: Statistik Austria"
-    },
-    "mapping": {
-        "x": {
-            "hover": {
-                "format": "%b"
-            }
-        }
-    } 
+    }
 }
