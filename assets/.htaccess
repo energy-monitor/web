@@ -1,5 +1,28 @@
 RewriteEngine on
 
+# the routes of the page are served by index.html, missing data, bundles and
+# assets are a 404, not the page, e.g. a deleted chunk of a former version
+RewriteCond %{REQUEST_URI} !^/(data|geo|assets)/
+RewriteCond %{REQUEST_URI} !\.js$
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ /index.html [L,QSA]
+
+# the text files compressed, e.g. the large csvs of the data
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/plain text/csv text/markdown application/javascript text/javascript application/json image/svg+xml
+</IfModule>
+
+# revalidated by the date of the file, the etags of compressed responses do
+# not match the ones of the files and are never revalidated
+FileETag None
+
+<IfModule mod_headers.c>
+    # all files are revalidated, e.g. the data of every day and index.html with
+    # the names of the current bundles
+    Header set Cache-Control "no-cache"
+    # the bundles have the hash of their content in the name
+    <FilesMatch "\.[0-9a-f]{20}\.js$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+</IfModule>
