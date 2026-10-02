@@ -1,13 +1,13 @@
 <template>
     <div id="include">
         <div v-for="v in vis" class="entry">
-            <template v-if="v.type == 'genVis'">
+            <template v-if="v.type in heights">
                 <a :href="url(v.src)" target="_blank">{{ v.src }}</a>
                 <div class="code">
                     Code:
-                    <pre>{{ iframe(v.src) }}</pre>
+                    <pre>{{ iframe(v) }}</pre>
                 </div>
-                <div v-html="iframe(v.src)"/>
+                <div v-html="iframe(v)"/>
             </template>
         </div>
     </div>
@@ -18,6 +18,10 @@
 // on the host of the page, so the code and the preview show the deployed
 // charts, e.g. https://energie.wifo.ac.at/single/ or locally the current ones
 const urlSingle = `${location.origin}/single/`;
+
+// the charts which can be embedded, by their type, with the height of the iframe,
+// the maps are higher than the charts
+const heights = { genVis: 450, europeMap: 720 };
 
 import { collections } from '@/globals.js';
 
@@ -33,13 +37,14 @@ export default {
         url (id) {
             return urlSingle + this.escaped(id);
         },
-        iframe (id) {
-            // return `<iframe width="100%" height="100%" frameBorder="0" src="${this.url(id)}"/>`
-            return `<iframe width="100%" height="450px" frameBorder="0" src="${this.url(id)}"/>`
+        iframe (v) {
+            // return `<iframe width="100%" height="100%" frameBorder="0" src="${this.url(v.src)}"/>`
+            return `<iframe width="100%" height="${heights[v.type]}px" frameBorder="0" src="${this.url(v.src)}"/>`
         }
     },
     data: () => ({
-        vis: vis
+        vis: vis,
+        heights: heights,
     }),
 }
 </script>

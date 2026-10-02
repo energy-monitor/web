@@ -43,88 +43,6 @@
         }
     }
 
-    // the maps use the class names of gen-vis but not its styles
-    .mapEntry {
-        margin: 25px auto;
-
-        svg {
-            display: inline-block;
-        }
-
-        .vis-header {
-            margin-bottom: 10px;
-            .title {
-                font-size: 22px;
-                font-weight: bold;
-            }
-            .subtitle {
-                font-size: 13px;
-                margin-top: -1px;
-                margin-bottom: -2px;
-            }
-        }
-        .vis-footer {
-            font-size: 13px;
-        }
-
-        .vis-inner {
-            text-align: center;
-            .info {
-                // white halo around the letters, readable above dark countries
-                text-shadow:
-                    -1px -1px 1px #FFF, 1px -1px 1px #FFF,
-                    -1px 1px 1px #FFF, 1px 1px 1px #FFF;
-                span {
-                    display: inline-block;
-                    margin: 3px;
-                    font-weight: bold;
-                }
-                span.abs {
-                    font-weight: normal;
-                }
-            }
-            svg.legend {
-                display: block;
-                margin: 4px auto 0;
-                text {
-                    font-size: 12px;
-                }
-            }
-        }
-
-        .vis-form-elements {
-            margin-top: -7px;
-            margin-bottom: 4px;
-            .formElement {
-                font-size: 13px;
-                .title {
-                    font-weight: bold;
-                    margin-right: 5px;
-                    display: inline-block;
-                }
-                .entries {
-                    display: inline-block;
-                    > div {
-                        display: inline-block;
-                        margin-right: 5px;
-                    }
-                    // centred to the labels, as the radio buttons of gen-vis
-                    input[type=radio] {
-                        position: relative;
-                        top: 1px;
-                    }
-                    input[type=range] {
-                        vertical-align: middle;
-                        width: 200px;
-                    }
-                    .year {
-                        margin-left: 5px;
-                    }
-                }
-            }
-        }
-    }
-
     // the styles of gen-vis are in the cascade layer gen-vis, so these
     // override them without more specific selectors
     .visEntry {
@@ -154,6 +72,94 @@
             transform: translate(3px, 0);
         }
     }
+}
+
+// the maps use the class names of gen-vis but not its styles, everywhere,
+// also in /single/
+.mapEntry {
+    margin: 25px auto;
+
+    svg {
+        display: inline-block;
+    }
+
+    .vis-header {
+        margin-bottom: 10px;
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .subtitle {
+            font-size: 13px;
+            margin-top: -1px;
+            margin-bottom: -2px;
+        }
+    }
+    .vis-footer {
+        font-size: 13px;
+    }
+
+    .vis-inner {
+        text-align: center;
+        .info {
+            // white halo around the letters, readable above dark countries
+            text-shadow:
+                -1px -1px 1px #FFF, 1px -1px 1px #FFF,
+                -1px 1px 1px #FFF, 1px 1px 1px #FFF;
+            span {
+                display: inline-block;
+                margin: 3px;
+                font-weight: bold;
+            }
+            span.abs {
+                font-weight: normal;
+            }
+        }
+        svg.legend {
+            display: block;
+            margin: 4px auto 0;
+            text {
+                font-size: 12px;
+            }
+        }
+    }
+
+    .vis-form-elements {
+        margin-top: -7px;
+        margin-bottom: 4px;
+        .formElement {
+            font-size: 13px;
+            .title {
+                font-weight: bold;
+                margin-right: 5px;
+                display: inline-block;
+            }
+            .entries {
+                display: inline-block;
+                > div {
+                    display: inline-block;
+                    margin-right: 5px;
+                }
+                // centred to the labels, as the radio buttons of gen-vis
+                input[type=radio] {
+                    position: relative;
+                    top: 1px;
+                }
+                input[type=range] {
+                    vertical-align: middle;
+                    width: 200px;
+                }
+                .year {
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+}
+
+// in /single/ at the top, as the gen-vis charts
+.single > .mapEntry {
+    margin-top: 0;
 }
 
 // charts in markdown texts do not use their text styles
