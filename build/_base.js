@@ -4,17 +4,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader')
 const { DefinePlugin } = require('webpack');
 
-const fs = require('fs');
 const path = require('path')
 const resolve = (dir) => path.join(__dirname, '..', dir)
 
-// all charts of data/ by their id, e.g. { "gas/price": "genVis" }, the maps
-// are the definitions with `types`, files starting with `_` are parents
-const charts = () => Object.fromEntries(fs.readdirSync(resolve('data'), { recursive: true })
-    .filter(f => f.endsWith('.json') && !path.basename(f).startsWith('_'))
-    .map(f => f.split(path.sep).join('/'))
-    .sort()
-    .map(f => [f.slice(0, -'.json'.length), 'types' in JSON.parse(fs.readFileSync(resolve(`data/${f}`))) ? 'europeMap' : 'genVis']));
+const { charts } = require('./charts.js');
 
 module.exports = {
     entry: {
