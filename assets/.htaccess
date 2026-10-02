@@ -3,7 +3,7 @@ RewriteEngine on
 # the routes of the page are served by index.html, missing data, bundles and
 # assets are a 404, not the page, e.g. a deleted chunk of a former version
 RewriteCond %{REQUEST_URI} !^/(data|geo|assets)/
-RewriteCond %{REQUEST_URI} !\.js$
+RewriteCond %{REQUEST_URI} !\.(js|css)$
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ /index.html [L,QSA]
@@ -21,8 +21,8 @@ FileETag None
     # all files are revalidated, e.g. the data of every day and index.html with
     # the names of the current bundles
     Header set Cache-Control "no-cache"
-    # the bundles have the hash of their content in the name
-    <FilesMatch "\.[0-9a-f]{20}\.js$">
+    # the bundles and styles have the hash of their content in the name
+    <FilesMatch "\.[0-9a-f]{20}\.(js|css)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
 </IfModule>

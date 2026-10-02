@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { VueLoaderPlugin } = require('vue-loader')
 const { DefinePlugin } = require('webpack');
 
@@ -9,7 +9,9 @@ const resolve = (dir) => path.join(__dirname, '..', dir)
 
 const { charts } = require('./charts.js');
 
-module.exports = {
+// with `extractCss` the styles are a file of their own, so the page is not
+// shown without them until the script runs, the dev server injects them
+module.exports = ({ extractCss = false } = {}) => ({
     entry: {
         code: './src/main.js',
     },
@@ -22,10 +24,10 @@ module.exports = {
     module: {
         rules: [{
             test: /\.css$/i,
-            use: ['style-loader', 'css-loader'],
+            use: [extractCss ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader'],
         }, {
             test: /\.scss$/i,
-            use: ['style-loader', 'css-loader', "sass-loader"],
+            use: [extractCss ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', "sass-loader"],
         }, {
             test: /\.vue$/i,
             use: 'vue-loader'
@@ -55,9 +57,9 @@ module.exports = {
         new DefinePlugin({
             CHARTS: DefinePlugin.runtimeValue(() => JSON.stringify(charts()), { contextDependencies: [resolve('data')] }),
         }),
-
-        // new MiniCssExtractPlugin({
-        //     filename: 'style.[fullhash].css'
-        // })
+        ...(extractCss ? [new MiniCssExtractPlugin({
+            filename: 'style.[contenthash].css',
+            chunkFilename: 'chunk.[name].[contenthash].css',
+        })] : []),
     ]
-};
+});
