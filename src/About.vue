@@ -1,7 +1,7 @@
 <template>
     <div id="about-modal" class="modal-window">
         <div>
-            <a href="#footer" title="Close" class="modal-close">✖</a>
+            <a href="#footer" title="Schließen" class="modal-close">✖</a>
             <div id="about-section">
                 <h1>About</h1>
 
