@@ -64,20 +64,7 @@
                     "AT": { "name": "Österreich", "visible": true }
                 }
             },
-            "legend": {
-                "symbol": {
-                    "size": 16,
-                    "elements": [{
-                        "type": "line",
-                        "props": {
-                            "x1": 0, "x2": 16, "y1": 8, "y2": 8,
-                            "stroke": "@color",
-                            "stroke-width": "@stroke-width",
-                            "opacity": "@opacity"
-                        }
-                    }]
-                }
-            }
+            "legend": {}
         }
     },
     "plot": {
