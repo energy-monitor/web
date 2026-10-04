@@ -37,9 +37,11 @@
         {
             "type": "cartesian:bar",
             "categories": ["type"],
+            "highlight": "row",
             "props": {
                 "fill": "@color",
                 "opacity": 0.9,
+                "highlight-opacity": 1,
                 "x": "@x:scaled",
                 "y0": "@y:start:scaled",
                 "y1": "@y:end:scaled",
