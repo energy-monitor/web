@@ -1,16 +1,27 @@
 RewriteEngine on
 
-# the routes of the page are served by index.html, missing data, bundles and
-# assets are a 404, not the page, e.g. a deleted chunk of a former version
-RewriteCond %{REQUEST_URI} !^/(data|geo|assets)/
-RewriteCond %{REQUEST_URI} !\.(js|css)$
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /index.html [L,QSA]
+# one host for the search engines, energy.wifo.ac.at is the same page, e.g. in
+# embedded /single/ urls, the url of the pages is in build/pages.js
+RewriteCond %{HTTP_HOST} ^energy\.wifo\.ac\.at$ [NC]
+RewriteRule ^ https://energie.wifo.ac.at%{REQUEST_URI} [R=301,L]
+
+# the pages are html files of their own, e.g. /collection/gas is
+# collection/gas.html, see build/pages.js, only these urls, others as
+# /single/<id> would be single.html with the rest of the url
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^((collection|analysis)/[^/]+|include)$ $1.html [L]
+
+# the embedded charts, the app shows the chart of the url
+RewriteRule ^single/ single.html [L]
+
+# all other urls are a 404, e.g. former ones as /gas, its page is the app, which
+# redirects to the start page, also for missing data, bundles and assets, e.g.
+# a deleted chunk of a former version
+ErrorDocument 404 /404.html
 
 # the text files compressed, e.g. the large csvs of the data
 <IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/html text/css text/plain text/csv text/markdown application/javascript text/javascript application/json image/svg+xml
+    AddOutputFilterByType DEFLATE text/html text/css text/plain text/csv text/markdown application/javascript text/javascript application/json application/xml image/svg+xml
 </IfModule>
 
 # revalidated by the date of the file, the etags of compressed responses do

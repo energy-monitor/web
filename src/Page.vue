@@ -19,7 +19,7 @@
                         <td class="entries">
                             <template v-for="[k, c] in Object.entries(menu.collections)">
                                 <span class="entry" v-if="c.menu">
-                                    <router-link :to="{ name: 'collection', params: {id: k}}">{{ c.name }}</router-link>
+                                    <router-link :to="k == 'preset' ? '/' : { name: 'collection', params: {id: k}}">{{ c.name }}</router-link>
                                 </span>
                             </template>
                         </td>

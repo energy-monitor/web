@@ -1,4 +1,8 @@
-export { charts, collections, stories, aliases };
+export { charts, collections, stories, aliases, site, pageTitle };
+
+// the title of the pages, also in the html files of the build, see build/pages.js
+const site = 'Energiedaten für Österreich';
+const pageTitle = name => name ? `${name} – ${site}` : site;
 
 // all charts of data/ by their id, e.g. { "gas/price": "genVis" }, see build/_base.js
 const charts = CHARTS;
