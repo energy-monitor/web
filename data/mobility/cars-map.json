@@ -1,7 +1,7 @@
 {
     "title": "Pkw in Europa",
     "subtitle": "Anteile nach Kraftstoffart bzw. Energiequelle, jährlich",
-    "footer": "Source: eurostat - road_eqr_carpda (Neuzulassungen), road_eqs_carpda (Bestand)",
+    "footer": "Quelle: eurostat - road_eqr_carpda (Neuzulassungen), road_eqs_carpda (Bestand)",
     "series": {
         "name": "Daten",
         "values": {

@@ -4,6 +4,6 @@
     "options": {
         "title": "Gaskonsum",
         "subtitle": "in TWh",
-        "footer": "Source: AGGM - Austrian Gas Grid Management"
+        "footer": "Quelle: AGGM - Austrian Gas Grid Management"
     }
 }

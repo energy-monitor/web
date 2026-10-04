@@ -4,7 +4,7 @@
     "options": {
         "title": "Absatz von Kohle",
         "subtitle": "monatlich, nach Sorten, in tausend Tonnen bzw. Anteile",
-        "footer": "Source: eurostat - nrg_cb_sffm"
+        "footer": "Quelle: eurostat - nrg_cb_sffm"
     },
     "mapping": {
         "type": {

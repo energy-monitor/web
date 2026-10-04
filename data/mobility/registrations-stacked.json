@@ -4,7 +4,7 @@
     "options": {
         "title": "Pkw-Neuzulassungen",
         "subtitle": "nach Kraftstoffart bzw. Energiequelle, monatlich, Anteile bzw. Anzahl, AT",
-        "footer": "Source: Statistik Austria - Kfz-Neuzulassungen"
+        "footer": "Quelle: Statistik Austria - Kfz-Neuzulassungen"
     },
     "globals": {
         "values": "share"

@@ -5,7 +5,7 @@
         "height": 220,
         "title": "Pkw-Neuzulassungen",
         "subtitle": "nach Kraftstoffart bzw. Energiequelle, monatlich",
-        "footer": "Source: Statistik Austria - Kfz-Neuzulassungen"
+        "footer": "Quelle: Statistik Austria - Kfz-Neuzulassungen"
     },
     "formElements": [{
         "id": "values",

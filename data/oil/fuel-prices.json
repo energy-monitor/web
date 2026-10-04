@@ -4,7 +4,7 @@
     "options": {
         "title": "Spritpreise",
         "subtitle": "in €/Liter",
-        "footer": "Source: EC Weekly Oil Bulletin"
+        "footer": "Quelle: EC Weekly Oil Bulletin"
     },
     "mapping": {
         "y": {
@@ -38,4 +38,3 @@
         }
     }
 }
-

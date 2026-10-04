@@ -1,7 +1,7 @@
 {
     "title": "Stromproduktion",
     "subtitle": "nach Quellen, Anteile, jährlich",
-    "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C",
+    "footer": "Quelle: ENTSO-E - Aggregated Generation Per Type 16.1.B C",
     "data": "generation-map.csv",
     "yearSelect": true,
     "types": {

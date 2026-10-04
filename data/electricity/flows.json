@@ -4,7 +4,7 @@
     "options": {
         "title": "Netto Stromexporte",
         "subtitle": "täglich (rollierender 14-Tages Durchschnitt), in GWh",
-        "footer": "Source: ENTSO-E - Physical Flows"
+        "footer": "Quelle: ENTSO-E - Physical Flows"
     },
     "mapping": {
         "y": {

@@ -4,7 +4,7 @@
     "options": {
         "title": "Strompreis",
         "subtitle": "Day Ahead, täglich (rollierender 7-Tages Durchschnitt), in €/MWh",
-        "footer": "Source: ENTSO-E - Day Ahead Prices 12.1.D"
+        "footer": "Quelle: ENTSO-E - Day Ahead Prices 12.1.D"
     },
     "mapping": {
         "y": {

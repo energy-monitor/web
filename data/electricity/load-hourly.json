@@ -4,7 +4,7 @@
     "options": {
         "title": "Stromkonsum im Tagesverlauf",
         "subtitle": "laufendes Jahr nicht um saisonale Effekte bereinigt, in GW",
-        "footer": "Source: ENTSO-E - Actual Total Load 6.1.A"
+        "footer": "Quelle: ENTSO-E - Actual Total Load 6.1.A"
     },
     "mapping": {
         "x": {

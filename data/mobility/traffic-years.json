@@ -5,7 +5,7 @@
         "height": 220,
         "title": "Verkehrsaufkommen",
         "subtitle": "Autobahnen und Schnellstraßen, durchschnittlicher täglicher Verkehr, monatlich, Index (2025 = 100)",
-        "footer": "Source: ASFINAG - Dauerzählstellen"
+        "footer": "Quelle: ASFINAG - Dauerzählstellen"
     },
     "globals": {
         "shareScale": ["x", "y"]

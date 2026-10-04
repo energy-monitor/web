@@ -4,6 +4,6 @@
     "options": {
         "title": "Stromkonsum",
         "subtitle": "in TWh",
-        "footer": "Source: ENTSO-E - Actual Total Load 6.1.A"
+        "footer": "Quelle: ENTSO-E - Actual Total Load 6.1.A"
     }
 }

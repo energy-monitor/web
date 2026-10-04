@@ -4,7 +4,7 @@
     "options": {
         "title": "Absatz von Erdgas",
         "subtitle": "monatlich, in Millionen Kubikmetern",
-        "footer": "Source: eurostat - nrg_cb_gasm"
+        "footer": "Quelle: eurostat - nrg_cb_gasm"
     },
     "mapping": {
         "type": {

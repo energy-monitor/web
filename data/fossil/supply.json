@@ -4,7 +4,7 @@
     "options": {
         "title": "Absatz von fossilen Energieträgern",
         "subtitle": "nach Energiegehalt in TWh bzw. Emissionen in Megatonnen CO₂",
-        "footer": "Source: eurostat, eigene Berechnungen"
+        "footer": "Quelle: eurostat, eigene Berechnungen"
     },
     "globals": {
         "shareScale": ["x", "y"]

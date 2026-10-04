@@ -4,7 +4,7 @@
     "options": {
         "title": "Heizgradtage",
         "subtitle": "Raumtemperatur 20 °C, Heizgrenze 12 °C, gewichtet nach Bevölkerung",
-        "footer": "Source: Regionale Temperaturen von ERA5"
+        "footer": "Quelle: Regionale Temperaturen von ERA5"
     },
     "mapping": {
         "y": {

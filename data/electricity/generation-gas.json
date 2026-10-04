@@ -4,6 +4,6 @@
     "options": {
         "title": "Stromproduktion aus Gas",
         "subtitle": "in TWh",
-        "footer": "Source: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
+        "footer": "Quelle: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
     }
 }

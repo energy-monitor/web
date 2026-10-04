@@ -4,7 +4,7 @@
     "options": {
         "title": "Absatz von Mineralöl",
         "subtitle": "in tausend Tonnen",
-        "footer": "Source: eurostat - nrg_cb_oilm"
+        "footer": "Quelle: eurostat - nrg_cb_oilm"
     },
     "globals": {
         "shareScale": ["x", "y"]

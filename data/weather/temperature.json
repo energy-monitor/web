@@ -4,7 +4,7 @@
     "options": {
         "title": "Temperatur Österreich",
         "subtitle": "gewichtet nach Bevölkerung, täglich (rollierender 4-Wochen Durchschnitt), in °C",
-        "footer": "Source: ERA5"
+        "footer": "Quelle: ERA5"
     },
     "mapping": {
         "y": {

@@ -4,7 +4,7 @@
     "options": {
         "title": "Absatz von Kohle",
         "subtitle": "in tausend Tonnen",
-        "footer": "Source: eurostat - nrg_cb_sffm"
+        "footer": "Quelle: eurostat - nrg_cb_sffm"
     },
     "globals": {
         "shareScale": ["x", "y"]
