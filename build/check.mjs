@@ -6,6 +6,7 @@ import fs from 'fs';
 import path from 'path';
 import { pathToFileURL, fileURLToPath } from 'url';
 import { createRequire } from 'module';
+import { createHash } from 'crypto';
 
 const require = createRequire(import.meta.url);
 const { charts: listCharts, dir } = require('./charts.js');
@@ -26,7 +27,16 @@ const satisfies = (version, range) => {
 
 const wanted = JSON.parse(read('package.json')).devDependencies['@preschen/gen-vis'];
 const installed = JSON.parse(read('node_modules/@preschen/gen-vis/package.json')).version;
-if (!satisfies(installed, wanted))
+// a local tarball, e.g. file:../../gen-vis/preschen-gen-vis-1.0.0.tgz, is the
+// installed one if it has its hash, otherwise it was packed again since
+if (wanted.startsWith('file:')) {
+    const tarball = wanted.slice('file:'.length);
+    const integrity = JSON.parse(read('node_modules/.package-lock.json')).packages['node_modules/@preschen/gen-vis']?.integrity;
+    if (!exists(tarball))
+        problem('gen-vis', `the tarball ${tarball} is missing`);
+    else if (integrity != `sha512-${createHash('sha512').update(fs.readFileSync(path.join(root, tarball))).digest('base64')}`)
+        problem('gen-vis', `${tarball} is not the installed one, run npm install`);
+} else if (!satisfies(installed, wanted))
     problem('gen-vis', `${installed} is installed, package.json needs ${wanted}, run npm install`);
 
 // all files of data/ are valid JSON, the parents too
