@@ -7,7 +7,7 @@ const { DefinePlugin } = require('webpack');
 const path = require('path')
 const resolve = (dir) => path.join(__dirname, '..', dir)
 
-const { charts } = require('./charts.js');
+const { charts, maps } = require('./charts.js');
 
 // with `extractCss` the styles are a file of their own, so the page is not
 // shown without them until the script runs, the dev server injects them
@@ -56,6 +56,7 @@ module.exports = ({ extractCss = false } = {}) => ({
         // updated with new or changed definitions, also in the dev server
         new DefinePlugin({
             CHARTS: DefinePlugin.runtimeValue(() => JSON.stringify(charts()), { contextDependencies: [resolve('data')] }),
+            MAPS: DefinePlugin.runtimeValue(() => JSON.stringify(maps()), { contextDependencies: [resolve('data')] }),
         }),
         ...(extractCss ? [new MiniCssExtractPlugin({
             filename: 'style.[contenthash].css',

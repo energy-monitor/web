@@ -51,7 +51,9 @@ jsonFiles.forEach(f => {
 
 const charts = problems.some(p => p.startsWith('data/')) ? {} : listCharts();
 
-// the charts with the merge and the checks of gen-vis, the maps need their data
+// the charts with the merge and the checks of gen-vis, their data and the
+// geometry of the maps exist, urls of the site, e.g. /geo/europe.json, are the
+// files of assets/geo/, see build/_base.js
 let genVis = null;
 try {
     genVis = await import('@preschen/gen-vis/check');
@@ -59,28 +61,24 @@ try {
     problem('gen-vis', `no checks of the definitions, ${error.message}`);
 }
 const load = url => fs.readFileSync(fileURLToPath(url), 'utf8');
-for (const [src, type] of Object.entries(charts)) {
+const fileOf = (d, url) => d.startsWith('/geo/') ? path.join(root, 'assets', d) : fileURLToPath(new URL(d, url));
+for (const src of Object.keys(charts)) {
     const file = `data/${src}.json`;
-    const def = JSON.parse(read(file));
     const url = pathToFileURL(path.join(root, file)).href;
-    const data = type == 'europeMap'
-        ? (def.series ? Object.values(def.series.values).map(s => s.data) : [def.data])
-        : [];
-    if (type == 'genVis' && genVis) {
-        try {
-            const merged = await genVis.resolveParents(def, url, load);
-            genVis.validateDef(merged).forEach(w => problem(file, w));
-            data.push(merged.data);
-        } catch (error) {
-            problem(file, error.message);
-        }
-    }
-    data.forEach(d => {
-        if (!d)
+    if (!genVis)
+        break;
+    try {
+        const merged = await genVis.resolveParents(JSON.parse(read(file)), url, load);
+        genVis.validateDef(merged).forEach(w => problem(file, w));
+        if (!merged.data)
             problem(file, 'no data');
-        else if (!fs.existsSync(fileURLToPath(new URL(d, url))))
-            problem(file, `the data '${d}' is missing`);
-    });
+        [merged.data, merged.geo?.data].filter(d => typeof d == 'string').forEach(d => {
+            if (!fs.existsSync(fileOf(d, url)))
+                problem(file, `the file '${d}' is missing`);
+        });
+    } catch (error) {
+        problem(file, error.message);
+    }
 }
 
 // the collections, unknown charts are warned about when they are loaded
@@ -111,7 +109,7 @@ Object.entries(aliases).forEach(([from, to]) => {
 // the charts of the markdown directives, e.g. ::gen-vis{src="gas/price"}
 const markdown = ['pages', 'md'].filter(d => exists(`data/${d}`))
     .flatMap(d => fs.readdirSync(path.join(dir, d)).filter(f => f.endsWith('.md')).map(f => `data/${d}/${f}`));
-markdown.forEach(f => [...read(f).matchAll(/::(?:gen-vis|europe-map)\{src="([^"]+)"/g)].forEach(([, src]) => {
+markdown.forEach(f => [...read(f).matchAll(/::gen-vis\{src="([^"]+)"/g)].forEach(([, src]) => {
     if (!(src in charts))
         problem(f, `unknown chart '${src}'`);
 }));

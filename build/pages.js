@@ -26,10 +26,10 @@ const chartTexts = async () => {
     const load = url => fs.readFileSync(fileURLToPath(url), 'utf8');
     const clean = s => s?.replace(/,?\s*[^,{]*\{[^}]*\}/g, '').trim();
     const texts = {};
-    for (const [src, type] of Object.entries(listCharts())) {
+    for (const src of Object.keys(listCharts())) {
         const file = path.join(dir, `${src}.json`);
         const def = JSON.parse(fs.readFileSync(file, 'utf8'));
-        const o = type == 'europeMap' ? def : (await resolveParents(def, pathToFileURL(file).href, load)).options;
+        const o = (await resolveParents(def, pathToFileURL(file).href, load)).options;
         texts[src] = { title: clean(o?.title) ?? src, subtitle: clean(o?.subtitle) };
     }
     return texts;
@@ -48,7 +48,7 @@ const markdown = async (file, texts) => {
     const [{ unified }, { default: remarkParse }, { default: remarkGfm }, { default: remarkMath }, { default: remarkRehype }, { default: rehypeRaw }, { default: rehypeStringify }] =
         await Promise.all(['unified', 'remark-parse', 'remark-gfm', 'remark-math', 'remark-rehype', 'rehype-raw', 'rehype-stringify'].map(m => import(m)));
     const charts = fs.readFileSync(path.join(dir, file), 'utf8')
-        .replace(/^::(?:gen-vis|europe-map)\{src="([^"]+)"[^}]*\}[ \t]*$/gm, (d, src) => src in texts ? chartHtml(texts[src]) : '');
+        .replace(/^::gen-vis\{src="([^"]+)"[^}]*\}[ \t]*$/gm, (d, src) => src in texts ? chartHtml(texts[src]) : '');
     const images = () => tree => {
         const walk = node => {
             if (node.tagName == 'img' && node.properties.src)

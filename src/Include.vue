@@ -19,9 +19,10 @@
 // charts, e.g. https://energie.wifo.ac.at/single/ or locally the current ones
 const urlSingle = `${location.origin}/single/`;
 
-// the charts which can be embedded, by their type, with the height of the iframe,
-// the maps are higher than the charts
-const heights = { genVis: 450, europeMap: 720 };
+// the charts which can be embedded, by their type, with the height of the
+// iframe, the maps are higher than the charts, see build/charts.js
+const heights = { genVis: 450 };
+const maps = new Set(MAPS);
 
 import { charts } from '@/globals.js';
 
@@ -39,7 +40,7 @@ export default {
         },
         iframe (v) {
             // return `<iframe width="100%" height="100%" frameBorder="0" src="${this.url(v.src)}"/>`
-            return `<iframe width="100%" height="${heights[v.type]}px" frameBorder="0" src="${this.url(v.src)}"/>`
+            return `<iframe width="100%" height="${maps.has(v.src) ? 720 : heights[v.type]}px" frameBorder="0" src="${this.url(v.src)}"/>`
         }
     },
     data: () => ({

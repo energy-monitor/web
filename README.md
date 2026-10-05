@@ -39,7 +39,8 @@ The charts are [gen-vis](https://github.com/petres/gen-vis) definitions in `data
   - `_facet-toggle.json`: the facets can be switched on and off in the legend
   - `_monthly.json`: monthly data of `_years`, the month in the hover, smoothed lines (`monotoneX`)
   - `_line-types.json`: line styles (`stroke-dasharray`) of the mapping `type` in addition to the years, e.g. mean, min and max
+  - `_europe-map.json`: a map of Europe (`"coord": "geo"`, the geometry `assets/geo/europe.json`), the countries by the mapping `country` with their German names, colored by the mapping `value`
 - Parents of a topic are in its folder, e.g. `electricity/_sources.json` with the colors of the energy sources.
-- All definitions are charts, the ones with `types` are maps (`src/EuropeMap.vue`), the list is created by the build (`build/_base.js`). The collections in `src/globals.js` list their ids.
+- All definitions are gen-vis charts, the list is created by the build (`build/_base.js`, `build/charts.js`), the maps (`"coord": "geo"`) are higher when embedded. The collections in `src/globals.js` list their ids.
 - Former ids are mapped to the current ones in `aliases` of `src/globals.js`, e.g. for embedded `/single/` urls.
 - Markdown pages of the collections are in `data/pages/`.

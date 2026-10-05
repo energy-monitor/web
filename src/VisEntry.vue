@@ -8,13 +8,11 @@
             </svg>
         </button>
         <gen-vis v-if="vis.type == 'genVis'" class="visEntry" :def-file="`/data/${vis.src}.json`" :state="state" @update:state="saveState"/>
-        <europe-map v-else-if="vis.type == 'europeMap'" :src="vis.src" :state="state" @update:state="saveState"/>
     </div>
 </template>
 
 <script>
 import { GenVis } from '@preschen/gen-vis';
-import EuropeMap from '@/EuropeMap.vue';
 
 import { isFavorite, toggleFavorite, chartState, setChartState } from '@/settings.js';
 
@@ -30,7 +28,7 @@ export default {
         },
     },
     components: {
-        GenVis, EuropeMap,
+        GenVis,
     },
     computed: {
         active() { return isFavorite(this.vis.src) },

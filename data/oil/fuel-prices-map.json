@@ -1,20 +1,40 @@
 {
-    "title": "Spritpreise in Europa",
-    "subtitle": "inkl. Steuern, in €/Liter, Stand {date}",
-    "footer": "Quelle: EC Weekly Oil Bulletin",
+    "parent": "../_europe-map.json",
     "data": "fuel-prices-map.csv",
-    "columns": { "type": "variable", "value": "value" },
-    "types": {
-        "name": "Kraftstoff",
-        "values": {
-            "euroSuper95": { "name": "Benzin" },
-            "gasOil":      { "name": "Diesel" },
-            "heatingOil":  { "name": "Heizöl" }
-        }
+    "options": {
+        "title": "Spritpreise in Europa",
+        "subtitle": "inkl. Steuern, in €/Liter",
+        "footer": "Quelle: EC Weekly Oil Bulletin",
+        "locale": { "base": "de", "number": { "currency": ["", " €/l"] } }
     },
-    "domain": [null, null],
-    "trim": 0.05,
-    "format": ",.2f",
-    "unit": "€/l",
-    "legendFormat": ",.1f"
+    "globals": {
+        "type": "euroSuper95"
+    },
+    "filter": {
+        "type": "@type"
+    },
+    "formElements": [
+        {
+            "id": "type",
+            "name": "Kraftstoff",
+            "ref": "type",
+            "type": "switch",
+            "values": [
+                { "id": "euroSuper95", "name": "Benzin", "value": "euroSuper95" },
+                { "id": "gasOil",      "name": "Diesel", "value": "gasOil" },
+                { "id": "heatingOil",  "name": "Heizöl", "value": "heatingOil" }
+            ]
+        }
+    ],
+    "mapping": {
+        "type": { "column": "variable", "type": "categorical" },
+        "value": {
+            "name": "€/Liter",
+            "column": "value",
+            "type": "numeric",
+            "scale": { "type": "sequential", "interpolator": "Reds" },
+            "legend": { "format": ",.1f" },
+            "hover": { "format": "$,.2f" }
+        }
+    }
 }
