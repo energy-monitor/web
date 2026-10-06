@@ -1,0 +1,78 @@
+{
+    "parent": "../_facet-toggle.json",
+    "data": "rail-passengers.csv",
+    "options": {
+        "height": 220,
+        "margins": {"top": 5, "right": 30, "bottom": 30, "left": 50},
+        "title": "Schienenpersonenverkehr",
+        "subtitle": "Fahrgäste in Mio. bzw. Verkehrsleistung in Mrd. Personenkilometern, jährlich, alle Eisenbahnunternehmen (ohne U-Bahn und Straßenbahn), AT",
+        "footer": "Quelle: Eurostat, Statistik Austria - Schienenpersonenverkehr"
+    },
+    "mapping": {
+        "x": {
+            "column": "year",
+            "type": "categorical",
+            "scale": {
+                "type": "band",
+                "orientation": "horizontal",
+                "padding": 0.2
+            },
+            "axis": {
+                "position": "bottom",
+                "values": ["2004", "2008", "2012", "2016", "2020", "2024"]
+            }
+        },
+        "y": {
+            "column": "value",
+            "type": "numeric",
+            "scale": {
+                "type": "linear",
+                "orientation": "vertical",
+                "domain": [0, null],
+                "domainRel": [0, 0.1]
+            },
+            "axis": {
+                "ticks": 6,
+                "position": "left",
+                "grid": true,
+                "format": ",.0f"
+            },
+            "hover": {
+                "format": ",.1f"
+            }
+        },
+        "facet": {
+            "column": "measure",
+            "props": {
+                "manual": {
+                    "passengers": { "name": "Fahrgäste (Mio.)", "visible": true },
+                    "pkm":        { "name": "Verkehrsleistung (Mrd. Pkm)", "visible": true }
+                }
+            }
+        }
+    },
+    "facets": {
+        "dim": ["facet"],
+        "scales": ["x"],
+        "cols": {
+            "prop": "steps",
+            "ref": "totalWidth",
+            "steps": [
+                {"cut":   0, "value": 1},
+                {"cut": 550, "value": 2}
+            ]
+        }
+    },
+    "plot": {
+        "type": "cartesian:bar",
+        "categories": ["facet"],
+        "highlight": "row",
+        "props": {
+            "x": "@x:scaled",
+            "y1": "@y:scaled",
+            "fill": "#4A96D4",
+            "opacity": 0.9,
+            "highlight-opacity": 1
+        }
+    }
+}

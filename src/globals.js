@@ -133,6 +133,9 @@ const collections = {
             "mobility/registrations",
             "mobility/traffic",
             "mobility/traffic-years",
+            "mobility/rail-goods",
+            "mobility/rail-goods-years",
+            "mobility/rail-passengers",
             "oil/fuel-prices",
             "oil/fuel-prices-map",
         ]

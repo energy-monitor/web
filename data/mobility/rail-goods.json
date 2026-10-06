@@ -1,0 +1,74 @@
+{
+    "parent": ["../_timeline.json", "../_facet-toggle.json"],
+    "data": "rail-goods.csv",
+    "options": {
+        "height": 220,
+        "margins": {"top": 5, "right": 30, "bottom": 30, "left": 50},
+        "title": "Schienengüterverkehr",
+        "subtitle": "Gütermenge in Mio. Tonnen bzw. Verkehrsleistung in Mrd. Tonnenkilometern, quartalsweise, AT",
+        "footer": "Quelle: Eurostat, Statistik Austria - Schienengüterverkehr"
+    },
+    "mapping": {
+        "x": {
+            "axis": {
+                "ticks": {
+                    "prop": "relative",
+                    "ref": "innerWidth",
+                    "ratio": 0.014
+                },
+                "rotate": 0,
+                "format": "%Y"
+            },
+            "hover": {
+                "format": "Q%q %Y"
+            }
+        },
+        "facet": {
+            "column": "measure",
+            "props": {
+                "manual": {
+                    "tonnes": { "name": "Gütermenge (Mio. t)", "visible": true },
+                    "tkm":    { "name": "Verkehrsleistung (Mrd. tkm)", "visible": true }
+                }
+            }
+        }
+    },
+    "facets": {
+        "dim": ["facet"],
+        "scales": ["x"],
+        "cols": {
+            "prop": "steps",
+            "ref": "totalWidth",
+            "steps": [
+                {"cut":   0, "value": 1},
+                {"cut": 550, "value": 2}
+            ]
+        }
+    },
+    "plot": [
+        {
+            "type": "cartesian:line",
+            "categories": ["facet"],
+            "props": {
+                "stroke": "#C3423F",
+                "stroke-width": 2,
+                "fill": "none",
+                "d": {
+                    "x": "@x:scaled",
+                    "y": "@y:scaled"
+                },
+                "highlight-stroke-width": 3
+            }
+        },
+        {
+            "type": "svg:circle",
+            "categories": ["facet"],
+            "props": {
+                "cx": "@x:scaled",
+                "cy": "@y:scaled",
+                "r": 2.5,
+                "fill": "#C3423F"
+            }
+        }
+    ]
+}
