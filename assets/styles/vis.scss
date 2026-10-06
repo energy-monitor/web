@@ -1,6 +1,5 @@
 .visualisations {
-    // room for the paperclips of the charts on the left
-    margin: 10px 10px 10px 30px;
+    margin: 10px;
 
     // the texts of the collections, e.g. data/pages/fossil.md
     .markdown {
@@ -13,33 +12,26 @@
 
 // the charts of the collections and of the markdown texts
 .visualisations, .markdown {
-    // the paperclip to add a chart to the start page, in the margin left of
-    // the title, the top margin of the entries collapses with the one of the
-    // wrapper
-    .favEntry {
-        position: relative;
-        > .fav {
-            position: absolute;
-            top: 7px;
-            left: -18px;
-            padding: 0;
-            border: 0;
-            background: none;
-            cursor: pointer;
-            svg {
-                display: block;
-                fill: none;
-                stroke: #BBB;
-                stroke-width: 2;
-                stroke-linecap: round;
-                stroke-linejoin: round;
-            }
-            &:hover svg {
-                stroke: #777;
-            }
-            &.active svg {
-                stroke: #222;
-            }
+    // the paperclip to add a chart to the start page, in the footer before
+    // the buttons of gen-vis, as they are
+    .visEntry .fav {
+        padding: 0;
+        border: 0;
+        background: none;
+        cursor: pointer;
+        svg {
+            display: block;
+            fill: none;
+            stroke: #BBB;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        &:hover svg {
+            stroke: #777;
+        }
+        &.active svg {
+            stroke: #222;
         }
     }
 

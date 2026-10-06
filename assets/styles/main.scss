@@ -95,20 +95,20 @@ h1 a {
 }
 
 
+// the entries wrap as a whole, e.g. "Grafik-Bibliothek: gen-vis", the links
+// are separated by the gaps, separators would end lines when they wrap
 .footer {
     border-top: 1px solid #BBB;
-    text-align: center;
-    padding-top: 8px;
-    padding-bottom: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px 14px;
+    padding: 8px 10px 4px;
     font-size: 11px;
     margin-bottom: 5px;
     span {
-        padding: 0 10px;
-        border-right: 1px solid #888;
-
-        &:last-child {
-            border: none;
-        }
+        white-space: nowrap;
     }
     // color: #e6211e
 }

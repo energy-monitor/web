@@ -17,7 +17,7 @@
     "email": "peter.reschenhofer@wifo.ac.at"
   },
   "devDependencies": {
-    "@preschen/gen-vis": "file:../../gen-vis/preschen-gen-vis-1.2.0.tgz",
+    "@preschen/gen-vis": "^1.2.0",
     "copy-webpack-plugin": "^14",
     "css-loader": "^7",
     "html-webpack-plugin": "^5.6.3",
