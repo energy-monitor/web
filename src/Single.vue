@@ -1,6 +1,6 @@
 <template>
     <div class='visEntry single'>
-        <gen-vis :def-file="`/data/${src}.json`" :download="src.replaceAll('/', '_')"/>
+        <gen-vis :def-file="`/data/${src}.json`" :download="src.replaceAll('/', '_')" copy/>
     </div>
 </template>
 

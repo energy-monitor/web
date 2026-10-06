@@ -37,6 +37,9 @@ module.exports = ({ extractCss = false } = {}) => ({
         alias: {
             '@': resolve('src'),
             'A': resolve('assets'),
+            // the one of the page, also for a linked gen-vis (npm run link-gen-vis)
+            // which would take the one of its own node_modules otherwise
+            vue: resolve('node_modules/vue'),
         },
     },
     plugins: [

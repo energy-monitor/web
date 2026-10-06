@@ -8,7 +8,9 @@
     "build": "rm -rf dist && webpack --config build/prod.js",
     "upload": "rsync -arv --delete  dist/ energy.wifo.ac.at:~/energie/htdocs/",
     "deploy": "npm run check && npm run build && npm run upload",
-    "check": "node build/check.mjs"
+    "check": "node build/check.mjs",
+    "link-gen-vis": "npm install --no-save ../../gen-vis",
+    "unlink-gen-vis": "npm install"
   },
   "author": {
     "name": "Peter Reschenhofer",

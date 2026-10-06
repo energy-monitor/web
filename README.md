@@ -19,6 +19,8 @@ To run the monitor website locally in dev mode:
     npm install
     npm run dev
 
+To try changes of gen-vis, its checkout at `../../gen-vis` (next to the `energy` folder) is linked with `npm run link-gen-vis`, with `npm run watch` in gen-vis the dev server takes its changes. `npm run unlink-gen-vis` installs the version of `package.json` again, `npm run check` and so a deploy fail while it is linked.
+
 The build (`npm run build`) also writes an html file for each page, e.g. `collection/gas.html` for `/collection/gas`. Each file has the page's title, description, canonical url, and its text and chart titles for search engines, plus `sitemap.xml` and `robots.txt`, see `build/pages.js` and `assets/.htaccess`.
 
 ## Data

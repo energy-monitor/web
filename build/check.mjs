@@ -27,9 +27,14 @@ const satisfies = (version, range) => {
 
 const wanted = JSON.parse(read('package.json')).devDependencies['@preschen/gen-vis'];
 const installed = JSON.parse(read('node_modules/@preschen/gen-vis/package.json')).version;
+// a linked checkout (npm run link-gen-vis) is not deployed, its build may
+// have changes which are not released
+const linked = fs.lstatSync(path.join(root, 'node_modules/@preschen/gen-vis')).isSymbolicLink();
+if (linked)
+    problem('gen-vis', `linked to ${fs.realpathSync(path.join(root, 'node_modules/@preschen/gen-vis'))}, run npm run unlink-gen-vis`);
 // a local tarball, e.g. file:../../gen-vis/preschen-gen-vis-1.0.0.tgz, is the
 // installed one if it has its hash, otherwise it was packed again since
-if (wanted.startsWith('file:')) {
+else if (wanted.startsWith('file:')) {
     const tarball = wanted.slice('file:'.length);
     const integrity = JSON.parse(read('node_modules/.package-lock.json')).packages['node_modules/@preschen/gen-vis']?.integrity;
     if (!exists(tarball))
