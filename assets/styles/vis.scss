@@ -39,12 +39,15 @@
     // override them without more specific selectors
     .visEntry {
         margin: 25px 0 45px;
+        // the space of a chart while it is loaded, so the page does not move
+        // when it is drawn, a chart drawn before has its height
+        --gen-vis-loading-height: 390px;
 
-        .subtitle {
+        .vis-subtitle {
             margin-top: -1px;
             margin-bottom: -2px;
         }
-        .facet-title {
+        .vis-facet-title {
             font-weight: 400;
             text-align: center;
         }
@@ -53,14 +56,14 @@
             margin-bottom: 4px;
             // closer to the subtitle, charts without form elements keep
             // the space between the subtitle and the legends
-            &:has(.formElement) {
+            &:has(.vis-form-element) {
                 margin-top: -7px;
             }
         }
-        .legend[data-dim='country'] svg {
+        .vis-legend[data-dim='country'] svg {
             display: none;
         }
-        g.axis-position-left text {
+        g.vis-axis-left text {
             transform: translate(3px, 0);
         }
     }

@@ -52,7 +52,7 @@
         }
     },
     "facets": {
-        "dim": ["facet"],
+        "dim": "facet",
         "scales": ["x"],
         "cols": {
             "prop": "steps",
