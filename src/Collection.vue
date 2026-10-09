@@ -1,8 +1,9 @@
 <template>
     <div class="visualisations">
-        <template v-for="v in vis">
+        <!-- the key keeps the charts when they are moved -->
+        <template v-for="(v, i) in vis" :key="`${v.type} ${v.src}`">
             <markdown v-if="v.type == 'markdown'" :url="`/data/pages/${v.src}.md`" settings/>
-            <vis-entry v-else :vis="v"/>
+            <vis-entry v-else :vis="v" :movable="id == 'preset'" :first="i == 0" :last="i == vis.length - 1" @move="moveFavorite(i, $event)"/>
         </template>
     </div>
 </template>
@@ -11,36 +12,23 @@
 import { defineAsyncComponent } from 'vue';
 
 import { collections } from '@/globals.js';
-import { favorites, customized } from '@/settings.js';
+import { favorites, moveFavorite } from '@/settings.js';
 
 import VisEntry from '@/VisEntry.vue';
 import { markdown } from '@/lazy.js';
 
 export default {
     props: ["id"],
-    data: () => ({
-        vis: [],
-    }),
     components: {
         VisEntry, Markdown: defineAsyncComponent(markdown),
     },
     computed: {
-        customized() { return customized.value },
+        // the start page shows the selection of the user, an unselected chart
+        // is removed at once, also after a reset or a change in another tab
+        vis() { return this.id == 'preset' ? favorites.value : collections[this.id].vis },
     },
-    watch: {
-        '$route.name': {
-            handler: function(n) {
-                // the start page shows the selection of the user, unselected
-                // charts stay until the page is opened again
-                this.vis = this.id == 'preset' ? [...favorites.value] : collections[this.id].vis;
-            },
-            immediate: true
-        },
-        // reset in the footer or in another tab
-        customized(c) {
-            if (!c && this.id == 'preset')
-                this.vis = [...favorites.value];
-        },
-    }
+    methods: {
+        moveFavorite,
+    },
 }
 </script>

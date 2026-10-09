@@ -1,4 +1,4 @@
-export { favorites, customized, isFavorite, toggleFavorite, chartState, setChartState, resetSettings };
+export { favorites, customized, isFavorite, toggleFavorite, moveFavorite, chartState, setChartState, resetSettings };
 
 import { ref, computed } from 'vue';
 
@@ -59,9 +59,17 @@ const toggleFavorite = ({ type, src }) => {
     save(keys.favorites, stored.value);
 };
 
+// the favorite at i is swapped with its neighbor, offset -1 up and 1 down
+const moveFavorite = (i, offset) => {
+    const moved = [...favorites.value];
+    [moved[i], moved[i + offset]] = [moved[i + offset], moved[i]];
+    stored.value = moved;
+    save(keys.favorites, stored.value);
+};
+
 const chartState = src => states.value[src] ?? null;
 
-// a chart without changes has no entry
+// a chart without changes has no entry, null resets it to its defaults
 const setChartState = (src, state) => {
     const { [src]: old, ...others } = states.value;
     states.value = Object.keys(state ?? {}).length > 0 ? { ...others, [src]: state } : others;

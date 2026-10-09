@@ -12,9 +12,9 @@
 
 // the charts of the collections and of the markdown texts
 .visualisations, .markdown {
-    // the paperclip to add a chart to the start page, in the footer before
-    // the buttons of gen-vis, as they are
-    .visEntry .fav {
+    // the buttons to reset and to move a chart and the paperclip to add it
+    // to the start page, in the footer before the buttons of gen-vis, as they are
+    .visEntry :is(.reset, .move, .fav) {
         padding: 0;
         border: 0;
         background: none;
@@ -29,6 +29,13 @@
         }
         &:hover svg {
             stroke: #777;
+        }
+        // the first chart up, the last one down
+        &:disabled {
+            cursor: default;
+            svg {
+                stroke: #E5E5E5;
+            }
         }
         &.active svg {
             stroke: #222;

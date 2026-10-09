@@ -1,7 +1,26 @@
 <template>
     <gen-vis v-if="vis.type == 'genVis'" class="visEntry" :def-file="`/data/${vis.src}.json`" :download="fileName" copy image-width="screen" :state="state" @update:state="saveState">
-        <!-- paperclip of the feather icons, black if the chart is selected -->
+        <!-- rotate-ccw, arrow-up, arrow-down and paperclip of the feather
+             icons, the paperclip is black if the chart is selected -->
         <template v-if="settings" #buttons>
+            <button v-if="state" class="reset" @click="setChartState(vis.src, null)"
+                    title="Einstellungen der Grafik zurücksetzen">
+                <svg viewBox="0 0 24 24" width="14" height="14">
+                    <path d="M1 4v6h6M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                </svg>
+            </button>
+            <template v-if="movable && active">
+                <button class="move" :disabled="first" @click="move(-1)" title="Nach oben verschieben">
+                    <svg viewBox="0 0 24 24" width="14" height="14">
+                        <path d="M12 19V5M5 12l7-7 7 7"/>
+                    </svg>
+                </button>
+                <button class="move" :disabled="last" @click="move(1)" title="Nach unten verschieben">
+                    <svg viewBox="0 0 24 24" width="14" height="14">
+                        <path d="M12 5v14M19 12l-7 7-7-7"/>
+                    </svg>
+                </button>
+            </template>
             <button class="fav" :class="{ active }" @click="toggleFavorite(vis)"
                     :title="active ? 'Aus der Auswahl entfernen' : 'Zur Auswahl hinzufügen'">
                 <svg viewBox="0 0 24 24" width="14" height="14">
@@ -21,7 +40,9 @@ import { isFavorite, toggleFavorite, chartState, setChartState } from '@/setting
 // collection, e.g. { type: "genVis", src: "gas/price" }, all have buttons in
 // the footer to copy them and to save them as a PNG, as they are seen (e.g.
 // the layout of a phone), with settings also a
-// paperclip to add it to the start page and its changes are kept
+// paperclip to add it to the start page and its changes are kept, a button
+// resets them, movable ones (on the start page) have arrows to move them up
+// and down, see the event move, the first and the last only in one direction
 export default {
     props: {
         vis: Object,
@@ -29,7 +50,15 @@ export default {
             type: Boolean,
             default: true,
         },
+        movable: {
+            type: Boolean,
+            default: false,
+        },
+        first: Boolean,
+        last: Boolean,
     },
+    // move with the offset in the list, -1 up and 1 down
+    emits: ['move'],
     components: {
         GenVis,
     },
@@ -41,6 +70,14 @@ export default {
     },
     methods: {
         toggleFavorite,
+        setChartState,
+        // the chart stays at its place on the screen, the page scrolls,
+        // the arrow can be clicked again
+        move(offset) {
+            const top = this.$el.getBoundingClientRect().top;
+            this.$emit('move', offset);
+            this.$nextTick(() => window.scrollBy(0, this.$el.getBoundingClientRect().top - top));
+        },
         saveState(state) {
             if (this.settings)
                 setChartState(this.vis.src, state);
