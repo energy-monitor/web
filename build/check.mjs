@@ -17,12 +17,37 @@ const problem = (where, message) => problems.push(`${where}: ${message}`);
 const read = f => fs.readFileSync(path.join(root, f), 'utf8');
 const exists = f => fs.existsSync(path.join(root, f));
 
-// `^x.y.z` as npm: the same major version, the same minor one for 0.y.z, and not older
+// a version, e.g. 2.0.0-alpha.1, its numbers and the identifiers of a prerelease
+const parse = s => {
+    const [main, pre] = s.replace(/^\^/, '').split(/-(.*)/);
+    return { parts: main.split('.').map(Number), pre: pre?.split('.').map(p => /^\d+$/.test(p) ? Number(p) : p) };
+};
+
+// prereleases in order, a version without one is newer than its prereleases
+const comparePre = (a, b) => {
+    if (!a || !b)
+        return !a - !b;
+    for (let i = 0; i < Math.max(a.length, b.length); i++) {
+        if (a[i] === undefined || b[i] === undefined)
+            return a[i] === undefined ? -1 : 1;
+        if (a[i] !== b[i])
+            return typeof a[i] == 'number' && typeof b[i] == 'number' ? a[i] - b[i] : String(a[i]).localeCompare(String(b[i]));
+    }
+    return 0;
+};
+
+// `^x.y.z` as npm: the same major version, the same minor one for 0.y.z, and not
+// older, a prerelease only of the version of the range, e.g. 2.0.0-alpha.1 of
+// ^2.0.0-alpha.0
 const satisfies = (version, range) => {
-    const [v, r] = [version, range.replace(/^\^/, '')].map(s => s.split('.').map(Number));
-    const same = range.startsWith('^') ? (r[0] > 0 ? 1 : 2) : 3;
-    const newer = v.findIndex((n, i) => n != r[i]);
-    return v.slice(0, same).every((n, i) => n == r[i]) && (newer == -1 || v[newer] > r[newer]);
+    const [v, r] = [parse(version), parse(range)];
+    const same = range.startsWith('^') ? (r.parts[0] > 0 ? 1 : 2) : 3;
+    const newer = v.parts.findIndex((n, i) => n != r.parts[i]);
+    if (!v.parts.slice(0, same).every((n, i) => n == r.parts[i]) || (newer != -1 && v.parts[newer] < r.parts[newer]))
+        return false;
+    if (v.pre)
+        return newer == -1 && Boolean(r.pre) && comparePre(v.pre, r.pre) >= 0;
+    return newer != -1 || comparePre(v.pre, r.pre) >= 0;
 };
 
 const wanted = JSON.parse(read('package.json')).devDependencies['@preschen/gen-vis'];
