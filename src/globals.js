@@ -94,6 +94,8 @@ const collections = {
             "oil/price-brent",
             "oil/fuel-prices",
             "coal/price",
+            "wood/pellets",
+            "wood/firewood",
             "economy/eua",
             "economy/dollar",
         ]

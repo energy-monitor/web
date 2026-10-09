@@ -1,0 +1,16 @@
+{
+    "parent": ["../_years.json", "../_monthly.json"],
+    "data": "pellets.csv",
+    "options": {
+        "title": "Pelletspreis",
+        "subtitle": "lose Pellets (ENplus A1), Bestellmenge 6 t, monatlich, in Cent/kg",
+        "footer": "Quelle: proPellets Austria, via BAB - Preisportal"
+    },
+    "mapping": {
+        "y": {
+            "hover": {
+                "format": ",.2f"
+            }
+        }
+    }
+}

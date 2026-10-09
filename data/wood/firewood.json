@@ -1,0 +1,30 @@
+{
+    "parent": ["../_years.json", "../_line-types.json", "../_monthly.json"],
+    "data": "firewood.csv",
+    "options": {
+        "title": "Brennholzpreis",
+        "subtitle": "Erzeugerpreis, monatlich, in €/Raummeter",
+        "footer": "Quelle: Statistik Austria - Land- und forstwirtschaftliche Erzeugerpreise, via BAB - Preisportal"
+    },
+    "mapping": {
+        "y": {
+            "hover": {
+                "format": ",.2f"
+            }
+        },
+        "type": {
+            "props": {
+                "manual": {
+                    "hard": {
+                        "name": "Hartholz",
+                        "stroke-dasharray": 0
+                    },
+                    "soft": {
+                        "name": "Weichholz",
+                        "stroke-dasharray": "4, 2"
+                    }
+                }
+            }
+        }
+    }
+}
