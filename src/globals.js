@@ -88,6 +88,7 @@ const collections = {
         name: "Energiepreise",
         menu: true,
         vis: [
+            "economy/price-index",
             "electricity/price",
             "gas/price",
             "gas/price-lng",

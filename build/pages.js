@@ -20,17 +20,19 @@ const escape = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt
 const shorten = (s, n = 160) => s.length <= n ? s : s.slice(0, s.lastIndexOf(' ', n - 1)).replace(/[,;:.]$/, '') + ' …';
 
 // the title and subtitle of the charts by their id, with the options of their
-// parents, placeholders as `Stand {date}` are filled by the charts and dropped
+// parents, placeholders of globals as `Durchschnitt {base} = 100` have their
+// default, others as `Stand {date}` are filled by the charts and dropped
 const chartTexts = async () => {
     const { resolveParents } = await import('@preschen/gen-vis/check');
     const load = url => fs.readFileSync(fileURLToPath(url), 'utf8');
-    const clean = s => s?.replace(/,?\s*[^,{]*\{[^}]*\}/g, '').trim();
+    const fill = (s, globals = {}) => s?.replace(/\{(\w+)\}/g, (t, n) => n in globals ? String(globals[n]) : t);
+    const clean = (s, globals) => fill(s, globals)?.replace(/,?\s*[^,{]*\{[^}]*\}/g, '').trim();
     const texts = {};
     for (const src of Object.keys(listCharts())) {
         const file = path.join(dir, `${src}.json`);
         const def = JSON.parse(fs.readFileSync(file, 'utf8'));
-        const o = (await resolveParents(def, pathToFileURL(file).href, load)).options;
-        texts[src] = { title: clean(o?.title) ?? src, subtitle: clean(o?.subtitle) };
+        const { options: o, globals } = await resolveParents(def, pathToFileURL(file).href, load);
+        texts[src] = { title: clean(o?.title, globals) ?? src, subtitle: clean(o?.subtitle, globals) };
     }
     return texts;
 };
