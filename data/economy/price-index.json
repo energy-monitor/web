@@ -75,9 +75,9 @@
                     "gas":         { "color": "#C3423F", "name": "Erdgas" },
                     "oil":         { "color": "#C3423F", "name": "Rohöl (Brent)", "stroke-dasharray": "6, 3" },
                     "coal":        { "color": "#C3423F", "name": "Kohle", "stroke-dasharray": "2, 2" },
-                    "firewood":    { "color": "#F2A03D", "name": "Brennholz" },
-                    "pellets":     { "color": "#F2A03D", "name": "Pellets", "stroke-dasharray": "6, 3", "visible": false },
-                    "electricity": { "color": "#F3D039", "name": "Strom" },
+                    "firewood":    { "color": "#b5c969", "name": "Brennholz" },
+                    "pellets":     { "color": "#b5c969", "name": "Pellets", "stroke-dasharray": "6, 3", "visible": false },
+                    "electricity": { "color": "#86cae7", "name": "Strom" },
                     "eua":         { "color": "#F3D039", "name": "CO₂-Zertifikate (EUA)", "stroke-dasharray": "6, 3", "visible": false }
                 }
             },
