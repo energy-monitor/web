@@ -20,7 +20,7 @@
             "id": "series",
             "name": "Daten",
             "ref": "series",
-            "type": "switch",
+            "type": "radio",
             "values": [
                 { "id": "registrations", "name": "Neuzulassungen", "value": "registrations" },
                 { "id": "stock",         "name": "Bestand",        "value": "stock" }
@@ -30,7 +30,7 @@
             "id": "type",
             "name": "Kraftstoff",
             "ref": "type",
-            "type": "switch",
+            "type": "radio",
             "values": [
                 { "id": "bev",    "name": "Elektro",               "value": "bev" },
                 { "id": "phev",   "name": "Plug-in-Hybrid",        "value": "phev" },

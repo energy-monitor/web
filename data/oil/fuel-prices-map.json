@@ -18,7 +18,7 @@
             "id": "type",
             "name": "Kraftstoff",
             "ref": "type",
-            "type": "switch",
+            "type": "radio",
             "values": [
                 { "id": "euroSuper95", "name": "Benzin", "value": "euroSuper95" },
                 { "id": "gasOil",      "name": "Diesel", "value": "gasOil" },

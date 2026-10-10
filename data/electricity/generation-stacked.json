@@ -21,7 +21,7 @@
         },
         "type": {
             "props": {
-                "manual": {
+                "categories": {
                     "others": { "color": "#CCC", "name": "Andere" }
                 }
             }

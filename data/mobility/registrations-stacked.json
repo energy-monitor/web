@@ -18,7 +18,7 @@
         "type": {
             "column": "type",
             "props": {
-                "manual": {
+                "categories": {
                     "bev":    { "color": "#3FA45B", "name": "Elektro" },
                     "phev":   { "color": "#7ACDB5", "name": "Plug-in-Hybrid" },
                     "hybrid": { "color": "#4A96D4", "name": "Hybrid (ohne Plug-in)" },

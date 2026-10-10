@@ -10,7 +10,7 @@
         "type": {
             "column": "product",
             "props": {
-                "manual": {
+                "categories": {
                     "total": { "color": "#C3423F", "name": "Erdgas" }
                 }
             }

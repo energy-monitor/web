@@ -4,7 +4,7 @@
     "mapping": {
         "facet": {
             "props": {
-                "manual": {
+                "categories": {
                     "Hydro":  { "name": "Hydro" },
                     "Wind":   { "name": "Wind" },
                     "Solar":  { "name": "Solar" },

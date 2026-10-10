@@ -71,7 +71,7 @@
                     "highlight-opacity": 1,
                     "stroke-dasharray": 0
                 },
-                "manual": {
+                "categories": {
                     "gas":         { "color": "#C3423F", "name": "Erdgas" },
                     "oil":         { "color": "#C3423F", "name": "Rohöl (Brent)", "stroke-dasharray": "6, 3" },
                     "coal":        { "color": "#C3423F", "name": "Kohle", "stroke-dasharray": "2, 2" },

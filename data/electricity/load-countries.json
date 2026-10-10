@@ -23,7 +23,7 @@
         "facet": {
             "column": "country",
             "props": {
-                "manual": {
+                "categories": {
                     "AL": { "name": "Albanien", "visible": false },
                     "BE": { "name": "Belgien", "visible": false },
                     "BA": { "name": "Bosnien und Herzegowina", "visible": false },

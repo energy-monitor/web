@@ -19,7 +19,7 @@
         "type": {
             "column": "variable",
             "props": {
-                "manual": {
+                "categories": {
                     "euroSuper95": {
                         "name": "Benzin",
                         "stroke-dasharray": 0

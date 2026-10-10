@@ -15,7 +15,7 @@
         },
         "year": {
             "props": {
-                "manual": {
+                "categories": {
                     "2019": { "visible": false},
                     "2020": { "visible": false}
                 }
@@ -23,7 +23,7 @@
         },
         "type": {
             "props": {
-                "manual": {
+                "categories": {
                     "mean": {
                         "name": "⌀",
                         "stroke-dasharray": 0

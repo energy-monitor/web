@@ -15,7 +15,7 @@
         "facet": {
             "column": "type",
             "props": {
-                "manual": {
+                "categories": {
                     "stock": {
                         "name": "Speicherstand, täglich"
                     },

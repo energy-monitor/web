@@ -9,7 +9,7 @@
     "mapping": {
         "facet": {
             "props": {
-                "manual": {
+                "categories": {
                     "total": { "name": "Gesamt", "visible": true }
                 }
             }

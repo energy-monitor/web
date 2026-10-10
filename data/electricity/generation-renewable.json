@@ -7,7 +7,7 @@
     "mapping": {
         "facet": {
             "props": {
-                "manual": {
+                "categories": {
                     "Renewable":     { "name": "Renewable" },
                     "Non-Renewable": { "name": "Non-Renewable" }
                 }

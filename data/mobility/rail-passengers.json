@@ -44,7 +44,7 @@
         "facet": {
             "column": "measure",
             "props": {
-                "manual": {
+                "categories": {
                     "passengers": { "name": "Fahrgäste (Mio.)", "visible": true },
                     "pkm":        { "name": "Verkehrsleistung (Mrd. Pkm)", "visible": true }
                 }

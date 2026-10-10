@@ -12,7 +12,7 @@
     "mapping": {
         "facet": {
             "props": {
-                "manual": {
+                "categories": {
                     "total":    { "name": "Gesamt", "visible": true },
                     "gasoline": { "name": "Benzin", "visible": false },
                     "diesel":   { "name": "Diesel", "visible": true },

@@ -19,7 +19,7 @@
             "id": "type",
             "name": "Quelle",
             "ref": "type",
-            "type": "switch",
+            "type": "radio",
             "values": [
                 { "id": "Renewable",     "name": "Erneuerbar", "value": "Renewable" },
                 { "id": "Non-Renewable", "name": "Fossil",     "value": "Non-Renewable" },

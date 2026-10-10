@@ -10,7 +10,7 @@
         "type": {
             "column": "product",
             "props": {
-                "manual": {
+                "categories": {
                     "stein": { "color": "#4D4D4D", "name": "Steinkohle" },
                     "koks":  { "color": "#A0A0A0", "name": "Koks" },
                     "braun": { "color": "#8B4513", "name": "Braunkohle" }

@@ -12,7 +12,7 @@
     "mapping": {
         "facet": {
             "props": {
-                "manual": {
+                "categories": {
                     "total": { "name": "Gesamt", "visible": true },
                     "stein": { "name": "Steinkohle", "visible": true },
                     "braun": { "name": "Braunkohle", "visible": false },

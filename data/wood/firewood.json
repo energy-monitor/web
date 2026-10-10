@@ -14,7 +14,7 @@
         },
         "type": {
             "props": {
-                "manual": {
+                "categories": {
                     "hard": {
                         "name": "Hartholz",
                         "stroke-dasharray": 0
