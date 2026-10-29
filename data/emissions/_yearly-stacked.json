@@ -1,0 +1,79 @@
+{
+    "parent": "../_share-switch.json",
+    "options": {
+        "height": {
+            "prop": "steps",
+            "ref": "totalWidth",
+            "steps": [
+                {"cut":   0, "value": 220},
+                {"cut": 550, "value": 260},
+                {"cut": 600, "value": 300}
+            ]
+        },
+        "margins": {"top": 15, "right": 30, "bottom": 30, "left": 50},
+        "footer": "Quelle: Umweltbundesamt - Treibhausgasinventur (Submission 2026 an die UNFCCC)"
+    },
+    "mapping": {
+        "x": {
+            "column": "year",
+            "type": "categorical",
+            "scale": {
+                "type": "band",
+                "orientation": "horizontal",
+                "padding": 0.2
+            },
+            "axis": {
+                "position": "bottom",
+                "values": ["1990", "1995", "2000", "2005", "2010", "2015", "2020"]
+            }
+        },
+        "y": {
+            "column": "value",
+            "type": "numeric",
+            "stacked": true,
+            "scale": {
+                "type": "linear",
+                "orientation": "vertical",
+                "domain": [0, null],
+                "domainRel": [0, 0.1]
+            },
+            "axis": {
+                "ticks": 6,
+                "position": "left",
+                "grid": true,
+                "format": ",.0f"
+            },
+            "hover": {
+                "format": ",.1f"
+            }
+        },
+        "type": {
+            "legend": {
+                "symbol": {
+                    "size": 16,
+                    "elements": [{
+                        "type": "rect",
+                        "props": {
+                            "x": 0, "y": 0, "width": 16, "height": 15,
+                            "fill": "@color", "rx": 2
+                        }
+                    }]
+                }
+            },
+            "hover": {}
+        }
+    },
+    "plot": {
+        "type": "cartesian:bar",
+        "categories": ["type"],
+        "highlight": "row",
+        "props": {
+            "fill": "@color",
+            "opacity": 0.9,
+            "highlight-opacity": 1,
+            "x": "@x:scaled",
+            "y0": "@y:start:scaled",
+            "y1": "@y:end:scaled"
+        }
+    }
+}

@@ -150,6 +150,13 @@ const collections = {
             { type: "markdown", src: "fossil"},
         ]
     },
+    emissions: {
+        name: "Emissionen",
+        menu: true,
+        vis: [
+            { type: "markdown", src: "emissions"},
+        ]
+    },
     test: {
         name: "Test",
         menu: false,

@@ -1,0 +1,22 @@
+{
+    "parent": "_yearly-stacked.json",
+    "data": "fuels.csv",
+    "options": {
+        "title": "Energieeinsatz der Verbrennung nach Brennstoffen",
+        "subtitle": "jährlich, in PJ oder Anteile, Treibhausgasinventur CRT 1.A, AT"
+    },
+    "mapping": {
+        "type": {
+            "column": "fuel",
+            "props": {
+                "categories": {
+                    "oil":     { "color": "#6F625A", "name": "Mineralöl" },
+                    "biomass": { "color": "#3FA45B", "name": "Biomasse" },
+                    "coal":    { "color": "#8B4513", "name": "Kohle" },
+                    "waste":   { "color": "#9A9A9A", "name": "Abfall (fossil)" },
+                    "gas":     { "color": "#C3423F", "name": "Erdgas" }
+                }
+            }
+        }
+    }
+}

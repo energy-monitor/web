@@ -1,0 +1,24 @@
+{
+    "parent": "_yearly-stacked.json",
+    "data": "sectors.csv",
+    "options": {
+        "title": "CO₂-Emissionen der Verbrennung nach Sektoren",
+        "subtitle": "jährlich, in Mt CO₂ oder Anteile, fossile Brennstoffe (ohne Biomasse), Treibhausgasinventur CRT 1.A, AT"
+    },
+    "mapping": {
+        "type": {
+            "column": "sector",
+            "props": {
+                "categories": {
+                    "energy":      { "color": "#2a78d6", "name": "Energiewirtschaft" },
+                    "industry":    { "color": "#eb6834", "name": "Industrie" },
+                    "transport":   { "color": "#1baf7a", "name": "Verkehr" },
+                    "households":  { "color": "#eda100", "name": "Haushalte" },
+                    "services":    { "color": "#e87ba4", "name": "Dienstleistungen" },
+                    "agriculture": { "color": "#008300", "name": "Land- und Forstwirtschaft" },
+                    "other":       { "color": "#9A9A9A", "name": "Sonstige (Militär)" }
+                }
+            }
+        }
+    }
+}
