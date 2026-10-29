@@ -1,0 +1,20 @@
+{
+    "parent": "../_austria-map.json",
+    "data": "districts.csv",
+    "options": {
+        "title": "Temperatur",
+        "subtitle": "Jahresmittel, Abweichung vom Mittel 1961 - 1990, in °C",
+        "footer": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster, Mittel über die Bezirke"
+    },
+    "globals": {
+        "indicator": "tm.anomaly"
+    },
+    "mapping": {
+        "value": {
+            "name": "Abweichung",
+            "scale": { "type": "sequential", "interpolator": "RdBu", "domain": [3, -3] },
+            "legend": { "format": "+.1f" },
+            "hover": { "format": "+.1f" }
+        }
+    }
+}

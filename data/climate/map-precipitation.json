@@ -1,0 +1,20 @@
+{
+    "parent": "../_austria-map.json",
+    "data": "districts.csv",
+    "options": {
+        "title": "Niederschlag",
+        "subtitle": "Jahressumme, Abweichung vom Mittel 1961 - 1990, in %",
+        "footer": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster, Mittel über die Bezirke"
+    },
+    "globals": {
+        "indicator": "rr.anomaly"
+    },
+    "mapping": {
+        "value": {
+            "name": "Abweichung",
+            "scale": { "type": "sequential", "interpolator": "BrBG", "domain": [-40, 40] },
+            "legend": { "format": "+.0f" },
+            "hover": { "format": "+.0f" }
+        }
+    }
+}

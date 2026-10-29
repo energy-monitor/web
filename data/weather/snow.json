@@ -1,0 +1,46 @@
+{
+    "parent": "../_years.json",
+    "data": "snow.csv",
+    "options": {
+        "title": "Schneedecke Österreich",
+        "subtitle": "Wasseräquivalent der Schneedecke, Flächenmittel, in mm",
+        "footer": "Quelle: GeoSphere Austria (SNOWGRID-CL)"
+    },
+    "mapping": {
+        "y": {
+            "column": "value",
+            "scale": {
+                "domain": [0, null],
+                "domainRel": [0, 0.1]
+            }
+        },
+        "year": {
+            "legend": {
+                "symbol": {
+                    "size": 16,
+                    "elements": [{
+                        "type": "line",
+                        "props": {
+                            "x1": 0, "x2": 16, "y1": 8, "y2": 8,
+                            "stroke": "@color",
+                            "stroke-width": "@stroke-width",
+                            "stroke-dasharray": "@stroke-dasharray",
+                            "opacity": "@opacity"
+                        }
+                    }]
+                }
+            },
+            "props": {
+                "categories": {
+                    "avg60-90": { "color": "#888", "opacity": 0.9, "stroke-dasharray": "4, 3", "name": "Ø 1961 - 1990"},
+                    "avg90-20": { "color": "#444", "opacity": 0.9, "stroke-dasharray": "8, 3", "name": "Ø 1991 - 2020"}
+                }
+            }
+        }
+    },
+    "plot": {
+        "props": {
+            "stroke-dasharray": "@stroke-dasharray"
+        }
+    }
+}

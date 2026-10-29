@@ -125,6 +125,8 @@ const collections = {
             "electricity/generation-sources",
             "electricity/generation-renewable",
             "electricity/generation-map",
+            "weather/precipitation",
+            "weather/snow",
         ]
     },
     mobility: {
@@ -155,6 +157,19 @@ const collections = {
         menu: true,
         vis: [
             { type: "markdown", src: "emissions"},
+        ]
+    },
+    climate: {
+        name: "Klima",
+        menu: true,
+        vis: [
+            "climate/regions",
+            "climate/map-temperature",
+            "climate/map-precipitation",
+            "climate/map-hot-days",
+            "climate/map-snow-days",
+            "weather/precipitation",
+            "weather/snow",
         ]
     },
     test: {

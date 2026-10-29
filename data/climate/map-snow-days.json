@@ -1,0 +1,20 @@
+{
+    "parent": "../_austria-map.json",
+    "data": "districts.csv",
+    "options": {
+        "title": "Schneedeckentage",
+        "subtitle": "Tage mit mindestens 1 cm Schnee, jährlich",
+        "footer": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster, Mittel über die Bezirke"
+    },
+    "globals": {
+        "indicator": "days.snow"
+    },
+    "mapping": {
+        "value": {
+            "name": "Tage",
+            "scale": { "type": "sequential", "interpolator": "Blues", "domain": [0, 250] },
+            "legend": { "format": ".0f" },
+            "hover": { "format": ".0f" }
+        }
+    }
+}
