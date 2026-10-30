@@ -163,13 +163,13 @@ const collections = {
         name: "Klima",
         menu: true,
         vis: [
-            "climate/regions",
             "climate/map-temperature",
             "climate/map-precipitation",
             "climate/map-hot-days",
             "climate/map-snow-days",
             "weather/precipitation",
             "weather/snow",
+            "climate/regions",
         ]
     },
     test: {
