@@ -63,6 +63,12 @@
                 "stroke-width": 0.5,
                 "highlight-fill-opacity": 0.75
             }
+        },
+        {
+            "type": "geo:mesh",
+            "object": "states",
+            "borders": "inner",
+            "props": { "stroke": "white", "stroke-width": 1.4 }
         }
     ]
 }
