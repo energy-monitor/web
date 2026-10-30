@@ -125,8 +125,8 @@ const collections = {
             "electricity/generation-sources",
             "electricity/generation-renewable",
             "electricity/generation-map",
-            "weather/precipitation",
-            "weather/snow",
+            //"weather/precipitation",
+            //"weather/snow",
         ]
     },
     mobility: {
