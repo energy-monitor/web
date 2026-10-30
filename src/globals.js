@@ -154,14 +154,14 @@ const collections = {
     },
     emissions: {
         name: "Emissionen",
-        menu: true,
+        menu: false,
         vis: [
             { type: "markdown", src: "emissions"},
         ]
     },
     climate: {
         name: "Klima",
-        menu: true,
+        menu: false,
         vis: [
             "climate/map-temperature",
             "climate/map-precipitation",
