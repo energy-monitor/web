@@ -63,7 +63,7 @@
                 ] }
             },
             "props": {
-                "common": { "symbolHeight": 14, "symbolStroke": "none", "symbolDash": "none", "dash": "none", "lineWidth": 2 },
+                "common": { "symbolHeight": 14, "symbolStroke": "none", "symbolDash": "none", "dash": "none", "lineWidth": 2, "hoverStyle": "normal" },
                 "categories": {
                     "Hydro":  { "text": "#0B5E80" },
                     "Wind":   { "text": "#2F5F8A" },
@@ -72,11 +72,11 @@
                     "Coal":   { "text": "#FFFFFF" },
                     "Oil":    { "color": "#000", "name": "Erdöl", "text": "#FFFFFF", "legend": false },
                     "others": { "color": "#CCC", "name": "Andere", "text": "#444444" },
-                    "total":  { "color": "#222", "name": "Produktion", "text": "#222", "symbolHeight": 0, "symbolStroke": "#222", "lineWidth": 1.5 },
-                    "load":   { "color": "#222", "name": "Verbrauch", "text": "#222", "symbolHeight": 0, "symbolStroke": "#222", "symbolDash": "4 2", "dash": "5 3" }
+                    "total":  { "color": "#222", "name": "Produktion", "text": "#222", "symbolHeight": 0, "symbolStroke": "#222", "lineWidth": 1.5, "hoverStyle": "italic" },
+                    "load":   { "color": "#222", "name": "Verbrauch", "text": "#222", "symbolHeight": 0, "symbolStroke": "#222", "symbolDash": "4 2", "dash": "5 3", "hoverStyle": "italic" }
                 }
             },
-            "hover": {}
+            "hover": { "row": { "props": { "font-style": "@hoverStyle" } } }
         },
         "facet": {
             "column": "season",
