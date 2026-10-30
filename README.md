@@ -25,11 +25,11 @@ The build (`npm run build`) also writes an html file for each page, e.g. `collec
 
 ## Data
 
-The charts are [gen-vis](https://github.com/petres/gen-vis) definitions in `data/`, their id is the path without `.json`, e.g. `gas/price`. The CSVs are written by the export scripts of the [explore](https://github.com/energy-monitor) repository and are not part of this repository.
+The charts are [gen-vis](https://github.com/petres/gen-vis) definitions in `data/`, their id is the path without `.json`, e.g. `gas/price`. The data files are written by the export scripts of the [explore](https://github.com/energy-monitor) repository and are not part of this repository, each as parquet and as CSV with the same rows.
 
 - One folder per topic: `electricity`, `gas`, `oil`, `coal`, `fossil` (totals of the fossil fuels), `emissions` (greenhouse gas inventory), `wood`, `mobility`, `weather`, `economy`.
 - Names are `<measure>[-<form>]`: without a form the chart compares the years (one line per year), otherwise `-stacked` (monthly stacked bars), `-map` (europe map), `-hourly` (daily profile) or `-countries`.
-- The CSV has the name of its definition and is next to it, e.g. `gas/price.json` and `gas/price.csv`.
+- The data has the name of its definition and is next to it, e.g. `gas/price.json` with `gas/price.parquet` and `gas/price.csv`.
 - Files starting with `_` are parents, not charts. The ones in `data/` are combined as mixins, e.g. `"parent": ["../_years.json", "../_facets.json", "../_scale-switch.json"]`:
   - `_years.json`: one line per year, x is the day of the year, y the column `value`
   - `_years-cum.json`: `_years` with the facets rolling mean and cumulated

@@ -1,6 +1,7 @@
 /node_modules
 /dist
 data/**/*.csv
+data/**/*.parquet
 data/md/*
 /.claude
 /notes

@@ -19,6 +19,9 @@ RewriteRule ^single/ single.html [L]
 # a deleted chunk of a former version
 ErrorDocument 404 /404.html
 
+# the parquet files of the data (next to the csvs), compressed in the file
+AddType application/vnd.apache.parquet .parquet
+
 # the text files compressed, e.g. the large csvs of the data, with brotli for
 # the browsers which accept it, gzip for the others, each only if the module
 # is enabled on the server (a2enmod brotli deflate)
