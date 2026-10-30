@@ -1,3 +1,10 @@
+// the colors of gen-vis in all charts, also in /single/ and the embeds: the
+// grid lines translucent, #E6E6E6 on white, a darker shade over the plots below
+// them, e.g. stacked areas, instead of gray stripes
+.vis {
+    --gen-vis-grid-color: #0000001A;
+}
+
 .visualisations {
     margin: 10px;
 
