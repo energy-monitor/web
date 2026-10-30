@@ -28,8 +28,10 @@
             { "id": "rr",         "name": "Niederschlag (mm)",          "value": "rr" },
             { "id": "sa",         "name": "Sonnenstunden",              "value": "sa" },
             { "id": "days.hot",   "name": "Hitzetage (≥ 30 °C)",        "value": "days.hot" },
+            { "id": "days.hot.anomaly", "name": "Hitzetage, Abweichung 1961 - 1990", "value": "days.hot.anomaly" },
             { "id": "days.frost", "name": "Frosttage (< 0 °C)",         "value": "days.frost" },
             { "id": "days.snow",  "name": "Schneedeckentage (≥ 1 cm)",  "value": "days.snow" },
+            { "id": "days.snow.anomaly", "name": "Schneedeckentage, Abweichung 1961 - 1990", "value": "days.snow.anomaly" },
             { "id": "swe.max",    "name": "Max. Schneewasseräquivalent (mm)", "value": "swe.max" }
         ]
     }],
