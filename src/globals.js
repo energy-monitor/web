@@ -124,6 +124,8 @@ const collections = {
             "electricity/generation-stacked",
             "electricity/generation-sources",
             "electricity/generation-renewable",
+            "electricity/generation-hourly-seasons",
+            "electricity/generation-hourly-radial",
             "electricity/generation-map",
             //"weather/precipitation",
             //"weather/snow",

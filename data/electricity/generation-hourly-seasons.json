@@ -1,0 +1,155 @@
+{
+    "parent": ["_sources.json", "../_share-switch.json"],
+    "data": "generation-hourly-seasons.csv",
+    "options": {
+        "height": 220,
+        "margins": {"top": 18, "right": 15, "bottom": 35, "left": 40},
+        "title": "Stromproduktion und -verbrauch im Tagesverlauf",
+        "subtitle": "{period} nach Jahreszeit, die Produktion nach Quellen, mittlere Leistung in GW",
+        "footer": "Quelle: ENTSO-E - Aggregated Generation Per Type 16.1.B C, Actual Total Load 6.1.A; Stunden in Ortszeit, der Winter ab dem Dezember des Vorjahres",
+        "locale": { "base": "de", "number": { "currency": ["", " Uhr"] } },
+        "highlight": { "transition": 120 }
+    },
+    "globals": { "period": "2025" },
+    "filter": { "period": "@period" },
+    "formElements": [
+        { "id": "period", "name": "Jahr", "ref": "period", "type": "radio", "values": { "column": "period" } },
+        {
+            "id": "values",
+            "values": [{
+                "id": "valuesShare",
+                "patch": {
+                    "options": { "subtitle": "{period} nach Jahreszeit, die Anteile der Quellen an der Produktion, der Verbrauch im Verhältnis zur Produktion" },
+                    "mapping": {
+                        "y": { "scale": { "domain": [0, null], "domainRel": [0, 0.05] } }
+                    },
+                    "plot": [{ "id": "names", "filter": { "y": { "range": [0.08, null] } } }]
+                }
+            }]
+        }
+    ],
+    "mapping": {
+        "period": { "column": "period", "type": "categorical" },
+        "x": {
+            "column": "hour",
+            "type": "numeric",
+            "scale": { "type": "linear", "orientation": "horizontal", "domain": [0, 23], "domainRel": [0, 0] },
+            "axis": { "position": "bottom", "format": "$d", "values": [0, 6, 12, 18] },
+            "hover": { "format": "$d" }
+        },
+        "y": {
+            "column": "value",
+            "type": "numeric",
+            "stacked": { "type": { "not": ["total", "load"] } },
+            "scale": { "type": "linear", "orientation": "vertical", "domain": [0, null], "domainRel": [0, 0.05], "nice": true },
+            "axis": { "position": "left", "ticks": 5, "grid": true, "format": ".0f" },
+            "hover": { "format": ".2f" }
+        },
+        "type": {
+            "legend": {
+                "symbol": { "size": 14, "elements": [
+                    { "type": "rect", "props": { "x": 0, "y": 0, "width": 14, "height": "@symbolHeight", "fill": "@color", "rx": 1 } },
+                    { "type": "line", "props": { "x1": 0, "x2": 14, "y1": 7, "y2": 7, "stroke": "@symbolStroke", "stroke-width": 2, "stroke-dasharray": "@symbolDash" } }
+                ] }
+            },
+            "props": {
+                "common": { "symbolHeight": 14, "symbolStroke": "none", "symbolDash": "none", "dash": "none", "lineWidth": 2 },
+                "categories": {
+                    "Hydro":  { "text": "#0B5E80" },
+                    "Wind":   { "text": "#2F5F8A" },
+                    "Solar":  { "text": "#6B5500" },
+                    "Gas":    { "text": "#FFFFFF" },
+                    "Coal":   { "text": "#FFFFFF" },
+                    "Oil":    { "color": "#000", "name": "Erdöl", "text": "#FFFFFF", "legend": false },
+                    "others": { "color": "#CCC", "name": "Andere", "text": "#444444" },
+                    "total":  { "color": "#222", "name": "Produktion", "text": "#222", "symbolHeight": 0, "symbolStroke": "#222", "lineWidth": 1.5 },
+                    "load":   { "color": "#222", "name": "Verbrauch", "text": "#222", "symbolHeight": 0, "symbolStroke": "#222", "symbolDash": "4 2", "dash": "5 3" }
+                }
+            },
+            "hover": {}
+        },
+        "facet": {
+            "column": "season",
+            "props": {
+                "categories": {
+                    "winter": { "name": "Winter (Dez–Feb)" },
+                    "spring": { "name": "Frühling (Mär–Mai)" },
+                    "summer": { "name": "Sommer (Jun–Aug)" },
+                    "autumn": { "name": "Herbst (Sep–Nov)" }
+                }
+            }
+        }
+    },
+    "facets": {
+        "dim": "facet",
+        "scales": ["x", "y"],
+        "cols": {
+            "prop": "steps",
+            "ref": "totalWidth",
+            "steps": [
+                {"cut":    0, "value": 1},
+                {"cut":  700, "value": 2}
+            ]
+        }
+    },
+    "annotations": [
+        { "type": "line", "x": 12, "label": "Mittag", "above": true, "props": { "stroke": "#333", "stroke-dasharray": "3 3" } }
+    ],
+    "plot": [
+        {
+            "id": "areas",
+            "type": "cartesian:area",
+            "categories": ["type", "facet"],
+            "filter": { "type": { "not": ["total", "load"] } },
+            "curve": "monotoneX",
+            "layer": "below",
+            "props": {
+                "d": { "x": "@x:scaled", "y0": "@y:start:scaled", "y1": "@y:end:scaled" },
+                "fill": "@color",
+                "fill-opacity": 0.9,
+                "stroke": "#FFFFFF",
+                "stroke-width": 0.8,
+                "highlight-fill-opacity": 1,
+                "others-fill-opacity": 0.35
+            }
+        },
+        {
+            "id": "names",
+            "type": "svg:text",
+            "categories": ["facet", "type"],
+            "select": { "max": "y" },
+            "filter": { "type": { "not": ["total", "load"] }, "x": { "range": [2, 21] }, "y": { "range": [0.6, null] } },
+            "layer": "above",
+            "props": {
+                "x": "@x:scaled", "y": "@y:mid:scaled", "text-anchor": "middle", "dominant-baseline": "central",
+                "font-size": 11, "font-weight": "bold", "fill": "@text", "text": "@name",
+                "pointer-events": "none", "highlight-opacity": 1, "others-opacity": 0.3
+            }
+        },
+        {
+            "id": "lines",
+            "type": "cartesian:line",
+            "categories": ["type", "facet"],
+            "filter": { "type": ["total", "load"] },
+            "curve": "monotoneX",
+            "layer": "above",
+            "props": {
+                "d": { "x": "@x:scaled", "y": "@y:scaled" },
+                "stroke": "@color", "stroke-width": "@lineWidth", "stroke-dasharray": "@dash", "fill": "none",
+                "highlight-stroke-width": 2.5, "others-opacity": 0.35
+            }
+        },
+        {
+            "id": "loadName",
+            "type": "svg:text",
+            "categories": ["facet", "type"],
+            "filter": { "type": "load", "x": 2 },
+            "layer": "above",
+            "props": {
+                "x": "@x:scaled", "y": "@y:scaled", "dy": -7, "text-anchor": "middle",
+                "font-size": 11, "font-weight": "bold", "fill": "@text", "text": "@name",
+                "pointer-events": "none", "highlight-opacity": 1, "others-opacity": 0.3
+            }
+        }
+    ]
+}

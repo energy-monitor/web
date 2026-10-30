@@ -5,8 +5,8 @@
         "height": 350,
         "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50},
         "title": "Stromproduktion im Tagesverlauf",
-        "subtitle": "im Jahr 2021, nach Quellen, in MWh",
-        "footer": "Quelle: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
+        "subtitle": "im Jahr 2025, nach Quellen, mittlere Leistung in GW",
+        "footer": "Quelle: ENTSO-E - Aggregated Generation Per Type 16.1.B C; Stunden in Ortszeit"
     },
     "mapping": {
         "x": {

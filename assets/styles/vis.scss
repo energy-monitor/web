@@ -187,3 +187,10 @@
         line-height: normal;
     }
 }
+
+// the polar charts (`"class": "polar-chart"` of the options), e.g. the hours of
+// a day in a circle: the titles of the facets bold, gen-vis centres them above
+// the circles
+.vis.polar-chart .vis-facet-title {
+    font-weight: bold;
+}
