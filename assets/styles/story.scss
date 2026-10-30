@@ -28,13 +28,12 @@
         line-height: 1.75;
     }
 
-    // rehype-katex >= 7 no longer wraps formulas in `.math`
-    .katex {
-        display: block;
-        text-align: center;
+    // the formulas of their own lines ($$), a wide one scrolls on narrow
+    // screens, inline ones are text, see the styles of katex in src/Markdown.vue
+    .katex-display {
         margin: 30px 0;
-        max-width: 100%;
-        overflow-y: auto;
+        overflow-x: auto;
+        overflow-y: hidden;
     }
 
     // the tables of the text, not e.g. the hover of the charts

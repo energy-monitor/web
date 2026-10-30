@@ -31,6 +31,12 @@ module.exports = ({ extractCss = false } = {}) => ({
         }, {
             test: /\.vue$/i,
             use: 'vue-loader'
+        }, {
+            // the fonts of the styles, e.g. of katex, with the hash of their
+            // content, so they are cached as the bundles, see assets/.htaccess
+            test: /\.(woff2?|ttf)$/i,
+            type: 'asset/resource',
+            generator: { filename: 'fonts/[name].[contenthash][ext]' },
         }]
     },
     resolve: {

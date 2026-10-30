@@ -8,6 +8,9 @@ import remarkRehype from 'remark-rehype';
 import remarkMath from 'remark-math'
 import remarkGfm from 'remark-gfm'
 import rehypeKatex from 'rehype-katex'
+// the styles and fonts of the formulas, in the chunk of this component, the
+// text is shown until the fonts are loaded
+import 'katex/dist/katex-swap.min.css';
 import rehypeRaw from 'rehype-raw'
 import rehypeRewrite from 'rehype-rewrite';
 import { find, html, svg } from 'property-information';
@@ -38,6 +41,20 @@ const directives = () => (tree, file) => {
     walk(tree);
 };
 
+// a paragraph of only a formula in $$ is a formula of its own line, as pandoc
+// writes them, e.g. `$$\begin{aligned} ... \end{aligned}$$`, remark-math
+// reads $$ in a line as inline math, see .katex-display in story.scss
+const displayMath = () => (tree, file) => {
+    const walk = node => node.children?.forEach(c => {
+        const [m] = c.children ?? [];
+        if (c.type == 'paragraph' && c.children.length == 1 && m.type == 'inlineMath' && String(file).startsWith('$$', m.position.start.offset))
+            m.data.hProperties.className = ['language-math', 'math-display'];
+        else
+            walk(c);
+    });
+    walk(tree);
+};
+
 // links open in a new tab except the ones of footnotes, images are relative to the markdown file
 const rewrite = url => (node) => {
     if (node.tagName == 'img')
@@ -53,6 +70,7 @@ const processor = url => unified()
     .use(remarkDirective)
     .use(directives)
     .use(remarkMath)
+    .use(displayMath)
     .use(remarkGfm)
     .use(remarkRehype, {allowDangerousHtml: true})
     .use(rehypeKatex)
