@@ -19,7 +19,12 @@ RewriteRule ^single/ single.html [L]
 # a deleted chunk of a former version
 ErrorDocument 404 /404.html
 
-# the text files compressed, e.g. the large csvs of the data
+# the text files compressed, e.g. the large csvs of the data, with brotli for
+# the browsers which accept it, gzip for the others, each only if the module
+# is enabled on the server (a2enmod brotli deflate)
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/csv text/markdown application/javascript text/javascript application/json application/xml image/svg+xml
+</IfModule>
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html text/css text/plain text/csv text/markdown application/javascript text/javascript application/json application/xml image/svg+xml
 </IfModule>
@@ -29,11 +34,22 @@ ErrorDocument 404 /404.html
 FileETag None
 
 <IfModule mod_headers.c>
-    # all files are revalidated, e.g. the data of every day and index.html with
-    # the names of the current bundles
+    # all other files are revalidated, e.g. index.html with the names of the
+    # current bundles
     Header set Cache-Control "no-cache"
-    # the bundles and styles have the hash of their content in the name
-    <FilesMatch "\.[0-9a-f]{20}\.(js|css)$">
+    # the bundles, styles and fonts have the hash of their content in the name
+    <FilesMatch "\.[0-9a-f]{20}\.(js|css|woff2?|ttf)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
+    # the data, the definitions and the markdown pages change at most daily, a
+    # page loaded again within 5 minutes needs no requests for them, within an
+    # hour they are shown at once and revalidated in the background, a visit
+    # of the next day revalidates them first
+    <If "%{REQUEST_URI} =~ m#^/data/#">
+        Header set Cache-Control "public, max-age=300, stale-while-revalidate=3600"
+    </If>
+    # the geometries of the maps change hardly ever
+    <If "%{REQUEST_URI} =~ m#^/geo/#">
+        Header set Cache-Control "public, max-age=86400, stale-while-revalidate=604800"
+    </If>
 </IfModule>
