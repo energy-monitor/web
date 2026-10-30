@@ -18,12 +18,14 @@
             "values": [
                 {
                     "id": "absolute", "name": "Jahressumme", "value": "rr",
-                    "mapping": {
-                        "value": {
-                            "name": "Jahressumme in mm",
-                            "scale": { "interpolator": "YlGnBu", "domain": [400, 2400] },
-                            "legend": { "format": ",.0f" },
-                            "hover": { "format": ",.0f" }
+                    "patch": {
+                        "mapping": {
+                            "value": {
+                                "name": "Jahressumme in mm",
+                                "scale": { "interpolator": "YlGnBu", "domain": [400, 2400] },
+                                "legend": { "format": ",.0f" },
+                                "hover": { "format": ",.0f" }
+                            }
                         }
                     }
                 },

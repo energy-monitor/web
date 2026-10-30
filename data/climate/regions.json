@@ -40,11 +40,13 @@
                 { "id": "valuesAbs", "name": "Absolut", "value": "abs" },
                 {
                     "id": "valuesAnomaly", "name": "Abweichung vom Mittel 1961 - 1990", "value": "anomaly",
-                    "mapping": {
-                        "y": {
-                            "column": "value.anomaly",
-                            "axis": { "format": "+,~f" },
-                            "hover": { "format": "+,.1f" }
+                    "patch": {
+                        "mapping": {
+                            "y": {
+                                "column": "value.anomaly",
+                                "axis": { "format": "+,~f" },
+                                "hover": { "format": "+,.1f" }
+                            }
                         }
                     }
                 }

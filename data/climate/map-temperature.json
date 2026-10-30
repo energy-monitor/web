@@ -18,12 +18,14 @@
             "values": [
                 {
                     "id": "absolute", "name": "Jahresmittel", "value": "tm",
-                    "mapping": {
-                        "value": {
-                            "name": "Jahresmittel in °C",
-                            "scale": { "interpolator": "YlOrRd", "domain": [0, 14] },
-                            "legend": { "format": ".0f" },
-                            "hover": { "format": ".1f" }
+                    "patch": {
+                        "mapping": {
+                            "value": {
+                                "name": "Jahresmittel in °C",
+                                "scale": { "interpolator": "YlOrRd", "domain": [0, 14] },
+                                "legend": { "format": ".0f" },
+                                "hover": { "format": ".1f" }
+                            }
                         }
                     }
                 },

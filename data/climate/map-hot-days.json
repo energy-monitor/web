@@ -19,12 +19,14 @@
                 { "id": "absolute", "name": "Tage", "value": "days.hot" },
                 {
                     "id": "anomaly", "name": "Abweichung", "value": "days.hot.anomaly",
-                    "mapping": {
-                        "value": {
-                            "name": "Abweichung in Tagen",
-                            "scale": { "interpolator": "RdBu", "domain": [30, -30] },
-                            "legend": { "format": "+.0f" },
-                            "hover": { "format": "+.0f" }
+                    "patch": {
+                        "mapping": {
+                            "value": {
+                                "name": "Abweichung in Tagen",
+                                "scale": { "interpolator": "RdBu", "domain": [30, -30] },
+                                "legend": { "format": "+.0f" },
+                                "hover": { "format": "+.0f" }
+                            }
                         }
                     }
                 }

@@ -19,12 +19,14 @@
                 { "id": "absolute", "name": "Tage", "value": "days.snow" },
                 {
                     "id": "anomaly", "name": "Abweichung", "value": "days.snow.anomaly",
-                    "mapping": {
-                        "value": {
-                            "name": "Abweichung in Tagen",
-                            "scale": { "interpolator": "RdBu", "domain": [-80, 80] },
-                            "legend": { "format": "+.0f" },
-                            "hover": { "format": "+.0f" }
+                    "patch": {
+                        "mapping": {
+                            "value": {
+                                "name": "Abweichung in Tagen",
+                                "scale": { "interpolator": "RdBu", "domain": [-80, 80] },
+                                "legend": { "format": "+.0f" },
+                                "hover": { "format": "+.0f" }
+                            }
                         }
                     }
                 }
