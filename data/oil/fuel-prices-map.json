@@ -1,6 +1,6 @@
 {
     "parent": "../_europe-map.json",
-    "data": "fuel-prices-map.csv",
+    "data": "fuel-prices-map.parquet",
     "options": {
         "title": "Spritpreise in Europa",
         "subtitle": "inkl. Steuern, in €/Liter",

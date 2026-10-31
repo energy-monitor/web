@@ -1,6 +1,6 @@
 {
     "parent": ["../_years.json", "../_line-types.json"],
-    "data": "price.csv",
+    "data": "price.parquet",
     "options": {
         "title": "Strompreis",
         "subtitle": "Day Ahead, täglich (rollierender 7-Tages Durchschnitt), in €/MWh",

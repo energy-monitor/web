@@ -1,6 +1,6 @@
 {
     "parent": "../_years.json",
-    "data": "price-brent.csv",
+    "data": "price-brent.parquet",
     "options": {
         "title": "Rohöl Preis, Brent",
         "subtitle": "täglich (rollierender 3-Tages Durchschnitt), in $/Barrel",

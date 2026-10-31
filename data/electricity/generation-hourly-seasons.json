@@ -1,6 +1,6 @@
 {
     "parent": ["_sources.json", "../_share-switch.json"],
-    "data": "generation-hourly-seasons.csv",
+    "data": "generation-hourly-seasons.parquet",
     "options": {
         "height": 220,
         "margins": {"top": 18, "right": 15, "bottom": 35, "left": 40},

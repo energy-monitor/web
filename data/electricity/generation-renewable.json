@@ -1,6 +1,6 @@
 {
     "parent": "_generation.json",
-    "data": "generation-renewable.csv",
+    "data": "generation-renewable.parquet",
     "options": {
         "height": 220
     },

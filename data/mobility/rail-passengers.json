@@ -1,6 +1,6 @@
 {
     "parent": "../_facet-toggle.json",
-    "data": "rail-passengers.csv",
+    "data": "rail-passengers.parquet",
     "options": {
         "height": 220,
         "margins": {"top": 5, "right": 30, "bottom": 30, "left": 50},

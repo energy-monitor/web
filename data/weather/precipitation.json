@@ -1,6 +1,6 @@
 {
     "parent": "../_years.json",
-    "data": "precipitation.csv",
+    "data": "precipitation.parquet",
     "options": {
         "title": "Niederschlag Österreich",
         "subtitle": "Summe der letzten 90 Tage, Flächenmittel, in mm",

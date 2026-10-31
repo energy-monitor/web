@@ -1,6 +1,6 @@
 {
     "parent": "../_europe-map.json",
-    "data": "generation-map.csv",
+    "data": "generation-map.parquet",
     "options": {
         "title": "Stromproduktion",
         "subtitle": "nach Quellen, Anteile, jährlich",

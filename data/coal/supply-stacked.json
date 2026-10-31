@@ -1,6 +1,6 @@
 {
     "parent": ["../_stacked.json", "../_share-switch.json"],
-    "data": "supply-stacked.csv",
+    "data": "supply-stacked.parquet",
     "options": {
         "title": "Absatz von Kohle",
         "subtitle": "monatlich, nach Sorten, in tausend Tonnen bzw. Anteile",

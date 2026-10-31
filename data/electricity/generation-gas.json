@@ -1,6 +1,6 @@
 {
     "parent": "../_years-cum.json",
-    "data": "generation-gas.csv",
+    "data": "generation-gas.parquet",
     "options": {
         "title": "Stromproduktion aus Gas",
         "subtitle": "in TWh",

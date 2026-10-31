@@ -1,6 +1,6 @@
 {
     "parent": "_generation.json",
-    "data": "generation-sources.csv",
+    "data": "generation-sources.parquet",
     "mapping": {
         "facet": {
             "props": {

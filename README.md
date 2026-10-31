@@ -25,7 +25,7 @@ The build (`npm run build`) also writes an html file for each page, e.g. `collec
 
 ## Data
 
-The charts are [gen-vis](https://github.com/petres/gen-vis) definitions in `data/`, their id is the path without `.json`, e.g. `gas/price`. The data files are written by the export scripts of the [explore](https://github.com/energy-monitor) repository and are not part of this repository, each as parquet and as CSV with the same rows.
+The charts are [gen-vis](https://github.com/petres/gen-vis) definitions in `data/`, their id is the path without `.json`, e.g. `gas/price`. The data files are written by the export scripts of the [explore](https://github.com/energy-monitor) repository and are not part of this repository, each as parquet and as CSV with the same rows. The definitions load the parquet files (smaller without a compression of the server, gen-vis reads only the columns it uses), the CSVs are on the server as well.
 
 - One folder per topic: `electricity`, `gas`, `oil`, `coal`, `fossil` (totals of the fossil fuels), `emissions` (greenhouse gas inventory), `wood`, `mobility`, `weather`, `economy`.
 - Names are `<measure>[-<form>]`: without a form the chart compares the years (one line per year), otherwise `-stacked` (monthly stacked bars), `-map` (europe map), `-hourly` (daily profile) or `-countries`.

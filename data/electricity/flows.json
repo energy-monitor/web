@@ -1,6 +1,6 @@
 {
     "parent": "../_years.json",
-    "data": "flows.csv",
+    "data": "flows.parquet",
     "options": {
         "title": "Netto Stromexporte",
         "subtitle": "täglich (rollierender 14-Tages Durchschnitt), in GWh",

@@ -1,6 +1,6 @@
 {
     "parent": "_yearly-stacked.json",
-    "data": "sectors.csv",
+    "data": "sectors.parquet",
     "options": {
         "title": "CO₂-Emissionen der Verbrennung nach Sektoren",
         "subtitle": "jährlich, in Mt CO₂ oder Anteile, fossile Brennstoffe (ohne Biomasse), Treibhausgasinventur CRT 1.A, AT"

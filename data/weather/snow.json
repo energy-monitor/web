@@ -1,6 +1,6 @@
 {
     "parent": "../_years.json",
-    "data": "snow.csv",
+    "data": "snow.parquet",
     "options": {
         "title": "Schneedecke Österreich",
         "subtitle": "Wasseräquivalent der Schneedecke, Flächenmittel, in mm",

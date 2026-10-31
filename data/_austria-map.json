@@ -10,7 +10,8 @@
                 {"cut": 550, "value": 380}
             ]
         },
-        "margins": {"top": 10, "right": 10, "bottom": 10, "left": 10}
+        "margins": {"top": 10, "right": 10, "bottom": 10, "left": 10},
+        "hover": { "empty": true }
     },
     "geo": {
         "data": "/geo/austria-districts.json",

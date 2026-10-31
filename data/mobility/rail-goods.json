@@ -1,6 +1,6 @@
 {
     "parent": ["../_timeline.json", "../_facet-toggle.json"],
-    "data": "rail-goods.csv",
+    "data": "rail-goods.parquet",
     "options": {
         "height": 220,
         "margins": {"top": 5, "right": 30, "bottom": 30, "left": 50},

@@ -1,6 +1,6 @@
 {
     "parent": "../_austria-map.json",
-    "data": "districts.csv",
+    "data": "districts.parquet",
     "options": {
         "title": "Hitzetage",
         "subtitle": "Tage mit Höchsttemperatur ≥ 30 °C, jährlich, bzw. Abweichung vom Mittel 1961 - 1990",

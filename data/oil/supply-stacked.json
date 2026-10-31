@@ -1,6 +1,6 @@
 {
     "parent": ["../_stacked.json", "../_share-switch.json"],
-    "data": "supply-stacked.csv",
+    "data": "supply-stacked.parquet",
     "options": {
         "title": "Absatz von Mineralöl",
         "subtitle": "monatlich, nach Produkten, in tausend Tonnen bzw. Anteile",

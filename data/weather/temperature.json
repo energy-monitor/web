@@ -1,6 +1,6 @@
 {
     "parent": "../_years.json",
-    "data": "temperature.csv",
+    "data": "temperature.parquet",
     "options": {
         "title": "Temperatur Österreich",
         "subtitle": "gewichtet nach Bevölkerung, täglich (rollierender 4-Wochen Durchschnitt), in °C",

@@ -1,6 +1,6 @@
 {
     "parent": ["../_stacked.json", "../_share-switch.json"],
-    "data": "registrations.csv",
+    "data": "registrations.parquet",
     "options": {
         "title": "Pkw-Neuzulassungen",
         "subtitle": "nach Kraftstoffart bzw. Energiequelle, monatlich, Anteile bzw. Anzahl, AT",

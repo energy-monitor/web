@@ -1,6 +1,6 @@
 {
     "parent": "../_years.json",
-    "data": "price.csv",
+    "data": "price.parquet",
     "options": {
         "margins": {"top": 30, "right": 30, "bottom": 35, "left": 50},
         "title": "Kohle Preis, Rotterdam",

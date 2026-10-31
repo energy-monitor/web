@@ -1,6 +1,6 @@
 {
     "parent": ["../_timeline.json", "../_facets.json", "../_facet-toggle.json", "../_scale-switch.json"],
-    "data": "estimate.csv",
+    "data": "estimate.parquet",
     "options": {
         "height": 220,
         "margins": {"top": 5, "right": 30, "bottom": 30, "left": 50},

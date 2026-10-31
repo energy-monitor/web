@@ -1,6 +1,6 @@
 {
     "parent": "../_years-cum.json",
-    "data": "load.csv",
+    "data": "load.parquet",
     "options": {
         "title": "Stromkonsum",
         "subtitle": "in TWh",

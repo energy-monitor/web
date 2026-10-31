@@ -1,6 +1,6 @@
 {
     "parent": "../_timeline.json",
-    "data": "regions.csv",
+    "data": "regions.parquet",
     "options": {
         "height": {
             "prop": "steps",

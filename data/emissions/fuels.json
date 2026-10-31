@@ -1,6 +1,6 @@
 {
     "parent": "_yearly-stacked.json",
-    "data": "fuels.csv",
+    "data": "fuels.parquet",
     "options": {
         "title": "Energieeinsatz der Verbrennung nach Brennstoffen",
         "subtitle": "jährlich, in PJ oder Anteile, Treibhausgasinventur CRT 1.A, AT"

@@ -1,6 +1,6 @@
 {
     "parent": ["_sources.json", "../_share-switch.json"],
-    "data": "generation-hourly-seasons.csv",
+    "data": "generation-hourly-seasons.parquet",
     "options": {
         "coord": "polar",
         "class": "polar-chart",

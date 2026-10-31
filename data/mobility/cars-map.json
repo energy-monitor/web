@@ -1,6 +1,6 @@
 {
     "parent": "../_europe-map.json",
-    "data": "cars-map.csv",
+    "data": "cars-map.parquet",
     "options": {
         "title": "Pkw in Europa",
         "subtitle": "Anteile nach Kraftstoffart bzw. Energiequelle, jährlich",

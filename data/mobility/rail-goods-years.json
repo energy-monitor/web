@@ -1,6 +1,6 @@
 {
     "parent": ["../_years.json", "../_facets.json", "../_facet-toggle.json"],
-    "data": "rail-goods.csv",
+    "data": "rail-goods.parquet",
     "options": {
         "height": 220,
         "title": "Schienengüterverkehr",

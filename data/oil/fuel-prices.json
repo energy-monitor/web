@@ -1,6 +1,6 @@
 {
     "parent": ["../_years.json", "../_line-types.json"],
-    "data": "fuel-prices.csv",
+    "data": "fuel-prices.parquet",
     "options": {
         "title": "Spritpreise",
         "subtitle": "in €/Liter",

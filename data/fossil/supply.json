@@ -1,6 +1,6 @@
 {
     "parent": ["_supply.json", "_unit-switch.json", "../_scale-switch.json"],
-    "data": "supply.csv",
+    "data": "supply.parquet",
     "options": {
         "title": "Absatz von fossilen Energieträgern",
         "subtitle": "nach Energiegehalt in TWh bzw. Emissionen in Megatonnen CO₂",

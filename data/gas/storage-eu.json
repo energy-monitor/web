@@ -1,6 +1,6 @@
 {
     "parent": "_storage.json",
-    "data": "storage-eu.csv",
+    "data": "storage-eu.parquet",
     "options": {
         "title": "Gasspeicher, EU Gesamt"
     }

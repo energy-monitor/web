@@ -1,6 +1,6 @@
 {
     "parent": "../_austria-map.json",
-    "data": "districts.csv",
+    "data": "districts.parquet",
     "options": {
         "title": "Temperatur",
         "subtitle": "Jahresmittel bzw. Abweichung vom Mittel 1961 - 1990, in °C",

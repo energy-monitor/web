@@ -1,6 +1,6 @@
 {
     "parent": ["../_years.json", "../_facets.json", "../_share-switch.json", "../_scale-switch.json", "../_facet-toggle.json", "../_monthly.json"],
-    "data": "registrations.csv",
+    "data": "registrations.parquet",
     "options": {
         "height": 220,
         "title": "Pkw-Neuzulassungen",

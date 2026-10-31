@@ -1,6 +1,6 @@
 {
     "parent": ["../_years.json", "../_line-types.json", "../_monthly.json"],
-    "data": "firewood.csv",
+    "data": "firewood.parquet",
     "options": {
         "title": "Brennholzpreis",
         "subtitle": "Erzeugerpreis, monatlich, in €/Raummeter",

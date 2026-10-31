@@ -1,6 +1,6 @@
 {
     "parent": "../_years-cum.json",
-    "data": "consumption.csv",
+    "data": "consumption.parquet",
     "options": {
         "title": "Gaskonsum",
         "subtitle": "in TWh",

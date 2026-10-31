@@ -1,6 +1,6 @@
 {
     "parent": ["../_stacked.json", "_unit-switch.json"],
-    "data": "supply-stacked.csv",
+    "data": "supply-stacked.parquet",
     "options": {
         "title": "Absatz von fossilen Energieträgern",
         "subtitle": "monatlich, nach Energiegehalt in TWh bzw. Emissionen in Mt CO₂, oder Anteile",

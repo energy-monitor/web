@@ -1,4 +1,4 @@
 {
     "parent": "_storage.json",
-    "data": "storage.csv"
+    "data": "storage.parquet"
 }

@@ -1,6 +1,6 @@
 {
     "parent": "../_years.json",
-    "data": "price.csv",
+    "data": "price.parquet",
     "options": {
         "title": "Gaspreis",
         "subtitle": "CEGH, täglich (rollierender 7-Tages Durchschnitt), in €/MWh",

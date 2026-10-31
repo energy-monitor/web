@@ -1,6 +1,6 @@
 {
     "parent": "../_timeline.json",
-    "data": "price-index.csv",
+    "data": "price-index.parquet",
     "options": {
         "height": {
             "prop": "steps",

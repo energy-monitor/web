@@ -1,6 +1,6 @@
 {
     "parent": "../fossil/_supply.json",
-    "data": "supply.csv",
+    "data": "supply.parquet",
     "options": {
         "title": "Absatz von Erdgas",
         "subtitle": "in millionen Kubikmetern",

@@ -1,6 +1,6 @@
 {
     "parent": "_sources.json",
-    "data": "generation-hourly.csv",
+    "data": "generation-hourly.parquet",
     "options": {
         "height": 350,
         "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50},

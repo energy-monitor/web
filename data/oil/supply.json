@@ -1,6 +1,6 @@
 {
     "parent": ["../fossil/_supply.json", "../_scale-switch.json"],
-    "data": "supply.csv",
+    "data": "supply.parquet",
     "options": {
         "title": "Absatz von Mineralöl",
         "subtitle": "in tausend Tonnen",

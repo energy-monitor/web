@@ -1,6 +1,6 @@
 {
     "parent": "../_years-cum.json",
-    "data": "hdd.csv",
+    "data": "hdd.parquet",
     "options": {
         "title": "Heizgradtage",
         "subtitle": "Raumtemperatur 20 °C, Heizgrenze 12 °C, gewichtet nach Bevölkerung",

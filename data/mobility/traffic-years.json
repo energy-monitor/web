@@ -1,6 +1,6 @@
 {
     "parent": ["../_years.json", "../_facets.json", "../_scale-switch.json", "../_facet-toggle.json", "../_monthly.json"],
-    "data": "traffic.csv",
+    "data": "traffic.parquet",
     "options": {
         "height": 220,
         "title": "Verkehrsaufkommen",

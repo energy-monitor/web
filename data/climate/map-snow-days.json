@@ -1,6 +1,6 @@
 {
     "parent": "../_austria-map.json",
-    "data": "districts.csv",
+    "data": "districts.parquet",
     "options": {
         "title": "Schneedeckentage",
         "subtitle": "Tage mit mindestens 1 cm Schnee, jährlich, bzw. Abweichung vom Mittel 1961 - 1990",

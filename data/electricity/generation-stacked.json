@@ -1,6 +1,6 @@
 {
     "parent": ["../_stacked.json", "../_share-switch.json", "_sources.json"],
-    "data": "generation-stacked.csv",
+    "data": "generation-stacked.parquet",
     "options": {
         "title": "Stromproduktion",
         "subtitle": "nach Quellen, in TWh bzw. Anteile",

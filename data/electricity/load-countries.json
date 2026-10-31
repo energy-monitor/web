@@ -1,6 +1,6 @@
 {
     "parent": ["../_years.json", "../_facets.json", "../_scale-switch.json"],
-    "data": "load-countries.csv",
+    "data": "load-countries.parquet",
     "options": {
         "height": 190,
         "margins": {"top": 5, "right": 15, "bottom": 35, "left": 45},

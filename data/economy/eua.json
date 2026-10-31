@@ -1,6 +1,6 @@
 {
     "parent": "../_years.json",
-    "data": "eua.csv",
+    "data": "eua.parquet",
     "options": {
         "title": "EUA Future",
         "subtitle": "Emissionsberechtigungen, täglich (rollierender 3-Tages Durchschnitt), in €/(Tonne CO₂)",

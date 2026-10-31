@@ -1,6 +1,6 @@
 {
     "parent": "../_timeline.json",
-    "data": "traffic.csv",
+    "data": "traffic.parquet",
     "options": {
         "height": {
             "prop": "steps",
