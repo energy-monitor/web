@@ -66,6 +66,13 @@ module.exports = ({ extractCss = false } = {}) => ({
         new DefinePlugin({
             CHARTS: DefinePlugin.runtimeValue(() => JSON.stringify(charts()), { contextDependencies: [resolve('data')] }),
             MAPS: DefinePlugin.runtimeValue(() => JSON.stringify(maps()), { contextDependencies: [resolve('data')] }),
+            // the flags of the bundler build of vue, without them it warns and
+            // keeps all features: the components use the options api, no
+            // devtools and no details of hydration (no server rendering) in
+            // the production build
+            __VUE_OPTIONS_API__: 'true',
+            __VUE_PROD_DEVTOOLS__: 'false',
+            __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'false',
         }),
         ...(extractCss ? [new MiniCssExtractPlugin({
             filename: 'style.[contenthash].css',
