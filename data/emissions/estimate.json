@@ -62,7 +62,6 @@
         }
     },
     "facets": {
-        "scales": ["x"],
         "cols": {
             "steps": [
                 {"cut":   0, "value": 1},
