@@ -24,7 +24,7 @@ const urlSingle = `${location.origin}/single/`;
 const heights = { genVis: 450 };
 const maps = new Set(MAPS);
 
-import { charts } from '@/globals.js';
+import { charts, site } from '@/globals.js';
 
 // all charts, also the ones of the markdown pages
 const vis = Object.entries(charts).map(([src, type]) => ({ type, src }));
@@ -38,9 +38,11 @@ export default {
         url (id) {
             return urlSingle + this.escaped(id);
         },
+        // loaded when it is scrolled to, this page has all charts, the title
+        // for screen readers, with a closing tag, `<iframe/>` would take the
+        // rest of the page into the iframe
         iframe (v) {
-            // return `<iframe width="100%" height="100%" frameBorder="0" src="${this.url(v.src)}"/>`
-            return `<iframe width="100%" height="${maps.has(v.src) ? 720 : heights[v.type]}px" frameBorder="0" src="${this.url(v.src)}"/>`
+            return `<iframe width="100%" height="${maps.has(v.src) ? 720 : heights[v.type]}px" frameBorder="0" loading="lazy" title="${v.src} – ${site}" src="${this.url(v.src)}"></iframe>`
         }
     },
     data: () => ({
