@@ -74,14 +74,14 @@ const collections = {
         name: "Auswahl",
         menu: true,
         vis: [
-            "electricity/load",
             "electricity/price",
-            "gas/consumption",
             "gas/price",
             "gas/storage",
-            "electricity/generation-gas",
-            "electricity/generation-stacked",
+            "gas/consumption",
+            "electricity/load",
             "electricity/generation-sources",
+            "electricity/generation-hourly-seasons",
+            "oil/fuel-prices",
         ]
     },
     prices: {
@@ -156,7 +156,7 @@ const collections = {
     },
     emissions: {
         name: "Emissionen",
-        menu: false,
+        menu: true,
         vis: [
             { type: "markdown", src: "emissions"},
         ]
