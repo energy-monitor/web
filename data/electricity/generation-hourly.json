@@ -51,6 +51,7 @@
         },
         "type": {
             "legend": {
+                "onlyData": true,
                 "symbol": {
                     "size": 16,
                     "elements": [{
