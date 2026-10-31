@@ -47,11 +47,11 @@
             "column": "value",
             "type": "numeric",
             "stacked": { "type": { "not": ["total", "load"] } },
-            "scale": { "orientation": "radial", "domain": [0, null], "nice": true, "range": [{ "prop": "relative", "ref": "radius", "ratio": 0.15 }, "@radius"] },
+            "scale": { "orientation": "radial", "domain": [0, null], "nice": true, "range": [{ "prop": "relative", "ref": "radius", "ratio": 0.22 }, "@radius"] },
             "axis": {
                 "position": "radial", "angle": 90, "ticks": 3, "grid": true, "format": ".0f",
                 "labels": { "props": { "fill": "#777", "font-size": 10, "stroke-width": 2, "stroke-opacity": 0.5 } },
-                "domain": { "props": { "stroke-opacity": 0.4 } }
+                "domain": { "props": { "stroke": "none" } }
             },
             "hover": { "format": ".2f" }
         },
@@ -59,11 +59,11 @@
             "legend": {
                 "symbol": { "size": 14, "elements": [
                     { "type": "rect", "props": { "x": 0, "y": 0, "width": 14, "height": "@symbolHeight", "fill": "@color", "rx": 1 } },
-                    { "type": "line", "props": { "x1": 0, "x2": 14, "y1": 7, "y2": 7, "stroke": "@symbolStroke", "stroke-width": 2, "stroke-dasharray": "@symbolDash" } }
+                    { "type": "line", "props": { "x1": 0, "x2": 14, "y1": 7, "y2": 7, "stroke": "@symbolStroke", "stroke-width": 2, "stroke-dasharray": "@symbolDash", "stroke-opacity": "@lineOpacity" } }
                 ] }
             },
             "props": {
-                "common": { "symbolHeight": 14, "symbolStroke": "none", "symbolDash": "none", "dash": "none", "lineWidth": 2, "hoverStyle": "normal" },
+                "common": { "symbolHeight": 14, "symbolStroke": "none", "symbolDash": "none", "dash": "none", "lineWidth": 2, "lineOpacity": 1, "hoverStyle": "normal" },
                 "categories": {
                     "Hydro":  { "text": "#0B5E80" },
                     "Wind":   { "text": "#2F5F8A" },
@@ -73,7 +73,7 @@
                     "Oil":    { "color": "#000", "name": "Erdöl", "text": "#FFFFFF", "legend": false },
                     "others": { "color": "#CCC", "name": "Andere", "text": "#444444" },
                     "total":  { "color": "#222", "name": "Produktion", "text": "#222", "symbolHeight": 0, "symbolStroke": "#222", "lineWidth": 1.5, "hoverStyle": "italic" },
-                    "load":   { "color": "#222", "name": "Verbrauch", "text": "#222", "symbolHeight": 0, "symbolStroke": "#222", "symbolDash": "4 2", "dash": "5 3", "hoverStyle": "italic" }
+                    "load":   { "color": "#222", "name": "Verbrauch", "text": "#222", "symbolHeight": 0, "symbolStroke": "#222", "symbolDash": "4 2", "dash": "5 3", "lineOpacity": 0.5, "hoverStyle": "italic" }
                 }
             },
             "hover": { "row": { "props": { "font-style": "@hoverStyle" } } }
@@ -142,19 +142,8 @@
             "curve": "catmullRomClosed",
             "props": {
                 "d": { "angle": "@x:scaled", "radius": "@y:scaled" },
-                "stroke": "@color", "stroke-width": "@lineWidth", "stroke-dasharray": "@dash", "fill": "none",
-                "highlight-stroke-width": 2.5, "others-opacity": 0.35
-            }
-        },
-        {
-            "id": "loadName",
-            "type": "polar:text",
-            "categories": ["facet", "type"],
-            "filter": { "type": "load", "x": 0 },
-            "props": {
-                "angle": "@x:scaled", "radius": "@y:scaled", "dy": -7, "text-anchor": "middle",
-                "font-size": 11, "font-weight": "bold", "fill": "@text", "text": "@name",
-                "pointer-events": "none", "highlight-opacity": 1, "others-opacity": 0.3
+                "stroke": "@color", "stroke-width": "@lineWidth", "stroke-dasharray": "@dash", "stroke-opacity": "@lineOpacity", "fill": "none",
+                "highlight-stroke-width": 2.5, "highlight-stroke-opacity": 1, "others-opacity": 0.35
             }
         }
     ]
