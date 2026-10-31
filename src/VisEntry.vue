@@ -1,5 +1,5 @@
 <template>
-    <gen-vis v-if="vis.type == 'genVis'" class="visEntry" :def-file="`/data/${vis.src}.json`" :download="fileName" copy image-width="screen" :state="state" @update:state="saveState">
+    <gen-vis v-if="vis.type == 'genVis'" class="visEntry" :def-file="`/data/${vis.src}.json`" :download="fileName" copy image-width="screen" lazy :state="state" @update:state="saveState">
         <!-- rotate-ccw, arrow-up, arrow-down and paperclip of the feather
              icons, the paperclip is black if the chart is selected -->
         <template v-if="settings" #buttons>
@@ -42,7 +42,9 @@ import { isFavorite, toggleFavorite, chartState, setChartState } from '@/setting
 // the layout of a phone), with settings also a
 // paperclip to add it to the start page and its changes are kept, a button
 // resets them, movable ones (on the start page) have arrows to move them up
-// and down, see the event move, the first and the last only in one direction
+// and down, see the event move, the first and the last only in one direction,
+// the definition and the data are loaded when the chart is near the screen
+// (`lazy` of gen-vis), it has the space of --gen-vis-loading-height until then
 export default {
     props: {
         vis: Object,
