@@ -60,7 +60,7 @@
                     "others": { "color": "#CCC", "name": "Andere" },
                     "total":  { "color": "#222", "name": "Produktion", "symbolHeight": 0, "symbolStroke": "#222", "lineWidth": 1.5, "hoverStyle": "italic" },
                     "load":   { "color": "#222", "name": "Verbrauch", "symbolHeight": 0, "symbolStroke": "#222", "symbolDash": "4 2", "dash": "5 3", "lineOpacity": 0.5, "hoverStyle": "italic" },
-                    "load.pumping": { "color": "#222", "name": "Verbrauch mit Pumpen", "symbolHeight": 0, "symbolStroke": "#222", "symbolDash": "1.5 2", "dash": "1.5 2.5", "lineWidth": 1.5, "lineOpacity": 0.8, "hoverStyle": "italic" }
+                    "load.pumping": { "color": "#222", "name": "Verbrauch mit Pumpen", "visible": false, "symbolHeight": 0, "symbolStroke": "#222", "symbolDash": "1.5 2", "dash": "1.5 2.5", "lineWidth": 1.5, "lineOpacity": 0.8, "hoverStyle": "italic" }
                 }
             },
             "hover": { "row": { "props": { "font-style": "@hoverStyle" } } }
