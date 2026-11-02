@@ -174,6 +174,16 @@ const collections = {
             "climate/regions",
         ]
     },
+    // experimental charts, new combinations of the data, only by its url
+    // /collection/experiment
+    experiment: {
+        name: "Experiment",
+        menu: false,
+        vis: [
+            "experiment/gas-power",
+            "experiment/storage-clock",
+        ]
+    },
     test: {
         name: "Test",
         menu: false,

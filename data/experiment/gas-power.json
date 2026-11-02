@@ -1,0 +1,56 @@
+{
+    "parent": "../_years.json",
+    "data": "../electricity/price.parquet",
+    "transform": [
+        { "type": "lookup", "column": "date", "data": "../gas/price.parquet", "key": "date", "value": "value", "as": "gas" }
+    ],
+    "options": {
+        "title": "Der Strompreis folgt dem Gaspreis",
+        "subtitle": "Strompreis (Day Ahead) gegen Gaspreis (CEGH), ein Punkt pro Tag (rollierende 7-Tages Durchschnitte), in €/MWh",
+        "footer": "Quelle: ENTSO-E - Day Ahead Prices 12.1.D, cismo; die Gerade: die Brennstoffkosten eines Gaskraftwerks mit 50 % Wirkungsgrad, ohne CO₂",
+        "height": { "prop": "steps", "ref": "totalWidth", "steps": [{ "cut": 0, "value": 320 }, { "cut": 600, "value": 440 }] },
+        "margins": {"top": 10, "right": 20, "bottom": 44, "left": 50}
+    },
+    "filter": { "type": "mean" },
+    "mapping": {
+        "type": { "column": "type", "type": "categorical" },
+        "x": {
+            "column": "gas",
+            "type": "numeric",
+            "scale": { "type": "linear", "domain": [0, null], "domainAbs": [0, 0], "nice": true },
+            "axis": { "format": ",.0f", "grid": true, "title": { "name": "Gaspreis, €/MWh", "offset": 34 } },
+            "hover": { "format": ",.0f" }
+        },
+        "y": {
+            "scale": { "domain": [null, null], "domainRel": [0, 0], "nice": true },
+            "axis": { "title": { "name": "Strompreis, €/MWh", "offset": 40 } },
+            "hover": { "format": ",.0f" }
+        }
+    },
+    "plot": [
+        {
+            "id": "fuel",
+            "type": "cartesian:line",
+            "data": [{ "x": 0, "y": 0 }, { "x": 340, "y": 680 }],
+            "props": { "d": { "x": "@x:scaled", "y": "@y:scaled" }, "stroke": "#888", "stroke-dasharray": "4 3", "fill": "none" }
+        },
+        {
+            "id": "lines",
+            "type": "cartesian:line",
+            "categories": ["year"],
+            "curve": "catmullRom",
+            "props": {
+                "d": { "x": "@x:scaled", "y": "@y:scaled" },
+                "stroke": "@color", "stroke-width": 1.2, "fill": "none", "opacity": "@opacity",
+                "highlight-opacity": 1, "highlight-stroke-width": 2.5, "others-opacity": 0.08
+            }
+        },
+        {
+            "id": "now",
+            "type": "svg:circle",
+            "categories": ["year"],
+            "select": "last",
+            "props": { "cx": "@x:scaled", "cy": "@y:scaled", "r": 3.5, "fill": "@color", "stroke": "white", "opacity": "@opacity", "others-opacity": 0.08 }
+        }
+    ]
+}
