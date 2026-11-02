@@ -1,56 +1,324 @@
 {
     "parent": "../_years.json",
-    "data": "../electricity/price.parquet",
-    "transform": [
-        { "type": "lookup", "column": "date", "data": "../gas/price.parquet", "key": "date", "value": "value", "as": "gas" }
-    ],
+    "data": "gas-power.parquet",
     "options": {
         "title": "Der Strompreis folgt dem Gaspreis",
         "subtitle": "Strompreis (Day Ahead) gegen Gaspreis (CEGH), ein Punkt pro Tag (rollierende 7-Tages Durchschnitte), in €/MWh",
         "footer": "Quelle: ENTSO-E - Day Ahead Prices 12.1.D, cismo; die Gerade: die Brennstoffkosten eines Gaskraftwerks mit 50 % Wirkungsgrad, ohne CO₂",
-        "height": { "prop": "steps", "ref": "totalWidth", "steps": [{ "cut": 0, "value": 320 }, { "cut": 600, "value": 440 }] },
-        "margins": {"top": 10, "right": 20, "bottom": 44, "left": 50}
+        "height": {
+            "prop": "steps",
+            "ref": "totalWidth",
+            "steps": [
+                {
+                    "cut": 0,
+                    "value": 320
+                },
+                {
+                    "cut": 600,
+                    "value": 440
+                }
+            ]
+        },
+        "margins": {
+            "top": 10,
+            "right": 20,
+            "bottom": 44,
+            "left": 50
+        },
+        "hover": {
+            "mode": "point",
+            "title": "<b>{year}</b>, {day}",
+            "row": "Strom {y} €, Gas {gasHover} €",
+            "filter": {
+                "link": "0"
+            }
+        }
     },
-    "filter": { "type": "mean" },
     "mapping": {
-        "type": { "column": "type", "type": "categorical" },
         "x": {
             "column": "gas",
             "type": "numeric",
-            "scale": { "type": "linear", "domain": [0, null], "domainAbs": [0, 0], "nice": true },
-            "axis": { "format": ",.0f", "grid": true, "title": { "name": "Gaspreis, €/MWh", "offset": 34 } },
-            "hover": { "format": ",.0f" }
+            "scale": {
+                "type": "linear",
+                "domain": [
+                    0,
+                    null
+                ],
+                "domainAbs": [
+                    0,
+                    0
+                ],
+                "nice": true
+            },
+            "axis": {
+                "format": ",.0f",
+                "grid": true,
+                "title": {
+                    "name": "Gaspreis, €/MWh",
+                    "offset": 34
+                }
+            },
+            "hover": {
+                "format": ",.0f"
+            }
         },
         "y": {
-            "scale": { "domain": [null, null], "domainRel": [0, 0], "nice": true },
-            "axis": { "title": { "name": "Strompreis, €/MWh", "offset": 40 } },
-            "hover": { "format": ",.0f" }
+            "scale": {
+                "domain": [
+                    null,
+                    null
+                ],
+                "domainRel": [
+                    0,
+                    0
+                ],
+                "nice": true
+            },
+            "axis": {
+                "title": {
+                    "name": "Strompreis, €/MWh",
+                    "offset": 40
+                }
+            },
+            "hover": {
+                "format": ",.0f"
+            }
+        },
+        "day": {
+            "column": "date",
+            "type": "date",
+            "hover": {
+                "format": "%e. %b"
+            }
+        },
+        "gasHover": {
+            "column": "gas",
+            "type": "numeric",
+            "hover": {
+                "format": ",.0f"
+            }
+        },
+        "year": {
+            "props": {
+                "categories": {
+                    "2026": {
+                        "opacity": 1
+                    },
+                    "2025": {
+                        "opacity": 0.9
+                    },
+                    "2024": {
+                        "opacity": 0.8
+                    },
+                    "2023": {
+                        "opacity": 0.75
+                    },
+                    "2022": {
+                        "opacity": 0.65
+                    },
+                    "2021": {
+                        "opacity": 0.65
+                    },
+                    "2020": {
+                        "opacity": 0.6
+                    },
+                    "2019": {
+                        "opacity": 0.6
+                    }
+                }
+            }
+        },
+        "link": {
+            "column": "link",
+            "type": "categorical"
         }
     },
     "plot": [
         {
             "id": "fuel",
             "type": "cartesian:line",
-            "data": [{ "x": 0, "y": 0 }, { "x": 340, "y": 680 }],
-            "props": { "d": { "x": "@x:scaled", "y": "@y:scaled" }, "stroke": "#888", "stroke-dasharray": "4 3", "fill": "none" }
+            "data": [
+                {
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "x": 340,
+                    "y": 680
+                }
+            ],
+            "props": {
+                "d": {
+                    "x": "@x:scaled",
+                    "y": "@y:scaled"
+                },
+                "stroke": "#888",
+                "stroke-dasharray": "4 3",
+                "fill": "none"
+            }
         },
         {
             "id": "lines",
             "type": "cartesian:line",
-            "categories": ["year"],
+            "categories": [
+                "year"
+            ],
             "curve": "catmullRom",
             "props": {
-                "d": { "x": "@x:scaled", "y": "@y:scaled" },
-                "stroke": "@color", "stroke-width": 1.2, "fill": "none", "opacity": "@opacity",
-                "highlight-opacity": 1, "highlight-stroke-width": 2.5, "others-opacity": 0.08
+                "d": {
+                    "x": "@x:scaled",
+                    "y": "@y:scaled"
+                },
+                "stroke": "@color",
+                "stroke-width": 2.2,
+                "fill": "none",
+                "opacity": "@opacity",
+                "highlight-opacity": 1,
+                "highlight-stroke-width": 3.5,
+                "others-opacity": 0.15
+            }
+        },
+        {
+            "id": "start",
+            "type": "svg:circle",
+            "categories": [
+                "year"
+            ],
+            "select": "first",
+            "props": {
+                "cx": "@x:scaled",
+                "cy": "@y:scaled",
+                "r": 3,
+                "fill": "white",
+                "stroke": "@color",
+                "stroke-width": 1.5,
+                "opacity": "@opacity",
+                "others-opacity": 0.15
             }
         },
         {
             "id": "now",
             "type": "svg:circle",
-            "categories": ["year"],
             "select": "last",
-            "props": { "cx": "@x:scaled", "cy": "@y:scaled", "r": 3.5, "fill": "@color", "stroke": "white", "opacity": "@opacity", "others-opacity": 0.08 }
+            "props": {
+                "cx": "@x:scaled",
+                "cy": "@y:scaled",
+                "r": 4,
+                "fill": "#222",
+                "stroke": "white",
+                "stroke-width": 1.5
+            },
+            "filter": {
+                "link": "0"
+            }
+        },
+        {
+            "id": "days",
+            "type": "svg:circle",
+            "categories": [
+                "year"
+            ],
+            "highlight": "row",
+            "props": {
+                "cx": "@x:scaled",
+                "cy": "@y:scaled",
+                "r": 3.5,
+                "fill": "@color",
+                "stroke": "#222",
+                "stroke-width": 1,
+                "opacity": 0,
+                "highlight-opacity": 1,
+                "others-opacity": 0
+            },
+            "filter": {
+                "link": "0"
+            }
+        },
+        {
+            "id": "startLabel",
+            "type": "svg:text",
+            "categories": [
+                "year"
+            ],
+            "select": "first",
+            "halo": true,
+            "props": {
+                "x": "@x:scaled",
+                "y": "@y:scaled",
+                "dx": -6,
+                "dy": -6,
+                "text-anchor": "end",
+                "font-size": 11,
+                "fill": "#333",
+                "text": "@name",
+                "opacity": "@opacity",
+                "others-opacity": 0.15
+            },
+            "dodge": 12
+        },
+        {
+            "id": "peak",
+            "type": "svg:circle",
+            "filter": {
+                "link": "0"
+            },
+            "select": {
+                "max": "y"
+            },
+            "props": {
+                "cx": "@x:scaled",
+                "cy": "@y:scaled",
+                "r": 5,
+                "fill": "none",
+                "stroke": "#222",
+                "stroke-width": 1.2,
+                "others-opacity": 0.3
+            }
+        },
+        {
+            "id": "peakTitle",
+            "type": "svg:text",
+            "filter": {
+                "link": "0"
+            },
+            "select": {
+                "max": "y"
+            },
+            "halo": true,
+            "props": {
+                "x": "@x:scaled",
+                "y": "@y:scaled",
+                "dx": -10,
+                "dy": -2,
+                "text-anchor": "end",
+                "font-size": 12,
+                "font-weight": "bold",
+                "fill": "#222",
+                "text": "Ende August 2022",
+                "others-opacity": 0.3
+            }
+        },
+        {
+            "id": "peakText",
+            "type": "svg:text",
+            "filter": {
+                "link": "0"
+            },
+            "select": {
+                "max": "y"
+            },
+            "halo": true,
+            "props": {
+                "x": "@x:scaled",
+                "y": "@y:scaled",
+                "dx": -10,
+                "dy": 12,
+                "text-anchor": "end",
+                "font-size": 11,
+                "fill": "#444",
+                "text": "Strom 670 €/MWh bei Gas 302 €/MWh",
+                "others-opacity": 0.3
+            }
         }
     ]
 }
