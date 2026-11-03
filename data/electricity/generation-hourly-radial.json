@@ -1,4 +1,5 @@
 {
+    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
     "parent": ["_sources.json", "../_share-switch.json"],
     "data": "generation-hourly-seasons.parquet",
     "options": {
@@ -212,7 +213,8 @@
                 "font-size": 11,
                 "font-weight": "bold",
                 "text": "@name",
-                "pointer-events": "none"
+                "pointer-events": "none",
+                "fill": null
             },
             "highlight": { "opacity": 1 },
             "others": { "opacity": 0.3 }

@@ -1,4 +1,5 @@
 {
+    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
     "options": {
         "coord": "geo",
         "height": { "steps": ["@totalWidth", { "0": 340, "450": 420, "550": 500 }] },
@@ -65,10 +66,7 @@
                 "CY": { "name": "Zypern" }
             }
         },
-        "value": {
-            "legend": { "missing": { "name": "keine Daten", "color": "#DADADA" } },
-            "type": "categorical"
-        }
+        "value": { "legend": { "missing": { "name": "keine Daten", "color": "#DADADA" } } }
     },
     "plot": [
         { "type": "geo:base", "props": { "fill": "#DADADA", "stroke": "white", "stroke-width": 1 } },
