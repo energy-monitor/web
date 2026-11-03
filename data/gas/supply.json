@@ -6,13 +6,5 @@
         "subtitle": "in millionen Kubikmetern",
         "footer": "Quelle: eurostat - nrg_cb_gasm"
     },
-    "mapping": {
-        "facet": {
-            "props": {
-                "categories": {
-                    "total": { "name": "Gesamt", "visible": true }
-                }
-            }
-        }
-    }
+    "mapping": { "facet": { "categories": { "total": { "name": "Gesamt", "visible": true } } } }
 }

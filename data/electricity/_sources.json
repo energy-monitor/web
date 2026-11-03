@@ -2,17 +2,15 @@
     "mapping": {
         "type": {
             "column": "source.group",
-            "props": {
-                "categories": {
-                    "Hydro": { "color": "#5BC5F2", "name": "Hydro" },
-                    "Hydro run-of-river":   { "color": "#5BC5F2", "name": "Laufwasser" },
-                    "Hydro reservoir":      { "color": "#2A8FC7", "name": "Speicher" },
-                    "Hydro pumped storage": { "color": "#14589E", "name": "Pumpspeicher" },
-                    "Wind":  { "color": "#BBD7EE", "name": "Wind" },
-                    "Solar": { "color": "#F3D039", "name": "Solar" },
-                    "Gas":   { "color": "#C3423F", "name": "Erdgas" },
-                    "Coal":  { "color": "#8B4513", "name": "Kohle" }
-                }
+            "categories": {
+                "Hydro": { "color": "#5BC5F2", "name": "Hydro" },
+                "Hydro run-of-river": { "color": "#5BC5F2", "name": "Laufwasser" },
+                "Hydro reservoir": { "color": "#2A8FC7", "name": "Speicher" },
+                "Hydro pumped storage": { "color": "#14589E", "name": "Pumpspeicher" },
+                "Wind": { "color": "#BBD7EE", "name": "Wind" },
+                "Solar": { "color": "#F3D039", "name": "Solar" },
+                "Gas": { "color": "#C3423F", "name": "Erdgas" },
+                "Coal": { "color": "#8B4513", "name": "Kohle" }
             }
         }
     }

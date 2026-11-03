@@ -1,25 +1,14 @@
 {
     "parent": "_generation.json",
     "data": "generation-renewable.parquet",
-    "options": {
-        "height": 220
-    },
+    "options": { "height": 220 },
     "mapping": {
         "facet": {
-            "props": {
-                "categories": {
-                    "Renewable":     { "name": "Renewable" },
-                    "Non-Renewable": { "name": "Non-Renewable" }
-                }
+            "categories": {
+                "Renewable": { "name": "Renewable" },
+                "Non-Renewable": { "name": "Non-Renewable" }
             }
         }
     },
-    "facets": {
-        "cols": {
-            "steps": [
-                {"cut":   0, "value": 1},
-                {"cut": 550, "value": 2}
-            ]
-        }
-    }
+    "facets": { "cols": { "steps": ["@totalWidth", { "0": 1, "550": 2 }] } }
 }

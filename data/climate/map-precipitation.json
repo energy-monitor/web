@@ -6,9 +6,7 @@
         "subtitle": "Jahressumme in mm bzw. Abweichung vom Mittel 1961 - 1990 in %",
         "footer": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster, Mittel über die Bezirke"
     },
-    "globals": {
-        "indicator": "rr.anomaly"
-    },
+    "globals": { "indicator": "rr.anomaly" },
     "formElements": [
         {
             "id": "indicator",
@@ -17,12 +15,15 @@
             "type": "radio",
             "values": [
                 {
-                    "id": "absolute", "name": "Jahressumme", "value": "rr",
+                    "id": "absolute",
+                    "name": "Jahressumme",
+                    "value": "rr",
                     "patch": {
                         "mapping": {
                             "value": {
                                 "name": "Jahressumme in mm",
-                                "scale": { "interpolator": "YlGnBu", "domain": [400, 2400] },
+                                "domain": [400, 2400],
+                                "scale": { "interpolator": "YlGnBu" },
                                 "legend": { "format": ",.0f" },
                                 "hover": { "format": ",.0f" }
                             }
@@ -36,7 +37,8 @@
     "mapping": {
         "value": {
             "name": "Abweichung in %",
-            "scale": { "type": "sequential", "interpolator": "BrBG", "domain": [-40, 40] },
+            "domain": [-40, 40],
+            "scale": { "type": "sequential", "interpolator": "BrBG" },
             "legend": { "format": "+.0f" },
             "hover": { "format": "+.0f" }
         }

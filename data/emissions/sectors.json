@@ -8,16 +8,14 @@
     "mapping": {
         "type": {
             "column": "sector",
-            "props": {
-                "categories": {
-                    "energy":      { "color": "#4A96D4", "name": "Energiewirtschaft" },
-                    "industry":    { "color": "#6F625A", "name": "Industrie" },
-                    "transport":   { "color": "#F2A03D", "name": "Verkehr" },
-                    "households":  { "color": "#F3D039", "name": "Haushalte" },
-                    "services":    { "color": "#F7E59B", "name": "Dienstleistungen" },
-                    "agriculture": { "color": "#3FA45B", "name": "Land- und Forstwirtschaft" },
-                    "other":       { "color": "#CCCCCC", "name": "Sonstige (Militär)" }
-                }
+            "categories": {
+                "energy": { "color": "#4A96D4", "name": "Energiewirtschaft" },
+                "industry": { "color": "#6F625A", "name": "Industrie" },
+                "transport": { "color": "#F2A03D", "name": "Verkehr" },
+                "households": { "color": "#F3D039", "name": "Haushalte" },
+                "services": { "color": "#F7E59B", "name": "Dienstleistungen" },
+                "agriculture": { "color": "#3FA45B", "name": "Land- und Forstwirtschaft" },
+                "other": { "color": "#CCCCCC", "name": "Sonstige (Militär)" }
             }
         }
     }

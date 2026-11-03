@@ -1,16 +1,8 @@
 {
     "options": {
         "coord": "geo",
-        "height": {
-            "prop": "steps",
-            "ref": "totalWidth",
-            "steps": [
-                {"cut":   0, "value": 260},
-                {"cut": 450, "value": 320},
-                {"cut": 550, "value": 380}
-            ]
-        },
-        "margins": {"top": 10, "right": 10, "bottom": 10, "left": 10},
+        "height": { "steps": ["@totalWidth", { "0": 260, "450": 320, "550": 380 }] },
+        "margins": { "top": 10, "right": 10, "bottom": 10, "left": 10 },
         "hover": { "empty": true }
     },
     "geo": {
@@ -21,13 +13,8 @@
         "name": "NAME",
         "projection": { "type": "conicEquidistant", "rotate": [-13.3, 0], "parallels": [46, 49] }
     },
-    "globals": {
-        "year": "2025"
-    },
-    "filter": {
-        "indicator": "@indicator",
-        "year": "@year"
-    },
+    "globals": { "year": "2025" },
+    "filter": { "indicator": "@indicator", "year": "@year" },
     "formElements": [
         {
             "id": "year",
@@ -38,10 +25,7 @@
         }
     ],
     "mapping": {
-        "district": {
-            "column": "district",
-            "type": "categorical"
-        },
+        "district": { "column": "district", "type": "categorical" },
         "indicator": { "column": "indicator", "type": "categorical" },
         "year": { "column": "year", "type": "categorical" },
         "value": {
@@ -57,13 +41,9 @@
         },
         {
             "type": "geo:region",
-            "categories": ["district"],
-            "props": {
-                "fill": "@value:scaled",
-                "stroke": "white",
-                "stroke-width": 0.5,
-                "highlight-fill-opacity": 0.75
-            }
+            "by": "district",
+            "props": { "fill": "@value:scaled", "stroke": "white", "stroke-width": 0.5 },
+            "highlight": { "fill-opacity": 0.75 }
         },
         {
             "type": "geo:mesh",

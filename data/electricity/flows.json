@@ -6,12 +6,5 @@
         "subtitle": "täglich (rollierender 14-Tages Durchschnitt), in GWh",
         "footer": "Quelle: ENTSO-E - Physical Flows"
     },
-    "mapping": {
-        "y": {
-            "scale": {
-                "domain": [null, null],
-                "domainRel": [-0.1, 0.1]
-            }
-        }
-    }
+    "mapping": { "y": { "domain": [null, null], "scale": { "domainRel": [-0.1, 0.1] } } }
 }

@@ -10,48 +10,17 @@
         "x": {
             "column": "hour",
             "type": "numeric",
-            "scale": {
-                "type": "linear",
-                "domainAbs": [-0.2, 0.2],
-                "orientation": "horizontal"
-            },
-            "axis": {
-                "ticks": {
-                    "prop": "relative",
-                    "ref": "innerWidth",
-                    "ratio": 0.017
-                },
-                "position": "bottom",
-                "rotate": 0,
-                "format": "c"
-            },
-            "hover": {
-                "format": "c"
-            }
+            "scale": { "domainAbs": [-0.2, 0.2] },
+            "axis": { "ticks": { "*": ["@innerWidth", 0.017] }, "rotate": 0, "format": "c" },
+            "hover": { "format": "c" }
         },
-        "y": {
-            "axis": {
-                "format": ",.1f"
-            },
-            "hover": {
-                "format": ",.2f"
-            }
-        }
+        "y": { "axis": { "format": ",.1f" }, "hover": { "format": ",.2f" } }
     },
     "plot": [
         {
-            "type": "cartesian:line",
-            "categories": ["year"],
-            "props": {
-                "stroke-width": "@stroke-width",
-                "fill": "none",
-                "opacity": "@opacity",
-                "stroke": "@color",
-                "d": {
-                    "x": "@x:scaled",
-                    "y": "@y:scaled"
-                }
-            }
+            "type": "line",
+            "by": "year",
+            "props": { "stroke-width": "@stroke-width", "opacity": "@opacity", "stroke": "@color" }
         }
     ]
 }

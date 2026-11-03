@@ -9,11 +9,7 @@
     "mapping": {
         "type": {
             "column": "product",
-            "props": {
-                "categories": {
-                    "total": { "color": "#C3423F", "name": "Erdgas" }
-                }
-            }
+            "categories": { "total": { "color": "#C3423F", "name": "Erdgas" } }
         }
     }
 }

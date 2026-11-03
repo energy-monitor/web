@@ -6,9 +6,7 @@
         "subtitle": "Tage mit mindestens 1 cm Schnee, jährlich, bzw. Abweichung vom Mittel 1961 - 1990",
         "footer": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster, Mittel über die Bezirke"
     },
-    "globals": {
-        "indicator": "days.snow"
-    },
+    "globals": { "indicator": "days.snow" },
     "formElements": [
         {
             "id": "indicator",
@@ -18,12 +16,15 @@
             "values": [
                 { "id": "absolute", "name": "Tage", "value": "days.snow" },
                 {
-                    "id": "anomaly", "name": "Abweichung", "value": "days.snow.anomaly",
+                    "id": "anomaly",
+                    "name": "Abweichung",
+                    "value": "days.snow.anomaly",
                     "patch": {
                         "mapping": {
                             "value": {
                                 "name": "Abweichung in Tagen",
-                                "scale": { "interpolator": "RdBu", "domain": [-80, 80] },
+                                "domain": [-80, 80],
+                                "scale": { "interpolator": "RdBu" },
                                 "legend": { "format": "+.0f" },
                                 "hover": { "format": "+.0f" }
                             }
@@ -36,7 +37,8 @@
     "mapping": {
         "value": {
             "name": "Tage",
-            "scale": { "type": "sequential", "interpolator": "Blues", "domain": [0, 250] },
+            "domain": [0, 250],
+            "scale": { "type": "sequential", "interpolator": "Blues" },
             "legend": { "format": ".0f" },
             "hover": { "format": ".0f" }
         }

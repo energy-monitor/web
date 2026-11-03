@@ -9,33 +9,17 @@
     },
     "mapping": {
         "x": {
-            "scale": {
-                "type": "utc"
-            },
-            "axis": {
-                "ticks": 4,
-                "format": "Q%q"
-            },
-            "hover": {
-                "format": "Q%q"
-            }
+            "scale": { "type": "utc" },
+            "axis": { "ticks": 4, "format": "Q%q" },
+            "hover": { "format": "Q%q" }
         },
         "facet": {
             "column": "measure",
-            "props": {
-                "categories": {
-                    "tonnes": { "name": "Gütermenge (Mio. t)", "visible": true },
-                    "tkm":    { "name": "Verkehrsleistung (Mrd. tkm)", "visible": true }
-                }
+            "categories": {
+                "tonnes": { "name": "Gütermenge (Mio. t)", "visible": true },
+                "tkm": { "name": "Verkehrsleistung (Mrd. tkm)", "visible": true }
             }
         }
     },
-    "facets": {
-        "cols": {
-            "steps": [
-                {"cut":   0, "value": 1},
-                {"cut": 550, "value": 2}
-            ]
-        }
-    }
+    "facets": { "cols": { "steps": ["@totalWidth", { "0": 1, "550": 2 }] } }
 }

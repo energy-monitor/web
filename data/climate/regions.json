@@ -2,44 +2,45 @@
     "parent": "../_timeline.json",
     "data": "regions.parquet",
     "options": {
-        "height": {
-            "prop": "steps",
-            "ref": "totalWidth",
-            "steps": [
-                {"cut":   0, "value": 250},
-                {"cut": 550, "value": 280},
-                {"cut": 600, "value": 320}
-            ]
-        },
-        "margins": {"top": 5, "right": 30, "bottom": 30, "left": 50},
+        "height": { "steps": ["@totalWidth", { "0": 250, "550": 280, "600": 320 }] },
+        "margins": { "top": 5, "right": 30, "bottom": 30, "left": 50 },
         "title": "Klimaindikatoren nach Bundesland",
         "subtitle": "jährlich, Flächenmittel",
         "footer": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster"
     },
-    "globals": {
-        "indicator": "tm",
-        "values": "abs"
-    },
+    "globals": { "indicator": "tm", "values": "abs" },
     "filter": { "indicator": "@indicator" },
     "formElements": [
         {
-            "id": "indicator", "name": "Indikator", "ref": "indicator", "type": "radio",
+            "id": "indicator",
+            "name": "Indikator",
+            "ref": "indicator",
+            "type": "radio",
             "values": [
-                { "id": "tm",         "name": "Temperatur (°C)",                   "value": "tm" },
-                { "id": "rr",         "name": "Niederschlag (mm, Abweichung in %)", "value": "rr" },
-                { "id": "sa",         "name": "Sonnenstunden",                     "value": "sa" },
-                { "id": "days.hot",   "name": "Hitzetage (≥ 30 °C)",               "value": "days.hot" },
-                { "id": "days.frost", "name": "Frosttage (< 0 °C)",                "value": "days.frost" },
-                { "id": "days.snow",  "name": "Schneedeckentage (≥ 1 cm)",         "value": "days.snow" },
-                { "id": "swe.max",    "name": "Max. Schneewasseräquivalent (mm, Abweichung in %)", "value": "swe.max" }
+                { "id": "tm", "name": "Temperatur (°C)", "value": "tm" },
+                { "id": "rr", "name": "Niederschlag (mm, Abweichung in %)", "value": "rr" },
+                { "id": "sa", "name": "Sonnenstunden", "value": "sa" },
+                { "id": "days.hot", "name": "Hitzetage (≥ 30 °C)", "value": "days.hot" },
+                { "id": "days.frost", "name": "Frosttage (< 0 °C)", "value": "days.frost" },
+                { "id": "days.snow", "name": "Schneedeckentage (≥ 1 cm)", "value": "days.snow" },
+                {
+                    "id": "swe.max",
+                    "name": "Max. Schneewasseräquivalent (mm, Abweichung in %)",
+                    "value": "swe.max"
+                }
             ]
         },
         {
-            "id": "values", "name": "Werte", "ref": "values", "type": "radio",
+            "id": "values",
+            "name": "Werte",
+            "ref": "values",
+            "type": "radio",
             "values": [
                 { "id": "valuesAbs", "name": "Absolut", "value": "abs" },
                 {
-                    "id": "valuesAnomaly", "name": "Abweichung vom Mittel 1961 - 1990", "value": "anomaly",
+                    "id": "valuesAnomaly",
+                    "name": "Abweichung vom Mittel 1961 - 1990",
+                    "value": "anomaly",
                     "patch": {
                         "mapping": {
                             "y": {
@@ -55,76 +56,63 @@
     ],
     "mapping": {
         "x": {
-            "axis": {
-                "ticks": {
-                    "prop": "relative",
-                    "ref": "innerWidth",
-                    "ratio": 0.014
-                },
-                "rotate": 0,
-                "format": "%Y"
-            },
-            "hover": { "format": "%Y" }
+            "format": "%Y",
+            "axis": { "ticks": { "*": ["@innerWidth", 0.014] }, "rotate": 0 },
+            "hover": {}
         },
         "y": {
-            "scale": { "type": "linear", "domain": [null, null], "domainRel": [-0.05, 0.05] },
+            "domain": [null, null],
+            "scale": { "type": "linear", "domainRel": [-0.05, 0.05] },
             "axis": { "format": ",.0f" },
             "hover": { "format": ",.1f" }
         },
-        "indicator": { "column": "indicator" },
+        "indicator": { "column": "indicator", "type": "categorical" },
         "type": {
             "column": "type",
             "legend": {
                 "symbol": {
                     "size": 16,
-                    "elements": [{
-                        "type": "line",
-                        "props": {
-                            "x1": 0, "x2": 16, "y1": 8, "y2": 8,
-                            "stroke": "@color",
-                            "stroke-width": "@stroke-width",
-                            "opacity": "@opacity"
+                    "elements": [
+                        {
+                            "type": "line",
+                            "props": {
+                                "x1": 0,
+                                "x2": 16,
+                                "y1": 8,
+                                "y2": 8,
+                                "stroke": "@color",
+                                "stroke-width": "@stroke-width",
+                                "opacity": "@opacity"
+                            }
                         }
-                    }]
+                    ]
                 }
             },
-            "props": {
-                "common": {
-                    "stroke-width": 1.5,
-                    "highlight-stroke-width": 3,
-                    "opacity": 0.8,
-                    "highlight-opacity": 1
-                },
-                "categories": {
-                    "AT": { "color": "#000000", "name": "Österreich", "stroke-width": 2.5 },
-                    "1":  { "color": "#e6194b", "name": "Burgenland" },
-                    "2":  { "color": "#3cb44b", "name": "Kärnten" },
-                    "3":  { "color": "#4363d8", "name": "Niederösterreich" },
-                    "4":  { "color": "#f58231", "name": "Oberösterreich" },
-                    "5":  { "color": "#911eb4", "name": "Salzburg" },
-                    "6":  { "color": "#42d4f4", "name": "Steiermark" },
-                    "7":  { "color": "#f032e6", "name": "Tirol" },
-                    "8":  { "color": "#9A6324", "name": "Vorarlberg" },
-                    "9":  { "color": "#808000", "name": "Wien" }
-                }
+            "common": {
+                "stroke-width": 1.5,
+                "highlight-stroke-width": 3,
+                "opacity": 0.8,
+                "highlight-opacity": 1
+            },
+            "categories": {
+                "1": { "color": "#e6194b", "name": "Burgenland" },
+                "2": { "color": "#3cb44b", "name": "Kärnten" },
+                "3": { "color": "#4363d8", "name": "Niederösterreich" },
+                "4": { "color": "#f58231", "name": "Oberösterreich" },
+                "5": { "color": "#911eb4", "name": "Salzburg" },
+                "6": { "color": "#42d4f4", "name": "Steiermark" },
+                "7": { "color": "#f032e6", "name": "Tirol" },
+                "8": { "color": "#9A6324", "name": "Vorarlberg" },
+                "9": { "color": "#808000", "name": "Wien" },
+                "AT": { "color": "#000000", "name": "Österreich", "stroke-width": 2.5 }
             }
         }
     },
     "plot": {
-        "type": "cartesian:line",
-        "categories": ["type"],
+        "type": "line",
+        "by": "type",
         "curve": "monotoneX",
-        "props": {
-            "stroke-width": "@stroke-width",
-            "fill": "none",
-            "opacity": "@opacity",
-            "stroke": "@color",
-            "d": {
-                "x": "@x:scaled",
-                "y": "@y:scaled"
-            },
-            "highlight-opacity": "@highlight-opacity",
-            "highlight-stroke-width": "@highlight-stroke-width"
-        }
+        "props": { "stroke-width": "@stroke-width", "opacity": "@opacity", "stroke": "@color" },
+        "highlight": { "opacity": "@highlight-opacity", "stroke-width": "@highlight-stroke-width" }
     }
 }

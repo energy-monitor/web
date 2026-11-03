@@ -3,15 +3,13 @@
     "data": "generation-sources.parquet",
     "mapping": {
         "facet": {
-            "props": {
-                "categories": {
-                    "Hydro":  { "name": "Hydro" },
-                    "Wind":   { "name": "Wind" },
-                    "Solar":  { "name": "Solar" },
-                    "Gas":    { "name": "Erdgas" },
-                    "Coal":   { "name": "Kohle" },
-                    "others": { "name": "Andere" }
-                }
+            "categories": {
+                "Hydro": { "name": "Hydro" },
+                "Wind": { "name": "Wind" },
+                "Solar": { "name": "Solar" },
+                "Gas": { "name": "Erdgas" },
+                "Coal": { "name": "Kohle" },
+                "others": { "name": "Andere" }
             }
         }
     }

@@ -6,19 +6,15 @@
         "subtitle": "in tausend Tonnen",
         "footer": "Quelle: eurostat - nrg_cb_oilm"
     },
-    "globals": {
-        "shareScale": ["x", "y"]
-    },
+    "globals": { "shareScale": ["x", "y"] },
     "mapping": {
         "facet": {
-            "props": {
-                "categories": {
-                    "total":    { "name": "Gesamt", "visible": true },
-                    "gasoline": { "name": "Benzin", "visible": false },
-                    "diesel":   { "name": "Diesel", "visible": true },
-                    "heating":  { "name": "Heizöl", "visible": false },
-                    "kerosin":  { "name": "Kerosin", "visible": false }
-                }
+            "categories": {
+                "total": { "name": "Gesamt", "visible": true },
+                "gasoline": { "name": "Benzin", "visible": false },
+                "diesel": { "name": "Diesel", "visible": true },
+                "heating": { "name": "Heizöl", "visible": false },
+                "kerosin": { "name": "Kerosin", "visible": false }
             }
         }
     }

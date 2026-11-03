@@ -8,14 +8,12 @@
     "mapping": {
         "type": {
             "column": "fuel",
-            "props": {
-                "categories": {
-                    "oil":     { "color": "#6F625A", "name": "Mineralöl" },
-                    "biomass": { "color": "#3FA45B", "name": "Biomasse" },
-                    "coal":    { "color": "#8B4513", "name": "Kohle" },
-                    "waste":   { "color": "#9A9A9A", "name": "Abfall (fossil)" },
-                    "gas":     { "color": "#C3423F", "name": "Erdgas" }
-                }
+            "categories": {
+                "oil": { "color": "#6F625A", "name": "Mineralöl" },
+                "biomass": { "color": "#3FA45B", "name": "Biomasse" },
+                "coal": { "color": "#8B4513", "name": "Kohle" },
+                "waste": { "color": "#9A9A9A", "name": "Abfall (fossil)" },
+                "gas": { "color": "#C3423F", "name": "Erdgas" }
             }
         }
     }

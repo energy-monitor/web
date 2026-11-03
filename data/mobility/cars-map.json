@@ -6,15 +6,8 @@
         "subtitle": "Anteile nach Kraftstoffart bzw. Energiequelle, jährlich",
         "footer": "Quelle: eurostat - road_eqr_carpda (Neuzulassungen), road_eqs_carpda (Bestand)"
     },
-    "globals": {
-        "series": "registrations",
-        "type": "bev"
-    },
-    "filter": {
-        "series": "@series",
-        "type": "@type",
-        "year": "@year"
-    },
+    "globals": { "series": "registrations", "type": "bev" },
+    "filter": { "series": "@series", "type": "@type", "year": "@year" },
     "formElements": [
         {
             "id": "series",
@@ -23,7 +16,7 @@
             "type": "radio",
             "values": [
                 { "id": "registrations", "name": "Neuzulassungen", "value": "registrations" },
-                { "id": "stock",         "name": "Bestand",        "value": "stock" }
+                { "id": "stock", "name": "Bestand", "value": "stock" }
             ]
         },
         {
@@ -32,12 +25,12 @@
             "ref": "type",
             "type": "radio",
             "values": [
-                { "id": "bev",    "name": "Elektro",               "value": "bev" },
-                { "id": "phev",   "name": "Plug-in-Hybrid",        "value": "phev" },
+                { "id": "bev", "name": "Elektro", "value": "bev" },
+                { "id": "phev", "name": "Plug-in-Hybrid", "value": "phev" },
                 { "id": "hybrid", "name": "Hybrid (ohne Plug-in)", "value": "hybrid" },
-                { "id": "petrol", "name": "Benzin",                "value": "petrol" },
-                { "id": "diesel", "name": "Diesel",                "value": "diesel" },
-                { "id": "other",  "name": "Sonstige",              "value": "other" }
+                { "id": "petrol", "name": "Benzin", "value": "petrol" },
+                { "id": "diesel", "name": "Diesel", "value": "diesel" },
+                { "id": "other", "name": "Sonstige", "value": "other" }
             ]
         },
         {
@@ -55,8 +48,9 @@
         "value": {
             "name": "Anteil",
             "column": "share",
-            "type": "numeric",
-            "scale": { "type": "sequentialSqrt", "interpolator": "Reds", "domain": [0, null], "nice": true },
+            "domain": [0, null],
+            "nice": true,
+            "scale": { "type": "sequentialSqrt", "interpolator": "Reds" },
             "legend": { "format": ".1~%" },
             "hover": { "format": ".1%" }
         }

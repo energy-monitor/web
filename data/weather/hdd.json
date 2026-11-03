@@ -7,26 +7,11 @@
         "footer": "Quelle: Regionale Temperaturen von ERA5"
     },
     "mapping": {
-        "y": {
-            "axis": {
-                "format": ",.0f"
-            },
-            "hover": {
-                "format": ",.1f"
-            }
-        },
+        "y": { "axis": { "format": ",.0f" }, "hover": { "format": ",.1f" } },
         "facet": {
-            "props": {
-                "categories": {
-                    "rm": {
-                        "name": "Durchschnitt der letzten 28-Tage",
-                        "highlight-stroke-width": 3
-                    },
-                    "cum": {
-                        "name": "Summe seit Jahresbeginn",
-                        "highlight-stroke-width": 4
-                    }
-                }
+            "categories": {
+                "rm": { "name": "Durchschnitt der letzten 28-Tage", "highlight-stroke-width": 3 },
+                "cum": { "name": "Summe seit Jahresbeginn", "highlight-stroke-width": 4 }
             }
         }
     }

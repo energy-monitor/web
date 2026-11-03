@@ -7,33 +7,13 @@
         "footer": "Quelle: EC Weekly Oil Bulletin"
     },
     "mapping": {
-        "y": {
-            "column": "last",
-            "axis": {
-                "format": ",.1f"
-            },
-            "hover": {
-                "format": ",.2f"
-            }
-        },
+        "y": { "column": "last", "axis": { "format": ",.1f" }, "hover": { "format": ",.2f" } },
         "type": {
             "column": "variable",
-            "props": {
-                "categories": {
-                    "euroSuper95": {
-                        "name": "Benzin",
-                        "stroke-dasharray": 0
-                    },
-                    "gasOil": {
-                        "name": "Diesel",
-                        "stroke-dasharray": "4, 2"
-                    },
-                    "heatingOil": {
-                        "name": "Heizöl",
-                        "stroke-dasharray": "5, 5",
-                        "visible": false
-                    }
-                }
+            "categories": {
+                "euroSuper95": { "name": "Benzin", "stroke-dasharray": 0 },
+                "gasOil": { "name": "Diesel", "stroke-dasharray": "4, 2" },
+                "heatingOil": { "name": "Heizöl", "stroke-dasharray": "5, 5", "visible": false }
             }
         }
     }

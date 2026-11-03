@@ -7,12 +7,8 @@
         "footer": "Quelle: EC Weekly Oil Bulletin",
         "locale": { "base": "de", "number": { "currency": ["", " €/l"] } }
     },
-    "globals": {
-        "type": "euroSuper95"
-    },
-    "filter": {
-        "type": "@type"
-    },
+    "globals": { "type": "euroSuper95" },
+    "filter": { "type": "@type" },
     "formElements": [
         {
             "id": "type",
@@ -21,8 +17,8 @@
             "type": "radio",
             "values": [
                 { "id": "euroSuper95", "name": "Benzin", "value": "euroSuper95" },
-                { "id": "gasOil",      "name": "Diesel", "value": "gasOil" },
-                { "id": "heatingOil",  "name": "Heizöl", "value": "heatingOil" }
+                { "id": "gasOil", "name": "Diesel", "value": "gasOil" },
+                { "id": "heatingOil", "name": "Heizöl", "value": "heatingOil" }
             ]
         }
     ],
@@ -31,7 +27,6 @@
         "value": {
             "name": "€/Liter",
             "column": "value",
-            "type": "numeric",
             "scale": { "type": "sequential", "interpolator": "Reds" },
             "legend": { "format": ",.1f" },
             "hover": { "format": "$,.2f" }

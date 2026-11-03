@@ -8,23 +8,10 @@
     },
     "mapping": {
         "y": {
-            "scale": {
-                "domainRel": [0, 0.13]
-            },
-            "axis": {
-                "ticks": 7,
-                "format": ".2f"
-            },
-            "hover": {
-                "format": ".2f"
-            }
+            "scale": { "domainRel": [0, 0.13] },
+            "axis": { "ticks": 7, "format": ".2f" },
+            "hover": { "format": ".2f" }
         },
-        "type": {
-            "props": {
-                "categories": {
-                    "others": { "color": "#CCC", "name": "Andere" }
-                }
-            }
-        }
+        "type": { "categories": { "others": { "color": "#CCC", "name": "Andere" } } }
     }
 }

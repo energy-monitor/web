@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { GenVis } from '@preschen/gen-vis';
+import { GenVis } from '@preschen/gen-vis/vue';
 
 import { isFavorite, toggleFavorite, chartState, setChartState } from '@/settings.js';
 

@@ -6,21 +6,15 @@
         "subtitle": "nach Energiegehalt in TWh bzw. Emissionen in Megatonnen CO₂",
         "footer": "Quelle: eurostat, eigene Berechnungen"
     },
-    "globals": {
-        "shareScale": ["x", "y"]
-    },
+    "globals": { "shareScale": ["x", "y"] },
     "mapping": {
-        "y": {
-            "column": "{unit}"
-        },
+        "y": { "column": "{unit}" },
         "facet": {
-            "props": {
-                "categories": {
-                    "total": { "name": "Gesamt", "visible": true },
-                    "oil":   { "name": "Mineralöl", "visible": true },
-                    "coal":  { "name": "Kohle", "visible": true },
-                    "gas":   { "name": "Erdgas", "visible": true }
-                }
+            "categories": {
+                "total": { "name": "Gesamt", "visible": true },
+                "oil": { "name": "Mineralöl", "visible": true },
+                "coal": { "name": "Kohle", "visible": true },
+                "gas": { "name": "Erdgas", "visible": true }
             }
         }
     }

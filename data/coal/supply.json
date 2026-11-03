@@ -6,18 +6,14 @@
         "subtitle": "in tausend Tonnen",
         "footer": "Quelle: eurostat - nrg_cb_sffm"
     },
-    "globals": {
-        "shareScale": ["x", "y"]
-    },
+    "globals": { "shareScale": ["x", "y"] },
     "mapping": {
         "facet": {
-            "props": {
-                "categories": {
-                    "total": { "name": "Gesamt", "visible": true },
-                    "stein": { "name": "Steinkohle", "visible": true },
-                    "braun": { "name": "Braunkohle", "visible": false },
-                    "koks":  { "name": "Koks", "visible": false }
-                }
+            "categories": {
+                "total": { "name": "Gesamt", "visible": true },
+                "stein": { "name": "Steinkohle", "visible": true },
+                "braun": { "name": "Braunkohle", "visible": false },
+                "koks": { "name": "Koks", "visible": false }
             }
         }
     }
