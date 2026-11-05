@@ -1,9 +1,10 @@
 @use "vis.scss";
+@use "fonts.scss" as *;
 @use "modal.scss";
 @use "story.scss";
 
 body, text {
-    font-family: Century Gothic, Helvetica, sans-serif;
+    font-family: $font-family;
 }
 
 body {

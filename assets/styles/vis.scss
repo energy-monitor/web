@@ -1,8 +1,85 @@
+@use "fonts.scss" as *;
+
 // the colors of gen-vis in all charts, also in /single/ and the embeds: the
-// grid lines translucent, #E6E6E6 on white, a darker shade over the plots below
-// them, e.g. stacked areas, instead of gray stripes
+// grid lines translucent as by default, but grey (#E6E6E6 on white) as on the
+// live site, not the blue grey of gen-vis
 .vis {
     --gen-vis-grid-color: #0000001A;
+    // the font of the site instead of Inter of gen-vis, also in the images
+    // of the exports
+    --gen-vis-font-family: #{$font-family};
+}
+
+// the look of the site as with gen-vis 4.0 (4.1 has a new default look):
+// texts and axes black, the title 22px, axis labels, footer and hover 13px,
+// thin grid lines, bold instead of semibold, the hover without a card;
+// colors by the variables of gen-vis, the rest overrides its styles (they
+// are in the cascade layer gen-vis, so no more specific selectors needed)
+.vis {
+    --gen-vis-muted-color: #000;
+    --gen-vis-text-color: #000;
+    --gen-vis-axis-color: #000;
+    --gen-vis-axis-label-color: #000;
+    --gen-vis-band-color: #EEE;
+    --gen-vis-line-color: #999;
+    --gen-vis-marker-color: #AAA;
+    --gen-vis-button-color: #BBB;
+    --gen-vis-button-hover-color: #777;
+    --gen-vis-button-disabled-color: #E5E5E5;
+    --gen-vis-focus-color: #1E4F77;
+    --gen-vis-error-color: #B00;
+    --gen-vis-hover-background: #FFFFFFCC;
+    --gen-vis-hover-border-color: currentColor;
+
+    .vis-header .vis-title {
+        font-size: 22px;
+        font-weight: bold;
+        letter-spacing: normal;
+    }
+    // close below the title, as on the live site (in the collections), also
+    // in /single/ and the embeds
+    .vis-header .vis-subtitle {
+        margin-top: -1px;
+        margin-bottom: -2px;
+    }
+    .vis-footer-content > span {
+        font-size: 13px;
+    }
+    .vis-facet svg {
+        g.tick text:not([font-size]), .vis-axis-title {
+            font-size: 13px;
+        }
+        g.vis-grid {
+            stroke-width: 0.75px;
+        }
+        .vis-annotation-label {
+            fill: var(--gen-vis-annotation-color, #555);
+        }
+    }
+    :is(.vis-legend-title, .vis-form-element-title, .vis-facet-title, .vis-facet-row-title) {
+        font-weight: bold;
+    }
+}
+.vis-hover {
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    .vis-hover-title {
+        font-weight: bold;
+        padding: 1px 3px;
+        margin-bottom: 0;
+        border-bottom: 2px solid currentColor;
+        text-align: center;
+        white-space: normal;
+    }
+    table {
+        font-variant-numeric: normal;
+    }
+    .vis-nearest, tr.vis-hover-total td {
+        font-weight: bold;
+    }
 }
 
 .visualisations {
@@ -19,36 +96,6 @@
 
 // the charts of the collections and of the markdown texts
 .visualisations, .markdown {
-    // the buttons to reset and to move a chart and the paperclip to add it
-    // to the start page, in the footer before the buttons of gen-vis, as they are
-    .visEntry :is(.reset, .move, .fav) {
-        padding: 0;
-        border: 0;
-        background: none;
-        cursor: pointer;
-        svg {
-            display: block;
-            fill: none;
-            stroke: #BBB;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-        &:hover svg {
-            stroke: #777;
-        }
-        // the first chart up, the last one down
-        &:disabled {
-            cursor: default;
-            svg {
-                stroke: #E5E5E5;
-            }
-        }
-        &.active svg {
-            stroke: #222;
-        }
-    }
-
     // the styles of gen-vis are in the cascade layer gen-vis, so these
     // override them without more specific selectors
     .visEntry {
@@ -57,14 +104,6 @@
         // when it is drawn, a chart drawn before has its height
         --gen-vis-loading-height: 390px;
 
-        .vis-subtitle {
-            margin-top: -1px;
-            margin-bottom: -2px;
-        }
-        .vis-facet-title {
-            font-weight: 400;
-            text-align: center;
-        }
         .vis-form-elements {
             margin-top: -2px;
             margin-bottom: 4px;
@@ -74,123 +113,22 @@
                 margin-top: -7px;
             }
         }
-        .vis-legend[data-dim='country'] svg {
-            display: none;
-        }
-        g.vis-axis-left text {
-            transform: translate(3px, 0);
-        }
-    }
-}
 
-// the maps use the class names of gen-vis but not its styles, everywhere,
-// also in /single/
-.mapEntry {
-    margin: 25px auto;
-
-    svg {
-        display: inline-block;
-    }
-
-    .vis-header {
-        margin-bottom: 10px;
-        .title {
-            font-size: 22px;
-            font-weight: bold;
-        }
-        .subtitle {
-            font-size: 13px;
-            margin-top: -1px;
-            margin-bottom: -2px;
-        }
-    }
-    .vis-footer {
-        font-size: 13px;
-    }
-
-    // the info is positioned relative to the map, also in /single/ without
-    // a positioned ancestor
-    .vis-inner {
-        text-align: center;
-        // the width of the page, also after a resize
-        svg.map {
-            width: 100%;
-            max-width: 620px;
-            height: auto;
-        }
-        position: relative;
-        .info {
-            // white halo around the letters, readable above dark countries
-            text-shadow:
-                -1px -1px 1px #FFF, 1px -1px 1px #FFF,
-                -1px 1px 1px #FFF, 1px 1px 1px #FFF;
-            span {
-                display: inline-block;
-                margin: 3px;
-                font-weight: bold;
-            }
-            span.abs {
-                font-weight: normal;
-            }
-        }
-        svg.legend {
-            display: block;
-            margin: 4px auto 0;
-            text {
-                font-size: 12px;
+        // the titles of the facets centred and regular, the ones above the
+        // circles of polar plots (centered coordinates) semibold as in gen-vis
+        .vis-facet-title {
+            text-align: center;
+            &:not(.vis-facet-title-center) {
+                font-weight: 400;
             }
         }
     }
-
-    .vis-form-elements {
-        margin-top: -7px;
-        margin-bottom: 4px;
-        .formElement {
-            font-size: 13px;
-            .title {
-                font-weight: bold;
-                margin-right: 5px;
-                display: inline-block;
-            }
-            .entries {
-                display: inline-block;
-                > div {
-                    display: inline-block;
-                    margin-right: 5px;
-                }
-                // centred to the labels, as the radio buttons of gen-vis
-                input[type=radio] {
-                    position: relative;
-                    top: 1px;
-                }
-                input[type=range] {
-                    vertical-align: middle;
-                    width: 200px;
-                }
-                .year {
-                    margin-left: 5px;
-                }
-            }
-        }
-    }
-}
-
-// in /single/ at the top, as the gen-vis charts
-.single > .mapEntry {
-    margin-top: 0;
 }
 
 // charts in markdown texts do not use their text styles
 .markdown {
-    .visEntry, .mapEntry {
+    .visEntry {
         text-align: left;
         line-height: normal;
     }
-}
-
-// the polar charts (`"class": "polar-chart"` of the options), e.g. the hours of
-// a day in a circle: the titles of the facets bold, gen-vis centres them above
-// the circles
-.vis.polar-chart .vis-facet-title {
-    font-weight: bold;
 }

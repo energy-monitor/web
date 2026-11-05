@@ -1,0 +1,22 @@
+// the font of the site and its charts: Century Gothic where it is installed,
+// URW Gothic otherwise (geometric, close to Century Gothic, AGPL-3 with a font
+// exception), packaged with the site, see assets/fonts/urw-gothic; also the
+// characters Century Gothic does not have, e.g. the 2 of CO₂ (a browser
+// loads its files only for texts which use it); Book and Demi with their
+// obliques, Demi also for bold (600 to 700, no synthetic bold)
+// --site-font-family: the font of the select of src/font-picker.js (in the
+// dev server with ?fonts)
+$font-family: var(--site-font-family, "Century Gothic"), "URW Gothic", sans-serif;
+
+@each $style, $weight, $file in (normal, 400, book), (italic, 400, bookoblique), (normal, 600 700, demi), (italic, 600 700, demioblique) {
+    @font-face {
+        font-family: "URW Gothic";
+        font-style: $style;
+        font-weight: $weight;
+        font-display: swap;
+        src: url("../fonts/urw-gothic/urw-gothic-#{$file}.woff2") format("woff2");
+        // the characters of the files (see the README), so a browser does not
+        // load them for others, e.g. ⌀ (U+2300) which Century Gothic lacks
+        unicode-range: U+0000-024F, U+0300-036F, U+1E00-1EFF, U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F, U+2190-21FF, U+2200-22FF, U+25A0-25FF;
+    }
+}
