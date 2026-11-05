@@ -82,6 +82,17 @@
     }
 }
 
+// links in the footers of the charts, e.g. the method of a source, as text
+// and not as the buttons of the site (a of main.scss)
+.vis-footer-content a {
+    display: inline;
+    padding: 0;
+    border: none;
+    background: none;
+    color: inherit;
+    text-decoration: underline;
+}
+
 .visualisations {
     margin: 10px;
 
