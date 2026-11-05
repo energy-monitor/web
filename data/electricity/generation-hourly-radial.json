@@ -32,8 +32,7 @@
                         "options": {
                             "subtitle": "{period} nach Jahreszeit, die Anteile der Quellen an der Produktion, der Verbrauch im Verhältnis zur Produktion"
                         },
-                        "mapping": { "y": { "domain": [0, null] } },
-                        "plot": [{ "id": "names", "filter": { "y": { "range": [0.12, null] } } }]
+                        "mapping": { "y": { "domain": [0, null] } }
                     }
                 }
             ]
@@ -197,19 +196,12 @@
             "id": "names",
             "type": "polar:text",
             "by": ["facet", "type"],
-            "select": { "max": "y" },
+            "place": { "in": "areas", "padding": 0 },
             "halo": true,
-            "dodge": 12,
             "filter": {
-                "type": { "not": ["total", "load", "load.pumping"] },
-                "x": [21, 22, 23, 0, 1, 2, 3, 9, 10, 11, 12, 13, 14, 15],
-                "y": { "range": [0.9, null] }
+                "type": { "not": ["total", "load", "load.pumping"] }
             },
             "props": {
-                "angle": "@x:scaled",
-                "radius": "@y:mid:scaled",
-                "text-anchor": "middle",
-                "dominant-baseline": "central",
                 "font-size": 11,
                 "font-weight": "bold",
                 "text": "@name",

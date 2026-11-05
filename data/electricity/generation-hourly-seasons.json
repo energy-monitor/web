@@ -4,7 +4,7 @@
     "data": "generation-hourly-seasons.parquet",
     "options": {
         "height": 220,
-        "margins": { "top": 18, "right": 15, "bottom": 35, "left": 40 },
+        "margins": { "top": 18, "right": 25, "bottom": 35, "left": 40 },
         "title": "Stromproduktion und -verbrauch im Tagesverlauf",
         "subtitle": "{period} nach Jahreszeit, die Produktion nach Quellen, mittlere Leistung in GW",
         "footer": "Quelle: ENTSO-E - Aggregated Generation Per Type 16.1.B C, Actual Total Load 6.1.A, das Pumpen der Pumpspeicher (16.1.B C, nicht in der Last); Stunden in Ortszeit, der Winter ab dem Dezember des Vorjahres",
@@ -32,8 +32,7 @@
                         },
                         "mapping": {
                             "y": { "domain": [0, null], "scale": { "domainRel": [0, 0.05] } }
-                        },
-                        "plot": [{ "id": "names", "filter": { "y": { "range": [0.08, null] } } }]
+                        }
                     }
                 }
             ]
@@ -44,10 +43,10 @@
         "x": {
             "column": "hour",
             "type": "numeric",
-            "domain": [0, 23],
+            "domain": [0, 24],
             "format": "$d",
             "scale": { "domainRel": [0, 0] },
-            "axis": { "values": [0, 6, 12, 18] },
+            "axis": { "values": [0, 6, 12, 18, 24] },
             "hover": {}
         },
         "y": {
@@ -191,20 +190,14 @@
             "id": "names",
             "type": "svg:text",
             "by": ["facet", "type"],
-            "select": { "max": "y" },
+            "place": { "in": "areas", "padding": 0 },
             "halo": true,
-            "dodge": 12,
             "filter": {
                 "type": { "not": ["total", "load", "load.pumping"] },
-                "x": { "range": [2, 21] },
-                "y": { "range": [0.6, null] }
+                "x": { "range": [1, 23] }
             },
             "layer": "above",
             "props": {
-                "x": "@x:scaled",
-                "y": "@y:mid:scaled",
-                "text-anchor": "middle",
-                "dominant-baseline": "central",
                 "font-size": 11,
                 "font-weight": "bold",
                 "text": "@name",
