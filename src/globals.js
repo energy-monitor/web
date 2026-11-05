@@ -79,9 +79,9 @@ const collections = {
             "gas/storage",
             "gas/consumption",
             "electricity/load",
-            "electricity/generation-sources",
+            "electricity/generation-stacked",
             "electricity/generation-hourly-seasons",
-            "oil/fuel-prices",
+            "mobility/registrations-stacked",
         ]
     },
     prices: {
