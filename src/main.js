@@ -48,6 +48,11 @@ router.afterEach(to => {
     document.title = pageTitle(page?.name);
 });
 
+// the select of the fonts to compare them, only in the dev server and with
+// ?fonts in the url (e.g. http://localhost:8091/?fonts), see src/font-picker.js
+if (process.env.NODE_ENV == 'development' && new URLSearchParams(location.search).has('fonts'))
+    import('@/font-picker.js');
+
 const app = createApp(App)
     .use(router)
     .mount('#app')
