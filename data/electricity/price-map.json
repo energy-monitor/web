@@ -1,0 +1,121 @@
+{
+    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "parent": "../_europe-map.json",
+    "data": "price-map.parquet",
+    "options": {
+        "title": "Strompreise in Europa",
+        "subtitle": "Day Ahead, Mittel aller Stunden des Monats nach Gebotszonen, in €/MWh",
+        "footer": "Quelle: ENTSO-E - Day Ahead Prices 12.1.D; Gebotszonen: <a href=\"https://github.com/EnergieID/entsoe-py\" target=\"_blank\">entsoe-py</a>, Natural Earth",
+        "locale": { "base": "de", "number": { "currency": ["", " €/MWh"] } },
+        "hover": { "row": "Base: {base}<br>Peak: {peak}<br>Off-Peak: {offpeak}<br>Tiefster: {min}<br>Höchster: {max}<br>Negative Preise: {negative} h" }
+    },
+    "geo": { "data": "/geo/europe-bidding-zones.json" },
+    "globals": { "price": "base" },
+    "filter": { "month": "@month" },
+    "formElements": [
+        {
+            "id": "month",
+            "name": "Monat",
+            "ref": "month",
+            "type": "slider",
+            "values": { "column": "month", "format": "%b %Y" }
+        },
+        {
+            "id": "price",
+            "name": "Preis",
+            "ref": "price",
+            "type": "radio",
+            "values": [
+                { "id": "base", "name": "Base", "value": "base" },
+                {
+                    "id": "peak", "name": "Peak", "value": "peak",
+                    "patch": {
+                        "options": { "subtitle": "Day Ahead, Mittel von Montag bis Freitag 8-20 Uhr des Monats nach Gebotszonen, in €/MWh" },
+                        "mapping": { "value": { "name": "Peak", "column": "peak" }, "label": { "column": "peak" } }
+                    }
+                },
+                {
+                    "id": "offpeak", "name": "Off-Peak", "value": "offpeak",
+                    "patch": {
+                        "options": { "subtitle": "Day Ahead, Mittel der Nächte und Wochenenden des Monats nach Gebotszonen, in €/MWh" },
+                        "mapping": { "value": { "name": "Off-Peak", "column": "offpeak" }, "label": { "column": "offpeak" } }
+                    }
+                },
+                {
+                    "id": "negative", "name": "Negative Preise", "value": "negative",
+                    "patch": {
+                        "options": { "subtitle": "Day Ahead, Stunden mit negativem Preis im Monat nach Gebotszonen" },
+                        "mapping": {
+                            "value": {
+                                "name": "Stunden", "column": "negative", "domain": [1, 10, 25, 50, 100],
+                                "scale": { "scheme": "Blues" }, "hover": { "format": ",.1f" }
+                            },
+                            "label": { "column": "negative" }
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "mapping": {
+        "month": { "column": "month", "type": "categorical" },
+        "country": {
+            "categories": {
+                "DE_LU": { "name": "Deutschland und Luxemburg" },
+                "DK1": { "name": "Dänemark West (DK1)" },
+                "DK2": { "name": "Dänemark Ost (DK2)" },
+                "IE_SEM": { "name": "Irland und Nordirland" },
+                "IT-NORTH": { "name": "Italien Nord" },
+                "IT-CNORTH": { "name": "Italien Mitte-Nord" },
+                "IT-CSOUTH": { "name": "Italien Mitte-Süd" },
+                "IT-SOUTH": { "name": "Italien Süd" },
+                "IT-Calabria": { "name": "Italien Kalabrien" },
+                "IT-Sardinia": { "name": "Italien Sardinien" },
+                "IT-Sicily": { "name": "Italien Sizilien" },
+                "NO1": { "name": "Norwegen Südost (NO1)" },
+                "NO2": { "name": "Norwegen Südwest (NO2)" },
+                "NO3": { "name": "Norwegen Mitte (NO3)" },
+                "NO4": { "name": "Norwegen Nord (NO4)" },
+                "NO5": { "name": "Norwegen West (NO5)" },
+                "SE1": { "name": "Schweden Nord (SE1)" },
+                "SE2": { "name": "Schweden Mitte-Nord (SE2)" },
+                "SE3": { "name": "Schweden Mitte-Süd (SE3)" },
+                "SE4": { "name": "Schweden Süd (SE4)" },
+                "XK": { "name": "Kosovo" }
+            }
+        },
+        "value": {
+            "name": "Base",
+            "column": "mean",
+            "domain": [50, 100, 150, 200, 300],
+            "scale": { "type": "threshold", "scheme": "Reds", "classes": 6 },
+            "legend": { "format": ",.0f", "classes": true },
+            "hover": { "format": "$,.1f" }
+        },
+        "label": { "column": "mean", "type": "numeric", "format": ",.0f" },
+        "base": { "name": "Base", "column": "mean", "type": "numeric", "hover": { "format": "$,.1f" } },
+        "peak": { "name": "Peak", "column": "peak", "type": "numeric", "hover": { "format": "$,.1f" } },
+        "offpeak": { "name": "Off-Peak", "column": "offpeak", "type": "numeric", "hover": { "format": "$,.1f" } },
+        "negative": { "name": "Negative Preise", "column": "negative", "type": "numeric", "hover": { "format": ",.1~f" } },
+        "min": { "name": "Tiefster", "column": "min", "type": "numeric", "hover": { "format": "$,.1f" } },
+        "max": { "name": "Höchster", "column": "max", "type": "numeric", "hover": { "format": "$,.1f" } }
+    },
+    "plot": [
+        { "type": "geo:base", "props": { "fill": "#DADADA", "stroke": "white", "stroke-width": 1 } },
+        {
+            "type": "geo:region", "by": "country",
+            "props": { "fill": "@value:scaled", "stroke": "white", "stroke-width": 1 },
+            "highlight": { "fill-opacity": 0.75 }
+        },
+        {
+            "type": "geo:text", "by": "country",
+            "fit": true,
+            "overlap": false,
+            "props": {
+                "text": "@label:formatted", "font-size": { "steps": ["@totalWidth", { "0": 11, "550": 13 }] }, "font-weight": "bold", "text-anchor": "middle", "dominant-baseline": "middle",
+                "fill": "#222", "stroke": "white", "stroke-width": 3, "stroke-opacity": 0.8, "paint-order": "stroke",
+                "pointer-events": "none"
+            }
+        }
+    ]
+}

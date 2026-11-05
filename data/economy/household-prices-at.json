@@ -1,0 +1,201 @@
+{
+    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "parent": "../_stacked.json",
+    "data": "household-prices-at.parquet",
+    "options": {
+        "title": "Strom- und Gaspreise für Haushalte in Österreich",
+        "subtitle": "nach Bestandteilen, Mittel der Halbjahre (Jänner-Juni, Juli-Dezember), typischer Verbrauch (Strom 2 500-5 000 kWh, Gas 20-200 GJ pro Jahr), in Cent/kWh",
+        "footer": "Quelle: eurostat - nrg_pc_204 (Strom), nrg_pc_202 (Gas); Förderungen wie die Strompreisbremse sind als negative Abgaben enthalten",
+        "class": "household-prices",
+        "hover": {
+            "filter": {
+                "type": {
+                    "not": "total"
+                }
+            },
+            "total": "Gesamt"
+        }
+    },
+    "globals": {
+        "product": "electricity"
+    },
+    "filter": {
+        "product": "@product"
+    },
+    "formElements": [
+        {
+            "id": "product",
+            "name": "Energieträger",
+            "ref": "product",
+            "type": "radio",
+            "values": [
+                {
+                    "id": "electricity",
+                    "name": "Strom",
+                    "value": "electricity"
+                },
+                {
+                    "id": "gas",
+                    "name": "Gas",
+                    "value": "gas",
+                    "patch": {
+                        "mapping": {
+                            "y": {
+                                "domain": [
+                                    0,
+                                    null
+                                ],
+                                "scale": {
+                                    "domainRel": [
+                                        0,
+                                        0.1
+                                    ]
+                                },
+                                "axis": {
+                                    "values": [
+                                        0,
+                                        2,
+                                        4,
+                                        6,
+                                        8,
+                                        10,
+                                        12,
+                                        14,
+                                        16,
+                                        18,
+                                        20
+                                    ]
+                                }
+                            }
+                        },
+                        "annotations": []
+                    }
+                }
+            ]
+        }
+    ],
+    "mapping": {
+        "product": {
+            "column": "product",
+            "type": "categorical"
+        },
+        "x": {
+            "format": "%Y",
+            "interval": "half",
+            "hover": {
+                "format": "%K. Halbjahr %Y"
+            },
+            "axis": {
+                "at": 0
+            }
+        },
+        "y": {
+            "domain": [
+                null,
+                null
+            ],
+            "stacked": {
+                "type": {
+                    "not": "total"
+                }
+            },
+            "scale": {
+                "domainRel": [
+                    -0.01,
+                    0.1
+                ]
+            },
+            "axis": {
+                "values": [
+                    -5,
+                    0,
+                    10,
+                    20,
+                    30,
+                    40,
+                    50
+                ]
+            }
+        },
+        "type": {
+            "column": "type",
+            "categories": {
+                "net": {
+                    "name": "Energie und Netz",
+                    "color": "#4C78A8"
+                },
+                "levies": {
+                    "name": "Steuern und Abgaben",
+                    "color": "#F58518"
+                },
+                "vat": {
+                    "name": "Mehrwertsteuer",
+                    "color": "#BAB0AC"
+                },
+                "total": {
+                    "name": "Gesamt",
+                    "color": "#222"
+                }
+            }
+        }
+    },
+    "annotations": [
+        {
+            "type": "line",
+            "y": -5,
+            "props": {
+                "stroke": "var(--gen-vis-grid-color)",
+                "stroke-width": 1
+            }
+        }
+    ],
+    "plot": [
+        {
+            "type": "bar",
+            "by": "type",
+            "filter": {
+                "type": {
+                    "not": "total"
+                }
+            },
+            "props": {
+                "fill": "@color",
+                "opacity": 0.9,
+                "y0": "@y:start:scaled",
+                "y1": "@y:end:scaled",
+                "width": {
+                    "*": [
+                        "@x:step",
+                        0.6
+                    ]
+                }
+            },
+            "highlight": {
+                "mode": "row",
+                "opacity": 1
+            }
+        },
+        {
+            "type": "line",
+            "by": "type",
+            "filter": {
+                "type": "total"
+            },
+            "props": {
+                "stroke": "@color",
+                "stroke-width": 1.5
+            }
+        },
+        {
+            "type": "point",
+            "by": "type",
+            "filter": {
+                "type": "total"
+            },
+            "props": {
+                "fill": "@color",
+                "r": 2.5
+            }
+        }
+    ]
+}

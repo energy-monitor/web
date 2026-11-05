@@ -90,6 +90,9 @@ const collections = {
         vis: [
             "economy/price-index",
             "electricity/price",
+            "electricity/price-map",
+            "economy/household-prices-map",
+            "economy/household-prices-at",
             "gas/price",
             "gas/price-lng",
             "oil/price-brent",
@@ -120,6 +123,7 @@ const collections = {
             "electricity/load",
             "electricity/load-countries",
             "electricity/price",
+            "electricity/price-map",
             //"electricity/load-hourly",
             "electricity/generation-stacked",
             "electricity/generation-sources",
