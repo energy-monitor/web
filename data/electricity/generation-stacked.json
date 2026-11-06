@@ -13,6 +13,13 @@
             "axis": { "ticks": 7, "format": ".2f" },
             "hover": { "format": ".2f" }
         },
-        "type": { "categories": { "others": { "color": "#CCC", "name": "Andere" } } }
+        "type": {
+            "categories": {
+                "Hydro run-of-river": { "legend": false },
+                "Hydro reservoir": { "legend": false },
+                "Hydro pumped storage": { "legend": false },
+                "others": { "color": "#CCC", "name": "Andere" }
+            }
+        }
     }
 }
