@@ -4,7 +4,7 @@
     "data": "cars-map.parquet",
     "options": {
         "title": "Pkw in Europa",
-        "subtitle": "Anteile nach Kraftstoffart bzw. Energiequelle, jährlich",
+        "subtitle": "Anteile nach Kraftstoffart bzw. Energiequelle, {year}",
         "footer": "Quelle: eurostat - road_eqr_carpda (Neuzulassungen), road_eqs_carpda (Bestand)"
     },
     "globals": { "series": "registrations", "type": "bev" },
@@ -43,6 +43,7 @@
         }
     ],
     "mapping": {
+        "label": { "column": "share", "type": "numeric", "format": ".1~%" },
         "series": { "column": "series", "type": "categorical" },
         "type": { "column": "type", "type": "categorical" },
         "year": { "column": "year", "type": "categorical" },

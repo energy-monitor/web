@@ -46,7 +46,7 @@ const aliases = {
 
 const stories = {
     'gas-savings': {
-        name: 'Einsparungen des Gaskonsums',
+        name: 'Einsparungen des Gasverbrauchs',
         menu: true,
         src: 'gas-savings'
     },

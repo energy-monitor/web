@@ -51,6 +51,17 @@
             "object": "states",
             "borders": "inner",
             "props": { "stroke": "white", "stroke-width": 1.4 }
+        },
+        {
+            "type": "geo:text", "by": "district",
+            "filter": { "district": ["706", "707", "206", "612", "325", "316", "900", "601", "401", "501", "701", "201", "101", "802", "302"] },
+            "fit": false,
+            "overlap": false,
+            "props": {
+                "text": "@label:formatted", "font-size": { "steps": ["@totalWidth", { "0": 8, "450": 9, "550": 10 }] }, "font-weight": "bold", "text-anchor": "middle", "dominant-baseline": "middle",
+                "fill": "#222", "stroke": "white", "stroke-width": 3, "stroke-opacity": 0.8, "paint-order": "stroke",
+                "pointer-events": "none"
+            }
         }
     ]
 }

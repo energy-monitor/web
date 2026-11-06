@@ -3,7 +3,7 @@
     "parent": ["../_years.json", "../_facets.json", "../_facet-toggle.json", "../_monthly.json"],
     "options": { "height": 220 },
     "mapping": {
-        "y": { "axis": { "format": ",.1f" }, "hover": { "format": ",.2f" } },
+        "y": { "axis": { "format": ",.0f" }, "hover": { "format": ",.2f" } },
         "year": { "categories": { "avg14-18": { "color": "#444", "name": "Ø '14 - '18" } } },
         "facet": { "column": "product" }
     },

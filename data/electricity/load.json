@@ -3,7 +3,7 @@
     "parent": "../_years-cum.json",
     "data": "load.parquet",
     "options": {
-        "title": "Stromkonsum",
+        "title": "Stromverbrauch",
         "subtitle": "in TWh",
         "footer": "Quelle: ENTSO-E - Actual Total Load 6.1.A"
     }

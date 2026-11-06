@@ -4,7 +4,7 @@
     "data": "generation-map.parquet",
     "options": {
         "title": "Stromproduktion",
-        "subtitle": "nach Quellen, Anteile, jährlich",
+        "subtitle": "nach Quellen, Anteile, {year}",
         "footer": "Quelle: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
     },
     "globals": { "type": "Renewable", "year": "2025" },
@@ -18,7 +18,7 @@
             "values": [
                 { "id": "Renewable", "name": "Erneuerbar", "value": "Renewable" },
                 { "id": "Non-Renewable", "name": "Fossil", "value": "Non-Renewable" },
-                { "id": "Nuclear", "name": "Nuclear", "value": "Nuclear" },
+                { "id": "Nuclear", "name": "Kernenergie", "value": "Nuclear" },
                 { "id": "others", "name": "Andere", "value": "others" }
             ]
         },
@@ -31,6 +31,7 @@
         }
     ],
     "mapping": {
+        "label": { "column": "share", "type": "numeric", "format": ".0%" },
         "type": { "column": "type", "type": "categorical" },
         "year": { "column": "year", "type": "categorical" },
         "value": {

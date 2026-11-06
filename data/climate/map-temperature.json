@@ -4,7 +4,7 @@
     "data": "districts.parquet",
     "options": {
         "title": "Temperatur",
-        "subtitle": "Jahresmittel bzw. Abweichung vom Mittel 1961 - 1990, in °C",
+        "subtitle": "Jahresmittel {year} bzw. Abweichung vom Mittel 1961 - 1990, in °C",
         "footer": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster, Mittel über die Bezirke"
     },
     "globals": { "indicator": "tm.anomaly" },
@@ -20,7 +20,7 @@
                     "name": "Jahresmittel",
                     "value": "tm",
                     "patch": {
-                        "mapping": {
+                        "mapping": { "label": { "format": ".1f" },
                             "value": {
                                 "name": "Jahresmittel in °C",
                                 "domain": [0, 14],
@@ -36,6 +36,7 @@
         }
     ],
     "mapping": {
+        "label": { "column": "value", "type": "numeric", "format": "+.1f" },
         "value": {
             "name": "Abweichung in °C",
             "domain": [3, -3],

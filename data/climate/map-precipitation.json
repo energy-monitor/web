@@ -4,7 +4,7 @@
     "data": "districts.parquet",
     "options": {
         "title": "Niederschlag",
-        "subtitle": "Jahressumme in mm bzw. Abweichung vom Mittel 1961 - 1990 in %",
+        "subtitle": "Jahressumme {year} in mm bzw. Abweichung vom Mittel 1961 - 1990 in %",
         "footer": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster, Mittel über die Bezirke"
     },
     "globals": { "indicator": "rr.anomaly" },
@@ -20,7 +20,7 @@
                     "name": "Jahressumme",
                     "value": "rr",
                     "patch": {
-                        "mapping": {
+                        "mapping": { "label": { "format": ",.0f" },
                             "value": {
                                 "name": "Jahressumme in mm",
                                 "domain": [400, 2400],
@@ -36,6 +36,7 @@
         }
     ],
     "mapping": {
+        "label": { "column": "value", "type": "numeric", "format": "+.0f" },
         "value": {
             "name": "Abweichung in %",
             "domain": [-40, 40],

@@ -3,7 +3,7 @@
     "parent": ["../fossil/_supply.json", "../_scale-switch.json"],
     "data": "supply.parquet",
     "options": {
-        "title": "Absatz von Mineralöl",
+        "title": "Absatz von Mineralöl im Jahresvergleich",
         "subtitle": "in tausend Tonnen",
         "footer": "Quelle: eurostat - nrg_cb_oilm"
     },

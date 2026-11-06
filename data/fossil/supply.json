@@ -3,7 +3,7 @@
     "parent": ["_supply.json", "_unit-switch.json", "../_scale-switch.json"],
     "data": "supply.parquet",
     "options": {
-        "title": "Absatz von fossilen Energieträgern",
+        "title": "Absatz von fossilen Energieträgern im Jahresvergleich",
         "subtitle": "nach Energiegehalt in TWh bzw. Emissionen in Megatonnen CO₂",
         "footer": "Quelle: eurostat, eigene Berechnungen"
     },

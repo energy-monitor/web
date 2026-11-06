@@ -4,7 +4,7 @@
     "data": "districts.parquet",
     "options": {
         "title": "Hitzetage",
-        "subtitle": "Tage mit Höchsttemperatur ≥ 30 °C, jährlich, bzw. Abweichung vom Mittel 1961 - 1990",
+        "subtitle": "Tage mit Höchsttemperatur ≥ 30 °C, {year}, bzw. Abweichung vom Mittel 1961 - 1990",
         "footer": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster, Mittel über die Bezirke"
     },
     "globals": { "indicator": "days.hot" },
@@ -21,7 +21,7 @@
                     "name": "Abweichung",
                     "value": "days.hot.anomaly",
                     "patch": {
-                        "mapping": {
+                        "mapping": { "label": { "format": "+.0f" },
                             "value": {
                                 "name": "Abweichung in Tagen",
                                 "domain": [30, -30],
@@ -36,6 +36,7 @@
         }
     ],
     "mapping": {
+        "label": { "column": "value", "type": "numeric", "format": ".0f" },
         "value": {
             "name": "Hitzetage",
             "domain": [0, 40],

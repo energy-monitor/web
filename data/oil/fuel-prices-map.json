@@ -4,9 +4,10 @@
     "data": "fuel-prices-map.parquet",
     "options": {
         "title": "Spritpreise in Europa",
-        "subtitle": "inkl. Steuern, in €/Liter",
+        "subtitle": "Preise vom 26.10.2026, inkl. Steuern, in €/Liter",
         "footer": "Quelle: EC Weekly Oil Bulletin",
-        "locale": { "base": "de", "number": { "currency": ["", " €/l"] } }
+        "locale": { "base": "de", "number": { "currency": ["", " €/l"] } },
+        "hover": { "row": "Preisstand: {date}" }
     },
     "globals": { "type": "euroSuper95" },
     "filter": { "type": "@type" },
@@ -24,6 +25,8 @@
         }
     ],
     "mapping": {
+        "date": { "name": "Preisstand", "column": "date", "type": "date", "hover": { "format": "%d.%m.%Y" } },
+        "label": { "column": "value", "type": "numeric", "format": ",.2f" },
         "type": { "column": "variable", "type": "categorical" },
         "value": {
             "name": "€/Liter",

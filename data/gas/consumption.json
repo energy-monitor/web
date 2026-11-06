@@ -3,7 +3,7 @@
     "parent": "../_years-cum.json",
     "data": "consumption.parquet",
     "options": {
-        "title": "Gaskonsum",
+        "title": "Gasverbrauch",
         "subtitle": "in TWh",
         "footer": "Quelle: AGGM - Austrian Gas Grid Management"
     }

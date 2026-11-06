@@ -3,8 +3,8 @@
     "parent": "../fossil/_supply.json",
     "data": "supply.parquet",
     "options": {
-        "title": "Absatz von Erdgas",
-        "subtitle": "in millionen Kubikmetern",
+        "title": "Absatz von Erdgas im Jahresvergleich",
+        "subtitle": "in Millionen Kubikmetern",
         "footer": "Quelle: eurostat - nrg_cb_gasm"
     },
     "mapping": { "facet": { "categories": { "total": { "name": "Gesamt", "visible": true } } } }

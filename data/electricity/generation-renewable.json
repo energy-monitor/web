@@ -6,8 +6,8 @@
     "mapping": {
         "facet": {
             "categories": {
-                "Renewable": { "name": "Renewable" },
-                "Non-Renewable": { "name": "Non-Renewable" }
+                "Renewable": { "name": "Erneuerbar" },
+                "Non-Renewable": { "name": "Fossil" }
             }
         }
     },

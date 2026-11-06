@@ -11,7 +11,7 @@
     "data": "registrations.parquet",
     "options": {
         "height": 220,
-        "title": "Pkw-Neuzulassungen",
+        "title": "Pkw-Neuzulassungen im Jahresvergleich",
         "subtitle": "nach Kraftstoffart bzw. Energiequelle, monatlich",
         "footer": "Quelle: Statistik Austria - Kfz-Neuzulassungen"
     },

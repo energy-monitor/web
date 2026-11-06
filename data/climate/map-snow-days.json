@@ -4,7 +4,7 @@
     "data": "districts.parquet",
     "options": {
         "title": "Schneedeckentage",
-        "subtitle": "Tage mit mindestens 1 cm Schnee, jährlich, bzw. Abweichung vom Mittel 1961 - 1990",
+        "subtitle": "Tage mit mindestens 1 cm Schnee, {year}, bzw. Abweichung vom Mittel 1961 - 1990",
         "footer": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster, Mittel über die Bezirke"
     },
     "globals": { "indicator": "days.snow" },
@@ -21,7 +21,7 @@
                     "name": "Abweichung",
                     "value": "days.snow.anomaly",
                     "patch": {
-                        "mapping": {
+                        "mapping": { "label": { "format": "+.0f" },
                             "value": {
                                 "name": "Abweichung in Tagen",
                                 "domain": [-80, 80],
@@ -36,6 +36,7 @@
         }
     ],
     "mapping": {
+        "label": { "column": "value", "type": "numeric", "format": ".0f" },
         "value": {
             "name": "Tage",
             "domain": [0, 250],

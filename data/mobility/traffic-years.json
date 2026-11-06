@@ -10,7 +10,7 @@
     "data": "traffic.parquet",
     "options": {
         "height": 220,
-        "title": "Verkehrsaufkommen",
+        "title": "Verkehrsaufkommen im Jahresvergleich",
         "subtitle": "Autobahnen und Schnellstraßen, durchschnittlicher täglicher Verkehr, monatlich, Index (2025 = 100)",
         "footer": "Quelle: ASFINAG - Dauerzählstellen"
     },

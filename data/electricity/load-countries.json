@@ -5,7 +5,7 @@
     "options": {
         "height": 190,
         "margins": { "top": 5, "right": 15, "bottom": 35, "left": 45 },
-        "title": "Stromkonsum",
+        "title": "Stromverbrauch",
         "subtitle": "täglich (rollierender 7-Tages Durchschnitt), in GWh",
         "footer": "Quelle: ENTSO-E - Actual Total Load 6.1.A"
     },
