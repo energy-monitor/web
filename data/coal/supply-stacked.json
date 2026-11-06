@@ -1,20 +1,25 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["../_stacked.json", "../_share-switch.json"],
     "data": "supply-stacked.parquet",
-    "options": {
-        "title": "Absatz von Kohle",
-        "subtitle": "monatlich, nach Sorten, in tausend Tonnen bzw. Anteile",
-        "footer": "Quelle: eurostat - nrg_cb_sffm"
-    },
-    "mapping": {
+    "title": "Absatz von Kohle",
+    "subtitle": "monatlich, nach Sorten, in tausend Tonnen bzw. Anteile",
+    "source": "Quelle: eurostat - nrg_cb_sffm",
+    "dims": {
         "type": {
             "column": "product",
             "categories": {
-                "stein": { "color": "#4D4D4D", "name": "Steinkohle" },
-                "koks": { "color": "#A0A0A0", "name": "Koks" },
-                "braun": { "color": "#8B4513", "name": "Braunkohle" }
+                "stein": {"color": "#4D4D4D", "name": "Steinkohle"},
+                "koks": {"color": "#A0A0A0", "name": "Koks"},
+                "braun": {"color": "#8B4513", "name": "Braunkohle"}
             }
+        },
+        "y": {
+            "column": "=match(@values, {share: 'value.share'}, 'value')",
+            "domain": "=match(@values, {share: literal([0, 1])}, literal([0, null]))",
+            "scale": {"pad": "=match(@values, {share: literal([0, 0])}, literal([0, 0.1]))"},
+            "axis": {"format": "=match(@values, {share: '.0%'}, ',.0f')"},
+            "hover": {"format": "=match(@values, {share: '.1%'}, ',.1f')"}
         }
     }
 }

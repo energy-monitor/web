@@ -1,5 +1,5 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": [
         "../_years.json",
         "../_facets.json",
@@ -8,23 +8,21 @@
         "../_monthly.json"
     ],
     "data": "traffic.parquet",
-    "options": {
-        "height": 220,
-        "title": "Verkehrsaufkommen im Jahresvergleich",
-        "subtitle": "Autobahnen und Schnellstraßen, durchschnittlicher täglicher Verkehr, monatlich, Index (2025 = 100)",
-        "footer": "Quelle: ASFINAG - Dauerzählstellen"
-    },
-    "globals": { "shareScale": ["x", "y"] },
-    "mapping": {
-        "road": { "column": "road", "categories": { "total": { "name": "Österreich" } } },
+    "title": "Verkehrsaufkommen im Jahresvergleich",
+    "subtitle": "Autobahnen und Schnellstraßen, durchschnittlicher täglicher Verkehr, monatlich, Index (2025 = 100)",
+    "source": "Quelle: ASFINAG - Dauerzählstellen",
+    "height": 220,
+    "globals": {"shareScale": ["x", "y"]},
+    "dims": {
+        "road": {"column": "road", "categories": {"total": {"name": "Österreich"}}},
         "facet": {
             "column": "vehicle",
             "categories": {
-                "all": { "name": "Gesamt", "visible": true },
-                "heavy": { "name": "Schwer (über 3,5 t)", "visible": true },
-                "light": { "name": "Leicht (bis 3,5 t)", "visible": false }
+                "all": {"name": "Gesamt", "visible": true},
+                "heavy": {"name": "Schwer (über 3,5 t)", "visible": true},
+                "light": {"name": "Leicht (bis 3,5 t)", "visible": false}
             }
         }
     },
-    "facets": { "cols": { "steps": ["@totalWidth", { "0": 1, "550": 2 }] } }
+    "facets": {"cols": "=steps(@totalWidth, {0: 1, 550: 2})"}
 }

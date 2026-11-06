@@ -1,10 +1,8 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_years.json",
     "data": "price.parquet",
-    "options": {
-        "title": "Gaspreis",
-        "subtitle": "CEGH, täglich (rollierender 7-Tages Durchschnitt), in €/MWh",
-        "footer": "Quelle: cismo"
-    }
+    "title": "Gaspreis",
+    "subtitle": "CEGH, täglich (rollierender 7-Tages Durchschnitt), in €/MWh",
+    "source": "Quelle: cismo"
 }

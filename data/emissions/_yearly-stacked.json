@@ -1,26 +1,24 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_share-switch.json",
-    "options": {
-        "height": { "steps": ["@totalWidth", { "0": 220, "550": 260, "600": 300 }] },
-        "margins": { "top": 15, "right": 30, "bottom": 30, "left": 50 },
-        "footer": "Quelle: Umweltbundesamt - Treibhausgasinventur (Submission 2026 an die UNFCCC)"
-    },
-    "mapping": {
+    "source": "Quelle: Umweltbundesamt - Treibhausgasinventur (Submission 2026 an die UNFCCC)",
+    "height": "=steps(@totalWidth, {0: 220, 550: 260, 600: 300})",
+    "margins": {"top": 15, "right": 30, "bottom": 30, "left": 50},
+    "dims": {
         "x": {
             "column": "year",
             "type": "categorical",
-            "scale": { "padding": 0.4 },
-            "axis": { "values": ["1990", "1995", "2000", "2005", "2010", "2015", "2020"] }
+            "scale": {"padding": 0.4},
+            "axis": {"values": ["1990", "1995", "2000", "2005", "2010", "2015", "2020"]}
         },
         "y": {
-            "column": "value",
+            "column": "=match(@values, {share: 'value.share'}, 'value')",
             "type": "numeric",
-            "domain": [0, null],
-            "stacked": true,
-            "scale": { "domainRel": [0, 0.1] },
-            "axis": { "ticks": 6, "grid": true, "format": ",.0f" },
-            "hover": { "format": ",.1f" }
+            "domain": "=match(@values, {share: literal([0, 1])}, literal([0, null]))",
+            "scale": {"pad": "=match(@values, {share: literal([0, 0])}, literal([0, 0.1]))"},
+            "axis": {"ticks": 6, "format": "=match(@values, {share: '.0%'}, ',.0f')"},
+            "hover": {"format": "=match(@values, {share: '.1%'}, ',.1f')"},
+            "grid": true
         },
         "type": {
             "legend": {
@@ -29,14 +27,7 @@
                     "elements": [
                         {
                             "type": "rect",
-                            "props": {
-                                "x": 0,
-                                "y": 0,
-                                "width": 16,
-                                "height": 15,
-                                "fill": "@color",
-                                "rx": 2
-                            }
+                            "props": {"x": 0, "y": 0, "width": 16, "height": 15, "fill": "@color", "rx": 2}
                         }
                     ]
                 }
@@ -44,15 +35,11 @@
             "hover": {}
         }
     },
-    "plot": {
+    "marks": {
         "type": "bar",
         "by": "type",
-        "props": {
-            "fill": "@color",
-            "opacity": 0.9,
-            "y0": "@y:start:scaled",
-            "y1": "@y:end:scaled"
-        },
-        "highlight": { "mode": "row", "opacity": 1 }
+        "stack": true,
+        "opacity": 0.9,
+        "highlight": {"mode": "row", "opacity": 1}
     }
 }

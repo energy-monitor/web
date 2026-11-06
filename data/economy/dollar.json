@@ -1,11 +1,9 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_years.json",
     "data": "dollar.parquet",
-    "options": {
-        "title": "Euro Dollar Wechselkurs",
-        "subtitle": "täglich (rollierender 3-Tages Durchschnitt), in €/$",
-        "footer": "Quelle: Macrobond, Intercontinental Exchange (ICE)"
-    },
-    "mapping": { "y": { "axis": { "format": ",.2f" }, "hover": { "format": ",.3r" } } }
+    "title": "Euro Dollar Wechselkurs",
+    "subtitle": "täglich (rollierender 3-Tages Durchschnitt), in €/$",
+    "source": "Quelle: Macrobond, Intercontinental Exchange (ICE)",
+    "dims": {"y": {"axis": {"format": ",.2f"}, "hover": {"format": ",.3r"}}}
 }

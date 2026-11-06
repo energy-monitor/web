@@ -1,11 +1,9 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["../_years.json", "../_monthly.json"],
     "data": "pellets.parquet",
-    "options": {
-        "title": "Pelletspreis",
-        "subtitle": "lose Pellets (ENplus A1), Bestellmenge 6 t, monatlich, in Cent/kg",
-        "footer": "Quelle: proPellets Austria, via BAB - Preisportal"
-    },
-    "mapping": { "y": { "hover": { "format": ",.2f" } } }
+    "title": "Pelletspreis",
+    "subtitle": "lose Pellets (ENplus A1), Bestellmenge 6 t, monatlich, in Cent/kg",
+    "source": "Quelle: proPellets Austria, via BAB - Preisportal",
+    "dims": {"y": {"hover": {"format": ",.2f"}}}
 }

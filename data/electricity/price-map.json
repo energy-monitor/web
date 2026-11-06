@@ -1,122 +1,122 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_europe-map.json",
     "data": "price-map.parquet",
-    "options": {
-        "title": "Strompreise in Europa",
-        "subtitle": "Day Ahead, Mittel aller Stunden des Monats nach Gebotszonen, in €/MWh",
-        "footer": "Quelle: ENTSO-E - Day Ahead Prices 12.1.D; Gebotszonen: <a href=\"https://github.com/EnergieID/entsoe-py\" target=\"_blank\">entsoe-py</a>, Natural Earth",
-        "locale": { "base": "de", "number": { "currency": ["", " €/MWh"] } },
-        "hover": { "row": "<table class=\"vis-hover-table\"><tr><td>Base</td><td style=\"text-align:right\">{base}</td></tr><tr><td>Peak</td><td style=\"text-align:right\">{peak}</td></tr><tr><td>Off-Peak</td><td style=\"text-align:right\">{offpeak}</td></tr><tr><td>Tiefster</td><td style=\"text-align:right\">{min}</td></tr><tr><td>Höchster</td><td style=\"text-align:right\">{max}</td></tr><tr><td>Negative Preise</td><td style=\"text-align:right\">{negative} h</td></tr></table>" }
+    "title": "Strompreise in Europa",
+    "subtitle": "=match(@price, {peak: 'Day Ahead, Mittel von Montag bis Freitag 8-20 Uhr des Monats nach Gebotszonen, in €/MWh', offpeak: 'Day Ahead, Mittel der Nächte und Wochenenden des Monats nach Gebotszonen, in €/MWh', negative: 'Day Ahead, Stunden mit negativem Preis im Monat nach Gebotszonen'}, 'Day Ahead, Mittel aller Stunden des Monats nach Gebotszonen, in €/MWh')",
+    "source": "Quelle: ENTSO-E - Day Ahead Prices 12.1.D; Gebotszonen: <a href=\"https://github.com/EnergieID/entsoe-py\" target=\"_blank\">entsoe-py</a>, Natural Earth",
+    "locale": {"base": "de", "number": {"currency": ["", " €/MWh"]}},
+    "hover": {
+        "row": "<table class=\"vis-hover-table\"><tr><td>Base</td><td style=\"text-align:right\">{base}</td></tr><tr><td>Peak</td><td style=\"text-align:right\">{peak}</td></tr><tr><td>Off-Peak</td><td style=\"text-align:right\">{offpeak}</td></tr><tr><td>Tiefster</td><td style=\"text-align:right\">{min}</td></tr><tr><td>Höchster</td><td style=\"text-align:right\">{max}</td></tr><tr><td>Negative Preise</td><td style=\"text-align:right\">{negative} h</td></tr></table>",
+        "columns": []
     },
-    "geo": { "data": "/geo/europe-bidding-zones.json" },
-    "globals": { "price": "base" },
-    "filter": { "month": "@month" },
-    "formElements": [
+    "globals": {"price": "base"},
+    "controls": [
         {
-            "id": "month",
-            "name": "Monat",
-            "ref": "month",
             "type": "slider",
-            "values": { "column": "month", "format": "%b %Y" }
+            "global": "month",
+            "name": "Monat",
+            "id": "month",
+            "values": {"column": "month", "format": "%b %Y"}
         },
         {
-            "id": "price",
-            "name": "Preis",
-            "ref": "price",
             "type": "radio",
+            "global": "price",
+            "name": "Preis",
+            "id": "price",
             "values": [
-                { "id": "base", "name": "Base", "value": "base" },
-                {
-                    "id": "peak", "name": "Peak", "value": "peak",
-                    "patch": {
-                        "options": { "subtitle": "Day Ahead, Mittel von Montag bis Freitag 8-20 Uhr des Monats nach Gebotszonen, in €/MWh" },
-                        "mapping": { "value": { "name": "Peak", "column": "peak" }, "label": { "column": "peak" } }
-                    }
-                },
-                {
-                    "id": "offpeak", "name": "Off-Peak", "value": "offpeak",
-                    "patch": {
-                        "options": { "subtitle": "Day Ahead, Mittel der Nächte und Wochenenden des Monats nach Gebotszonen, in €/MWh" },
-                        "mapping": { "value": { "name": "Off-Peak", "column": "offpeak" }, "label": { "column": "offpeak" } }
-                    }
-                },
-                {
-                    "id": "negative", "name": "Negative Preise", "value": "negative",
-                    "patch": {
-                        "options": { "subtitle": "Day Ahead, Stunden mit negativem Preis im Monat nach Gebotszonen" },
-                        "mapping": {
-                            "value": {
-                                "name": "Stunden", "column": "negative", "domain": [1, 10, 25, 50, 100],
-                                "scale": { "scheme": "Blues" }, "hover": { "format": ",.1f" }
-                            },
-                            "label": { "column": "negative" }
-                        }
-                    }
-                }
+                {"id": "base", "name": "Base", "value": "base"},
+                {"id": "peak", "name": "Peak", "value": "peak"},
+                {"id": "offpeak", "name": "Off-Peak", "value": "offpeak"},
+                {"id": "negative", "name": "Negative Preise", "value": "negative"}
             ]
         }
     ],
-    "mapping": {
-        "month": { "column": "month", "type": "categorical" },
+    "filter": {"month": "@globals.month"},
+    "dims": {
+        "month": {"column": "month", "type": "categorical"},
         "country": {
             "categories": {
-                "DE_LU": { "name": "Deutschland und Luxemburg" },
-                "DK1": { "name": "Dänemark West (DK1)" },
-                "DK2": { "name": "Dänemark Ost (DK2)" },
-                "IE_SEM": { "name": "Irland und Nordirland" },
-                "IT-NORTH": { "name": "Italien Nord" },
-                "IT-CNORTH": { "name": "Italien Mitte-Nord" },
-                "IT-CSOUTH": { "name": "Italien Mitte-Süd" },
-                "IT-SOUTH": { "name": "Italien Süd" },
-                "IT-Calabria": { "name": "Italien Kalabrien" },
-                "IT-Sardinia": { "name": "Italien Sardinien" },
-                "IT-Sicily": { "name": "Italien Sizilien" },
-                "NO1": { "name": "Norwegen Südost (NO1)" },
-                "NO2": { "name": "Norwegen Südwest (NO2)" },
-                "NO3": { "name": "Norwegen Mitte (NO3)" },
-                "NO4": { "name": "Norwegen Nord (NO4)" },
-                "NO5": { "name": "Norwegen West (NO5)" },
-                "SE1": { "name": "Schweden Nord (SE1)" },
-                "SE2": { "name": "Schweden Mitte-Nord (SE2)" },
-                "SE3": { "name": "Schweden Mitte-Süd (SE3)" },
-                "SE4": { "name": "Schweden Süd (SE4)" },
-                "XK": { "name": "Kosovo" }
+                "DE_LU": {"name": "Deutschland und Luxemburg"},
+                "DK1": {"name": "Dänemark West (DK1)"},
+                "DK2": {"name": "Dänemark Ost (DK2)"},
+                "IE_SEM": {"name": "Irland und Nordirland"},
+                "IT-NORTH": {"name": "Italien Nord"},
+                "IT-CNORTH": {"name": "Italien Mitte-Nord"},
+                "IT-CSOUTH": {"name": "Italien Mitte-Süd"},
+                "IT-SOUTH": {"name": "Italien Süd"},
+                "IT-Calabria": {"name": "Italien Kalabrien"},
+                "IT-Sardinia": {"name": "Italien Sardinien"},
+                "IT-Sicily": {"name": "Italien Sizilien"},
+                "NO1": {"name": "Norwegen Südost (NO1)"},
+                "NO2": {"name": "Norwegen Südwest (NO2)"},
+                "NO3": {"name": "Norwegen Mitte (NO3)"},
+                "NO4": {"name": "Norwegen Nord (NO4)"},
+                "NO5": {"name": "Norwegen West (NO5)"},
+                "SE1": {"name": "Schweden Nord (SE1)"},
+                "SE2": {"name": "Schweden Mitte-Nord (SE2)"},
+                "SE3": {"name": "Schweden Mitte-Süd (SE3)"},
+                "SE4": {"name": "Schweden Süd (SE4)"},
+                "XK": {"name": "Kosovo"}
             }
         },
         "value": {
-            "name": "Base",
-            "column": "mean",
-            "domain": [50, 100, 150, 200, 300],
-            "scale": { "type": "threshold", "scheme": "Reds", "classes": 6 },
-            "legend": { "format": ",.0f", "classes": true },
-            "hover": { "format": "$,.1f" }
+            "name": "=match(@price, {peak: 'Peak', offpeak: 'Off-Peak', negative: 'Stunden'}, 'Base')",
+            "column": "=match(@price, {peak: 'peak', offpeak: 'offpeak', negative: 'negative'}, 'mean')",
+            "domain": "=match(@price, {negative: literal([1, 10, 25, 50, 100])}, literal([50, 100, 150, 200, 300]))",
+            "scale": {
+                "type": "threshold",
+                "scheme": "=match(@price, {negative: 'Blues'}, 'Reds')",
+                "classes": 6
+            },
+            "legend": {"format": ",.0f", "classes": true, "symbol": null},
+            "hover": {"format": "=match(@price, {negative: ',.1f'}, '$,.1f')"}
         },
-        "label": { "column": "mean", "type": "numeric", "format": ",.0f" },
-        "base": { "name": "Base", "column": "mean", "type": "numeric", "hover": { "format": "$,.1f" } },
-        "peak": { "name": "Peak", "column": "peak", "type": "numeric", "hover": { "format": "$,.1f" } },
-        "offpeak": { "name": "Off-Peak", "column": "offpeak", "type": "numeric", "hover": { "format": "$,.1f" } },
-        "negative": { "name": "Negative Preise", "column": "negative", "type": "numeric", "hover": { "format": ",.1~f" } },
-        "min": { "name": "Tiefster", "column": "min", "type": "numeric", "hover": { "format": "$,.1f" } },
-        "max": { "name": "Höchster", "column": "max", "type": "numeric", "hover": { "format": "$,.1f" } }
+        "label": {
+            "column": "=match(@price, {peak: 'peak', offpeak: 'offpeak', negative: 'negative'}, 'mean')",
+            "type": "numeric",
+            "format": ",.0f"
+        },
+        "base": {"name": "Base", "column": "mean", "type": "numeric", "hover": {"format": "$,.1f"}},
+        "peak": {"name": "Peak", "column": "peak", "type": "numeric", "hover": {"format": "$,.1f"}},
+        "offpeak": {"name": "Off-Peak", "column": "offpeak", "type": "numeric", "hover": {"format": "$,.1f"}},
+        "negative": {
+            "name": "Negative Preise",
+            "column": "negative",
+            "type": "numeric",
+            "hover": {"format": ",.1~f"}
+        },
+        "min": {"name": "Tiefster", "column": "min", "type": "numeric", "hover": {"format": "$,.1f"}},
+        "max": {"name": "Höchster", "column": "max", "type": "numeric", "hover": {"format": "$,.1f"}}
     },
-    "plot": [
-        { "type": "geo:base", "props": { "fill": "#DADADA", "stroke": "white", "stroke-width": 1 } },
+    "marks": [
+        {"type": "geo:base", "fill": "#DADADA", "stroke": "white", "stroke-width": 1},
         {
-            "type": "geo:region", "by": "country",
-            "props": { "fill": "@value:scaled", "stroke": "white", "stroke-width": 1 },
-            "highlight": { "fill-opacity": 0.75 }
+            "type": "geo:region",
+            "by": "country",
+            "fill": "@value:scaled",
+            "stroke": "white",
+            "stroke-width": 1,
+            "highlight": {"fill-opacity": 0.75}
         },
         {
-            "type": "geo:text", "by": "country",
-            "filter": { "country": ["AT", "DE_LU", "FR", "ES", "IT-NORTH", "PL", "RO", "SE3", "FI", "GR"] },
+            "type": "geo:text",
+            "by": "country",
             "fit": true,
             "overlap": false,
-            "props": {
-                "text": "@label:formatted", "font-size": { "steps": ["@totalWidth", { "0": 11, "550": 13 }] }, "font-weight": "bold", "text-anchor": "middle", "dominant-baseline": "middle",
-                "fill": "#222", "stroke": "white", "stroke-width": 3, "stroke-opacity": 0.8, "paint-order": "stroke",
-                "pointer-events": "none"
-            }
+            "filter": "@country == 'AT' or @country == 'DE_LU' or @country == 'FR' or @country == 'ES' or @country == 'IT-NORTH' or @country == 'PL' or @country == 'RO' or @country == 'SE3' or @country == 'FI' or @country == 'GR'",
+            "text": "@label:formatted",
+            "font-size": "=steps(@totalWidth, {0: 11, 550: 13})",
+            "font-weight": "bold",
+            "text-anchor": "middle",
+            "dominant-baseline": "middle",
+            "fill": "#222",
+            "stroke": "white",
+            "stroke-width": 3,
+            "stroke-opacity": 0.8,
+            "paint-order": "stroke",
+            "pointer-events": "none"
         }
-    ]
+    ],
+    "geo": {"data": "/geo/europe-bidding-zones.json"}
 }

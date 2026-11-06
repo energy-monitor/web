@@ -1,24 +1,24 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["../_stacked.json", "../_share-switch.json", "_sources.json"],
     "data": "generation-stacked.parquet",
-    "options": {
-        "title": "Stromproduktion",
-        "subtitle": "nach Quellen, in TWh bzw. Anteile",
-        "footer": "Quelle: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
-    },
-    "mapping": {
+    "title": "Stromproduktion",
+    "subtitle": "nach Quellen, in TWh bzw. Anteile",
+    "source": "Quelle: ENTSO-E - Aggregated Generation Per Type 16.1.B C",
+    "dims": {
         "y": {
-            "scale": { "domainRel": [0, 0.13] },
-            "axis": { "ticks": 7, "format": ".2f" },
-            "hover": { "format": ".2f" }
+            "scale": {"pad": "=match(@values, {share: literal([0, 0])}, literal([0, 0.13]))"},
+            "axis": {"ticks": 7, "format": "=match(@values, {share: '.0%'}, '.2f')"},
+            "hover": {"format": "=match(@values, {share: '.1%'}, '.2f')"},
+            "column": "=match(@values, {share: 'value.share'}, 'value')",
+            "domain": "=match(@values, {share: literal([0, 1])}, literal([0, null]))"
         },
         "type": {
             "categories": {
-                "Hydro run-of-river": { "legend": false },
-                "Hydro reservoir": { "legend": false },
-                "Hydro pumped storage": { "legend": false },
-                "others": { "color": "#CCC", "name": "Andere" }
+                "Hydro run-of-river": {"legend": false},
+                "Hydro reservoir": {"legend": false},
+                "Hydro pumped storage": {"legend": false},
+                "others": {"color": "#CCC", "name": "Andere"}
             }
         }
     }

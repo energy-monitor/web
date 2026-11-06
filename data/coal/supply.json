@@ -1,20 +1,18 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["../fossil/_supply.json", "../_scale-switch.json"],
     "data": "supply.parquet",
-    "options": {
-        "title": "Absatz von Kohle im Jahresvergleich",
-        "subtitle": "in tausend Tonnen",
-        "footer": "Quelle: eurostat - nrg_cb_sffm"
-    },
-    "globals": { "shareScale": ["x", "y"] },
-    "mapping": {
+    "title": "Absatz von Kohle im Jahresvergleich",
+    "subtitle": "in tausend Tonnen",
+    "source": "Quelle: eurostat - nrg_cb_sffm",
+    "globals": {"shareScale": ["x", "y"]},
+    "dims": {
         "facet": {
             "categories": {
-                "total": { "name": "Gesamt", "visible": true },
-                "stein": { "name": "Steinkohle", "visible": true },
-                "braun": { "name": "Braunkohle", "visible": false },
-                "koks": { "name": "Koks", "visible": false }
+                "total": {"name": "Gesamt", "visible": true},
+                "stein": {"name": "Steinkohle", "visible": true},
+                "braun": {"name": "Braunkohle", "visible": false},
+                "koks": {"name": "Koks", "visible": false}
             }
         }
     }

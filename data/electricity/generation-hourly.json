@@ -1,31 +1,29 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "_sources.json",
     "data": "generation-hourly.parquet",
-    "options": {
-        "height": 350,
-        "margins": { "top": 5, "right": 30, "bottom": 35, "left": 50 },
-        "title": "Stromproduktion im Tagesverlauf",
-        "subtitle": "im Jahr 2025, nach Quellen, mittlere Leistung in GW",
-        "footer": "Quelle: ENTSO-E - Aggregated Generation Per Type 16.1.B C; Stunden in Ortszeit"
-    },
-    "mapping": {
+    "title": "Stromproduktion im Tagesverlauf",
+    "subtitle": "im Jahr 2025, nach Quellen, mittlere Leistung in GW",
+    "source": "Quelle: ENTSO-E - Aggregated Generation Per Type 16.1.B C; Stunden in Ortszeit",
+    "height": 350,
+    "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50},
+    "dims": {
         "x": {
             "column": "hour",
             "type": "numeric",
             "format": "c",
-            "axis": { "ticks": { "*": ["@innerWidth", 0.017] } },
+            "axis": {"ticks": "@innerWidth * 0.017"},
             "hover": {}
         },
         "y": {
             "column": "value",
             "type": "numeric",
-            "domain": [0, null],
             "format": ".2f",
-            "scale": { "domainRel": [0, 0.13] },
-            "stacked": true,
-            "axis": { "ticks": 7, "grid": true },
-            "hover": {}
+            "scale": {"pad": [0, 0.13]},
+            "axis": {"ticks": 7},
+            "hover": {},
+            "zero": true,
+            "grid": true
         },
         "type": {
             "legend": {
@@ -35,39 +33,28 @@
                     "elements": [
                         {
                             "type": "rect",
-                            "props": {
-                                "x": 0,
-                                "y": 0,
-                                "width": 16,
-                                "height": 15,
-                                "fill": "@color",
-                                "rx": 2
-                            }
+                            "props": {"x": 0, "y": 0, "width": 16, "height": 15, "fill": "@color", "rx": 2}
                         }
                     ]
                 }
             },
-            "common": { "size": 2 },
+            "common": {"size": 2},
             "categories": {
-                "Waste": { "color": "#ABD6A9", "name": "Müll" },
-                "Oil": { "color": "#000", "name": "Erdöl" },
-                "others": { "color": "#CCC", "name": "Andere" }
+                "Waste": {"color": "#ABD6A9", "name": "Müll"},
+                "Oil": {"color": "#000", "name": "Erdöl"},
+                "others": {"color": "#CCC", "name": "Andere"}
             },
             "hover": {}
         }
     },
-    "plot": [
+    "marks": [
         {
             "type": "bar",
             "by": "type",
-            "props": {
-                "fill": "@color",
-                "opacity": 0.9,
-                "y0": "@y:start:scaled",
-                "y1": "@y:end:scaled",
-                "width": { "*": ["@innerWidth", 0.025] }
-            },
-            "highlight": { "mode": "row", "opacity": 1 }
+            "stack": true,
+            "opacity": 0.9,
+            "width": "@innerWidth * 0.025",
+            "highlight": {"mode": "row", "opacity": 1}
         }
     ]
 }

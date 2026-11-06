@@ -1,21 +1,19 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["../fossil/_supply.json", "../_scale-switch.json"],
     "data": "supply.parquet",
-    "options": {
-        "title": "Absatz von Mineralöl im Jahresvergleich",
-        "subtitle": "in tausend Tonnen",
-        "footer": "Quelle: eurostat - nrg_cb_oilm"
-    },
-    "globals": { "shareScale": ["x", "y"] },
-    "mapping": {
+    "title": "Absatz von Mineralöl im Jahresvergleich",
+    "subtitle": "in tausend Tonnen",
+    "source": "Quelle: eurostat - nrg_cb_oilm",
+    "globals": {"shareScale": ["x", "y"]},
+    "dims": {
         "facet": {
             "categories": {
-                "total": { "name": "Gesamt", "visible": true },
-                "gasoline": { "name": "Benzin", "visible": false },
-                "diesel": { "name": "Diesel", "visible": true },
-                "heating": { "name": "Heizöl", "visible": false },
-                "kerosin": { "name": "Kerosin", "visible": false }
+                "total": {"name": "Gesamt", "visible": true},
+                "gasoline": {"name": "Benzin", "visible": false},
+                "diesel": {"name": "Diesel", "visible": true},
+                "heating": {"name": "Heizöl", "visible": false},
+                "kerosin": {"name": "Kerosin", "visible": false}
             }
         }
     }

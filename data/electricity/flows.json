@@ -1,11 +1,9 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_years.json",
     "data": "flows.parquet",
-    "options": {
-        "title": "Netto Stromexporte",
-        "subtitle": "täglich (rollierender 14-Tages Durchschnitt), in GWh",
-        "footer": "Quelle: ENTSO-E - Physical Flows"
-    },
-    "mapping": { "y": { "domain": [null, null], "scale": { "domainRel": [-0.1, 0.1] } } }
+    "title": "Netto Stromexporte",
+    "subtitle": "täglich (rollierender 14-Tages Durchschnitt), in GWh",
+    "source": "Quelle: ENTSO-E - Physical Flows",
+    "dims": {"y": {"domain": [null, null], "scale": {"pad": [0.1, 0.1]}}}
 }

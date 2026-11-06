@@ -1,21 +1,26 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "_yearly-stacked.json",
     "data": "fuels.parquet",
-    "options": {
-        "title": "Energieeinsatz der Verbrennung nach Brennstoffen",
-        "subtitle": "jährlich, in PJ oder Anteile, Treibhausgasinventur CRT 1.A, AT"
-    },
-    "mapping": {
+    "title": "Energieeinsatz der Verbrennung nach Brennstoffen",
+    "subtitle": "jährlich, in PJ oder Anteile, Treibhausgasinventur CRT 1.A, AT",
+    "dims": {
         "type": {
             "column": "fuel",
             "categories": {
-                "oil": { "color": "#6F625A", "name": "Mineralöl" },
-                "biomass": { "color": "#3FA45B", "name": "Biomasse" },
-                "coal": { "color": "#8B4513", "name": "Kohle" },
-                "waste": { "color": "#9A9A9A", "name": "Abfall (fossil)" },
-                "gas": { "color": "#C3423F", "name": "Erdgas" }
+                "oil": {"color": "#6F625A", "name": "Mineralöl"},
+                "biomass": {"color": "#3FA45B", "name": "Biomasse"},
+                "coal": {"color": "#8B4513", "name": "Kohle"},
+                "waste": {"color": "#9A9A9A", "name": "Abfall (fossil)"},
+                "gas": {"color": "#C3423F", "name": "Erdgas"}
             }
+        },
+        "y": {
+            "column": "=match(@values, {share: 'value.share'}, 'value')",
+            "domain": "=match(@values, {share: literal([0, 1])}, literal([0, null]))",
+            "scale": {"pad": "=match(@values, {share: literal([0, 0])}, literal([0, 0.1]))"},
+            "axis": {"format": "=match(@values, {share: '.0%'}, ',.0f')"},
+            "hover": {"format": "=match(@values, {share: '.1%'}, ',.1f')"}
         }
     }
 }

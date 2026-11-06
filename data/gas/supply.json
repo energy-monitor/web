@@ -1,11 +1,9 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../fossil/_supply.json",
     "data": "supply.parquet",
-    "options": {
-        "title": "Absatz von Erdgas im Jahresvergleich",
-        "subtitle": "in Millionen Kubikmetern",
-        "footer": "Quelle: eurostat - nrg_cb_gasm"
-    },
-    "mapping": { "facet": { "categories": { "total": { "name": "Gesamt", "visible": true } } } }
+    "title": "Absatz von Erdgas im Jahresvergleich",
+    "subtitle": "in Millionen Kubikmetern",
+    "source": "Quelle: eurostat - nrg_cb_gasm",
+    "dims": {"facet": {"categories": {"total": {"name": "Gesamt", "visible": true}}}}
 }

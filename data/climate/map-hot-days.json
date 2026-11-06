@@ -1,48 +1,38 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_austria-map.json",
     "data": "districts.parquet",
-    "options": {
-        "title": "Hitzetage",
-        "subtitle": "Tage mit Höchsttemperatur ≥ 30 °C, {year}, bzw. Abweichung vom Mittel 1961 - 1990",
-        "footer": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster, Mittel über die Bezirke"
-    },
-    "globals": { "indicator": "days.hot" },
-    "formElements": [
+    "title": "Hitzetage",
+    "subtitle": "Tage mit Höchsttemperatur ≥ 30 °C, {year}, bzw. Abweichung vom Mittel 1961 - 1990",
+    "source": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster, Mittel über die Bezirke",
+    "globals": {"indicator": "days.hot"},
+    "controls": [
         {
-            "id": "indicator",
-            "name": "Werte",
-            "ref": "indicator",
             "type": "radio",
+            "global": "indicator",
+            "name": "Werte",
+            "id": "indicator",
             "values": [
-                { "id": "absolute", "name": "Tage", "value": "days.hot" },
-                {
-                    "id": "anomaly",
-                    "name": "Abweichung",
-                    "value": "days.hot.anomaly",
-                    "patch": {
-                        "mapping": { "label": { "format": "+.0f" },
-                            "value": {
-                                "name": "Abweichung in Tagen",
-                                "domain": [30, -30],
-                                "scale": { "interpolator": "RdBu" },
-                                "legend": { "format": "+.0f" },
-                                "hover": { "format": "+.0f" }
-                            }
-                        }
-                    }
-                }
+                {"id": "absolute", "name": "Tage", "value": "days.hot"},
+                {"id": "anomaly", "name": "Abweichung", "value": "days.hot.anomaly"}
             ]
         }
     ],
-    "mapping": {
-        "label": { "column": "value", "type": "numeric", "format": ".0f" },
+    "dims": {
+        "label": {
+            "column": "value",
+            "type": "numeric",
+            "format": "=match(@indicator, {'days.hot.anomaly': '+.0f'}, '.0f')"
+        },
         "value": {
-            "name": "Hitzetage",
-            "domain": [0, 40],
-            "scale": { "type": "sequential", "interpolator": "Reds" },
-            "legend": { "format": ".0f" },
-            "hover": { "format": ".0f" }
+            "name": "=match(@indicator, {'days.hot.anomaly': 'Abweichung in Tagen'}, 'Hitzetage')",
+            "domain": "=match(@indicator, {'days.hot.anomaly': literal([30, -30])}, literal([0, 40]))",
+            "scale": {
+                "type": "sequential",
+                "interpolator": "=match(@indicator, {'days.hot.anomaly': 'RdBu'}, 'Reds')"
+            },
+            "legend": {"format": "=match(@indicator, {'days.hot.anomaly': '+.0f'}, '.0f')", "symbol": null},
+            "hover": {"format": "=match(@indicator, {'days.hot.anomaly': '+.0f'}, '.0f')"}
         }
     }
 }

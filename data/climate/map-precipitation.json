@@ -1,48 +1,31 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_austria-map.json",
     "data": "districts.parquet",
-    "options": {
-        "title": "Niederschlag",
-        "subtitle": "Jahressumme {year} in mm bzw. Abweichung vom Mittel 1961 - 1990 in %",
-        "footer": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster, Mittel über die Bezirke"
-    },
-    "globals": { "indicator": "rr.anomaly" },
-    "formElements": [
+    "title": "Niederschlag",
+    "subtitle": "Jahressumme {year} in mm bzw. Abweichung vom Mittel 1961 - 1990 in %",
+    "source": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster, Mittel über die Bezirke",
+    "globals": {"indicator": "rr.anomaly"},
+    "controls": [
         {
-            "id": "indicator",
-            "name": "Werte",
-            "ref": "indicator",
             "type": "radio",
+            "global": "indicator",
+            "name": "Werte",
+            "id": "indicator",
             "values": [
-                {
-                    "id": "absolute",
-                    "name": "Jahressumme",
-                    "value": "rr",
-                    "patch": {
-                        "mapping": { "label": { "format": ",.0f" },
-                            "value": {
-                                "name": "Jahressumme in mm",
-                                "domain": [400, 2400],
-                                "scale": { "interpolator": "YlGnBu" },
-                                "legend": { "format": ",.0f" },
-                                "hover": { "format": ",.0f" }
-                            }
-                        }
-                    }
-                },
-                { "id": "anomaly", "name": "Abweichung", "value": "rr.anomaly" }
+                {"id": "absolute", "name": "Jahressumme", "value": "rr"},
+                {"id": "anomaly", "name": "Abweichung", "value": "rr.anomaly"}
             ]
         }
     ],
-    "mapping": {
-        "label": { "column": "value", "type": "numeric", "format": "+.0f" },
+    "dims": {
+        "label": {"column": "value", "type": "numeric", "format": "=match(@indicator, {rr: ',.0f'}, '+.0f')"},
         "value": {
-            "name": "Abweichung in %",
-            "domain": [-40, 40],
-            "scale": { "type": "sequential", "interpolator": "BrBG" },
-            "legend": { "format": "+.0f" },
-            "hover": { "format": "+.0f" }
+            "name": "=match(@indicator, {rr: 'Jahressumme in mm'}, 'Abweichung in %')",
+            "domain": "=match(@indicator, {rr: literal([400, 2400])}, literal([-40, 40]))",
+            "scale": {"type": "sequential", "interpolator": "=match(@indicator, {rr: 'YlGnBu'}, 'BrBG')"},
+            "legend": {"format": "=match(@indicator, {rr: ',.0f'}, '+.0f')", "symbol": null},
+            "hover": {"format": "=match(@indicator, {rr: ',.0f'}, '+.0f')"}
         }
     }
 }

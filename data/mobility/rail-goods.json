@@ -1,39 +1,35 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["../_timeline.json", "../_facet-toggle.json"],
     "data": "rail-goods.parquet",
-    "options": {
-        "height": 220,
-        "margins": { "top": 5, "right": 30, "bottom": 30, "left": 50 },
-        "title": "Schienengüterverkehr",
-        "subtitle": "Gütermenge in Mio. Tonnen bzw. Verkehrsleistung in Mrd. Tonnenkilometern, quartalsweise, AT",
-        "footer": "Quelle: Eurostat, Statistik Austria - Schienengüterverkehr"
-    },
-    "mapping": {
+    "title": "Schienengüterverkehr",
+    "subtitle": "Gütermenge in Mio. Tonnen bzw. Verkehrsleistung in Mrd. Tonnenkilometern, quartalsweise, AT",
+    "source": "Quelle: Eurostat, Statistik Austria - Schienengüterverkehr",
+    "height": 220,
+    "margins": {"top": 5, "right": 30, "bottom": 30, "left": 50},
+    "dims": {
         "x": {
-            "axis": { "ticks": { "*": ["@innerWidth", 0.014] }, "rotate": 0, "format": "%Y" },
-            "hover": { "format": "Q%q %Y" }
+            "axis": {"ticks": "@innerWidth * 0.014", "rotate": 0, "format": "%Y"},
+            "hover": {"format": "Q%q %Y"}
         },
         "facet": {
             "column": "measure",
             "categories": {
-                "tonnes": { "name": "Gütermenge (Mio. t)", "visible": true },
-                "tkm": { "name": "Verkehrsleistung (Mrd. tkm)", "visible": true }
+                "tonnes": {"name": "Gütermenge (Mio. t)", "visible": true},
+                "tkm": {"name": "Verkehrsleistung (Mrd. tkm)", "visible": true}
             }
         }
     },
-    "facets": {
-        "dim": "facet",
-        "scales": ["x"],
-        "cols": { "steps": ["@totalWidth", { "0": 1, "550": 2 }] }
-    },
-    "plot": [
+    "hover": {"columns": []},
+    "marks": [
         {
             "type": "line",
             "by": "facet",
-            "props": { "stroke": "#C3423F", "stroke-width": 2 },
-            "highlight": { "stroke-width": 3 }
+            "stroke": "#C3423F",
+            "stroke-width": 2,
+            "highlight": {"stroke-width": 3}
         },
-        { "type": "point", "by": "facet", "props": { "r": 2.5, "fill": "#C3423F" } }
-    ]
+        {"type": "point", "by": "facet", "r": 2.5, "fill": "#C3423F"}
+    ],
+    "facets": {"by": "facet", "cols": "=steps(@totalWidth, {0: 1, 550: 2})", "scales": ["x"]}
 }

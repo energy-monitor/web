@@ -1,14 +1,12 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_years.json",
     "data": "temperature.parquet",
-    "options": {
-        "title": "Temperatur Österreich",
-        "subtitle": "gewichtet nach Bevölkerung, täglich (rollierender 4-Wochen Durchschnitt), in °C",
-        "footer": "Quelle: ERA5"
-    },
-    "mapping": {
-        "y": { "column": "value", "domain": [null, null], "scale": { "domainRel": [-0.1, 0.1] } },
+    "title": "Temperatur Österreich",
+    "subtitle": "gewichtet nach Bevölkerung, täglich (rollierender 4-Wochen Durchschnitt), in °C",
+    "source": "Quelle: ERA5",
+    "dims": {
+        "y": {"column": "value", "domain": [null, null], "scale": {"pad": [0.1, 0.1]}},
         "year": {
             "legend": {
                 "symbol": {
@@ -52,5 +50,5 @@
             }
         }
     },
-    "plot": { "props": { "stroke-dasharray": "@stroke-dasharray" } }
+    "marks": {"stroke-dasharray": "@stroke-dasharray"}
 }

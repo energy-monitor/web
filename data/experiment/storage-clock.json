@@ -1,66 +1,65 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_years.json",
     "data": "../gas/storage.parquet",
-    "options": {
-        "coord": "polar",
-        "class": "polar-chart",
-        "title": "Gasspeicher",
-        "subtitle": "Füllstand der österreichischen Gasspeicher, das Jahr im Uhrzeigersinn, Jänner oben, in TWh",
-        "footer": "Quelle: GIE – Gas Infrastructure Europe",
-        "height": { "steps": ["@totalWidth", { "0": 340, "600": 460 }] },
-        "margins": { "top": 30, "right": 40, "bottom": 30, "left": 40 }
-    },
-    "filter": { "type": "stock" },
-    "mapping": {
-        "type": { "column": "type", "type": "categorical" },
+    "title": "Gasspeicher",
+    "subtitle": "Füllstand der österreichischen Gasspeicher, das Jahr im Uhrzeigersinn, Jänner oben, in TWh",
+    "source": "Quelle: GIE – Gas Infrastructure Europe",
+    "height": "=steps(@totalWidth, {0: 340, 600: 460})",
+    "margins": {"top": 30, "right": 40, "bottom": 30, "left": 40},
+    "coord": "polar",
+    "class": "polar-chart",
+    "filter": {"type": "stock"},
+    "dims": {
+        "type": {"column": "type", "type": "categorical"},
         "x": {
             "domain": ["2020-01-01", "2021-01-01"],
             "format": "%b",
-            "scale": { "type": "time", "domainAbs": [0, 0] },
+            "scale": {"type": "time", "domainAbs": [0, 0]},
             "axis": {
                 "ticks": 12,
-                "grid": true,
-                "labels": { "curved": "between" },
-                "domain": {
-                    "props": { "stroke": "var(--gen-vis-grid-color)", "stroke-width": 0.75 }
-                },
-                "tickMarks": {
-                    "props": { "stroke": "var(--gen-vis-grid-color)", "stroke-width": 0.75 }
-                }
-            }
+                "labels": {"curved": "between"},
+                "domain": {"props": {"stroke": "var(--gen-vis-grid-color)", "stroke-width": 0.75}},
+                "tickMarks": {"props": {"stroke": "var(--gen-vis-grid-color)", "stroke-width": 0.75}}
+            },
+            "grid": true
         },
         "y": {
-            "domain": [0, null],
             "nice": true,
-            "scale": { "domainRel": [0, 0], "range": [{ "*": ["@radius", 0.12] }, "@radius"] },
+            "scale": {"range": ["@radius * 0.12", "@radius"], "pad": [0, 0]},
             "axis": {
                 "angle": 0,
                 "ticks": 4,
-                "grid": true,
                 "format": ",.0f",
-                "labels": { "props": { "fill": "#777", "font-size": 10 } },
-                "domain": { "props": { "stroke": "none" } }
+                "labels": {"props": {"fill": "#777", "font-size": 10}},
+                "domain": {"props": {"stroke": "none"}}
             },
-            "hover": { "format": ",.1f" }
+            "hover": {"format": ",.1f"},
+            "zero": true,
+            "grid": true
         }
     },
-    "plot": [
+    "hover": {"columns": []},
+    "marks": [
         {
-            "id": "lines",
             "type": "line",
+            "id": "lines",
             "by": "year",
-            "props": { "stroke": "@color", "stroke-width": "@stroke-width", "opacity": "@opacity" },
-            "highlight": { "opacity": 1, "stroke-width": 3 },
-            "others": { "opacity": 0.1 }
+            "stroke-width": "@stroke-width",
+            "opacity": "@opacity",
+            "highlight": {"opacity": 1, "stroke-width": 3},
+            "others": {"opacity": 0.1}
         },
         {
-            "id": "now",
             "type": "point",
+            "id": "now",
             "by": "year",
             "select": "last",
-            "props": { "r": 3.5, "fill": "@color", "stroke": "white", "opacity": "@opacity" },
-            "others": { "opacity": 0.1 }
+            "r": 3.5,
+            "fill": "@color",
+            "stroke": "white",
+            "opacity": "@opacity",
+            "others": {"opacity": 0.1}
         }
     ]
 }

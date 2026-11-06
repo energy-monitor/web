@@ -1,16 +1,14 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_timeline.json",
     "data": "traffic.parquet",
-    "options": {
-        "height": { "steps": ["@totalWidth", { "0": 220, "550": 250, "600": 280 }] },
-        "margins": { "top": 5, "right": 30, "bottom": 45, "left": 50 },
-        "title": "Verkehrsaufkommen",
-        "subtitle": "Autobahnen und Schnellstraßen, durchschnittlicher täglicher Verkehr, monatlich, Index (2025 = 100)",
-        "footer": "Quelle: ASFINAG - Dauerzählstellen"
-    },
-    "mapping": {
-        "road": { "column": "road", "categories": { "total": { "name": "Österreich" } } },
+    "title": "Verkehrsaufkommen",
+    "subtitle": "Autobahnen und Schnellstraßen, durchschnittlicher täglicher Verkehr, monatlich, Index (2025 = 100)",
+    "source": "Quelle: ASFINAG - Dauerzählstellen",
+    "height": "=steps(@totalWidth, {0: 220, 550: 250, 600: 280})",
+    "margins": {"top": 5, "right": 30, "bottom": 45, "left": 50},
+    "dims": {
+        "road": {"column": "road", "categories": {"total": {"name": "Österreich"}}},
         "vehicle": {
             "column": "vehicle",
             "legend": {
@@ -31,20 +29,21 @@
                     ]
                 }
             },
-            "common": { "stroke-width": 2, "highlight-stroke-width": 3 },
+            "common": {"stroke-width": 2, "highlight-stroke-width": 3},
             "categories": {
-                "all": { "color": "#444444", "name": "Gesamt" },
-                "light": { "color": "#4A96D4", "name": "Leicht (bis 3,5 t)" },
-                "heavy": { "color": "#C3423F", "name": "Schwer (über 3,5 t)" }
+                "all": {"color": "#444444", "name": "Gesamt"},
+                "light": {"color": "#4A96D4", "name": "Leicht (bis 3,5 t)"},
+                "heavy": {"color": "#C3423F", "name": "Schwer (über 3,5 t)"}
             },
             "hover": {}
         }
     },
-    "plot": {
+    "hover": {"columns": []},
+    "marks": {
         "type": "line",
-        "curve": "monotoneX",
         "by": ["road", "vehicle"],
-        "props": { "stroke-width": "@stroke-width", "stroke": "@color" },
-        "highlight": { "stroke-width": "@highlight-stroke-width" }
+        "curve": "monotoneX",
+        "stroke-width": "@stroke-width",
+        "highlight": {"stroke-width": "@highlight-stroke-width"}
     }
 }

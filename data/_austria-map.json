@@ -1,67 +1,72 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
-    "options": {
-        "coord": "geo",
-        "height": { "steps": ["@totalWidth", { "0": 260, "450": 320, "550": 380 }] },
-        "margins": { "top": 10, "right": 10, "bottom": 10, "left": 10 },
-        "hover": { "empty": true }
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
+    "height": "=steps(@totalWidth, {0: 260, 450: 320, 550: 380})",
+    "margins": {"top": 10, "right": 10, "bottom": 10, "left": 10},
+    "coord": "geo",
+    "hover": {"empty": true, "columns": []},
+    "globals": {"year": "2025"},
+    "controls": [
+        {
+            "type": "slider",
+            "global": "year",
+            "name": "Jahr",
+            "id": "year",
+            "values": {"column": "year"}
+        }
+    ],
+    "filter": {"indicator": "@globals.indicator", "year": "@globals.year"},
+    "dims": {
+        "district": {"column": "district", "type": "categorical"},
+        "indicator": {"column": "indicator", "type": "categorical"},
+        "year": {"column": "year", "type": "categorical"},
+        "value": {
+            "column": "value",
+            "type": "numeric",
+            "legend": {"missing": {"name": "keine Daten", "color": "#DADADA"}, "symbol": null}
+        }
     },
+    "marks": [
+        {"type": "base", "fill": "#DADADA", "stroke": "white", "stroke-width": 0.5},
+        {
+            "type": "region",
+            "by": "district",
+            "fill": "@value:scaled",
+            "stroke": "white",
+            "stroke-width": 0.5,
+            "highlight": {"fill-opacity": 0.75}
+        },
+        {
+            "type": "mesh",
+            "object": "states",
+            "borders": "inner",
+            "stroke": "white",
+            "stroke-width": 1.4
+        },
+        {
+            "type": "text",
+            "by": "district",
+            "fit": false,
+            "overlap": false,
+            "filter": "@district == '706' or @district == '707' or @district == '206' or @district == '612' or @district == '325' or @district == '316' or @district == '900' or @district == '601' or @district == '401' or @district == '501' or @district == '701' or @district == '201' or @district == '101' or @district == '802' or @district == '302'",
+            "text": "@label:formatted",
+            "font-size": "=steps(@totalWidth, {0: 8, 450: 9, 550: 10})",
+            "font-weight": "bold",
+            "text-anchor": "middle",
+            "dominant-baseline": "middle",
+            "fill": "#222",
+            "stroke": "white",
+            "stroke-width": 3,
+            "stroke-opacity": 0.8,
+            "paint-order": "stroke",
+            "pointer-events": "none"
+        }
+    ],
     "geo": {
         "data": "/geo/austria-districts.json",
         "object": "districts",
         "key": "id",
         "join": "district",
         "name": "NAME",
-        "projection": { "type": "conicEquidistant", "rotate": [-13.3, 0], "parallels": [46, 49] }
-    },
-    "globals": { "year": "2025" },
-    "filter": { "indicator": "@indicator", "year": "@year" },
-    "formElements": [
-        {
-            "id": "year",
-            "name": "Jahr",
-            "ref": "year",
-            "type": "slider",
-            "values": { "column": "year" }
-        }
-    ],
-    "mapping": {
-        "district": { "column": "district", "type": "categorical" },
-        "indicator": { "column": "indicator", "type": "categorical" },
-        "year": { "column": "year", "type": "categorical" },
-        "value": {
-            "column": "value",
-            "type": "numeric",
-            "legend": { "missing": { "name": "keine Daten", "color": "#DADADA" } }
-        }
-    },
-    "plot": [
-        {
-            "type": "geo:base",
-            "props": { "fill": "#DADADA", "stroke": "white", "stroke-width": 0.5 }
-        },
-        {
-            "type": "geo:region",
-            "by": "district",
-            "props": { "fill": "@value:scaled", "stroke": "white", "stroke-width": 0.5 },
-            "highlight": { "fill-opacity": 0.75 }
-        },
-        {
-            "type": "geo:mesh",
-            "object": "states",
-            "borders": "inner",
-            "props": { "stroke": "white", "stroke-width": 1.4 }
-        },
-        {
-            "type": "geo:text", "by": "district",
-            "filter": { "district": ["706", "707", "206", "612", "325", "316", "900", "601", "401", "501", "701", "201", "101", "802", "302"] },
-            "fit": false,
-            "overlap": false,
-            "props": {
-                "text": "@label:formatted", "font-size": { "steps": ["@totalWidth", { "0": 8, "450": 9, "550": 10 }] }, "font-weight": "bold", "text-anchor": "middle", "dominant-baseline": "middle",
-                "fill": "#222", "stroke": "white", "stroke-width": 3, "stroke-opacity": 0.8, "paint-order": "stroke",
-                "pointer-events": "none"
-            }
-        }
-    ]
+        "projection": {"type": "conicEquidistant", "rotate": [-13.3, 0], "parallels": [46, 49]}
+    }
 }

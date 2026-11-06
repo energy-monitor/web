@@ -1,16 +1,9 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_stacked.json",
     "data": "supply-stacked.parquet",
-    "options": {
-        "title": "Absatz von Erdgas",
-        "subtitle": "monatlich, in Millionen Kubikmetern",
-        "footer": "Quelle: eurostat - nrg_cb_gasm"
-    },
-    "mapping": {
-        "type": {
-            "column": "product",
-            "categories": { "total": { "color": "#C3423F", "name": "Erdgas" } }
-        }
-    }
+    "title": "Absatz von Erdgas",
+    "subtitle": "monatlich, in Millionen Kubikmetern",
+    "source": "Quelle: eurostat - nrg_cb_gasm",
+    "dims": {"type": {"column": "product", "categories": {"total": {"color": "#C3423F", "name": "Erdgas"}}}}
 }

@@ -1,19 +1,17 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["../_years.json", "../_line-types.json"],
     "data": "price.parquet",
-    "options": {
-        "title": "Strompreis",
-        "subtitle": "Day Ahead, täglich (rollierender 7-Tages Durchschnitt), in €/MWh",
-        "footer": "Quelle: ENTSO-E - Day Ahead Prices 12.1.D"
-    },
-    "mapping": {
-        "y": { "domain": [null, null], "scale": { "domainRel": [-0.1, 0.1] } },
+    "title": "Strompreis",
+    "subtitle": "Day Ahead, täglich (rollierender 7-Tages Durchschnitt), in €/MWh",
+    "source": "Quelle: ENTSO-E - Day Ahead Prices 12.1.D",
+    "dims": {
+        "y": {"domain": [null, null], "scale": {"pad": [0.1, 0.1]}},
         "type": {
             "categories": {
-                "mean": { "name": "⌀", "stroke-dasharray": 0 },
-                "min": { "name": "min", "visible": false, "stroke-dasharray": "1, 3" },
-                "max": { "name": "max", "visible": false, "stroke-dasharray": "2, 2" }
+                "mean": {"name": "⌀", "stroke-dasharray": 0},
+                "min": {"name": "min", "visible": false, "stroke-dasharray": "1, 3"},
+                "max": {"name": "max", "visible": false, "stroke-dasharray": "2, 2"}
             }
         }
     }

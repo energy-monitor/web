@@ -1,12 +1,10 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "_timeline.json",
-    "options": {
-        "height": { "steps": ["@totalWidth", { "0": 220, "550": 260, "600": 300 }] },
-        "margins": { "top": 15, "right": 30, "bottom": 45, "left": 50 }
-    },
-    "mapping": {
-        "y": { "stacked": true },
+    "height": "=steps(@totalWidth, {0: 220, 550: 260, 600: 300})",
+    "margins": {"top": 15, "right": 30, "bottom": 45, "left": 50},
+    "dims": {
+        "y": {},
         "type": {
             "legend": {
                 "symbol": {
@@ -14,14 +12,7 @@
                     "elements": [
                         {
                             "type": "rect",
-                            "props": {
-                                "x": 0,
-                                "y": 0,
-                                "width": 16,
-                                "height": 15,
-                                "fill": "@color",
-                                "rx": 2
-                            }
+                            "props": {"x": 0, "y": 0, "width": 16, "height": 15, "fill": "@color", "rx": 2}
                         }
                     ]
                 }
@@ -29,18 +20,14 @@
             "hover": {}
         }
     },
-    "plot": [
+    "marks": [
         {
             "type": "bar",
             "by": "type",
-            "props": {
-                "fill": "@color",
-                "opacity": 0.9,
-                "y0": "@y:start:scaled",
-                "y1": "@y:end:scaled",
-                "width": { "*": ["@innerWidth", 0.008] }
-            },
-            "highlight": { "mode": "row", "opacity": 1 }
+            "stack": true,
+            "opacity": 0.9,
+            "width": "@innerWidth * 0.008",
+            "highlight": {"mode": "row", "opacity": 1}
         }
     ]
 }

@@ -1,70 +1,88 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_europe-map.json",
     "data": "household-prices-map.parquet",
-    "options": {
-        "title": "Strom- und Gaspreise für Haushalte in Europa",
-        "subtitle": "inkl. aller Steuern und Abgaben, {period}, typischer Verbrauch (Strom 2 500-5 000 kWh, Gas 20-200 GJ pro Jahr), in Cent/kWh",
-        "footer": "Quelle: eurostat - nrg_pc_204 (Strom), nrg_pc_202 (Gas); Förderungen wie die Strompreisbremse sind als negative Abgaben enthalten",
-        "locale": { "base": "de", "number": { "currency": ["", " ct/kWh"] } },
-        "hover": { "row": "<table class=\"vis-hover-table\"><tr><td>Energie und Netz</td><td style=\"text-align:right\">{net}</td></tr><tr><td>Steuern und Abgaben</td><td style=\"text-align:right\">{levies}</td></tr><tr><td>Mehrwertsteuer</td><td style=\"text-align:right\">{vat}</td></tr><tr class=\"vis-hover-total\"><td>Gesamt</td><td style=\"text-align:right\">{total}</td></tr></table>" }
+    "title": "Strom- und Gaspreise für Haushalte in Europa",
+    "subtitle": "inkl. aller Steuern und Abgaben, {period}, typischer Verbrauch (Strom 2 500-5 000 kWh, Gas 20-200 GJ pro Jahr), in Cent/kWh",
+    "source": "Quelle: eurostat - nrg_pc_204 (Strom), nrg_pc_202 (Gas); Förderungen wie die Strompreisbremse sind als negative Abgaben enthalten",
+    "locale": {"base": "de", "number": {"currency": ["", " ct/kWh"]}},
+    "hover": {
+        "row": "<table class=\"vis-hover-table\"><tr><td>Energie und Netz</td><td style=\"text-align:right\">{net}</td></tr><tr><td>Steuern und Abgaben</td><td style=\"text-align:right\">{levies}</td></tr><tr><td>Mehrwertsteuer</td><td style=\"text-align:right\">{vat}</td></tr><tr class=\"vis-hover-total\"><td>Gesamt</td><td style=\"text-align:right\">{total}</td></tr></table>",
+        "columns": []
     },
-    "globals": { "product": "electricity" },
-    "filter": { "product": "@product", "period": "@period" },
-    "formElements": [
+    "globals": {"product": "electricity"},
+    "controls": [
         {
-            "id": "period",
-            "name": "Halbjahr",
-            "ref": "period",
             "type": "slider",
-            "values": { "column": "period" }
+            "global": "period",
+            "name": "Halbjahr",
+            "id": "period",
+            "values": {"column": "period"}
         },
         {
-            "id": "product",
-            "name": "Energieträger",
-            "ref": "product",
             "type": "radio",
+            "global": "product",
+            "name": "Energieträger",
+            "id": "product",
             "values": [
-                { "id": "electricity", "name": "Strom", "value": "electricity" },
-                {
-                    "id": "gas", "name": "Gas", "value": "gas",
-                    "patch": { "mapping": { "value": { "domain": [4, 6, 8, 10, 12, 15] } } }
-                }
+                {"id": "electricity", "name": "Strom", "value": "electricity"},
+                {"id": "gas", "name": "Gas", "value": "gas"}
             ]
         }
     ],
-    "mapping": {
-        "product": { "column": "product", "type": "categorical" },
-        "period": { "column": "period", "type": "categorical" },
+    "filter": {"product": "@globals.product", "period": "@globals.period"},
+    "dims": {
+        "product": {"column": "product", "type": "categorical"},
+        "period": {"column": "period", "type": "categorical"},
         "value": {
             "name": "Cent/kWh",
             "column": "total",
-            "domain": [10, 15, 20, 25, 30, 40],
-            "scale": { "type": "threshold", "scheme": "Reds", "classes": 7 },
-            "legend": { "format": ",.0f" },
-            "hover": { "format": "$,.1f" }
+            "domain": "=match(@product, {gas: literal([4, 6, 8, 10, 12, 15])}, literal([10, 15, 20, 25, 30, 40]))",
+            "scale": {"type": "threshold", "scheme": "Reds", "classes": 7},
+            "legend": {"format": ",.0f", "symbol": null},
+            "hover": {"format": "$,.1f"}
         },
-        "label": { "column": "total", "type": "numeric", "format": ",.1f" },
-        "total": { "name": "Gesamt", "column": "total", "type": "numeric", "hover": { "format": "$,.1f" } },
-        "net": { "name": "Energie und Netz", "column": "net", "type": "numeric", "hover": { "format": "$,.1f" } },
-        "levies": { "name": "Steuern und Abgaben", "column": "levies", "type": "numeric", "hover": { "format": "$,.1f" } },
-        "vat": { "name": "Mehrwertsteuer", "column": "vat", "type": "numeric", "hover": { "format": "$,.1f" } }
+        "label": {"column": "total", "type": "numeric", "format": ",.1f"},
+        "total": {"name": "Gesamt", "column": "total", "type": "numeric", "hover": {"format": "$,.1f"}},
+        "net": {
+            "name": "Energie und Netz",
+            "column": "net",
+            "type": "numeric",
+            "hover": {"format": "$,.1f"}
+        },
+        "levies": {
+            "name": "Steuern und Abgaben",
+            "column": "levies",
+            "type": "numeric",
+            "hover": {"format": "$,.1f"}
+        },
+        "vat": {"name": "Mehrwertsteuer", "column": "vat", "type": "numeric", "hover": {"format": "$,.1f"}}
     },
-    "plot": [
-        { "type": "geo:base", "props": { "fill": "#DADADA", "stroke": "white", "stroke-width": 1 } },
+    "marks": [
+        {"type": "geo:base", "fill": "#DADADA", "stroke": "white", "stroke-width": 1},
         {
-            "type": "geo:region", "by": "country",
-            "props": { "fill": "@value:scaled", "stroke": "white", "stroke-width": 1 },
-            "highlight": { "fill-opacity": 0.75 }
+            "type": "geo:region",
+            "by": "country",
+            "fill": "@value:scaled",
+            "stroke": "white",
+            "stroke-width": 1,
+            "highlight": {"fill-opacity": 0.75}
         },
         {
-            "type": "geo:text", "by": "country",
-            "filter": { "country": ["AT", "DE", "FR", "ES", "IT", "PL", "RO", "SE", "FI", "GR"] },
-            "props": {
-                "text": "@label:formatted", "font-size": { "steps": ["@totalWidth", { "0": 11, "550": 13 }] }, "font-weight": "bold", "text-anchor": "middle", "dominant-baseline": "middle",
-                "fill": "#222", "stroke": "white", "stroke-width": 3, "stroke-opacity": 0.8, "paint-order": "stroke",
-                "pointer-events": "none"
-            }
+            "type": "geo:text",
+            "by": "country",
+            "filter": "@country == 'AT' or @country == 'DE' or @country == 'FR' or @country == 'ES' or @country == 'IT' or @country == 'PL' or @country == 'RO' or @country == 'SE' or @country == 'FI' or @country == 'GR'",
+            "text": "@label:formatted",
+            "font-size": "=steps(@totalWidth, {0: 11, 550: 13})",
+            "font-weight": "bold",
+            "text-anchor": "middle",
+            "dominant-baseline": "middle",
+            "fill": "#222",
+            "stroke": "white",
+            "stroke-width": 3,
+            "stroke-opacity": 0.8,
+            "paint-order": "stroke",
+            "pointer-events": "none"
         }
     ]
 }

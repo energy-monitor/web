@@ -1,16 +1,16 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "_generation.json",
     "data": "generation-sources.parquet",
-    "mapping": {
+    "dims": {
         "facet": {
             "categories": {
-                "Hydro": { "name": "Wasserkraft" },
-                "Wind": { "name": "Wind" },
-                "Solar": { "name": "Solar" },
-                "Gas": { "name": "Erdgas" },
-                "Coal": { "name": "Kohle" },
-                "others": { "name": "Andere" }
+                "Hydro": {"name": "Wasserkraft"},
+                "Wind": {"name": "Wind"},
+                "Solar": {"name": "Solar"},
+                "Gas": {"name": "Erdgas"},
+                "Coal": {"name": "Kohle"},
+                "others": {"name": "Andere"}
             }
         }
     }

@@ -1,166 +1,160 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_years.json",
     "data": "gas-power.parquet",
-    "options": {
-        "title": "Der Strompreis folgt dem Gaspreis",
-        "subtitle": "Strompreis (Day Ahead) gegen Gaspreis (CEGH), ein Punkt pro Tag (rollierende 7-Tages Durchschnitte), in €/MWh",
-        "footer": "Quelle: ENTSO-E - Day Ahead Prices 12.1.D, cismo; die Gerade: die Brennstoffkosten eines Gaskraftwerks mit 50 % Wirkungsgrad, ohne CO₂",
-        "height": { "steps": ["@totalWidth", { "0": 320, "600": 440 }] },
-        "margins": { "top": 10, "right": 20, "bottom": 44, "left": 50 },
-        "hover": {
-            "mode": "point",
-            "title": "<b>{year}</b>, {day}",
-            "row": "Strom {y} €, Gas {gasHover} €",
-            "filter": { "link": "0" }
-        }
+    "title": "Der Strompreis folgt dem Gaspreis",
+    "subtitle": "Strompreis (Day Ahead) gegen Gaspreis (CEGH), ein Punkt pro Tag (rollierende 7-Tages Durchschnitte), in €/MWh",
+    "source": "Quelle: ENTSO-E - Day Ahead Prices 12.1.D, cismo; die Gerade: die Brennstoffkosten eines Gaskraftwerks mit 50 % Wirkungsgrad, ohne CO₂",
+    "height": "=steps(@totalWidth, {0: 320, 600: 440})",
+    "margins": {"top": 10, "right": 20, "bottom": 44, "left": 50},
+    "hover": {
+        "mode": "point",
+        "title": "<b>{year}</b>, {day}",
+        "row": "Strom {y} €, Gas {gasHover} €",
+        "filter": "@link == '0'",
+        "columns": []
     },
-    "mapping": {
+    "dims": {
         "x": {
             "column": "gas",
             "type": "numeric",
-            "domain": [0, null],
             "nice": true,
-            "scale": { "domainAbs": [0, 0] },
-            "axis": {
-                "format": ",.0f",
-                "grid": true,
-                "title": { "name": "Gaspreis, €/MWh", "offset": 34 }
-            },
-            "hover": { "format": ",.0f" }
+            "scale": {"domainAbs": [0, 0]},
+            "axis": {"format": ",.0f", "title": {"name": "Gaspreis, €/MWh", "offset": 34}},
+            "hover": {"format": ",.0f"},
+            "zero": true,
+            "grid": true
         },
         "y": {
             "domain": [null, null],
             "nice": true,
-            "scale": { "domainRel": [0, 0] },
-            "axis": { "title": { "name": "Strompreis, €/MWh", "offset": 40 } },
-            "hover": { "format": ",.0f" }
+            "scale": {"pad": [0, 0]},
+            "axis": {"title": {"name": "Strompreis, €/MWh", "offset": 40}},
+            "hover": {"format": ",.0f"}
         },
-        "day": { "column": "date", "type": "date", "hover": { "format": "%e. %b" } },
-        "gasHover": { "column": "gas", "type": "numeric", "hover": { "format": ",.0f" } },
+        "day": {"column": "date", "type": "date", "hover": {"format": "%e. %b"}},
+        "gasHover": {"column": "gas", "type": "numeric", "hover": {"format": ",.0f"}},
         "year": {
             "categories": {
-                "2019": { "opacity": 0.6 },
-                "2020": { "opacity": 0.6 },
-                "2021": { "opacity": 0.65 },
-                "2022": { "opacity": 0.65 },
-                "2023": { "opacity": 0.75 },
-                "2024": { "opacity": 0.8 },
-                "2025": { "opacity": 0.9 },
-                "2026": { "opacity": 1 }
+                "2019": {"opacity": 0.6},
+                "2020": {"opacity": 0.6},
+                "2021": {"opacity": 0.65},
+                "2022": {"opacity": 0.65},
+                "2023": {"opacity": 0.75},
+                "2024": {"opacity": 0.8},
+                "2025": {"opacity": 0.9},
+                "2026": {"opacity": 1}
             }
         },
-        "link": { "column": "link", "type": "categorical" }
+        "link": {"column": "link", "type": "categorical"}
     },
-    "plot": [
+    "marks": [
         {
-            "id": "fuel",
             "type": "line",
-            "data": [{ "x": 0, "y": 0 }, { "x": 340, "y": 680 }],
-            "props": { "stroke": "#888", "stroke-dasharray": "4 3" }
+            "id": "fuel",
+            "data": [{"x": 0, "y": 0}, {"x": 340, "y": 680}],
+            "stroke": "#888",
+            "stroke-dasharray": "4 3"
         },
         {
-            "id": "lines",
             "type": "line",
+            "id": "lines",
             "by": "year",
             "curve": "catmullRom",
-            "props": { "stroke": "@color", "stroke-width": 2.2, "opacity": "@opacity" },
-            "highlight": { "opacity": 1, "stroke-width": 3.5 },
-            "others": { "opacity": 0.15 }
+            "stroke-width": 2.2,
+            "opacity": "@opacity",
+            "highlight": {"opacity": 1, "stroke-width": 3.5},
+            "others": {"opacity": 0.15}
         },
         {
+            "type": "point",
             "id": "start",
-            "type": "point",
             "by": "year",
             "select": "first",
-            "props": {
-                "fill": "white",
-                "stroke": "@color",
-                "stroke-width": 1.5,
-                "opacity": "@opacity"
-            },
-            "others": { "opacity": 0.15 }
+            "fill": "white",
+            "stroke": "@color",
+            "stroke-width": 1.5,
+            "opacity": "@opacity",
+            "others": {"opacity": 0.15}
         },
         {
+            "type": "point",
             "id": "now",
-            "type": "point",
             "select": "last",
-            "props": { "r": 4, "fill": "#222", "stroke": "white", "stroke-width": 1.5 },
-            "filter": { "link": "0" }
+            "filter": "@link == '0'",
+            "r": 4,
+            "fill": "#222",
+            "stroke": "white",
+            "stroke-width": 1.5
         },
         {
-            "id": "days",
             "type": "point",
+            "id": "days",
             "by": "year",
-            "props": {
-                "r": 3.5,
-                "fill": "@color",
-                "stroke": "#222",
-                "stroke-width": 1,
-                "opacity": 0
-            },
-            "highlight": { "mode": "row", "opacity": 1 },
-            "others": { "opacity": 0 },
-            "filter": { "link": "0" }
+            "filter": "@link == '0'",
+            "r": 3.5,
+            "fill": "@color",
+            "stroke": "#222",
+            "stroke-width": 1,
+            "opacity": 0,
+            "highlight": {"mode": "row", "opacity": 1},
+            "others": {"opacity": 0}
         },
         {
-            "id": "startLabel",
             "type": "text",
+            "id": "startLabel",
             "by": "year",
             "select": "first",
             "halo": true,
-            "props": {
-                "dx": -6,
-                "dy": -6,
-                "text-anchor": "end",
-                "font-size": 11,
-                "fill": "#333",
-                "text": "@name",
-                "opacity": "@opacity"
-            },
-            "others": { "opacity": 0.15 },
-            "dodge": 12
+            "dodge": 12,
+            "dx": -6,
+            "dy": -6,
+            "text-anchor": "end",
+            "font-size": 11,
+            "fill": "#333",
+            "text": "@name",
+            "opacity": "@opacity",
+            "others": {"opacity": 0.15}
         },
         {
-            "id": "peak",
             "type": "point",
-            "filter": { "link": "0" },
-            "select": { "max": "y" },
-            "props": { "r": 5, "fill": "none", "stroke": "#222", "stroke-width": 1.2 },
-            "others": { "opacity": 0.3 }
+            "id": "peak",
+            "select": {"max": "y"},
+            "filter": "@link == '0'",
+            "r": 5,
+            "fill": "none",
+            "stroke": "#222",
+            "stroke-width": 1.2,
+            "others": {"opacity": 0.3}
         },
         {
+            "type": "text",
             "id": "peakTitle",
-            "type": "text",
-            "filter": { "link": "0" },
-            "select": { "max": "y" },
+            "select": {"max": "y"},
             "halo": true,
-            "props": {
-                "dx": -10,
-                "dy": -2,
-                "text-anchor": "end",
-                "font-size": 12,
-                "font-weight": "bold",
-                "fill": "#222",
-                "text": "Ende August 2022"
-            },
-            "others": { "opacity": 0.3 }
+            "filter": "@link == '0'",
+            "dx": -10,
+            "dy": -2,
+            "text-anchor": "end",
+            "font-size": 12,
+            "font-weight": "bold",
+            "fill": "#222",
+            "text": "Ende August 2022",
+            "others": {"opacity": 0.3}
         },
         {
-            "id": "peakText",
             "type": "text",
-            "filter": { "link": "0" },
-            "select": { "max": "y" },
+            "id": "peakText",
+            "select": {"max": "y"},
             "halo": true,
-            "props": {
-                "dx": -10,
-                "dy": 12,
-                "text-anchor": "end",
-                "font-size": 11,
-                "fill": "#444",
-                "text": "Strom 670 €/MWh bei Gas 302 €/MWh"
-            },
-            "others": { "opacity": 0.3 }
+            "filter": "@link == '0'",
+            "dx": -10,
+            "dy": 12,
+            "text-anchor": "end",
+            "font-size": 11,
+            "fill": "#444",
+            "text": "Strom 670 €/MWh bei Gas 302 €/MWh",
+            "others": {"opacity": 0.3}
         }
     ]
 }

@@ -1,24 +1,28 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["../_stacked.json", "../_share-switch.json"],
     "data": "registrations.parquet",
-    "options": {
-        "title": "Pkw-Neuzulassungen",
-        "subtitle": "nach Kraftstoffart bzw. Energiequelle, monatlich, Anteile bzw. Anzahl, AT",
-        "footer": "Quelle: Statistik Austria - Kfz-Neuzulassungen"
-    },
-    "globals": { "values": "share" },
-    "mapping": {
-        "y": { "hover": { "format": ",.0f" } },
+    "title": "Pkw-Neuzulassungen",
+    "subtitle": "nach Kraftstoffart bzw. Energiequelle, monatlich, Anteile bzw. Anzahl, AT",
+    "source": "Quelle: Statistik Austria - Kfz-Neuzulassungen",
+    "globals": {"values": "share"},
+    "dims": {
+        "y": {
+            "hover": {"format": "=match(@values, {share: '.1%'}, ',.0f')"},
+            "column": "=match(@values, {share: 'value.share'}, 'value')",
+            "domain": "=match(@values, {share: literal([0, 1])}, literal([0, null]))",
+            "scale": {"pad": "=match(@values, {share: literal([0, 0])}, literal([0, 0.1]))"},
+            "axis": {"format": "=match(@values, {share: '.0%'}, ',.0f')"}
+        },
         "type": {
             "column": "type",
             "categories": {
-                "bev": { "color": "#3FA45B", "name": "Elektro" },
-                "phev": { "color": "#7ACDB5", "name": "Plug-in-Hybrid" },
-                "hybrid": { "color": "#4A96D4", "name": "Hybrid (ohne Plug-in)" },
-                "petrol": { "color": "#F2A03D", "name": "Benzin" },
-                "diesel": { "color": "#6F625A", "name": "Diesel" },
-                "other": { "color": "#DDDDDD", "name": "Sonstige" }
+                "bev": {"color": "#3FA45B", "name": "Elektro"},
+                "phev": {"color": "#7ACDB5", "name": "Plug-in-Hybrid"},
+                "hybrid": {"color": "#4A96D4", "name": "Hybrid (ohne Plug-in)"},
+                "petrol": {"color": "#F2A03D", "name": "Benzin"},
+                "diesel": {"color": "#6F625A", "name": "Diesel"},
+                "other": {"color": "#DDDDDD", "name": "Sonstige"}
             }
         }
     }

@@ -1,20 +1,18 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["../_years.json", "../_line-types.json"],
     "data": "fuel-prices.parquet",
-    "options": {
-        "title": "Spritpreise",
-        "subtitle": "in €/Liter",
-        "footer": "Quelle: EC Weekly Oil Bulletin"
-    },
-    "mapping": {
-        "y": { "column": "last", "axis": { "format": ",.1f" }, "hover": { "format": ",.2f" } },
+    "title": "Spritpreise",
+    "subtitle": "in €/Liter",
+    "source": "Quelle: EC Weekly Oil Bulletin",
+    "dims": {
+        "y": {"column": "last", "axis": {"format": ",.1f"}, "hover": {"format": ",.2f"}},
         "type": {
             "column": "variable",
             "categories": {
-                "euroSuper95": { "name": "Benzin", "stroke-dasharray": 0 },
-                "gasOil": { "name": "Diesel", "stroke-dasharray": "4, 2" },
-                "heatingOil": { "name": "Heizöl", "stroke-dasharray": "5, 5", "visible": false }
+                "euroSuper95": {"name": "Benzin", "stroke-dasharray": 0},
+                "gasOil": {"name": "Diesel", "stroke-dasharray": "4, 2"},
+                "heatingOil": {"name": "Heizöl", "stroke-dasharray": "5, 5", "visible": false}
             }
         }
     }

@@ -1,39 +1,37 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_europe-map.json",
     "data": "fuel-prices-map.parquet",
-    "options": {
-        "title": "Spritpreise in Europa",
-        "subtitle": "Preise vom 26.10.2026, inkl. Steuern, in €/Liter",
-        "footer": "Quelle: EC Weekly Oil Bulletin",
-        "locale": { "base": "de", "number": { "currency": ["", " €/l"] } },
-        "hover": { "row": "Preisstand: {date}" }
-    },
-    "globals": { "type": "euroSuper95" },
-    "filter": { "type": "@type" },
-    "formElements": [
+    "title": "Spritpreise in Europa",
+    "subtitle": "Preise vom 26.10.2026, inkl. Steuern, in €/Liter",
+    "source": "Quelle: EC Weekly Oil Bulletin",
+    "locale": {"base": "de", "number": {"currency": ["", " €/l"]}},
+    "hover": {"row": "Preisstand: {date}"},
+    "globals": {"type": "euroSuper95"},
+    "controls": [
         {
-            "id": "type",
-            "name": "Kraftstoff",
-            "ref": "type",
             "type": "radio",
+            "global": "type",
+            "name": "Kraftstoff",
+            "id": "type",
             "values": [
-                { "id": "euroSuper95", "name": "Benzin", "value": "euroSuper95" },
-                { "id": "gasOil", "name": "Diesel", "value": "gasOil" },
-                { "id": "heatingOil", "name": "Heizöl", "value": "heatingOil" }
+                {"id": "euroSuper95", "name": "Benzin", "value": "euroSuper95"},
+                {"id": "gasOil", "name": "Diesel", "value": "gasOil"},
+                {"id": "heatingOil", "name": "Heizöl", "value": "heatingOil"}
             ]
         }
     ],
-    "mapping": {
-        "date": { "name": "Preisstand", "column": "date", "type": "date", "hover": { "format": "%d.%m.%Y" } },
-        "label": { "column": "value", "type": "numeric", "format": ",.2f" },
-        "type": { "column": "variable", "type": "categorical" },
+    "filter": {"type": "@globals.type"},
+    "dims": {
+        "date": {"name": "Preisstand", "column": "date", "type": "date", "hover": {"format": "%d.%m.%Y"}},
+        "label": {"column": "value", "type": "numeric", "format": ",.2f"},
+        "type": {"column": "variable", "type": "categorical"},
         "value": {
             "name": "€/Liter",
             "column": "value",
-            "scale": { "type": "sequential", "interpolator": "Reds" },
-            "legend": { "format": ",.1f" },
-            "hover": { "format": "$,.2f" }
+            "scale": {"type": "sequential", "interpolator": "Reds"},
+            "legend": {"format": ",.1f", "symbol": null},
+            "hover": {"format": "$,.2f"}
         }
     }
 }

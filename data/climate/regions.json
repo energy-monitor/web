@@ -1,29 +1,26 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_timeline.json",
     "data": "regions.parquet",
-    "options": {
-        "height": { "steps": ["@totalWidth", { "0": 250, "550": 280, "600": 320 }] },
-        "margins": { "top": 5, "right": 30, "bottom": 30, "left": 50 },
-        "title": "Klimaindikatoren nach Bundesland",
-        "subtitle": "jährlich, Flächenmittel",
-        "footer": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster"
-    },
-    "globals": { "indicator": "tm", "values": "abs" },
-    "filter": { "indicator": "@indicator" },
-    "formElements": [
+    "title": "Klimaindikatoren nach Bundesland",
+    "subtitle": "jährlich, Flächenmittel",
+    "source": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster",
+    "height": "=steps(@totalWidth, {0: 250, 550: 280, 600: 320})",
+    "margins": {"top": 5, "right": 30, "bottom": 30, "left": 50},
+    "globals": {"indicator": "tm", "values": "abs"},
+    "controls": [
         {
-            "id": "indicator",
-            "name": "Indikator",
-            "ref": "indicator",
             "type": "radio",
+            "global": "indicator",
+            "name": "Indikator",
+            "id": "indicator",
             "values": [
-                { "id": "tm", "name": "Temperatur (°C)", "value": "tm" },
-                { "id": "rr", "name": "Niederschlag (mm, Abweichung in %)", "value": "rr" },
-                { "id": "sa", "name": "Sonnenstunden", "value": "sa" },
-                { "id": "days.hot", "name": "Hitzetage (≥ 30 °C)", "value": "days.hot" },
-                { "id": "days.frost", "name": "Frosttage (< 0 °C)", "value": "days.frost" },
-                { "id": "days.snow", "name": "Schneedeckentage (≥ 1 cm)", "value": "days.snow" },
+                {"id": "tm", "name": "Temperatur (°C)", "value": "tm"},
+                {"id": "rr", "name": "Niederschlag (mm, Abweichung in %)", "value": "rr"},
+                {"id": "sa", "name": "Sonnenstunden", "value": "sa"},
+                {"id": "days.hot", "name": "Hitzetage (≥ 30 °C)", "value": "days.hot"},
+                {"id": "days.frost", "name": "Frosttage (< 0 °C)", "value": "days.frost"},
+                {"id": "days.snow", "name": "Schneedeckentage (≥ 1 cm)", "value": "days.snow"},
                 {
                     "id": "swe.max",
                     "name": "Max. Schneewasseräquivalent (mm, Abweichung in %)",
@@ -32,42 +29,31 @@
             ]
         },
         {
-            "id": "values",
-            "name": "Werte",
-            "ref": "values",
             "type": "radio",
+            "global": "values",
+            "name": "Werte",
+            "id": "values",
             "values": [
-                { "id": "valuesAbs", "name": "Absolut", "value": "abs" },
+                {"id": "valuesAbs", "name": "Absolut", "value": "abs"},
                 {
                     "id": "valuesAnomaly",
                     "name": "Abweichung vom Mittel 1961 - 1990",
-                    "value": "anomaly",
-                    "patch": {
-                        "mapping": {
-                            "y": {
-                                "column": "value.anomaly",
-                                "axis": { "format": "+,~f" },
-                                "hover": { "format": "+,.1f" }
-                            }
-                        }
-                    }
+                    "value": "anomaly"
                 }
             ]
         }
     ],
-    "mapping": {
-        "x": {
-            "format": "%Y",
-            "axis": { "ticks": { "*": ["@innerWidth", 0.014] }, "rotate": 0 },
-            "hover": {}
-        },
+    "filter": {"indicator": "@globals.indicator"},
+    "dims": {
+        "x": {"format": "%Y", "axis": {"ticks": "@innerWidth * 0.014", "rotate": 0}, "hover": {}},
         "y": {
             "domain": [null, null],
-            "scale": { "type": "linear", "domainRel": [-0.05, 0.05] },
-            "axis": { "format": ",.0f" },
-            "hover": { "format": ",.1f" }
+            "scale": {"type": "linear", "pad": [0.05, 0.05]},
+            "axis": {"format": "=match(@values, {anomaly: '+,~f'}, ',.0f')"},
+            "hover": {"format": "=match(@values, {anomaly: '+,.1f'}, ',.1f')"},
+            "column": "=match(@values, {anomaly: 'value.anomaly'}, 'value')"
         },
-        "indicator": { "column": "indicator", "type": "categorical" },
+        "indicator": {"column": "indicator", "type": "categorical"},
         "type": {
             "column": "type",
             "legend": {
@@ -96,24 +82,26 @@
                 "highlight-opacity": 1
             },
             "categories": {
-                "1": { "color": "#e6194b", "name": "Burgenland" },
-                "2": { "color": "#3cb44b", "name": "Kärnten" },
-                "3": { "color": "#4363d8", "name": "Niederösterreich" },
-                "4": { "color": "#f58231", "name": "Oberösterreich" },
-                "5": { "color": "#911eb4", "name": "Salzburg" },
-                "6": { "color": "#42d4f4", "name": "Steiermark" },
-                "7": { "color": "#f032e6", "name": "Tirol" },
-                "8": { "color": "#9A6324", "name": "Vorarlberg" },
-                "9": { "color": "#808000", "name": "Wien" },
-                "AT": { "color": "#000000", "name": "Österreich", "stroke-width": 2.5 }
+                "1": {"color": "#e6194b", "name": "Burgenland"},
+                "2": {"color": "#3cb44b", "name": "Kärnten"},
+                "3": {"color": "#4363d8", "name": "Niederösterreich"},
+                "4": {"color": "#f58231", "name": "Oberösterreich"},
+                "5": {"color": "#911eb4", "name": "Salzburg"},
+                "6": {"color": "#42d4f4", "name": "Steiermark"},
+                "7": {"color": "#f032e6", "name": "Tirol"},
+                "8": {"color": "#9A6324", "name": "Vorarlberg"},
+                "9": {"color": "#808000", "name": "Wien"},
+                "AT": {"color": "#000000", "name": "Österreich", "stroke-width": 2.5}
             }
         }
     },
-    "plot": {
+    "hover": {"columns": []},
+    "marks": {
         "type": "line",
         "by": "type",
         "curve": "monotoneX",
-        "props": { "stroke-width": "@stroke-width", "opacity": "@opacity", "stroke": "@color" },
-        "highlight": { "opacity": "@highlight-opacity", "stroke-width": "@highlight-stroke-width" }
+        "stroke-width": "@stroke-width",
+        "opacity": "@opacity",
+        "highlight": {"opacity": "@highlight-opacity", "stroke-width": "@highlight-stroke-width"}
     }
 }

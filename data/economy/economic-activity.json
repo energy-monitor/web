@@ -1,10 +1,8 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["../_years.json", "../_monthly.json"],
     "data": "economic-activity.parquet",
-    "options": {
-        "title": "Ökonomische Aktivität",
-        "subtitle": "Produktionsindex, monatlich, 2015 = 100",
-        "footer": "Quelle: Statistik Austria"
-    }
+    "title": "Ökonomische Aktivität",
+    "subtitle": "Produktionsindex, monatlich, 2015 = 100",
+    "source": "Quelle: Statistik Austria"
 }

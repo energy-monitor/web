@@ -1,23 +1,28 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "_yearly-stacked.json",
     "data": "sectors.parquet",
-    "options": {
-        "title": "CO₂-Emissionen der Verbrennung nach Sektoren",
-        "subtitle": "jährlich, in Mt CO₂ oder Anteile, fossile Brennstoffe (ohne Biomasse), Treibhausgasinventur CRT 1.A, AT"
-    },
-    "mapping": {
+    "title": "CO₂-Emissionen der Verbrennung nach Sektoren",
+    "subtitle": "jährlich, in Mt CO₂ oder Anteile, fossile Brennstoffe (ohne Biomasse), Treibhausgasinventur CRT 1.A, AT",
+    "dims": {
         "type": {
             "column": "sector",
             "categories": {
-                "energy": { "color": "#4A96D4", "name": "Energiewirtschaft" },
-                "industry": { "color": "#6F625A", "name": "Industrie" },
-                "transport": { "color": "#F2A03D", "name": "Verkehr" },
-                "households": { "color": "#F3D039", "name": "Haushalte" },
-                "services": { "color": "#F7E59B", "name": "Dienstleistungen" },
-                "agriculture": { "color": "#3FA45B", "name": "Land- und Forstwirtschaft" },
-                "other": { "color": "#CCCCCC", "name": "Sonstige (Militär)" }
+                "energy": {"color": "#4A96D4", "name": "Energiewirtschaft"},
+                "industry": {"color": "#6F625A", "name": "Industrie"},
+                "transport": {"color": "#F2A03D", "name": "Verkehr"},
+                "households": {"color": "#F3D039", "name": "Haushalte"},
+                "services": {"color": "#F7E59B", "name": "Dienstleistungen"},
+                "agriculture": {"color": "#3FA45B", "name": "Land- und Forstwirtschaft"},
+                "other": {"color": "#CCCCCC", "name": "Sonstige (Militär)"}
             }
+        },
+        "y": {
+            "column": "=match(@values, {share: 'value.share'}, 'value')",
+            "domain": "=match(@values, {share: literal([0, 1])}, literal([0, null]))",
+            "scale": {"pad": "=match(@values, {share: literal([0, 0])}, literal([0, 0.1]))"},
+            "axis": {"format": "=match(@values, {share: '.0%'}, ',.0f')"},
+            "hover": {"format": "=match(@values, {share: '.1%'}, ',.1f')"}
         }
     }
 }

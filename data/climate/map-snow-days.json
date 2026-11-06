@@ -1,48 +1,38 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_austria-map.json",
     "data": "districts.parquet",
-    "options": {
-        "title": "Schneedeckentage",
-        "subtitle": "Tage mit mindestens 1 cm Schnee, {year}, bzw. Abweichung vom Mittel 1961 - 1990",
-        "footer": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster, Mittel über die Bezirke"
-    },
-    "globals": { "indicator": "days.snow" },
-    "formElements": [
+    "title": "Schneedeckentage",
+    "subtitle": "Tage mit mindestens 1 cm Schnee, {year}, bzw. Abweichung vom Mittel 1961 - 1990",
+    "source": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster, Mittel über die Bezirke",
+    "globals": {"indicator": "days.snow"},
+    "controls": [
         {
-            "id": "indicator",
-            "name": "Werte",
-            "ref": "indicator",
             "type": "radio",
+            "global": "indicator",
+            "name": "Werte",
+            "id": "indicator",
             "values": [
-                { "id": "absolute", "name": "Tage", "value": "days.snow" },
-                {
-                    "id": "anomaly",
-                    "name": "Abweichung",
-                    "value": "days.snow.anomaly",
-                    "patch": {
-                        "mapping": { "label": { "format": "+.0f" },
-                            "value": {
-                                "name": "Abweichung in Tagen",
-                                "domain": [-80, 80],
-                                "scale": { "interpolator": "RdBu" },
-                                "legend": { "format": "+.0f" },
-                                "hover": { "format": "+.0f" }
-                            }
-                        }
-                    }
-                }
+                {"id": "absolute", "name": "Tage", "value": "days.snow"},
+                {"id": "anomaly", "name": "Abweichung", "value": "days.snow.anomaly"}
             ]
         }
     ],
-    "mapping": {
-        "label": { "column": "value", "type": "numeric", "format": ".0f" },
+    "dims": {
+        "label": {
+            "column": "value",
+            "type": "numeric",
+            "format": "=match(@indicator, {'days.snow.anomaly': '+.0f'}, '.0f')"
+        },
         "value": {
-            "name": "Tage",
-            "domain": [0, 250],
-            "scale": { "type": "sequential", "interpolator": "Blues" },
-            "legend": { "format": ".0f" },
-            "hover": { "format": ".0f" }
+            "name": "=match(@indicator, {'days.snow.anomaly': 'Abweichung in Tagen'}, 'Tage')",
+            "domain": "=match(@indicator, {'days.snow.anomaly': literal([-80, 80])}, literal([0, 250]))",
+            "scale": {
+                "type": "sequential",
+                "interpolator": "=match(@indicator, {'days.snow.anomaly': 'RdBu'}, 'Blues')"
+            },
+            "legend": {"format": "=match(@indicator, {'days.snow.anomaly': '+.0f'}, '.0f')", "symbol": null},
+            "hover": {"format": "=match(@indicator, {'days.snow.anomaly': '+.0f'}, '.0f')"}
         }
     }
 }

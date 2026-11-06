@@ -19,11 +19,13 @@ const escape = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt
 // at most about 160 characters, the length search engines show
 const shorten = (s, n = 160) => s.length <= n ? s : s.slice(0, s.lastIndexOf(' ', n - 1)).replace(/[,;:.]$/, '') + ' …';
 
-// the title and subtitle of the charts by their id, with the options of their
-// parents, placeholders of globals as `Durchschnitt {base} = 100` have their
-// default, others as `Stand {date}` are filled by the charts and dropped
+// the title and subtitle of the charts by their id, with the ones of their
+// parents and the expressions of the globals evaluated with their defaults
+// (variants: the first is the one of the globals), placeholders of globals as
+// `Durchschnitt {base} = 100` have their default, others as `Stand {date}` are
+// filled by the charts and dropped
 const chartTexts = async () => {
-    const { resolveParents } = await import('@preschen/gen-vis/check');
+    const { resolveParents, variants } = await import('@preschen/gen-vis/check');
     const load = url => fs.readFileSync(fileURLToPath(url), 'utf8');
     const fill = (s, globals = {}) => s?.replace(/\{(\w+)\}/g, (t, n) => n in globals ? String(globals[n]) : t);
     const clean = (s, globals) => fill(s, globals)?.replace(/,?\s*[^,{]*\{[^}]*\}/g, '').trim();
@@ -31,8 +33,8 @@ const chartTexts = async () => {
     for (const src of Object.keys(listCharts())) {
         const file = path.join(dir, `${src}.json`);
         const def = JSON.parse(fs.readFileSync(file, 'utf8'));
-        const { options: o, globals } = await resolveParents(def, pathToFileURL(file).href, load);
-        texts[src] = { title: clean(o?.title, globals) ?? src, subtitle: clean(o?.subtitle, globals) };
+        const [{ title, subtitle, globals }] = variants(await resolveParents(def, pathToFileURL(file).href, load));
+        texts[src] = { title: clean(title, globals) ?? src, subtitle: clean(subtitle, globals) };
     }
     return texts;
 };

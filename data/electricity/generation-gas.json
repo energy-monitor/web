@@ -1,10 +1,8 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_years-cum.json",
     "data": "generation-gas.parquet",
-    "options": {
-        "title": "Stromproduktion aus Gas",
-        "subtitle": "in TWh",
-        "footer": "Quelle: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
-    }
+    "title": "Stromproduktion aus Gas",
+    "subtitle": "in TWh",
+    "source": "Quelle: ENTSO-E - Aggregated Generation Per Type 16.1.B C"
 }

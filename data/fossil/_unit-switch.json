@@ -1,15 +1,15 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
-    "globals": { "unit": "twh" },
-    "formElements": [
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
+    "globals": {"unit": "twh"},
+    "controls": [
         {
-            "id": "unit",
-            "name": "Einheit",
-            "ref": "unit",
             "type": "radio",
+            "global": "unit",
+            "name": "Einheit",
+            "id": "unit",
             "values": [
-                { "id": "unitTwh", "value": "twh", "name": "TWh" },
-                { "id": "unitCo2", "value": "mt.co2", "name": "Mt CO₂" }
+                {"id": "unitTwh", "value": "twh", "name": "TWh"},
+                {"id": "unitCo2", "value": "mt.co2", "name": "Mt CO₂"}
             ]
         }
     ]

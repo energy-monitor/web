@@ -1,20 +1,18 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["../_years.json", "../_facets.json"],
-    "options": {
-        "title": "Gasspeicher",
-        "subtitle": "in TWh",
-        "footer": "Quelle: GIE – Gas Infrastructure Europe"
-    },
-    "mapping": {
-        "y": { "domain": [null, null], "scale": { "domainRel": [-0.1, 0.1] } },
+    "title": "Gasspeicher",
+    "subtitle": "in TWh",
+    "source": "Quelle: GIE – Gas Infrastructure Europe",
+    "dims": {
+        "y": {"domain": [null, null], "scale": {"pad": [0.1, 0.1]}},
         "facet": {
             "column": "type",
             "categories": {
-                "stock": { "name": "Speicherstand, täglich" },
-                "flow": { "name": "Veränderung, 7-Tages Differenz" }
+                "stock": {"name": "Speicherstand, täglich"},
+                "flow": {"name": "Veränderung, 7-Tages Differenz"}
             }
         }
     },
-    "facets": { "cols": { "steps": ["@totalWidth", { "0": 1, "850": 2 }] } }
+    "facets": {"cols": "=steps(@totalWidth, {0: 1, 850: 2})"}
 }

@@ -1,6 +1,6 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
-    "mapping": {
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
+    "dims": {
         "type": {
             "column": "type",
             "legend": {
@@ -25,5 +25,6 @@
             "hover": {}
         }
     },
-    "plot": { "by": ["year", "type"], "props": { "stroke-dasharray": "@stroke-dasharray" } }
+    "hover": {"columns": []},
+    "marks": {"by": ["year", "type"], "stroke-dasharray": "@stroke-dasharray"}
 }

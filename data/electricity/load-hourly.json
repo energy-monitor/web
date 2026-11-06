@@ -1,27 +1,20 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@4/schema.json",
+    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_years.json",
     "data": "load-hourly.parquet",
-    "options": {
-        "title": "Stromverbrauch im Tagesverlauf",
-        "subtitle": "laufendes Jahr nicht um saisonale Effekte bereinigt, in GW",
-        "footer": "Quelle: ENTSO-E - Actual Total Load 6.1.A"
-    },
-    "mapping": {
+    "title": "Stromverbrauch im Tagesverlauf",
+    "subtitle": "laufendes Jahr nicht um saisonale Effekte bereinigt, in GW",
+    "source": "Quelle: ENTSO-E - Actual Total Load 6.1.A",
+    "dims": {
         "x": {
             "column": "hour",
             "type": "numeric",
-            "scale": { "domainAbs": [-0.2, 0.2] },
-            "axis": { "ticks": { "*": ["@innerWidth", 0.017] }, "rotate": 0, "format": "c" },
-            "hover": { "format": "c" }
+            "scale": {"domainAbs": [-0.2, 0.2]},
+            "axis": {"ticks": "@innerWidth * 0.017", "rotate": 0, "format": "c"},
+            "hover": {"format": "c"}
         },
-        "y": { "axis": { "format": ",.1f" }, "hover": { "format": ",.2f" } }
+        "y": {"axis": {"format": ",.1f"}, "hover": {"format": ",.2f"}}
     },
-    "plot": [
-        {
-            "type": "line",
-            "by": "year",
-            "props": { "stroke-width": "@stroke-width", "opacity": "@opacity", "stroke": "@color" }
-        }
-    ]
+    "hover": {"columns": []},
+    "marks": [{"type": "line", "by": "year", "stroke-width": "@stroke-width", "opacity": "@opacity"}]
 }

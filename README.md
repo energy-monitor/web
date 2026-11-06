@@ -34,14 +34,14 @@ The charts are [gen-vis](https://github.com/petres/gen-vis) definitions in `data
   - `_years.json`: one line per year, x is the day of the year, y the column `value`
   - `_years-cum.json`: `_years` with the facets rolling mean and cumulated
   - `_timeline.json`: x is the column `date` with monthly ticks, y the column `value`
-  - `_stacked.json`: `_timeline` as monthly stacked bars, the stacks are the mapping `type`
-  - `_facets.json`: facets by the mapping `facet`
+  - `_stacked.json`: `_timeline` as monthly stacked bars, the stacks are the dim `type`
+  - `_facets.json`: facets by the dim `facet`
   - `_scale-switch.json`: switch between separate and shared y scales of the facets
   - `_share-switch.json`: switch between the values and their shares, the column `value.share`
   - `_facet-toggle.json`: the facets can be switched on and off in the legend
   - `_monthly.json`: monthly data of `_years`, the month in the hover, smoothed lines (`monotoneX`)
-  - `_line-types.json`: line styles (`stroke-dasharray`) of the mapping `type` in addition to the years, e.g. mean, min and max
-  - `_europe-map.json`: a map of Europe (`"coord": "geo"`, the geometry `assets/geo/europe.json`), the countries by the mapping `country` with their German names, colored by the mapping `value`
+  - `_line-types.json`: line styles (`stroke-dasharray`) of the dim `type` in addition to the years, e.g. mean, min and max
+  - `_europe-map.json`: a map of Europe (`"coord": "geo"`, the geometry `assets/geo/europe.json`), the countries by the dim `country` with their German names, colored by the dim `value`
 - Parents of a topic are in its folder, e.g. `electricity/_sources.json` with the colors of the energy sources.
 - All definitions are gen-vis charts, the list is created by the build (`build/_base.js`, `build/charts.js`), the maps (`"coord": "geo"`) are higher when embedded. The collections in `src/globals.js` list their ids.
 - Former ids are mapped to the current ones in `aliases` of `src/globals.js`, e.g. for embedded `/single/` urls.

@@ -15,7 +15,7 @@ const charts = () => Object.fromEntries(fs.readdirSync(dir, { recursive: true })
 
 // the coordinates of a definition, its own or the ones of the last parent
 // which sets them, e.g. `geo` of data/_europe-map.json
-const coordOf = file => read(file).options?.coord ?? [read(file).parent ?? []].flat().reverse()
+const coordOf = file => read(file).coord ?? [read(file).parent ?? []].flat().reverse()
     .map(p => path.resolve(path.dirname(file), p))
     .filter(p => fs.existsSync(p))
     .map(coordOf).find(c => c) ?? null;
