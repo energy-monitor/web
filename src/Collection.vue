@@ -1,9 +1,5 @@
 <template>
     <div class="visualisations">
-        <!-- the links to the sections, e.g. /collection/prices#gas -->
-        <nav v-if="sections" class="sections">
-            <a v-for="s in sections" :key="s.id" :href="`#${s.id}`" @click.prevent="jump(s.id)">{{ s.name }}</a>
-        </nav>
         <section v-for="g in groups" :key="g.id ?? ''" :id="g.id" :class="{ section: g.name }">
             <h2 v-if="g.name" class="section-title">{{ g.name }}</h2>
             <!-- the key keeps the charts when they are moved -->
@@ -38,7 +34,7 @@ export default {
         groups() { return this.sections ?? [{ vis: this.vis }] },
     },
     async mounted() {
-        // an url with the anchor of a section, e.g. a shared link
+        // an url with the anchor of a section, e.g. /collection/prices#holz
         const id = decodeURIComponent(location.hash.slice(1));
         if (id && this.sections?.some(s => s.id == id)) {
             await nextTick();
@@ -47,14 +43,6 @@ export default {
     },
     methods: {
         moveFavorite,
-        // the section scrolled into view at once (a smooth scroll would load
-        // the charts on the way, which change their height while it moves),
-        // its anchor in the url (the state of the router stays, so back and
-        // forward keep working)
-        jump(id) {
-            document.getElementById(id)?.scrollIntoView({ block: 'start' });
-            history.replaceState(history.state, '', `#${id}`);
-        },
     },
 }
 </script>

@@ -84,8 +84,8 @@ const collections = {
             "mobility/registrations-stacked",
         ]
     },
-    // a collection of `sections` shows them with their headings and links
-    // to them at the top (`id` is the anchor, e.g. /collection/prices#gas),
+    // a collection of `sections` shows them with their headings (`id` is the
+    // anchor, e.g. /collection/prices#gas),
     // its `vis` are the charts of all of them; a chart may be on several pages
     prices: {
         name: "Energiepreise",
@@ -215,7 +215,7 @@ const collections = {
     },
     climate: {
         name: "Klima",
-        menu: false,
+        menu: true,
         vis: [
             "climate/map-temperature",
             "climate/map-precipitation",
