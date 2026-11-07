@@ -51,7 +51,7 @@
             "scale": {"type": "linear", "pad": [0.05, 0.05]},
             "axis": {"format": "=match(@values, {anomaly: '+,~f'}, ',.0f')"},
             "hover": {"format": "=match(@values, {anomaly: '+,.1f'}, ',.1f')"},
-            "column": "=match(@values, {anomaly: 'value.anomaly'}, 'value')"
+            "column": "=match(@values, {anomaly: 'value.anomaly'})"
         },
         "indicator": {"column": "indicator", "type": "categorical"},
         "type": {
@@ -95,7 +95,6 @@
             }
         }
     },
-    "hover": {"columns": []},
     "marks": {
         "type": "line",
         "by": "type",
@@ -103,5 +102,6 @@
         "stroke-width": "@stroke-width",
         "opacity": "@opacity",
         "highlight": {"opacity": "@highlight-opacity", "stroke-width": "@highlight-stroke-width"}
-    }
+    },
+    "hover": {"columns": []}
 }

@@ -31,7 +31,6 @@
             }
         }
     },
-    "hover": {"columns": []},
     "marks": {
         "type": "bar",
         "by": "facet",
@@ -39,5 +38,6 @@
         "opacity": 0.9,
         "highlight": {"mode": "row", "opacity": 1}
     },
-    "facets": {"by": "facet", "cols": "=steps(@totalWidth, {0: 1, 550: 2})", "scales": ["x"]}
+    "facets": {"by": "facet", "cols": "=steps(@totalWidth, {0: 1, 550: 2})", "scales": ["x"]},
+    "hover": {"columns": ["facet"]}
 }

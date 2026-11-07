@@ -11,8 +11,7 @@
         "mode": "point",
         "title": "<b>{year}</b>, {day}",
         "row": "Strom {y} €, Gas {gasHover} €",
-        "filter": "@link == '0'",
-        "columns": []
+        "filter": "@link == '0'"
     },
     "dims": {
         "x": {

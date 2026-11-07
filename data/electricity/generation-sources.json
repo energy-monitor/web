@@ -13,5 +13,6 @@
                 "others": {"name": "Andere"}
             }
         }
-    }
+    },
+    "hover": {"columns": ["x", "y", "year"]}
 }

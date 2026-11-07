@@ -14,13 +14,7 @@
                 "waste": {"color": "#9A9A9A", "name": "Abfall (fossil)"},
                 "gas": {"color": "#C3423F", "name": "Erdgas"}
             }
-        },
-        "y": {
-            "column": "=match(@values, {share: 'value.share'}, 'value')",
-            "domain": "=match(@values, {share: literal([0, 1])}, literal([0, null]))",
-            "scale": {"pad": "=match(@values, {share: literal([0, 0])}, literal([0, 0.1]))"},
-            "axis": {"format": "=match(@values, {share: '.0%'}, ',.0f')"},
-            "hover": {"format": "=match(@values, {share: '.1%'}, ',.1f')"}
         }
-    }
+    },
+    "hover": {"columns": ["y", "type"]}
 }

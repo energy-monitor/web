@@ -6,5 +6,6 @@
     "dims": {
         "facet": {"categories": {"Renewable": {"name": "Erneuerbar"}, "Non-Renewable": {"name": "Fossil"}}}
     },
-    "facets": {"cols": "=steps(@totalWidth, {0: 1, 550: 2})"}
+    "facets": {"cols": "=steps(@totalWidth, {0: 1, 550: 2})"},
+    "hover": {"columns": ["x", "y", "year"]}
 }

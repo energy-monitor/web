@@ -25,6 +25,5 @@
             "hover": {}
         }
     },
-    "hover": {"columns": []},
     "marks": {"by": ["year", "type"], "stroke-dasharray": "@stroke-dasharray"}
 }

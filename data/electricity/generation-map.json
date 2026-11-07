@@ -40,5 +40,6 @@
             "legend": {"format": ".0%", "symbol": null},
             "hover": {"format": ".0%"}
         }
-    }
+    },
+    "hover": {"columns": []}
 }

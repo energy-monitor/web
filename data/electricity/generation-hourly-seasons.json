@@ -33,13 +33,13 @@
             "hover": {}
         },
         "y": {
-            "column": "=match(@values, {share: 'value.share'}, 'value')",
+            "column": "value",
             "type": "numeric",
-            "domain": [0, null],
+            "domain": "=match(@values, {share: literal([0, null])}, literal([0, null]))",
             "nice": true,
-            "scale": {"pad": [0, 0.05]},
-            "axis": {"ticks": 5, "format": "=match(@values, {share: '.0%'}, '.0f')"},
-            "hover": {"format": "=match(@values, {share: '.1%'}, '.2f')"},
+            "scale": {"pad": "=match(@values, {share: literal([0, 0.05])}, literal([0, 0.05]))"},
+            "axis": {"ticks": 5, "format": ".0f"},
+            "hover": {"format": ".2f"},
             "grid": true
         },
         "type": {
@@ -130,7 +130,6 @@
             }
         }
     },
-    "hover": {"columns": []},
     "marks": [
         {
             "type": "area",
@@ -193,5 +192,6 @@
             }
         }
     ],
-    "facets": {"by": "facet", "cols": "=steps(@totalWidth, {0: 1, 700: 2})", "scales": ["x", "y"]}
+    "facets": {"by": "facet", "cols": "=steps(@totalWidth, {0: 1, 700: 2})", "scales": ["x", "y"]},
+    "hover": {"columns": []}
 }

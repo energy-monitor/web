@@ -12,8 +12,7 @@
             "column": "hour",
             "type": "numeric",
             "format": "c",
-            "axis": {"ticks": "@innerWidth * 0.017"},
-            "hover": {}
+            "axis": {"ticks": "@innerWidth * 0.017"}
         },
         "y": {
             "column": "value",
@@ -21,7 +20,6 @@
             "format": ".2f",
             "scale": {"pad": [0, 0.13]},
             "axis": {"ticks": 7},
-            "hover": {},
             "zero": true,
             "grid": true
         },
@@ -43,8 +41,7 @@
                 "Waste": {"color": "#ABD6A9", "name": "Müll"},
                 "Oil": {"color": "#000", "name": "Erdöl"},
                 "others": {"color": "#CCC", "name": "Andere"}
-            },
-            "hover": {}
+            }
         }
     },
     "marks": [

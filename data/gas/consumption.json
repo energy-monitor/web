@@ -4,5 +4,6 @@
     "data": "consumption.parquet",
     "title": "Gasverbrauch",
     "subtitle": "in TWh",
-    "source": "Quelle: AGGM - Austrian Gas Grid Management"
+    "source": "Quelle: AGGM - Austrian Gas Grid Management",
+    "hover": {"columns": ["x", "y", "year"]}
 }

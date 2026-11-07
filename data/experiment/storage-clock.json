@@ -39,7 +39,6 @@
             "grid": true
         }
     },
-    "hover": {"columns": []},
     "marks": [
         {
             "type": "line",

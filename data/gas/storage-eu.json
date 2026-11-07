@@ -2,5 +2,6 @@
     "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "_storage.json",
     "data": "storage-eu.parquet",
-    "title": "Gasspeicher, EU Gesamt"
+    "title": "Gasspeicher, EU Gesamt",
+    "hover": {"columns": ["x", "y", "year"]}
 }

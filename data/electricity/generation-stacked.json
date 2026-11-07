@@ -7,11 +7,9 @@
     "source": "Quelle: ENTSO-E - Aggregated Generation Per Type 16.1.B C",
     "dims": {
         "y": {
-            "scale": {"pad": "=match(@values, {share: literal([0, 0])}, literal([0, 0.13]))"},
-            "axis": {"ticks": 7, "format": "=match(@values, {share: '.0%'}, '.2f')"},
-            "hover": {"format": "=match(@values, {share: '.1%'}, '.2f')"},
-            "column": "=match(@values, {share: 'value.share'}, 'value')",
-            "domain": "=match(@values, {share: literal([0, 1])}, literal([0, null]))"
+            "scale": {"pad": [0, 0.13]},
+            "axis": {"ticks": 7, "format": ".2f"},
+            "hover": {"format": ".2f"}
         },
         "type": {
             "categories": {

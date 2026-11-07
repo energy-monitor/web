@@ -20,7 +20,6 @@
             }
         }
     },
-    "hover": {"columns": []},
     "marks": [
         {
             "type": "line",

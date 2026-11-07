@@ -6,7 +6,7 @@
     "subtitle": "Preise vom 26.10.2026, inkl. Steuern, in €/Liter",
     "source": "Quelle: EC Weekly Oil Bulletin",
     "locale": {"base": "de", "number": {"currency": ["", " €/l"]}},
-    "hover": {"row": "Preisstand: {date}"},
+    "hover": {"row": "Preisstand: {date}", "columns": []},
     "globals": {"type": "euroSuper95"},
     "controls": [
         {

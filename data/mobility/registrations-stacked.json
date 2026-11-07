@@ -7,13 +7,7 @@
     "source": "Quelle: Statistik Austria - Kfz-Neuzulassungen",
     "globals": {"values": "share"},
     "dims": {
-        "y": {
-            "hover": {"format": "=match(@values, {share: '.1%'}, ',.0f')"},
-            "column": "=match(@values, {share: 'value.share'}, 'value')",
-            "domain": "=match(@values, {share: literal([0, 1])}, literal([0, null]))",
-            "scale": {"pad": "=match(@values, {share: literal([0, 0])}, literal([0, 0.1]))"},
-            "axis": {"format": "=match(@values, {share: '.0%'}, ',.0f')"}
-        },
+        "y": {"hover": {"format": ",.0f"}},
         "type": {
             "column": "type",
             "categories": {

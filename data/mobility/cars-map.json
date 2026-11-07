@@ -54,5 +54,6 @@
             "hover": {"format": ".1%"},
             "zero": true
         }
-    }
+    },
+    "hover": {"columns": []}
 }

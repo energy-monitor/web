@@ -6,7 +6,7 @@
     "subtitle": "nach Bestandteilen, Mittel der Halbjahre (Jänner-Juni, Juli-Dezember), typischer Verbrauch (Strom 2 500-5 000 kWh, Gas 20-200 GJ pro Jahr), in Cent/kWh",
     "source": "Quelle: eurostat - nrg_pc_204 (Strom), nrg_pc_202 (Gas); Förderungen wie die Strompreisbremse sind als negative Abgaben enthalten",
     "class": "household-prices",
-    "hover": {"filter": "@type == '=not \\'total\\''", "total": "Gesamt", "columns": []},
+    "hover": {"filter": "@type == '=not \\'total\\''", "total": "Gesamt"},
     "globals": {"product": "electricity"},
     "controls": [
         {

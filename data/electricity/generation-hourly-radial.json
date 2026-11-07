@@ -39,21 +39,21 @@
             "grid": true
         },
         "y": {
-            "column": "=match(@values, {share: 'value.share'}, 'value')",
+            "column": "value",
             "type": "numeric",
-            "domain": [0, null],
+            "domain": "=match(@values, {share: literal([0, null])}, literal([0, null]))",
             "nice": true,
             "scale": {"range": ["@radius * 0.22", "@radius"]},
             "axis": {
                 "angle": 90,
                 "ticks": 3,
-                "format": "=match(@values, {share: '.0%'}, '.0f')",
+                "format": ".0f",
                 "labels": {
                     "props": {"fill": "#777", "font-size": 10, "stroke-width": 2, "stroke-opacity": 0.5}
                 },
                 "domain": {"props": {"stroke": "none"}}
             },
-            "hover": {"format": "=match(@values, {share: '.1%'}, '.2f')"},
+            "hover": {"format": ".2f"},
             "grid": true
         },
         "type": {
@@ -144,7 +144,6 @@
             }
         }
     },
-    "hover": {"columns": []},
     "marks": [
         {
             "type": "area",
@@ -188,5 +187,6 @@
         }
     ],
     "annotations": [{"type": "line", "y": 0, "above": true}],
-    "facets": {"by": "facet", "cols": "=steps(@totalWidth, {0: 1, 700: 2})", "scales": ["x", "y"]}
+    "facets": {"by": "facet", "cols": "=steps(@totalWidth, {0: 1, 700: 2})", "scales": ["x", "y"]},
+    "hover": {"columns": []}
 }

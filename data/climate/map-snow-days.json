@@ -34,5 +34,6 @@
             "legend": {"format": "=match(@indicator, {'days.snow.anomaly': '+.0f'}, '.0f')", "symbol": null},
             "hover": {"format": "=match(@indicator, {'days.snow.anomaly': '+.0f'}, '.0f')"}
         }
-    }
+    },
+    "hover": {"columns": []}
 }

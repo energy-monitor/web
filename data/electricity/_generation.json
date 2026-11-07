@@ -15,5 +15,6 @@
         },
         "facet": "source.group"
     },
-    "marks": {"highlight": {"stroke-width": 2.5}}
+    "marks": {"highlight": {"stroke-width": 2.5}},
+    "hover": {"columns": ["x", "year"]}
 }

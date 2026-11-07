@@ -12,12 +12,12 @@
             "axis": {"values": ["1990", "1995", "2000", "2005", "2010", "2015", "2020"]}
         },
         "y": {
-            "column": "=match(@values, {share: 'value.share'}, 'value')",
+            "column": "value",
             "type": "numeric",
-            "domain": "=match(@values, {share: literal([0, 1])}, literal([0, null]))",
-            "scale": {"pad": "=match(@values, {share: literal([0, 0])}, literal([0, 0.1]))"},
-            "axis": {"ticks": 6, "format": "=match(@values, {share: '.0%'}, ',.0f')"},
-            "hover": {"format": "=match(@values, {share: '.1%'}, ',.1f')"},
+            "scale": {"pad": [0, 0.1]},
+            "axis": {"ticks": 6, "format": ",.0f"},
+            "hover": {"format": ",.1f"},
+            "zero": true,
             "grid": true
         },
         "type": {
@@ -41,5 +41,6 @@
         "stack": true,
         "opacity": 0.9,
         "highlight": {"mode": "row", "opacity": 1}
-    }
+    },
+    "hover": {"columns": []}
 }

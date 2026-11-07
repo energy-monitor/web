@@ -27,5 +27,6 @@
             "legend": {"format": "=match(@indicator, {rr: ',.0f'}, '+.0f')", "symbol": null},
             "hover": {"format": "=match(@indicator, {rr: ',.0f'}, '+.0f')"}
         }
-    }
+    },
+    "hover": {"columns": []}
 }

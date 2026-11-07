@@ -15,6 +15,5 @@
         },
         "y": {"axis": {"format": ",.1f"}, "hover": {"format": ",.2f"}}
     },
-    "hover": {"columns": []},
     "marks": [{"type": "line", "by": "year", "stroke-width": "@stroke-width", "opacity": "@opacity"}]
 }
