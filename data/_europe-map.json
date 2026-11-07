@@ -59,9 +59,10 @@
         "value": {"legend": {"missing": {"name": "keine Daten", "color": "#DADADA"}, "symbol": null}}
     },
     "marks": [
-        {"type": "base", "fill": "#DADADA", "stroke": "white", "stroke-width": 1},
+        {"type": "base", "id": "base", "fill": "#DADADA", "stroke": "white", "stroke-width": 1},
         {
             "type": "region",
+            "id": "regions",
             "by": "country",
             "fill": "@value:scaled",
             "stroke": "white",
@@ -70,10 +71,11 @@
         },
         {
             "type": "text",
+            "id": "labels",
             "by": "country",
             "fit": true,
             "overlap": false,
-            "filter": "@country == 'AT' or @country == 'DE' or @country == 'FR' or @country == 'ES' or @country == 'IT' or @country == 'PL' or @country == 'RO' or @country == 'SE' or @country == 'FI' or @country == 'GR'",
+            "filter": "@country == 'AT' or @country == 'DE' or @country == 'FR' or @country == 'ES' or @country == 'IT' or @country == 'PL' or @country == 'RO' or @country == 'SE' or @country == 'FI' or @country == 'GR' or @country == 'IE' or @country == 'IS' or @country == 'NO' or @country == 'TR' or @country == 'UA' or @country == 'RS'",
             "text": "@label:formatted",
             "font-size": "=steps(@totalWidth, {0: 11, 550: 13})",
             "font-weight": "bold",
