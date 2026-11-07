@@ -21,6 +21,7 @@
     "marks": [
         {
             "type": "bar",
+            "id": "bars",
             "by": "type",
             "stack": true,
             "opacity": 0.9,

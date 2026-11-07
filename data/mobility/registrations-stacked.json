@@ -1,5 +1,5 @@
 {
-    "parent": ["../_stacked.json", "../_share-switch.json"],
+    "parent": ["../_stacked.json", "../_share-switch.json", "../_share-labels.json"],
     "data": "registrations.parquet",
     "title": "Pkw-Neuzulassungen",
     "subtitle": "nach Kraftstoffart bzw. Energiequelle, monatlich, Anteile bzw. Anzahl, AT",

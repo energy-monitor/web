@@ -5,6 +5,7 @@
     "subtitle": "Preise in €, monatlich, Durchschnitt {base} = 100, logarithmische Skala",
     "source": "Quelle: cismo (Gas, CEGH), Macrobond, ICE (Brent, Kohle, EUA), ENTSO-E (Strom), Statistik Austria (Brennholz), proPellets Austria (Pellets); Brent und Kohle von $ umgerechnet",
     "height": "=steps(@totalWidth, {0: 250, 550: 280, 600: 320})",
+    "margins": {"right": 140},
     "globals": {"base": "2019"},
     "controls": [
         {
@@ -75,14 +76,34 @@
             }
         }
     },
-    "marks": {
-        "type": "line",
-        "by": "type",
-        "curve": "monotoneX",
-        "stroke-width": "@stroke-width",
-        "stroke-dasharray": "@stroke-dasharray",
-        "opacity": "@opacity",
-        "highlight": {"opacity": "@highlight-opacity", "stroke-width": "@highlight-stroke-width"}
-    },
+    "marks": [
+        {
+            "type": "line",
+            "id": "lines",
+            "by": "type",
+            "curve": "monotoneX",
+            "stroke-width": "@stroke-width",
+            "stroke-dasharray": "@stroke-dasharray",
+            "opacity": "@opacity",
+            "highlight": {"opacity": "@highlight-opacity", "stroke-width": "@highlight-stroke-width"}
+        },
+        {
+            "type": "text",
+            "id": "names",
+            "by": "type",
+            "select": {"max": "x"},
+            "x": "@x:scaled:max",
+            "dx": 6,
+            "dodge": 14,
+            "halo": true,
+            "text": "@name",
+            "fill": "@color",
+            "font-size": 12,
+            "font-weight": "bold",
+            "dominant-baseline": "central",
+            "highlight": {"opacity": 1},
+            "others": {"opacity": 0.35}
+        }
+    ],
     "annotations": [{"type": "line", "y": 100, "props": {"stroke": "#999", "stroke-dasharray": "3 3"}}]
 }
