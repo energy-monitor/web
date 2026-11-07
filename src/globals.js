@@ -84,53 +84,92 @@ const collections = {
             "mobility/registrations-stacked",
         ]
     },
+    // a collection of `sections` shows them with their headings and links
+    // to them at the top (`id` is the anchor, e.g. /collection/prices#gas),
+    // its `vis` are the charts of all of them; a chart may be on several pages
     prices: {
         name: "Energiepreise",
         menu: true,
-        vis: [
-            "economy/price-index",
-            "electricity/price",
-            "electricity/price-map",
-            "economy/household-prices-map",
-            "economy/household-prices-at",
-            "gas/price",
-            "gas/price-lng",
-            "oil/price-brent",
-            "oil/fuel-prices",
-            "coal/price",
-            "wood/pellets",
-            "wood/firewood",
-            "economy/eua",
-            "economy/dollar",
+        sections: [
+            { id: "ueberblick", name: "Überblick", vis: [
+                "economy/price-index",
+            ] },
+            { id: "strom", name: "Strom", vis: [
+                "electricity/price",
+                "electricity/price-map",
+            ] },
+            { id: "haushalte", name: "Haushalte", vis: [
+                "economy/household-prices-map",
+                "economy/household-prices-at",
+            ] },
+            { id: "gas", name: "Gas", vis: [
+                "gas/price",
+                "gas/price-lng",
+            ] },
+            { id: "oel-kohle", name: "Öl und Kohle", vis: [
+                "oil/price-brent",
+                "oil/fuel-prices",
+                "oil/fuel-prices-map",
+                "coal/price",
+            ] },
+            { id: "holz", name: "Holz", vis: [
+                "wood/pellets",
+                "wood/firewood",
+            ] },
+            { id: "co2-dollar", name: "CO₂ und Wechselkurs", vis: [
+                "economy/eua",
+                "economy/dollar",
+            ] },
         ]
     },
     gas: {
         name: "Gas",
         menu: true,
-        vis: [
-            "gas/consumption",
-            "weather/hdd",
-            "weather/temperature",
-            "gas/price",
-            "gas/storage",
-            "gas/storage-eu",
+        sections: [
+            { id: "verbrauch", name: "Verbrauch", vis: [
+                "gas/consumption",
+                "gas/supply-stacked",
+                "electricity/generation-gas",
+            ] },
+            { id: "wetter", name: "Wetter", vis: [
+                "weather/hdd",
+                "weather/temperature",
+            ] },
+            { id: "preise", name: "Preise", vis: [
+                "gas/price",
+                "gas/price-lng",
+            ] },
+            { id: "speicher", name: "Speicher", vis: [
+                "gas/storage",
+                "gas/storage-eu",
+            ] },
         ]
     },
     electricity: {
         name: "Strom",
         menu: true,
-        vis: [
-            "electricity/load",
-            "electricity/load-countries",
-            "electricity/price",
-            "electricity/price-map",
-            //"electricity/load-hourly",
-            "electricity/generation-stacked",
-            "electricity/generation-sources",
-            "electricity/generation-renewable",
-            "electricity/generation-hourly-seasons",
-            "electricity/generation-hourly-radial",
-            "electricity/generation-map",
+        sections: [
+            { id: "verbrauch", name: "Verbrauch", vis: [
+                "electricity/load",
+                "electricity/load-countries",
+            ] },
+            { id: "preise", name: "Preise", vis: [
+                "electricity/price",
+                "electricity/price-map",
+                "economy/household-prices-at",
+            ] },
+            { id: "erzeugung", name: "Erzeugung", vis: [
+                "electricity/generation-stacked",
+                "electricity/generation-sources",
+                "electricity/generation-renewable",
+                "electricity/generation-gas",
+                "electricity/generation-map",
+            ] },
+            { id: "tagesverlauf", name: "Tagesverlauf", vis: [
+                "electricity/generation-hourly-seasons",
+                "electricity/generation-hourly-radial",
+                //"electricity/load-hourly",
+            ] },
             //"weather/precipitation",
             //"weather/snow",
         ]
@@ -138,17 +177,26 @@ const collections = {
     mobility: {
         name: "Mobilität",
         menu: true,
-        vis: [
-            "mobility/registrations-stacked",
-            "mobility/cars-map",
-            "mobility/registrations",
-            "mobility/traffic",
-            "mobility/traffic-years",
-            "mobility/rail-goods",
-            "mobility/rail-goods-years",
-            "mobility/rail-passengers",
-            "oil/fuel-prices",
-            "oil/fuel-prices-map",
+        sections: [
+            { id: "pkw", name: "Pkw", vis: [
+                "mobility/registrations-stacked",
+                "mobility/registrations",
+                "mobility/cars-map",
+            ] },
+            { id: "strasse", name: "Straßenverkehr", vis: [
+                "mobility/traffic",
+                "mobility/traffic-years",
+            ] },
+            { id: "bahn", name: "Bahn", vis: [
+                "mobility/rail-goods",
+                "mobility/rail-goods-years",
+                "mobility/rail-passengers",
+            ] },
+            { id: "treibstoff", name: "Treibstoff", vis: [
+                "oil/fuel-prices",
+                "oil/fuel-prices-map",
+                "oil/supply-stacked",
+            ] },
         ]
     },
     fossil: {
@@ -216,4 +264,7 @@ const entry = v => {
         console.warn(`Unknown chart '${v}' in the collections`);
     return { type: charts[v], src: v };
 };
-Object.values(collections).forEach(c => c.vis = c.vis.map(entry));
+Object.values(collections).forEach(c => {
+    c.sections?.forEach(section => section.vis = section.vis.map(entry));
+    c.vis = c.sections ? c.sections.flatMap(section => section.vis) : c.vis.map(entry);
+});

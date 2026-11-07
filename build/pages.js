@@ -39,8 +39,9 @@ const chartTexts = async () => {
     return texts;
 };
 
-// the subtitle is no paragraph, so it is not the description of a markdown page
-const chartHtml = ({ title, subtitle }) => `<h3>${escape(title)}</h3>` + (subtitle ? `<p class="subtitle">${escape(subtitle)}</p>` : '');
+// the subtitle is no paragraph, so it is not the description of a markdown page;
+// the title a heading of `level`, below the one of a section of a collection
+const chartHtml = ({ title, subtitle }, level = 3) => `<h${level}>${escape(title)}</h${level}>` + (subtitle ? `<p class="subtitle">${escape(subtitle)}</p>` : '');
 
 // a markdown page or story as html, its charts as their title and subtitle and
 // the images relative to the file, without the directives, katex and the
@@ -87,12 +88,16 @@ const pages = async () => {
             '</td></tr>').join('') +
         '</tbody></table></div>';
 
-    // the charts and markdown pages of a collection
+    // the charts and markdown pages of a collection, of one with sections
+    // their headings (h3) and the titles of their charts below them (h4)
     const collection = async c => {
-        const parts = await Promise.all(c.vis.map(v => v.type == 'markdown' ? markdown(`pages/${v.src}.md`, texts) : { html: chartHtml(texts[v.src]) }));
+        const part = (v, level) => v.type == 'markdown' ? markdown(`pages/${v.src}.md`, texts) : { html: chartHtml(texts[v.src], level) };
+        const groups = await Promise.all((c.sections ?? [{ vis: c.vis }])
+            .map(async g => ({ ...g, parts: await Promise.all(g.vis.map(v => part(v, g.name ? 4 : 3))) })));
+        const html = groups.map(g => (g.name ? `<h3 id="${escape(g.id)}">${escape(g.name)}</h3>` : '') + g.parts.map(p => p?.html ?? '').join('')).join('');
         const titles = [...new Set(c.vis.filter(v => v.type != 'markdown').map(v => texts[v.src].title))];
-        const description = c.description ?? parts.find(p => p?.description)?.description ?? `Aktuelle Daten für Österreich: ${titles.join('; ')}`;
-        return { html: parts.map(p => p?.html ?? '').join(''), description };
+        const description = c.description ?? groups.flatMap(g => g.parts).find(p => p?.description)?.description ?? `Aktuelle Daten für Österreich: ${titles.join('; ')}`;
+        return { html, description };
     };
 
     const result = [];

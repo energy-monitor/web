@@ -113,6 +113,28 @@
 .visualisations {
     margin: 10px;
 
+    // the links to the sections of a collection, as the entries of the menu
+    .sections {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px 8px;
+        margin: 14px 0 0;
+        font-size: 13px;
+    }
+
+    // a section of a collection, its heading above its charts
+    .section {
+        scroll-margin-top: 10px;
+        .section-title {
+            margin: 40px 0 0;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #BBB;
+            font-size: 26px;
+            font-weight: normal;
+        }
+    }
+
     // the texts of the collections, e.g. data/pages/fossil.md
     .markdown {
         margin: 20px 0 40px;
