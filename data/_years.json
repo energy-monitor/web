@@ -1,7 +1,6 @@
 {
     "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "height": "=steps(@totalWidth, {0: 220, 550: 250, 600: 280})",
-    "margins": {"top": 5, "right": 30, "bottom": 30, "left": 50},
     "dims": {
         "x": {
             "column": "date20",

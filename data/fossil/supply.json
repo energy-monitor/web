@@ -1,5 +1,4 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["_supply.json", "_unit-switch.json", "../_scale-switch.json"],
     "data": "supply.parquet",
     "title": "Absatz von fossilen Energieträgern im Jahresvergleich",

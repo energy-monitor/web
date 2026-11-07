@@ -1,5 +1,4 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_stacked.json",
     "data": "household-prices-at.parquet",
     "title": "Strom- und Gaspreise für Haushalte in Österreich",

@@ -1,5 +1,4 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../fossil/_supply.json",
     "data": "supply.parquet",
     "title": "Absatz von Erdgas im Jahresvergleich",

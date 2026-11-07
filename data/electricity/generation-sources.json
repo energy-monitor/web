@@ -1,5 +1,4 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "_generation.json",
     "data": "generation-sources.parquet",
     "dims": {
@@ -13,6 +12,5 @@
                 "others": {"name": "Andere"}
             }
         }
-    },
-    "hover": {"columns": ["x", "y", "year"]}
+    }
 }

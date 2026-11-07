@@ -1,6 +1,4 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "_storage.json",
-    "data": "storage.parquet",
-    "hover": {"columns": ["x", "y", "year"]}
+    "data": "storage.parquet"
 }

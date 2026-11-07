@@ -1,9 +1,7 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_years-cum.json",
     "data": "load.parquet",
     "title": "Stromverbrauch",
     "subtitle": "in TWh",
-    "source": "Quelle: ENTSO-E - Actual Total Load 6.1.A",
-    "hover": {"columns": ["x", "y", "year"]}
+    "source": "Quelle: ENTSO-E - Actual Total Load 6.1.A"
 }

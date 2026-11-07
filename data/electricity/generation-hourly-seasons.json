@@ -1,5 +1,4 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["_sources.json", "../_share-switch.json"],
     "data": "generation-hourly-seasons.parquet",
     "title": "Stromproduktion und -verbrauch im Tagesverlauf",
@@ -29,8 +28,7 @@
             "domain": [0, 24],
             "format": "$d",
             "scale": {"pad": [0, 0]},
-            "axis": {"values": [0, 6, 12, 18, 24]},
-            "hover": {}
+            "axis": {"values": [0, 6, 12, 18, 24]}
         },
         "y": {
             "column": "value",
@@ -192,6 +190,5 @@
             }
         }
     ],
-    "facets": {"by": "facet", "cols": "=steps(@totalWidth, {0: 1, 700: 2})", "scales": ["x", "y"]},
-    "hover": {"columns": []}
+    "facets": {"by": "facet", "cols": "=steps(@totalWidth, {0: 1, 700: 2})", "scales": ["x", "y"]}
 }

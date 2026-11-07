@@ -1,5 +1,4 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["../_years.json", "../_facets.json"],
     "title": "Gasspeicher",
     "subtitle": "in TWh",
@@ -14,6 +13,5 @@
             }
         }
     },
-    "facets": {"cols": "=steps(@totalWidth, {0: 1, 850: 2})"},
-    "hover": {"columns": ["x", "y", "year"]}
+    "facets": {"cols": "=steps(@totalWidth, {0: 1, 850: 2})"}
 }

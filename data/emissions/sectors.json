@@ -1,5 +1,4 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "_yearly-stacked.json",
     "data": "sectors.parquet",
     "title": "CO₂-Emissionen der Verbrennung nach Sektoren",

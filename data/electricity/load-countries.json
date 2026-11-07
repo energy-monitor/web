@@ -1,5 +1,4 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["../_years.json", "../_facets.json", "../_scale-switch.json"],
     "data": "load-countries.parquet",
     "title": "Stromverbrauch",
@@ -54,6 +53,5 @@
             "legend": {"symbol": null}
         }
     },
-    "marks": {"highlight": {"stroke-width": 2.5}},
-    "hover": {"columns": ["x", "year"]}
+    "marks": {"highlight": {"stroke-width": 2.5}}
 }

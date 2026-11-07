@@ -1,12 +1,10 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_timeline.json",
     "data": "regions.parquet",
     "title": "Klimaindikatoren nach Bundesland",
     "subtitle": "jährlich, Flächenmittel",
     "source": "Quelle: GeoSphere Austria (SPARTACUS, SNOWGRID-CL), 1 km Raster",
     "height": "=steps(@totalWidth, {0: 250, 550: 280, 600: 320})",
-    "margins": {"top": 5, "right": 30, "bottom": 30, "left": 50},
     "globals": {"indicator": "tm", "values": "abs"},
     "controls": [
         {

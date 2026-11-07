@@ -1,5 +1,4 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["../_years.json", "../_facets.json", "../_facet-toggle.json"],
     "data": "rail-goods.parquet",
     "title": "Schienengüterverkehr im Jahresvergleich",

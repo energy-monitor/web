@@ -1,5 +1,4 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_timeline.json",
     "data": "traffic.parquet",
     "title": "Verkehrsaufkommen",

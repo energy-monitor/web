@@ -1,0 +1,10 @@
+{
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "/data/**/*.json"
+            ],
+            "url": "./node_modules/@preschen/gen-vis/schema.json"
+        }
+    ]
+}

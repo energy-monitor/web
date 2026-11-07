@@ -1,5 +1,4 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "_sources.json",
     "data": "generation-hourly.parquet",
     "title": "Stromproduktion im Tagesverlauf",

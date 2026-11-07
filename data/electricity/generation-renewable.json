@@ -1,11 +1,9 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "_generation.json",
     "data": "generation-renewable.parquet",
     "height": 220,
     "dims": {
         "facet": {"categories": {"Renewable": {"name": "Erneuerbar"}, "Non-Renewable": {"name": "Fossil"}}}
     },
-    "facets": {"cols": "=steps(@totalWidth, {0: 1, 550: 2})"},
-    "hover": {"columns": ["x", "y", "year"]}
+    "facets": {"cols": "=steps(@totalWidth, {0: 1, 550: 2})"}
 }

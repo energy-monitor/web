@@ -1,5 +1,4 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "_yearly-stacked.json",
     "data": "fuels.parquet",
     "title": "Energieeinsatz der Verbrennung nach Brennstoffen",

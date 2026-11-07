@@ -1,5 +1,4 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_years.json",
     "data": "gas-power.parquet",
     "title": "Der Strompreis folgt dem Gaspreis",

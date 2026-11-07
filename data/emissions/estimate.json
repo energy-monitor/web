@@ -1,12 +1,10 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["../_timeline.json", "../_facets.json", "../_facet-toggle.json", "../_scale-switch.json"],
     "data": "estimate.parquet",
     "title": "CO₂-Emissionen fossiler Brennstoffe: Inventur und Schätzung",
     "subtitle": "in Mt CO₂, Schätzung als Summe der letzten 12 Monate, Inventur jährlich (beim Dezember), Kohle laut Referenzansatz inkl. gespeichertem Kohlenstoff, ohne internationalen Flugverkehr, AT",
     "source": "Quelle: Umweltbundesamt - Treibhausgasinventur, eurostat, eigene Berechnungen; Methode für Gas und Öl nach <a href=\"https://github.com/ElijahStaengl/co2-emissions-austria\" target=\"_blank\">Elijah Stängl</a>",
     "height": 220,
-    "margins": {"top": 5, "right": 30, "bottom": 30, "left": 50},
     "dims": {
         "x": {"axis": {"ticks": null, "tickSpacing": 60, "rotate": 0, "format": "%Y"}},
         "y": {"hover": {"format": ",.2f"}},

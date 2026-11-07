@@ -1,8 +1,18 @@
 @use "fonts.scss" as *;
 
+// the margins of the charts of gen-vis (the house style), a definition gives
+// only the sides which differ, see docs/definition.md "Margins" of gen-vis
+:root {
+    --gen-vis-margin-top: 5px;
+    --gen-vis-margin-right: 30px;
+    --gen-vis-margin-bottom: 30px;
+    --gen-vis-margin-left: 50px;
+}
+
 // the colors of gen-vis in all charts, also in /single/ and the embeds: the
 // grid lines translucent as by default, but grey (#E6E6E6 on white) as on the
 // live site, not the blue grey of gen-vis
+
 .vis {
     --gen-vis-grid-color: #0000001A;
     // the font of the site instead of Inter of gen-vis, also in the images

@@ -1,5 +1,4 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["../_years.json", "../_line-types.json"],
     "data": "fuel-prices.parquet",
     "title": "Spritpreise",

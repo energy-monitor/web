@@ -1,5 +1,4 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_europe-map.json",
     "data": "household-prices-map.parquet",
     "title": "Strom- und Gaspreise für Haushalte in Europa",

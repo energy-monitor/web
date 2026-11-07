@@ -1,12 +1,10 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_facet-toggle.json",
     "data": "rail-passengers.parquet",
     "title": "Schienenpersonenverkehr",
     "subtitle": "Fahrgäste in Mio. bzw. Verkehrsleistung in Mrd. Personenkilometern, jährlich, alle Eisenbahnunternehmen (ohne U-Bahn und Straßenbahn), AT",
     "source": "Quelle: Eurostat, Statistik Austria - Schienenpersonenverkehr",
     "height": 220,
-    "margins": {"top": 5, "right": 30, "bottom": 30, "left": 50},
     "dims": {
         "x": {
             "column": "year",
@@ -39,5 +37,5 @@
         "highlight": {"mode": "row", "opacity": 1}
     },
     "facets": {"by": "facet", "cols": "=steps(@totalWidth, {0: 1, 550: 2})", "scales": ["x"]},
-    "hover": {"columns": ["facet"]}
+    "hover": {"columns": []}
 }

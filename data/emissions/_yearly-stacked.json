@@ -1,5 +1,4 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "../_share-switch.json",
     "source": "Quelle: Umweltbundesamt - Treibhausgasinventur (Submission 2026 an die UNFCCC)",
     "height": "=steps(@totalWidth, {0: 220, 550: 260, 600: 300})",

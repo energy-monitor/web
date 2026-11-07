@@ -1,5 +1,4 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": "_timeline.json",
     "height": "=steps(@totalWidth, {0: 220, 550: 260, 600: 300})",
     "margins": {"top": 15, "right": 30, "bottom": 45, "left": 50},

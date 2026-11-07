@@ -1,12 +1,10 @@
 {
-    "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "parent": ["../_timeline.json", "../_facet-toggle.json"],
     "data": "rail-goods.parquet",
     "title": "Schienengüterverkehr",
     "subtitle": "Gütermenge in Mio. Tonnen bzw. Verkehrsleistung in Mrd. Tonnenkilometern, quartalsweise, AT",
     "source": "Quelle: Eurostat, Statistik Austria - Schienengüterverkehr",
     "height": 220,
-    "margins": {"top": 5, "right": 30, "bottom": 30, "left": 50},
     "dims": {
         "x": {
             "axis": {"ticks": "@innerWidth * 0.014", "rotate": 0, "format": "%Y"},
