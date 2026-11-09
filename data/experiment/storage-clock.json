@@ -5,7 +5,7 @@
     "subtitle": "Füllstand der österreichischen Gasspeicher, das Jahr im Uhrzeigersinn, Jänner oben, in TWh",
     "source": "Quelle: GIE – Gas Infrastructure Europe",
     "height": "=steps(@totalWidth, {0: 340, 600: 460})",
-    "margins": {"top": 30, "right": 40, "bottom": 30, "left": 40},
+    "margins": {"top": 30, "right": 40, "left": 40},
     "coord": "polar",
     "class": "polar-chart",
     "filter": "@type == 'stock'",
@@ -54,7 +54,6 @@
             "by": "year",
             "select": "last",
             "r": 3.5,
-            "fill": "@color",
             "stroke": "white",
             "opacity": "@opacity",
             "others": {"opacity": 0.1}
