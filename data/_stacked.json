@@ -1,23 +1,8 @@
 {
     "parent": "_timeline.json",
     "height": "=steps(@totalWidth, {0: 220, 550: 260, 600: 300})",
-    "margins": {"top": 15, "right": 30, "bottom": 45, "left": 50},
-    "dims": {
-        "y": {},
-        "type": {
-            "legend": {
-                "symbol": {
-                    "size": 16,
-                    "elements": [
-                        {
-                            "type": "rect",
-                            "props": {"x": 0, "y": 0, "width": 16, "height": 15, "fill": "@color", "rx": 2}
-                        }
-                    ]
-                }
-            }
-        }
-    },
+    "margins": {"top": 15, "bottom": 45},
+    "dims": {"type": {"legend": {"symbol": "rect"}}},
     "marks": [
         {
             "type": "bar",

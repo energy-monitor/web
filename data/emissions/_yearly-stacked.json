@@ -2,17 +2,15 @@
     "parent": "../_share-switch.json",
     "source": "Quelle: Umweltbundesamt - Treibhausgasinventur (Submission 2026 an die UNFCCC)",
     "height": "=steps(@totalWidth, {0: 220, 550: 260, 600: 300})",
-    "margins": {"top": 15, "right": 30, "bottom": 30, "left": 50},
+    "margins": {"top": 15},
     "dims": {
         "x": {
             "column": "year",
             "type": "categorical",
-            "scale": {"padding": 0.4},
             "axis": {"values": ["1990", "1995", "2000", "2005", "2010", "2015", "2020"]}
         },
         "y": {
             "column": "value",
-            "type": "numeric",
             "zero": true,
             "pad": [0, 0.1],
             "ticks": 6,
@@ -20,20 +18,7 @@
             "axis": {"format": ",.0f"},
             "hover": {"format": ",.1f"}
         },
-        "type": {
-            "legend": {
-                "symbol": {
-                    "size": 16,
-                    "elements": [
-                        {
-                            "type": "rect",
-                            "props": {"x": 0, "y": 0, "width": 16, "height": 15, "fill": "@color", "rx": 2}
-                        }
-                    ]
-                }
-            },
-            "hover": {}
-        }
+        "type": {"legend": {"symbol": "rect"}, "hover": {}}
     },
     "marks": {
         "type": "bar",

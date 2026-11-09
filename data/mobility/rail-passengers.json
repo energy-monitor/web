@@ -14,7 +14,6 @@
         },
         "y": {
             "column": "value",
-            "type": "numeric",
             "zero": true,
             "pad": [0, 0.1],
             "ticks": 6,

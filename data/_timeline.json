@@ -3,7 +3,6 @@
     "dims": {
         "x": {
             "column": "date",
-            "type": "date",
             "format": "%b %y",
             "tickSpacing": 59,
             "scale": {"domainAbs": [-2000000000, 2000000000]},
@@ -12,7 +11,6 @@
         },
         "y": {
             "column": "value",
-            "type": "numeric",
             "zero": true,
             "pad": [0, 0.1],
             "ticks": 6,
