@@ -5,27 +5,13 @@
     "subtitle": "gewichtet nach Bevölkerung, täglich (rollierender 4-Wochen Durchschnitt), in °C",
     "source": "Quelle: ERA5",
     "dims": {
-        "y": {"column": "value", "zero": false, "pad": 0.1},
+        "y": {"zero": false, "pad": 0.1},
         "year": {
+            "common": {"opacity": 0.9},
             "categories": {
-                "avg40-60": {
-                    "color": "#BBB",
-                    "opacity": 0.9,
-                    "stroke-dasharray": "1, 3",
-                    "name": "Ø 1940 - 1960"
-                },
-                "avg60-90": {
-                    "color": "#888",
-                    "opacity": 0.9,
-                    "stroke-dasharray": "4, 3",
-                    "name": "Ø 1961 - 1990"
-                },
-                "avg90-20": {
-                    "color": "#444",
-                    "opacity": 0.9,
-                    "stroke-dasharray": "8, 3",
-                    "name": "Ø 1991 - 2020"
-                }
+                "avg40-60": {"name": "Ø 1940 - 1960", "color": "#BBB", "stroke-dasharray": "1, 3"},
+                "avg60-90": {"name": "Ø 1961 - 1990", "color": "#888", "stroke-dasharray": "4, 3"},
+                "avg90-20": {"name": "Ø 1991 - 2020", "color": "#444", "stroke-dasharray": "8, 3"}
             }
         }
     },

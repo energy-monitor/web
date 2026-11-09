@@ -5,21 +5,11 @@
     "subtitle": "Summe der letzten 90 Tage, Flächenmittel, in mm",
     "source": "Quelle: GeoSphere Austria (SPARTACUS)",
     "dims": {
-        "y": {"column": "value", "zero": true, "pad": [0, 0.1]},
         "year": {
+            "common": {"opacity": 0.9},
             "categories": {
-                "avg60-90": {
-                    "color": "#888",
-                    "opacity": 0.9,
-                    "stroke-dasharray": "4, 3",
-                    "name": "Ø 1961 - 1990"
-                },
-                "avg90-20": {
-                    "color": "#444",
-                    "opacity": 0.9,
-                    "stroke-dasharray": "8, 3",
-                    "name": "Ø 1991 - 2020"
-                }
+                "avg60-90": {"name": "Ø 1961 - 1990", "color": "#888", "stroke-dasharray": "4, 3"},
+                "avg90-20": {"name": "Ø 1991 - 2020", "color": "#444", "stroke-dasharray": "8, 3"}
             }
         }
     },
