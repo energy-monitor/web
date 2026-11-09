@@ -1,158 +1,21 @@
 {
-    "parent": ["_sources.json", "../_share-switch.json"],
-    "data": "generation-hourly-seasons.parquet",
+    "parent": "_generation-hourly.json",
     "title": "Stromproduktion und -verbrauch im Tagesverlauf",
-    "subtitle": "=match(@values, {share: '{period} nach Jahreszeit, die Anteile der Quellen an der Produktion, der Verbrauch im Verhältnis zur Produktion'}, '{period} nach Jahreszeit, die Produktion nach Quellen, mittlere Leistung in GW')",
     "source": "Quelle: ENTSO-E - Aggregated Generation Per Type 16.1.B C, Actual Total Load 6.1.A, das Pumpen der Pumpspeicher (16.1.B C, nicht in der Last); Stunden in Ortszeit, der Winter ab dem Dezember des Vorjahres",
     "height": 220,
     "margins": {"top": 18, "right": 25, "bottom": 35, "left": 40},
-    "locale": {"base": "de", "number": {"currency": ["", " Uhr"]}},
-    "highlight": {"transition": 120},
-    "globals": {"period": "2025"},
-    "controls": [{"type": "radio", "global": "period", "name": "Jahr", "values": {"column": "period"}}],
-    "filter": {"period": "@globals.period"},
     "dims": {
-        "period": "period",
-        "x": {
-            "column": "hour",
-            "format": "$d",
-            "domain": [0, 24],
-            "axis": {"values": [0, 6, 12, 18, 24]}
-        },
-        "y": {
-            "column": "value",
-            "domain": "=match(@values, {share: literal([0, null])}, literal([0, null]))",
-            "nice": true,
-            "pad": "=match(@values, {share: literal([0, 0.05])}, literal([0, 0.05]))",
-            "ticks": 5,
-            "grid": true,
-            "axis": {"format": ".0f"},
-            "hover": {"format": ".2f"}
-        },
-        "type": {
-            "legend": {
-                "onlyData": true,
-                "symbol": {
-                    "size": 14,
-                    "elements": [
-                        {
-                            "type": "rect",
-                            "props": {
-                                "x": 0,
-                                "y": 0,
-                                "width": 14,
-                                "height": "@symbolHeight",
-                                "fill": "@color",
-                                "rx": 1
-                            }
-                        },
-                        {
-                            "type": "line",
-                            "props": {
-                                "x1": 0,
-                                "x2": 14,
-                                "y1": 7,
-                                "y2": 7,
-                                "stroke": "@symbolStroke",
-                                "stroke-width": 2,
-                                "stroke-dasharray": "@symbolDash",
-                                "stroke-opacity": "@lineOpacity"
-                            }
-                        }
-                    ]
-                }
-            },
-            "common": {"symbolHeight": 14, "lineWidth": 2, "hoverStyle": "normal"},
-            "categories": {
-                "Oil": {"color": "#000", "name": "Erdöl", "legend": false},
-                "others": {"color": "#CCC", "name": "Andere"},
-                "total": {
-                    "color": "#222",
-                    "name": "Produktion",
-                    "symbolHeight": 0,
-                    "symbolStroke": "#222",
-                    "lineWidth": 1.5,
-                    "hoverStyle": "italic"
-                },
-                "load": {
-                    "color": "#222",
-                    "name": "Verbrauch",
-                    "symbolHeight": 0,
-                    "symbolStroke": "#222",
-                    "symbolDash": "4 2",
-                    "dash": "5 3",
-                    "lineOpacity": 0.5,
-                    "hoverStyle": "italic"
-                },
-                "load.pumping": {
-                    "color": "#222",
-                    "name": "Verbrauch mit Pumpen",
-                    "visible": false,
-                    "symbolHeight": 0,
-                    "symbolStroke": "#222",
-                    "symbolDash": "1.5 2",
-                    "dash": "1.5 2.5",
-                    "lineWidth": 1.5,
-                    "lineOpacity": 0.8,
-                    "hoverStyle": "italic"
-                }
-            },
-            "hover": {"row": {"props": {"font-style": "@hoverStyle"}}}
-        },
-        "facet": {
-            "column": "season",
-            "categories": {
-                "winter": {"name": "Winter (Dez–Feb)"},
-                "spring": {"name": "Frühling (Mär–Mai)"},
-                "summer": {"name": "Sommer (Jun–Aug)"},
-                "autumn": {"name": "Herbst (Sep–Nov)"}
-            }
-        }
+        "x": {"domain": [0, 24], "axis": {"values": [0, 6, 12, 18, 24]}},
+        "y": {"pad": "=match(@values, {share: literal([0, 0.05])}, literal([0, 0.05]))", "ticks": 5}
     },
     "marks": [
+        {"id": "areas", "curve": "monotoneX", "layer": "below"},
         {
-            "type": "area",
-            "id": "areas",
-            "by": ["type", "facet"],
-            "curve": "monotoneX",
-            "layer": "below",
-            "filter": "@type != 'total' and @type != 'load' and @type != 'load.pumping'",
-            "stack": "@type != 'total' and @type != 'load' and @type != 'load.pumping'",
-            "fill-opacity": 0.9,
-            "stroke": "#FFFFFF",
-            "stroke-width": 0.8,
-            "highlight": {"fill-opacity": 1},
-            "others": {"fill-opacity": 0.35}
-        },
-        {
-            "type": "text",
             "id": "names",
-            "by": ["facet", "type"],
-            "place": {"in": "areas", "padding": 0},
-            "halo": true,
             "layer": "above",
-            "filter": "@type != 'total' and @type != 'load' and @type != 'load.pumping' and 1 <= @x <= 23",
-            "font-size": 11,
-            "font-weight": "bold",
-            "text": "@name",
-            "pointer-events": "none",
-            "fill": null,
-            "highlight": {"opacity": 1},
-            "others": {"opacity": 0.3}
+            "filter": "@type != 'total' and @type != 'load' and @type != 'load.pumping' and 1 <= @x <= 23"
         },
-        {
-            "type": "line",
-            "id": "lines",
-            "by": ["type", "facet"],
-            "curve": "monotoneX",
-            "layer": "above",
-            "filter": {"type": ["total", "load", "load.pumping"]},
-            "stroke-width": "@lineWidth",
-            "stroke-dasharray": "@dash",
-            "stroke-opacity": "@lineOpacity",
-            "highlight": {"stroke-width": 2.5, "stroke-opacity": 1},
-            "others": {"opacity": 0.35}
-        }
+        {"id": "lines", "curve": "monotoneX", "layer": "above"}
     ],
     "annotations": {
         "type": "text",
@@ -167,6 +30,5 @@
             "stroke": "var(--gen-vis-halo-color, white)",
             "stroke-width": 3
         }
-    },
-    "facets": {"by": "facet", "cols": "=steps(@totalWidth, {0: 1, 700: 2})", "scales": "shared"}
+    }
 }
