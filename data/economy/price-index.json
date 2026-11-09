@@ -71,7 +71,6 @@
             "dodge": 14,
             "halo": true,
             "text": "@name",
-            "fill": "@color",
             "font-size": 12,
             "font-weight": "bold",
             "dominant-baseline": "central",

@@ -27,10 +27,10 @@
         "value": {
             "name": "Anteil an der Stromproduktion",
             "column": "share",
+            "format": ".0%",
             "domain": [0, 1],
             "scale": {"type": "sequential", "interpolator": "Reds"},
-            "legend": {"format": ".0%"},
-            "hover": {"format": ".0%"}
+            "hover": {}
         }
     }
 }
