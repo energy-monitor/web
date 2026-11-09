@@ -14,6 +14,5 @@
                 "gas": {"color": "#C3423F", "name": "Erdgas"}
             }
         }
-    },
-    "hover": {"columns": ["y", "type"]}
+    }
 }

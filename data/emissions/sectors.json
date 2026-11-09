@@ -16,6 +16,5 @@
                 "other": {"color": "#CCCCCC", "name": "Sonstige (Militär)"}
             }
         }
-    },
-    "hover": {"columns": ["y", "type"]}
+    }
 }

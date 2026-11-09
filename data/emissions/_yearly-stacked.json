@@ -18,7 +18,7 @@
             "axis": {"format": ",.0f"},
             "hover": {"format": ",.1f"}
         },
-        "type": {"legend": {"symbol": "rect"}, "hover": {}}
+        "type": {"legend": {"symbol": "rect"}}
     },
     "marks": {
         "type": "bar",
@@ -26,6 +26,5 @@
         "stack": true,
         "opacity": 0.9,
         "highlight": {"mode": "row", "opacity": 1}
-    },
-    "hover": {"columns": []}
+    }
 }
