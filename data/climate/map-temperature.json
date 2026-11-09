@@ -14,14 +14,12 @@
         }
     ],
     "dims": {
-        "label": {"column": "value", "type": "numeric", "format": "=match(@indicator, {tm: '.1f'}, '+.1f')"},
         "value": {
             "name": "=match(@indicator, {tm: 'Jahresmittel in °C'}, 'Abweichung in °C')",
+            "format": "=match(@indicator, {tm: '.1f'}, '+.1f')",
             "domain": "=match(@indicator, {tm: literal([0, 14])}, literal([3, -3]))",
             "scale": {"type": "sequential", "interpolator": "=match(@indicator, {tm: 'YlOrRd'}, 'RdBu')"},
-            "legend": {"format": "=match(@indicator, {tm: '.0f'}, '+.1f')", "symbol": null},
-            "hover": {"format": "=match(@indicator, {tm: '.1f'}, '+.1f')"}
+            "legend": {"format": "=match(@indicator, {tm: '.0f'}, '+.1f')"}
         }
-    },
-    "hover": {"columns": []}
+    }
 }

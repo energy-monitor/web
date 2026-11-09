@@ -21,17 +21,16 @@
     ],
     "filter": {"type": "@globals.type", "year": "@globals.year"},
     "dims": {
-        "label": {"column": "share", "type": "numeric", "format": ".0%"},
-        "type": {"column": "type", "type": "categorical"},
-        "year": {"column": "year", "type": "categorical"},
+        "label": {"column": "share", "format": ".0%"},
+        "type": "type",
+        "year": "year",
         "value": {
             "name": "Anteil an der Stromproduktion",
             "column": "share",
             "domain": [0, 1],
             "scale": {"type": "sequential", "interpolator": "Reds"},
-            "legend": {"format": ".0%", "symbol": null},
+            "legend": {"format": ".0%"},
             "hover": {"format": ".0%"}
         }
-    },
-    "hover": {"columns": []}
+    }
 }

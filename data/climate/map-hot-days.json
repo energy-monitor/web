@@ -17,21 +17,14 @@
         }
     ],
     "dims": {
-        "label": {
-            "column": "value",
-            "type": "numeric",
-            "format": "=match(@indicator, {'days.hot.anomaly': '+.0f'}, '.0f')"
-        },
         "value": {
             "name": "=match(@indicator, {'days.hot.anomaly': 'Abweichung in Tagen'}, 'Hitzetage')",
+            "format": "=match(@indicator, {'days.hot.anomaly': '+.0f'}, '.0f')",
             "domain": "=match(@indicator, {'days.hot.anomaly': literal([30, -30])}, literal([0, 40]))",
             "scale": {
                 "type": "sequential",
                 "interpolator": "=match(@indicator, {'days.hot.anomaly': 'RdBu'}, 'Reds')"
-            },
-            "legend": {"format": "=match(@indicator, {'days.hot.anomaly': '+.0f'}, '.0f')", "symbol": null},
-            "hover": {"format": "=match(@indicator, {'days.hot.anomaly': '+.0f'}, '.0f')"}
+            }
         }
-    },
-    "hover": {"columns": []}
+    }
 }

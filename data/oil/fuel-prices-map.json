@@ -5,7 +5,7 @@
     "subtitle": "Preise vom 26.10.2026, inkl. Steuern, in €/Liter",
     "source": "Quelle: EC Weekly Oil Bulletin",
     "locale": {"base": "de", "number": {"currency": ["", " €/l"]}},
-    "hover": {"row": "Preisstand: {date}", "columns": []},
+    "hover": {"row": "Preisstand: {date}"},
     "globals": {"type": "euroSuper95"},
     "controls": [
         {
@@ -22,13 +22,13 @@
     "filter": {"type": "@globals.type"},
     "dims": {
         "date": {"name": "Preisstand", "column": "date", "type": "date", "hover": {"format": "%d.%m.%Y"}},
-        "label": {"column": "value", "type": "numeric", "format": ",.2f"},
-        "type": {"column": "variable", "type": "categorical"},
+        "label": {"column": "value", "format": ",.2f"},
+        "type": "variable",
         "value": {
             "name": "€/Liter",
             "column": "value",
             "scale": {"type": "sequential", "interpolator": "Reds"},
-            "legend": {"format": ",.1f", "symbol": null},
+            "legend": {"format": ",.1f"},
             "hover": {"format": "$,.2f"}
         }
     }

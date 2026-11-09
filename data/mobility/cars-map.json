@@ -32,19 +32,18 @@
     ],
     "filter": {"series": "@globals.series", "type": "@globals.type", "year": "@globals.year"},
     "dims": {
-        "label": {"column": "share", "type": "numeric", "format": ".1~%"},
-        "series": {"column": "series", "type": "categorical"},
-        "type": {"column": "type", "type": "categorical"},
-        "year": {"column": "year", "type": "categorical"},
+        "label": {"column": "share", "format": ".1~%"},
+        "series": "series",
+        "type": "type",
+        "year": "year",
         "value": {
             "name": "Anteil",
             "column": "share",
             "nice": true,
             "scale": {"type": "sequentialSqrt", "interpolator": "Reds"},
-            "legend": {"format": ".1~%", "symbol": null},
+            "legend": {"format": ".1~%"},
             "hover": {"format": ".1%"},
             "zero": true
         }
-    },
-    "hover": {"columns": []}
+    }
 }

@@ -3,7 +3,7 @@
     "height": "=steps(@totalWidth, {0: 340, 450: 420, 550: 500})",
     "margins": {"top": 10, "right": 10, "bottom": 10, "left": 10},
     "coord": "geo",
-    "hover": {"empty": true, "columns": []},
+    "hover": {"empty": true},
     "dims": {
         "country": {
             "column": "country",
@@ -56,7 +56,7 @@
                 "CY": {"name": "Zypern"}
             }
         },
-        "value": {"legend": {"missing": {"name": "keine Daten", "color": "#DADADA"}, "symbol": null}}
+        "value": {"legend": {"missing": {"name": "keine Daten", "color": "#DADADA"}}}
     },
     "marks": [
         {"type": "base", "id": "base", "fill": "#DADADA", "stroke": "white", "stroke-width": 1},
@@ -64,7 +64,7 @@
             "type": "region",
             "id": "regions",
             "by": "country",
-            "fill": "@value:scaled",
+            "fill": "value",
             "stroke": "white",
             "stroke-width": 1,
             "highlight": {"fill-opacity": 0.75}
@@ -75,24 +75,21 @@
             "by": "country",
             "fit": true,
             "overlap": false,
-            "filter": "@country == 'AT' or @country == 'DE' or @country == 'FR' or @country == 'ES' or @country == 'IT' or @country == 'PL' or @country == 'RO' or @country == 'SE' or @country == 'FI' or @country == 'GR' or @country == 'IE' or @country == 'IS' or @country == 'NO' or @country == 'TR' or @country == 'UA' or @country == 'RS'",
+            "filter": {
+                "country": ["AT", "DE", "FR", "ES", "IT", "PL", "RO", "SE", "FI", "GR", "IE", "IS", "NO", "TR", "UA", "RS"]
+            },
+            "halo": true,
             "text": "@label:formatted",
             "font-size": "=steps(@totalWidth, {0: 11, 550: 13})",
             "font-weight": "bold",
-            "text-anchor": "middle",
-            "dominant-baseline": "middle",
             "fill": "#222",
-            "stroke": "white",
-            "stroke-width": 3,
             "stroke-opacity": 0.8,
-            "paint-order": "stroke",
             "pointer-events": "none"
         }
     ],
     "geo": {
         "data": "/geo/europe.json",
         "object": "europe",
-        "key": "id",
         "join": "country",
         "name": "NAME",
         "projection": {"type": "conicEquidistant", "rotate": [-20, 0], "parallels": [35, 65]}

@@ -17,21 +17,14 @@
         }
     ],
     "dims": {
-        "label": {
-            "column": "value",
-            "type": "numeric",
-            "format": "=match(@indicator, {'days.snow.anomaly': '+.0f'}, '.0f')"
-        },
         "value": {
             "name": "=match(@indicator, {'days.snow.anomaly': 'Abweichung in Tagen'}, 'Tage')",
+            "format": "=match(@indicator, {'days.snow.anomaly': '+.0f'}, '.0f')",
             "domain": "=match(@indicator, {'days.snow.anomaly': literal([-80, 80])}, literal([0, 250]))",
             "scale": {
                 "type": "sequential",
                 "interpolator": "=match(@indicator, {'days.snow.anomaly': 'RdBu'}, 'Blues')"
-            },
-            "legend": {"format": "=match(@indicator, {'days.snow.anomaly': '+.0f'}, '.0f')", "symbol": null},
-            "hover": {"format": "=match(@indicator, {'days.snow.anomaly': '+.0f'}, '.0f')"}
+            }
         }
-    },
-    "hover": {"columns": []}
+    }
 }

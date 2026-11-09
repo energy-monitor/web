@@ -6,8 +6,7 @@
     "source": "Quelle: eurostat - nrg_pc_204 (Strom), nrg_pc_202 (Gas); Förderungen wie die Strompreisbremse sind als negative Abgaben enthalten",
     "locale": {"base": "de", "number": {"currency": ["", " ct/kWh"]}},
     "hover": {
-        "row": "<table class=\"vis-hover-table\"><tr><td>Energie und Netz</td><td style=\"text-align:right\">{net}</td></tr><tr><td>Steuern und Abgaben</td><td style=\"text-align:right\">{levies}</td></tr><tr><td>Mehrwertsteuer</td><td style=\"text-align:right\">{vat}</td></tr><tr class=\"vis-hover-total\"><td>Gesamt</td><td style=\"text-align:right\">{total}</td></tr></table>",
-        "columns": []
+        "row": "<table class=\"vis-hover-table\"><tr><td>Energie und Netz</td><td style=\"text-align:right\">{net}</td></tr><tr><td>Steuern und Abgaben</td><td style=\"text-align:right\">{levies}</td></tr><tr><td>Mehrwertsteuer</td><td style=\"text-align:right\">{vat}</td></tr><tr class=\"vis-hover-total\"><td>Gesamt</td><td style=\"text-align:right\">{total}</td></tr></table>"
     },
     "globals": {"product": "electricity"},
     "controls": [
@@ -21,30 +20,20 @@
     ],
     "filter": {"product": "@globals.product", "period": "@globals.period"},
     "dims": {
-        "product": {"column": "product", "type": "categorical"},
-        "period": {"column": "period", "type": "categorical"},
+        "product": "product",
+        "period": "period",
         "value": {
             "name": "Cent/kWh",
             "column": "total",
             "domain": "=match(@product, {gas: literal([4, 6, 8, 10, 12, 15])}, literal([10, 15, 20, 25, 30, 40]))",
             "scale": {"type": "threshold", "scheme": "Reds", "classes": 7},
-            "legend": {"format": ",.0f", "symbol": null},
+            "legend": {"format": ",.0f"},
             "hover": {"format": "$,.1f"}
         },
-        "label": {"column": "total", "type": "numeric", "format": ",.1f"},
-        "total": {"name": "Gesamt", "column": "total", "type": "numeric", "hover": {"format": "$,.1f"}},
-        "net": {
-            "name": "Energie und Netz",
-            "column": "net",
-            "type": "numeric",
-            "hover": {"format": "$,.1f"}
-        },
-        "levies": {
-            "name": "Steuern und Abgaben",
-            "column": "levies",
-            "type": "numeric",
-            "hover": {"format": "$,.1f"}
-        },
-        "vat": {"name": "Mehrwertsteuer", "column": "vat", "type": "numeric", "hover": {"format": "$,.1f"}}
+        "label": {"column": "total", "format": ",.1f"},
+        "total": {"name": "Gesamt", "column": "total", "hover": {"format": "$,.1f"}},
+        "net": {"name": "Energie und Netz", "column": "net", "hover": {"format": "$,.1f"}},
+        "levies": {"name": "Steuern und Abgaben", "column": "levies", "hover": {"format": "$,.1f"}},
+        "vat": {"name": "Mehrwertsteuer", "column": "vat", "hover": {"format": "$,.1f"}}
     }
 }

@@ -14,14 +14,11 @@
         }
     ],
     "dims": {
-        "label": {"column": "value", "type": "numeric", "format": "=match(@indicator, {rr: ',.0f'}, '+.0f')"},
         "value": {
             "name": "=match(@indicator, {rr: 'Jahressumme in mm'}, 'Abweichung in %')",
+            "format": "=match(@indicator, {rr: ',.0f'}, '+.0f')",
             "domain": "=match(@indicator, {rr: literal([400, 2400])}, literal([-40, 40]))",
-            "scale": {"type": "sequential", "interpolator": "=match(@indicator, {rr: 'YlGnBu'}, 'BrBG')"},
-            "legend": {"format": "=match(@indicator, {rr: ',.0f'}, '+.0f')", "symbol": null},
-            "hover": {"format": "=match(@indicator, {rr: ',.0f'}, '+.0f')"}
+            "scale": {"type": "sequential", "interpolator": "=match(@indicator, {rr: 'YlGnBu'}, 'BrBG')"}
         }
-    },
-    "hover": {"columns": []}
+    }
 }

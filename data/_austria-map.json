@@ -3,18 +3,18 @@
     "height": "=steps(@totalWidth, {0: 260, 450: 320, 550: 380})",
     "margins": {"top": 10, "right": 10, "bottom": 10, "left": 10},
     "coord": "geo",
-    "hover": {"empty": true, "columns": []},
+    "hover": {"empty": true},
     "globals": {"year": "2025"},
     "controls": [{"type": "slider", "global": "year", "name": "Jahr", "values": {"column": "year"}}],
     "filter": {"indicator": "@globals.indicator", "year": "@globals.year"},
     "dims": {
         "district": {"column": "district", "type": "categorical"},
-        "indicator": {"column": "indicator", "type": "categorical"},
-        "year": {"column": "year", "type": "categorical"},
+        "indicator": "indicator",
+        "year": "year",
         "value": {
             "column": "value",
-            "type": "numeric",
-            "legend": {"missing": {"name": "keine Daten", "color": "#DADADA"}, "symbol": null}
+            "hover": {},
+            "legend": {"missing": {"name": "keine Daten", "color": "#DADADA"}}
         }
     },
     "marks": [
@@ -22,7 +22,7 @@
         {
             "type": "region",
             "by": "district",
-            "fill": "@value:scaled",
+            "fill": "value",
             "stroke": "white",
             "stroke-width": 0.5,
             "highlight": {"fill-opacity": 0.75}
@@ -39,24 +39,21 @@
             "by": "district",
             "fit": false,
             "overlap": false,
-            "filter": "@district == '706' or @district == '707' or @district == '206' or @district == '612' or @district == '325' or @district == '316' or @district == '900' or @district == '601' or @district == '401' or @district == '501' or @district == '701' or @district == '201' or @district == '101' or @district == '802' or @district == '302'",
-            "text": "@label:formatted",
+            "filter": {
+                "district": [706, 707, 206, 612, 325, 316, 900, 601, 401, 501, 701, 201, 101, 802, 302]
+            },
+            "halo": true,
+            "text": "@value:formatted",
             "font-size": "=steps(@totalWidth, {0: 8, 450: 9, 550: 10})",
             "font-weight": "bold",
-            "text-anchor": "middle",
-            "dominant-baseline": "middle",
             "fill": "#222",
-            "stroke": "white",
-            "stroke-width": 3,
             "stroke-opacity": 0.8,
-            "paint-order": "stroke",
             "pointer-events": "none"
         }
     ],
     "geo": {
         "data": "/geo/austria-districts.json",
         "object": "districts",
-        "key": "id",
         "join": "district",
         "name": "NAME",
         "projection": {"type": "conicEquidistant", "rotate": [-13.3, 0], "parallels": [46, 49]}
