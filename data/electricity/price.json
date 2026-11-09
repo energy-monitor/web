@@ -8,7 +8,7 @@
         "y": {"zero": false, "pad": 0.1},
         "type": {
             "categories": {
-                "mean": {"name": "⌀", "stroke-dasharray": 0},
+                "mean": {"name": "⌀"},
                 "min": {"name": "min", "visible": false, "stroke-dasharray": "1, 3"},
                 "max": {"name": "max", "visible": false, "stroke-dasharray": "2, 2"}
             }

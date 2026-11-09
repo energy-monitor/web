@@ -1,29 +1,7 @@
 {
     "$schema": "https://unpkg.com/@preschen/gen-vis@5/schema.json",
     "dims": {
-        "type": {
-            "column": "type",
-            "legend": {
-                "symbol": {
-                    "size": 16,
-                    "elements": [
-                        {
-                            "type": "line",
-                            "props": {
-                                "x1": 0,
-                                "x2": 16,
-                                "y1": 8,
-                                "y2": 8,
-                                "stroke": "#000",
-                                "stroke-width": 2,
-                                "stroke-dasharray": "@stroke-dasharray"
-                            }
-                        }
-                    ]
-                }
-            },
-            "hover": {}
-        }
+        "type": {"column": "type", "legend": {"symbol": {"type": "line", "props": {"stroke": "#000"}}}}
     },
     "marks": {"by": ["year", "type"], "stroke-dasharray": "@stroke-dasharray"}
 }

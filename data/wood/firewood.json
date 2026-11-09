@@ -8,7 +8,7 @@
         "y": {"hover": {"format": ",.2f"}},
         "type": {
             "categories": {
-                "hard": {"name": "Hartholz", "stroke-dasharray": 0},
+                "hard": {"name": "Hartholz"},
                 "soft": {"name": "Weichholz", "stroke-dasharray": "4, 2"}
             }
         }

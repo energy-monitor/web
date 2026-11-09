@@ -9,7 +9,7 @@
         "type": {
             "column": "variable",
             "categories": {
-                "euroSuper95": {"name": "Benzin", "stroke-dasharray": 0},
+                "euroSuper95": {"name": "Benzin"},
                 "gasOil": {"name": "Diesel", "stroke-dasharray": "4, 2"},
                 "heatingOil": {"name": "Heizöl", "stroke-dasharray": "5, 5", "visible": false}
             }
