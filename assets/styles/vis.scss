@@ -82,7 +82,13 @@
         margin-bottom: 0;
         border-bottom: 2px solid currentColor;
         text-align: center;
+        // as wide as the name, e.g. of a region of a map beside a short value,
+        // wrapped only beyond 16em, across the box if the table is wider
         white-space: normal;
+        width: max-content;
+        min-width: 100%;
+        max-width: 16em;
+        box-sizing: border-box;
     }
     table {
         font-variant-numeric: normal;
