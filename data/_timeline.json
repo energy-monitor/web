@@ -6,8 +6,7 @@
             "format": "%b %y",
             "tickSpacing": 59,
             "scale": {"domainAbs": [-2000000000, 2000000000]},
-            "axis": {"rotate": 35},
-            "hover": {}
+            "axis": {"rotate": 35}
         },
         "y": {
             "column": "value",

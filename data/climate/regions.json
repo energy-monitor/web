@@ -33,7 +33,7 @@
     ],
     "filter": {"indicator": "@globals.indicator"},
     "dims": {
-        "x": {"format": "%Y", "tickSpacing": 71, "hover": {}, "axis": {"rotate": 0}},
+        "x": {"format": "%Y", "tickSpacing": 71, "axis": {"rotate": 0}},
         "y": {
             "column": "=match(@values, {anomaly: 'value.anomaly'})",
             "zero": false,
@@ -41,45 +41,22 @@
             "axis": {"format": "=match(@values, {anomaly: '+,~f'}, ',.0f')"},
             "hover": {"format": "=match(@values, {anomaly: '+,.1f'}, ',.1f')"}
         },
-        "indicator": {"column": "indicator", "type": "categorical"},
+        "indicator": "indicator",
         "type": {
             "column": "type",
-            "legend": {
-                "symbol": {
-                    "size": 16,
-                    "elements": [
-                        {
-                            "type": "line",
-                            "props": {
-                                "x1": 0,
-                                "x2": 16,
-                                "y1": 8,
-                                "y2": 8,
-                                "stroke": "@color",
-                                "stroke-width": "@stroke-width",
-                                "opacity": "@opacity"
-                            }
-                        }
-                    ]
-                }
-            },
-            "common": {
-                "stroke-width": 1.5,
-                "highlight-stroke-width": 3,
-                "opacity": 0.8,
-                "highlight-opacity": 1
-            },
+            "legend": {},
+            "common": {"stroke-width": 1.5},
             "categories": {
-                "1": {"color": "#e6194b", "name": "Burgenland"},
-                "2": {"color": "#3cb44b", "name": "Kärnten"},
-                "3": {"color": "#4363d8", "name": "Niederösterreich"},
-                "4": {"color": "#f58231", "name": "Oberösterreich"},
-                "5": {"color": "#911eb4", "name": "Salzburg"},
-                "6": {"color": "#42d4f4", "name": "Steiermark"},
-                "7": {"color": "#f032e6", "name": "Tirol"},
-                "8": {"color": "#9A6324", "name": "Vorarlberg"},
-                "9": {"color": "#808000", "name": "Wien"},
-                "AT": {"color": "#000000", "name": "Österreich", "stroke-width": 2.5}
+                "1": {"name": "Burgenland", "color": "#e6194b"},
+                "2": {"name": "Kärnten", "color": "#3cb44b"},
+                "3": {"name": "Niederösterreich", "color": "#4363d8"},
+                "4": {"name": "Oberösterreich", "color": "#f58231"},
+                "5": {"name": "Salzburg", "color": "#911eb4"},
+                "6": {"name": "Steiermark", "color": "#42d4f4"},
+                "7": {"name": "Tirol", "color": "#f032e6"},
+                "8": {"name": "Vorarlberg", "color": "#9A6324"},
+                "9": {"name": "Wien", "color": "#808000"},
+                "AT": {"name": "Österreich", "color": "#000000", "stroke-width": 2.5}
             }
         }
     },
@@ -88,8 +65,8 @@
         "by": "type",
         "curve": "monotoneX",
         "stroke-width": "@stroke-width",
-        "opacity": "@opacity",
-        "highlight": {"opacity": "@highlight-opacity", "stroke-width": "@highlight-stroke-width"}
+        "opacity": 0.8,
+        "highlight": {"opacity": 1, "stroke-width": 3}
     },
     "hover": {"columns": []}
 }

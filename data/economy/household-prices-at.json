@@ -5,7 +5,7 @@
     "subtitle": "nach Bestandteilen, Mittel der Halbjahre (Jänner-Juni, Juli-Dezember), typischer Verbrauch (Strom 2 500-5 000 kWh, Gas 20-200 GJ pro Jahr), in Cent/kWh",
     "source": "Quelle: eurostat - nrg_pc_204 (Strom), nrg_pc_202 (Gas); Förderungen wie die Strompreisbremse sind als negative Abgaben enthalten",
     "class": "household-prices",
-    "hover": {"filter": "@type == '=not \\'total\\''", "total": "Gesamt"},
+    "hover": {"filter": "@type != 'total'", "total": "Gesamt"},
     "globals": {"product": "electricity"},
     "controls": [
         {
@@ -17,7 +17,7 @@
     ],
     "filter": {"product": "@globals.product"},
     "dims": {
-        "product": {"column": "product", "type": "categorical"},
+        "product": "product",
         "x": {
             "format": "%Y",
             "interval": "half",
@@ -26,7 +26,7 @@
         },
         "y": {
             "domain": "=match(@product, {gas: literal([0, null])}, literal([null, null]))",
-            "pad": "=match(@product, {gas: literal([0, 0.1])}, literal([0.01, 0.1]))",
+            "pad": "=match(@product, {electricity: literal([0.01, 0.1])})",
             "axis": {
                 "values": "=match(@product, {gas: literal([0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20])}, literal([-5, 0, 10, 20, 30, 40, 50]))"
             }
@@ -52,7 +52,7 @@
             "highlight": {"mode": "row", "opacity": 1}
         },
         {"type": "line", "by": "type", "filter": "@type == 'total'", "stroke-width": 1.5},
-        {"type": "point", "by": "type", "filter": "@type == 'total'", "fill": "@color", "r": 2.5}
+        {"type": "point", "by": "type", "filter": "@type == 'total'", "r": 2.5}
     ],
     "annotations": "=match(@product, {gas: literal([])}, literal([{type: 'line', y: -5, props: {stroke: 'var(--gen-vis-grid-color)', 'stroke-width': 1}}]))"
 }

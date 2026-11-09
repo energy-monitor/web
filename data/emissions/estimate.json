@@ -10,28 +10,10 @@
         "y": {"hover": {"format": ",.2f"}},
         "type": {
             "column": "type",
-            "legend": {
-                "symbol": {
-                    "size": 16,
-                    "elements": [
-                        {
-                            "type": "line",
-                            "props": {
-                                "x1": 0,
-                                "x2": 16,
-                                "y1": 8,
-                                "y2": 8,
-                                "stroke": "@stroke",
-                                "stroke-width": 2
-                            }
-                        },
-                        {"type": "circle", "props": {"cx": 8, "cy": 8, "r": "@r", "fill": "@color"}}
-                    ]
-                }
-            },
+            "legend": {},
             "categories": {
-                "estimate": {"color": "#C3423F", "name": "Schätzung", "stroke": "#C3423F", "r": 0},
-                "inventory": {"color": "#444444", "name": "Inventur", "stroke": "none", "r": 3}
+                "estimate": {"name": "Schätzung", "color": "#C3423F"},
+                "inventory": {"name": "Inventur", "color": "#444444"}
             }
         },
         "facet": {
@@ -48,11 +30,11 @@
         {
             "type": "line",
             "by": ["type", "facet"],
-            "stroke": "@stroke",
+            "filter": {"type": "estimate"},
             "stroke-width": 2,
             "highlight": {"stroke-width": 3}
         },
-        {"type": "point", "by": ["type", "facet"], "r": "@r", "fill": "@color"}
+        {"type": "point", "by": ["type", "facet"], "filter": {"type": "inventory"}}
     ],
     "facets": {"cols": "=steps(@totalWidth, {0: 1, 550: 2})"}
 }

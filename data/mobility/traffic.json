@@ -5,44 +5,25 @@
     "subtitle": "Autobahnen und Schnellstraßen, durchschnittlicher täglicher Verkehr, monatlich, Index (2025 = 100)",
     "source": "Quelle: ASFINAG - Dauerzählstellen",
     "height": "=steps(@totalWidth, {0: 220, 550: 250, 600: 280})",
-    "margins": {"top": 5, "right": 30, "bottom": 45, "left": 50},
+    "margins": {"bottom": 45},
     "dims": {
         "road": {"column": "road", "categories": {"total": {"name": "Österreich"}}},
         "vehicle": {
             "column": "vehicle",
-            "legend": {
-                "symbol": {
-                    "size": 16,
-                    "elements": [
-                        {
-                            "type": "line",
-                            "props": {
-                                "x1": 0,
-                                "x2": 16,
-                                "y1": 8,
-                                "y2": 8,
-                                "stroke": "@color",
-                                "stroke-width": "@stroke-width"
-                            }
-                        }
-                    ]
-                }
-            },
-            "common": {"stroke-width": 2, "highlight-stroke-width": 3},
+            "legend": {},
             "categories": {
-                "all": {"color": "#444444", "name": "Gesamt"},
-                "light": {"color": "#4A96D4", "name": "Leicht (bis 3,5 t)"},
-                "heavy": {"color": "#C3423F", "name": "Schwer (über 3,5 t)"}
-            },
-            "hover": {}
+                "all": {"name": "Gesamt", "color": "#444444"},
+                "light": {"name": "Leicht (bis 3,5 t)", "color": "#4A96D4"},
+                "heavy": {"name": "Schwer (über 3,5 t)", "color": "#C3423F"}
+            }
         }
     },
     "marks": {
         "type": "line",
         "by": ["road", "vehicle"],
         "curve": "monotoneX",
-        "stroke-width": "@stroke-width",
-        "highlight": {"stroke-width": "@highlight-stroke-width"}
+        "stroke-width": 2,
+        "highlight": {"stroke-width": 3}
     },
-    "hover": {"columns": ["x", "y"]}
+    "hover": {"columns": ["vehicle"]}
 }

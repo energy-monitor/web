@@ -25,51 +25,25 @@
             "scale": {"type": "log"},
             "axis": {"values": [2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000]}
         },
-        "base": {"column": "base", "type": "categorical"},
+        "base": "base",
         "type": {
             "column": "type",
-            "legend": {
-                "symbol": {
-                    "size": 16,
-                    "elements": [
-                        {
-                            "type": "line",
-                            "props": {
-                                "x1": 0,
-                                "x2": 16,
-                                "y1": 8,
-                                "y2": 8,
-                                "stroke": "@color",
-                                "stroke-width": 2,
-                                "stroke-dasharray": "@stroke-dasharray",
-                                "opacity": "@opacity"
-                            }
-                        }
-                    ]
-                }
-            },
-            "common": {
-                "stroke-width": 2,
-                "highlight-stroke-width": 3,
-                "opacity": 0.7,
-                "highlight-opacity": 1,
-                "stroke-dasharray": 0
-            },
+            "legend": {},
             "categories": {
-                "gas": {"color": "#C3423F", "name": "Erdgas"},
-                "oil": {"color": "#C3423F", "name": "Rohöl (Brent)", "stroke-dasharray": "6, 3"},
-                "coal": {"color": "#C3423F", "name": "Kohle", "stroke-dasharray": "2, 2"},
-                "firewood": {"color": "#b5c969", "name": "Brennholz"},
+                "gas": {"name": "Erdgas", "color": "#C3423F"},
+                "oil": {"name": "Rohöl (Brent)", "color": "#C3423F", "stroke-dasharray": "6, 3"},
+                "coal": {"name": "Kohle", "color": "#C3423F", "stroke-dasharray": "2, 2"},
+                "firewood": {"name": "Brennholz", "color": "#b5c969"},
                 "pellets": {
-                    "color": "#b5c969",
                     "name": "Pellets",
+                    "color": "#b5c969",
                     "stroke-dasharray": "6, 3",
                     "visible": false
                 },
-                "electricity": {"color": "#86cae7", "name": "Strom"},
+                "electricity": {"name": "Strom", "color": "#86cae7"},
                 "eua": {
-                    "color": "#F3D039",
                     "name": "CO₂-Zertifikate (EUA)",
+                    "color": "#F3D039",
                     "stroke-dasharray": "6, 3",
                     "visible": false
                 }
@@ -82,10 +56,10 @@
             "id": "lines",
             "by": "type",
             "curve": "monotoneX",
-            "stroke-width": "@stroke-width",
+            "stroke-width": 2,
             "stroke-dasharray": "@stroke-dasharray",
-            "opacity": "@opacity",
-            "highlight": {"opacity": "@highlight-opacity", "stroke-width": "@highlight-stroke-width"}
+            "opacity": 0.7,
+            "highlight": {"opacity": 1, "stroke-width": 3}
         },
         {
             "type": "text",
