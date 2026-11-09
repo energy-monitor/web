@@ -11,21 +11,12 @@
     "class": "polar-chart",
     "highlight": {"transition": 120},
     "globals": {"period": "2025"},
-    "controls": [
-        {
-            "type": "radio",
-            "global": "period",
-            "name": "Jahr",
-            "id": "period",
-            "values": {"column": "period"}
-        }
-    ],
+    "controls": [{"type": "radio", "global": "period", "name": "Jahr", "values": {"column": "period"}}],
     "filter": {"period": "@globals.period"},
     "dims": {
-        "period": {"column": "period", "type": "categorical"},
+        "period": "period",
         "x": {
             "column": "hour",
-            "type": "numeric",
             "domain": [0, 24],
             "format": "$d",
             "axis": {
@@ -37,7 +28,6 @@
         },
         "y": {
             "column": "value",
-            "type": "numeric",
             "domain": "=match(@values, {share: literal([0, null])}, literal([0, null]))",
             "nice": true,
             "ticks": 3,
@@ -86,15 +76,7 @@
                     ]
                 }
             },
-            "common": {
-                "symbolHeight": 14,
-                "symbolStroke": "none",
-                "symbolDash": "none",
-                "dash": "none",
-                "lineWidth": 2,
-                "lineOpacity": 1,
-                "hoverStyle": "normal"
-            },
+            "common": {"symbolHeight": 14, "lineWidth": 2, "hoverStyle": "normal"},
             "categories": {
                 "Oil": {"color": "#000", "name": "Erdöl", "legend": false},
                 "others": {"color": "#CCC", "name": "Andere"},
@@ -175,7 +157,7 @@
             "id": "lines",
             "by": ["type", "facet"],
             "curve": "catmullRomClosed",
-            "filter": "@type == 'total' or @type == 'load' or @type == 'load.pumping'",
+            "filter": {"type": ["total", "load", "load.pumping"]},
             "stroke-width": "@lineWidth",
             "stroke-dasharray": "@dash",
             "stroke-opacity": "@lineOpacity",
@@ -183,6 +165,6 @@
             "others": {"opacity": 0.35}
         }
     ],
-    "annotations": [{"type": "line", "y": 0, "above": true}],
-    "facets": {"by": "facet", "cols": "=steps(@totalWidth, {0: 1, 700: 2})", "scales": ["x", "y"]}
+    "annotations": {"type": "line", "y": 0, "above": true},
+    "facets": {"by": "facet", "cols": "=steps(@totalWidth, {0: 1, 700: 2})", "scales": "shared"}
 }

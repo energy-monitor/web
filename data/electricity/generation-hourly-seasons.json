@@ -9,28 +9,18 @@
     "locale": {"base": "de", "number": {"currency": ["", " Uhr"]}},
     "highlight": {"transition": 120},
     "globals": {"period": "2025"},
-    "controls": [
-        {
-            "type": "radio",
-            "global": "period",
-            "name": "Jahr",
-            "id": "period",
-            "values": {"column": "period"}
-        }
-    ],
+    "controls": [{"type": "radio", "global": "period", "name": "Jahr", "values": {"column": "period"}}],
     "filter": {"period": "@globals.period"},
     "dims": {
-        "period": {"column": "period", "type": "categorical"},
+        "period": "period",
         "x": {
             "column": "hour",
-            "type": "numeric",
             "format": "$d",
             "domain": [0, 24],
             "axis": {"values": [0, 6, 12, 18, 24]}
         },
         "y": {
             "column": "value",
-            "type": "numeric",
             "domain": "=match(@values, {share: literal([0, null])}, literal([0, null]))",
             "nice": true,
             "pad": "=match(@values, {share: literal([0, 0.05])}, literal([0, 0.05]))",
@@ -72,15 +62,7 @@
                     ]
                 }
             },
-            "common": {
-                "symbolHeight": 14,
-                "symbolStroke": "none",
-                "symbolDash": "none",
-                "dash": "none",
-                "lineWidth": 2,
-                "lineOpacity": 1,
-                "hoverStyle": "normal"
-            },
+            "common": {"symbolHeight": 14, "lineWidth": 2, "hoverStyle": "normal"},
             "categories": {
                 "Oil": {"color": "#000", "name": "Erdöl", "legend": false},
                 "others": {"color": "#CCC", "name": "Andere"},
@@ -139,7 +121,6 @@
             "fill-opacity": 0.9,
             "stroke": "#FFFFFF",
             "stroke-width": 0.8,
-            "d": {"y0": "@y:start:scaled"},
             "highlight": {"fill-opacity": 1},
             "others": {"fill-opacity": 0.35}
         },
@@ -165,7 +146,7 @@
             "by": ["type", "facet"],
             "curve": "monotoneX",
             "layer": "above",
-            "filter": "@type == 'total' or @type == 'load' or @type == 'load.pumping'",
+            "filter": {"type": ["total", "load", "load.pumping"]},
             "stroke-width": "@lineWidth",
             "stroke-dasharray": "@dash",
             "stroke-opacity": "@lineOpacity",
@@ -173,21 +154,19 @@
             "others": {"opacity": 0.35}
         }
     ],
-    "annotations": [
-        {
-            "type": "text",
-            "x": 12,
-            "text": "Mittag",
-            "above": true,
-            "props": {
-                "dy": 4,
-                "text-anchor": "middle",
-                "dominant-baseline": "hanging",
-                "paint-order": "stroke",
-                "stroke": "var(--gen-vis-halo-color, white)",
-                "stroke-width": 3
-            }
+    "annotations": {
+        "type": "text",
+        "x": 12,
+        "text": "Mittag",
+        "above": true,
+        "props": {
+            "dy": 4,
+            "text-anchor": "middle",
+            "dominant-baseline": "hanging",
+            "paint-order": "stroke",
+            "stroke": "var(--gen-vis-halo-color, white)",
+            "stroke-width": 3
         }
-    ],
-    "facets": {"by": "facet", "cols": "=steps(@totalWidth, {0: 1, 700: 2})", "scales": ["x", "y"]}
+    },
+    "facets": {"by": "facet", "cols": "=steps(@totalWidth, {0: 1, 700: 2})", "scales": "shared"}
 }

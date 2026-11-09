@@ -7,7 +7,7 @@
     "height": 350,
     "margins": {"bottom": 35},
     "dims": {
-        "x": {"column": "hour", "type": "numeric", "format": "c", "tickSpacing": 59},
+        "x": {"column": "hour", "format": "c", "tickSpacing": 59},
         "y": {
             "column": "value",
             "format": ".2f",
@@ -18,7 +18,6 @@
         },
         "type": {
             "legend": {"onlyData": true, "symbol": "rect"},
-            "common": {"size": 2},
             "categories": {
                 "Waste": {"color": "#ABD6A9", "name": "Müll"},
                 "Oil": {"color": "#000", "name": "Erdöl"},
@@ -26,14 +25,12 @@
             }
         }
     },
-    "marks": [
-        {
-            "type": "bar",
-            "by": "type",
-            "stack": true,
-            "opacity": 0.9,
-            "width": "@innerWidth * 0.025",
-            "highlight": {"mode": "row", "opacity": 1}
-        }
-    ]
+    "marks": {
+        "type": "bar",
+        "by": "type",
+        "stack": true,
+        "opacity": 0.9,
+        "width": "@innerWidth * 0.025",
+        "highlight": {"mode": "row", "opacity": 1}
+    }
 }
