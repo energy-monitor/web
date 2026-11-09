@@ -8,8 +8,8 @@
     "dims": {
         "facet": {
             "categories": {
-                "total": {"name": "Gesamt", "visible": true},
-                "stein": {"name": "Steinkohle", "visible": true},
+                "total": {"name": "Gesamt"},
+                "stein": {"name": "Steinkohle"},
                 "braun": {"name": "Braunkohle", "visible": false},
                 "koks": {"name": "Koks", "visible": false}
             }

@@ -4,5 +4,5 @@
     "title": "Absatz von Erdgas im Jahresvergleich",
     "subtitle": "in Millionen Kubikmetern",
     "source": "Quelle: eurostat - nrg_cb_gasm",
-    "dims": {"facet": {"categories": {"total": {"name": "Gesamt", "visible": true}}}}
+    "dims": {"facet": {"categories": {"total": {"name": "Gesamt"}}}}
 }

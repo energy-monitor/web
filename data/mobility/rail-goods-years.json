@@ -15,8 +15,8 @@
         "facet": {
             "column": "measure",
             "categories": {
-                "tonnes": {"name": "Gütermenge (Mio. t)", "visible": true},
-                "tkm": {"name": "Verkehrsleistung (Mrd. tkm)", "visible": true}
+                "tonnes": {"name": "Gütermenge (Mio. t)"},
+                "tkm": {"name": "Verkehrsleistung (Mrd. tkm)"}
             }
         }
     },

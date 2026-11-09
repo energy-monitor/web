@@ -8,9 +8,9 @@
     "dims": {
         "facet": {
             "categories": {
-                "total": {"name": "Gesamt", "visible": true},
+                "total": {"name": "Gesamt"},
                 "gasoline": {"name": "Benzin", "visible": false},
-                "diesel": {"name": "Diesel", "visible": true},
+                "diesel": {"name": "Diesel"},
                 "heating": {"name": "Heizöl", "visible": false},
                 "kerosin": {"name": "Kerosin", "visible": false}
             }

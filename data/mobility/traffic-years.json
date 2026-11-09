@@ -17,8 +17,8 @@
         "facet": {
             "column": "vehicle",
             "categories": {
-                "all": {"name": "Gesamt", "visible": true},
-                "heavy": {"name": "Schwer (über 3,5 t)", "visible": true},
+                "all": {"name": "Gesamt"},
+                "heavy": {"name": "Schwer (über 3,5 t)"},
                 "light": {"name": "Leicht (bis 3,5 t)", "visible": false}
             }
         }

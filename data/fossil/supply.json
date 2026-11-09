@@ -9,10 +9,10 @@
         "y": {"column": "{unit}"},
         "facet": {
             "categories": {
-                "total": {"name": "Gesamt", "visible": true},
-                "oil": {"name": "Mineralöl", "visible": true},
-                "coal": {"name": "Kohle", "visible": true},
-                "gas": {"name": "Erdgas", "visible": true}
+                "total": {"name": "Gesamt"},
+                "oil": {"name": "Mineralöl"},
+                "coal": {"name": "Kohle"},
+                "gas": {"name": "Erdgas"}
             }
         }
     }

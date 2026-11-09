@@ -25,8 +25,8 @@
         "facet": {
             "column": "measure",
             "categories": {
-                "passengers": {"name": "Fahrgäste (Mio.)", "visible": true},
-                "pkm": {"name": "Verkehrsleistung (Mrd. Pkm)", "visible": true}
+                "passengers": {"name": "Fahrgäste (Mio.)"},
+                "pkm": {"name": "Verkehrsleistung (Mrd. Pkm)"}
             }
         }
     },
