@@ -25,9 +25,8 @@
         "x": {
             "column": "hour",
             "type": "numeric",
-            "domain": [0, 24],
             "format": "$d",
-            "scale": {"pad": [0, 0]},
+            "domain": [0, 24],
             "axis": {"values": [0, 6, 12, 18, 24]}
         },
         "y": {
@@ -35,10 +34,11 @@
             "type": "numeric",
             "domain": "=match(@values, {share: literal([0, null])}, literal([0, null]))",
             "nice": true,
-            "scale": {"pad": "=match(@values, {share: literal([0, 0.05])}, literal([0, 0.05]))"},
-            "axis": {"ticks": 5, "format": ".0f"},
-            "hover": {"format": ".2f"},
-            "grid": true
+            "pad": "=match(@values, {share: literal([0, 0.05])}, literal([0, 0.05]))",
+            "ticks": 5,
+            "grid": true,
+            "axis": {"format": ".0f"},
+            "hover": {"format": ".2f"}
         },
         "type": {
             "legend": {

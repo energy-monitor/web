@@ -5,18 +5,20 @@
         "x": {
             "column": "date20",
             "type": "date",
-            "scale": {"domainAbs": [-0.2, 0.2]},
-            "axis": {"ticks": "@innerWidth * 0.017", "rotate": 0, "format": "%b"},
+            "pad": 0,
+            "tickSpacing": 59,
+            "axis": {"format": "%b"},
             "hover": {"format": "%e. %b"}
         },
         "y": {
             "column": "value",
             "type": "numeric",
-            "scale": {"pad": [0, 0.1]},
-            "axis": {"ticks": 6, "format": ",.0f"},
-            "hover": {"format": ",.1f"},
             "zero": true,
-            "grid": true
+            "pad": [0, 0.1],
+            "ticks": 6,
+            "grid": true,
+            "axis": {"format": ",.0f"},
+            "hover": {"format": ",.1f"}
         },
         "year": {
             "column": "year",

@@ -12,30 +12,30 @@
     "dims": {
         "type": {"column": "type", "type": "categorical"},
         "x": {
-            "domain": ["2020-01-01", "2021-01-01"],
             "format": "%b",
-            "scale": {"type": "time", "domainAbs": [0, 0]},
+            "domain": ["2020-01-01", "2021-01-01"],
+            "ticks": 12,
+            "grid": true,
             "axis": {
-                "ticks": 12,
                 "labels": {"curved": "between"},
                 "domain": {"props": {"stroke": "var(--gen-vis-grid-color)", "stroke-width": 0.75}},
                 "tickMarks": {"props": {"stroke": "var(--gen-vis-grid-color)", "stroke-width": 0.75}}
-            },
-            "grid": true
+            }
         },
         "y": {
+            "zero": true,
             "nice": true,
-            "scale": {"range": ["@radius * 0.12", "@radius"], "pad": [0, 0]},
+            "pad": 0,
+            "ticks": 4,
+            "grid": true,
             "axis": {
                 "angle": 0,
-                "ticks": 4,
                 "format": ",.0f",
                 "labels": {"props": {"fill": "#777", "font-size": 10}},
                 "domain": {"props": {"stroke": "none"}}
             },
             "hover": {"format": ",.1f"},
-            "zero": true,
-            "grid": true
+            "range": ["@radius * 0.12", "@radius"]
         }
     },
     "marks": [

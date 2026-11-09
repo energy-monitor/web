@@ -7,8 +7,9 @@
     "height": 220,
     "dims": {
         "x": {
+            "ticks": 4,
             "scale": {"type": "utc"},
-            "axis": {"ticks": 4, "format": "Q%q"},
+            "axis": {"format": "Q%q"},
             "hover": {"format": "Q%q"}
         },
         "facet": {

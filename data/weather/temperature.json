@@ -5,7 +5,7 @@
     "subtitle": "gewichtet nach Bevölkerung, täglich (rollierender 4-Wochen Durchschnitt), in °C",
     "source": "Quelle: ERA5",
     "dims": {
-        "y": {"column": "value", "domain": [null, null], "scale": {"pad": [0.1, 0.1]}},
+        "y": {"column": "value", "zero": false, "pad": 0.1},
         "year": {
             "legend": {
                 "symbol": {

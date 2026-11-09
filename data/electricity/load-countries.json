@@ -7,7 +7,7 @@
     "height": 190,
     "margins": {"top": 5, "right": 15, "bottom": 35, "left": 45},
     "dims": {
-        "y": {"scale": {"pad": [0, 0.15]}, "axis": {"ticks": 4}, "hover": {"format": ".1f"}},
+        "y": {"pad": [0, 0.15], "ticks": 4, "hover": {"format": ".1f"}},
         "facet": {
             "column": "country",
             "categories": {

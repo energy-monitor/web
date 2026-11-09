@@ -13,11 +13,12 @@
         "y": {
             "column": "value",
             "type": "numeric",
-            "scale": {"pad": [0, 0.1]},
-            "axis": {"ticks": 6, "format": ",.0f"},
-            "hover": {"format": ",.1f"},
             "zero": true,
-            "grid": true
+            "pad": [0, 0.1],
+            "ticks": 6,
+            "grid": true,
+            "axis": {"format": ",.0f"},
+            "hover": {"format": ",.1f"}
         },
         "type": {
             "legend": {

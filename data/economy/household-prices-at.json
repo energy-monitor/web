@@ -30,7 +30,7 @@
         },
         "y": {
             "domain": "=match(@product, {gas: literal([0, null])}, literal([null, null]))",
-            "scale": {"pad": "=match(@product, {gas: literal([0, 0.1])}, literal([0.01, 0.1]))"},
+            "pad": "=match(@product, {gas: literal([0, 0.1])}, literal([0.01, 0.1]))",
             "axis": {
                 "values": "=match(@product, {gas: literal([0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20])}, literal([-5, 0, 10, 20, 30, 40, 50]))"
             }

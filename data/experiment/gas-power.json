@@ -17,16 +17,16 @@
             "column": "gas",
             "type": "numeric",
             "nice": true,
-            "scale": {"domainAbs": [0, 0]},
             "axis": {"format": ",.0f", "title": {"name": "Gaspreis, €/MWh", "offset": 34}},
             "hover": {"format": ",.0f"},
             "zero": true,
+            "pad": 0,
             "grid": true
         },
         "y": {
-            "domain": [null, null],
+            "zero": false,
             "nice": true,
-            "scale": {"pad": [0, 0]},
+            "pad": 0,
             "axis": {"title": {"name": "Strompreis, €/MWh", "offset": 40}},
             "hover": {"format": ",.0f"}
         },

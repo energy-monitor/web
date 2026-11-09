@@ -7,19 +7,14 @@
     "height": 350,
     "margins": {"top": 5, "right": 30, "bottom": 35, "left": 50},
     "dims": {
-        "x": {
-            "column": "hour",
-            "type": "numeric",
-            "format": "c",
-            "axis": {"ticks": "@innerWidth * 0.017"}
-        },
+        "x": {"column": "hour", "type": "numeric", "format": "c", "tickSpacing": 59},
         "y": {
             "column": "value",
             "type": "numeric",
             "format": ".2f",
-            "scale": {"pad": [0, 0.13]},
-            "axis": {"ticks": 7},
             "zero": true,
+            "pad": [0, 0.13],
+            "ticks": 7,
             "grid": true
         },
         "type": {

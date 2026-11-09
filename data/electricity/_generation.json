@@ -8,8 +8,9 @@
     "dims": {
         "y": {
             "column": "rm28",
-            "scale": {"pad": [0, 0.15]},
-            "axis": {"ticks": 4, "format": ".1f"},
+            "pad": [0, 0.15],
+            "ticks": 4,
+            "axis": {"format": ".1f"},
             "hover": {"format": ".2f"}
         },
         "facet": "source.group"

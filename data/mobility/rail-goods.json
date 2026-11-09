@@ -6,10 +6,7 @@
     "source": "Quelle: Eurostat, Statistik Austria - Schienengüterverkehr",
     "height": 220,
     "dims": {
-        "x": {
-            "axis": {"ticks": "@innerWidth * 0.014", "rotate": 0, "format": "%Y"},
-            "hover": {"format": "Q%q %Y"}
-        },
+        "x": {"tickSpacing": 71, "axis": {"rotate": 0, "format": "%Y"}, "hover": {"format": "Q%q %Y"}},
         "facet": {
             "column": "measure",
             "categories": {

@@ -5,7 +5,7 @@
     "subtitle": "Summe der letzten 90 Tage, Flächenmittel, in mm",
     "source": "Quelle: GeoSphere Austria (SPARTACUS)",
     "dims": {
-        "y": {"column": "value", "scale": {"pad": [0, 0.1]}, "zero": true},
+        "y": {"column": "value", "zero": true, "pad": [0, 0.1]},
         "year": {
             "legend": {
                 "symbol": {

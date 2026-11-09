@@ -15,9 +15,9 @@
     "controls": [{"id": "values", "values": [{"id": "valuesAbs", "name": "Anzahl"}, {"id": "valuesShare"}]}],
     "dims": {
         "y": {
-            "hover": {"format": ",.0f"},
             "domain": "=match(@values, {share: literal([0, null])})",
-            "scale": {"pad": "=match(@values, {share: literal([0, 0.1])})"}
+            "pad": "=match(@values, {share: literal([0, 0.1])})",
+            "hover": {"format": ",.0f"}
         },
         "facet": {
             "column": "type",

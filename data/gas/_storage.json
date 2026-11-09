@@ -4,7 +4,7 @@
     "subtitle": "in TWh",
     "source": "Quelle: GIE – Gas Infrastructure Europe",
     "dims": {
-        "y": {"domain": [null, null], "scale": {"pad": [0.1, 0.1]}},
+        "y": {"zero": false, "pad": 0.1},
         "facet": {
             "column": "type",
             "categories": {

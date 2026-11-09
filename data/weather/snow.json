@@ -5,7 +5,7 @@
     "subtitle": "Wasseräquivalent der Schneedecke, Flächenmittel, in mm",
     "source": "Quelle: GeoSphere Austria (SNOWGRID-CL)",
     "dims": {
-        "y": {"column": "value", "scale": {"pad": [0, 0.1]}, "zero": true},
+        "y": {"column": "value", "zero": true, "pad": [0, 0.1]},
         "year": {
             "legend": {
                 "symbol": {

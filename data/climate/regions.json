@@ -43,13 +43,13 @@
     ],
     "filter": {"indicator": "@globals.indicator"},
     "dims": {
-        "x": {"format": "%Y", "axis": {"ticks": "@innerWidth * 0.014", "rotate": 0}, "hover": {}},
+        "x": {"format": "%Y", "tickSpacing": 71, "hover": {}, "axis": {"rotate": 0}},
         "y": {
-            "domain": [null, null],
-            "scale": {"type": "linear", "pad": [0.05, 0.05]},
+            "column": "=match(@values, {anomaly: 'value.anomaly'})",
+            "zero": false,
+            "pad": 0.05,
             "axis": {"format": "=match(@values, {anomaly: '+,~f'}, ',.0f')"},
-            "hover": {"format": "=match(@values, {anomaly: '+,.1f'}, ',.1f')"},
-            "column": "=match(@values, {anomaly: 'value.anomaly'})"
+            "hover": {"format": "=match(@values, {anomaly: '+,.1f'}, ',.1f')"}
         },
         "indicator": {"column": "indicator", "type": "categorical"},
         "type": {

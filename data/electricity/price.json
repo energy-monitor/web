@@ -5,7 +5,7 @@
     "subtitle": "Day Ahead, täglich (rollierender 7-Tages Durchschnitt), in €/MWh",
     "source": "Quelle: ENTSO-E - Day Ahead Prices 12.1.D",
     "dims": {
-        "y": {"domain": [null, null], "scale": {"pad": [0.1, 0.1]}},
+        "y": {"zero": false, "pad": 0.1},
         "type": {
             "categories": {
                 "mean": {"name": "⌀", "stroke-dasharray": 0},

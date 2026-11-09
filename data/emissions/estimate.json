@@ -6,7 +6,7 @@
     "source": "Quelle: Umweltbundesamt - Treibhausgasinventur, eurostat, eigene Berechnungen; Methode für Gas und Öl nach <a href=\"https://github.com/ElijahStaengl/co2-emissions-austria\" target=\"_blank\">Elijah Stängl</a>",
     "height": 220,
     "dims": {
-        "x": {"axis": {"ticks": null, "tickSpacing": 60, "rotate": 0, "format": "%Y"}},
+        "x": {"tickSpacing": 60, "axis": {"rotate": 0, "format": "%Y"}},
         "y": {"hover": {"format": ",.2f"}},
         "type": {
             "column": "type",
