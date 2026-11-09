@@ -21,7 +21,7 @@
     ],
     "filter": {"type": "@globals.type"},
     "dims": {
-        "date": {"name": "Preisstand", "column": "date", "type": "date", "hover": {"format": "%d.%m.%Y"}},
+        "date": {"name": "Preisstand", "column": "date", "hover": {"format": "%d.%m.%Y"}},
         "label": {"column": "value", "format": ",.2f"},
         "type": "variable",
         "value": {

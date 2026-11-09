@@ -7,10 +7,9 @@
     "dims": {
         "x": {
             "column": "hour",
-            "type": "numeric",
             "tickSpacing": 59,
             "scale": {"domainAbs": [-0.2, 0.2]},
-            "axis": {"rotate": 0, "format": "c"},
+            "axis": {"format": "c"},
             "hover": {"format": "c"}
         },
         "y": {"axis": {"format": ",.1f"}, "hover": {"format": ",.2f"}}

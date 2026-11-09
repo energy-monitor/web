@@ -5,23 +5,22 @@
     "subtitle": "Strompreis (Day Ahead) gegen Gaspreis (CEGH), ein Punkt pro Tag (rollierende 7-Tages Durchschnitte), in €/MWh",
     "source": "Quelle: ENTSO-E - Day Ahead Prices 12.1.D, cismo; die Gerade: die Brennstoffkosten eines Gaskraftwerks mit 50 % Wirkungsgrad, ohne CO₂",
     "height": "=steps(@totalWidth, {0: 320, 600: 440})",
-    "margins": {"top": 10, "right": 20, "bottom": 44, "left": 50},
+    "margins": {"top": 10, "right": 20, "bottom": 44},
     "hover": {
         "mode": "point",
         "title": "<b>{year}</b>, {day}",
-        "row": "Strom {y} €, Gas {gasHover} €",
+        "row": "Strom {y} €, Gas {x} €",
         "filter": "@link == '0'"
     },
     "dims": {
         "x": {
             "column": "gas",
-            "type": "numeric",
-            "nice": true,
-            "axis": {"format": ",.0f", "title": {"name": "Gaspreis, €/MWh", "offset": 34}},
-            "hover": {"format": ",.0f"},
             "zero": true,
+            "nice": true,
             "pad": 0,
-            "grid": true
+            "grid": true,
+            "axis": {"format": ",.0f", "title": {"name": "Gaspreis, €/MWh", "offset": 34}},
+            "hover": {"format": ",.0f"}
         },
         "y": {
             "zero": false,
@@ -30,8 +29,7 @@
             "axis": {"title": {"name": "Strompreis, €/MWh", "offset": 40}},
             "hover": {"format": ",.0f"}
         },
-        "day": {"column": "date", "type": "date", "hover": {"format": "%e. %b"}},
-        "gasHover": {"column": "gas", "type": "numeric", "hover": {"format": ",.0f"}},
+        "day": {"column": "date", "hover": {"format": "%e. %b"}},
         "year": {
             "legend": {"symbol": "line"},
             "categories": {
@@ -44,8 +42,7 @@
                 "2025": {"opacity": 0.9},
                 "2026": {"opacity": 1}
             }
-        },
-        "link": {"column": "link", "type": "categorical"}
+        }
     },
     "marks": [
         {
@@ -92,7 +89,6 @@
             "by": "year",
             "filter": "@link == '0'",
             "r": 3.5,
-            "fill": "@color",
             "stroke": "#222",
             "stroke-width": 1,
             "opacity": 0,

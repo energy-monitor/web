@@ -8,9 +8,8 @@
     "margins": {"top": 30, "right": 40, "bottom": 30, "left": 40},
     "coord": "polar",
     "class": "polar-chart",
-    "filter": {"type": "stock"},
+    "filter": "@type == 'stock'",
     "dims": {
-        "type": {"column": "type", "type": "categorical"},
         "x": {
             "format": "%b",
             "domain": ["2020-01-01", "2021-01-01"],
