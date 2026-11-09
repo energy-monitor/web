@@ -36,14 +36,15 @@
             },
             "hover": {"format": ",.1f"},
             "range": ["@radius * 0.12", "@radius"]
-        }
+        },
+        "year": {"legend": {"symbol": "line"}}
     },
     "marks": [
         {
             "type": "line",
             "id": "lines",
             "by": "year",
-            "stroke-width": "@stroke-width",
+            "stroke-width": 2,
             "opacity": "@opacity",
             "highlight": {"opacity": 1, "stroke-width": 3},
             "others": {"opacity": 0.1}

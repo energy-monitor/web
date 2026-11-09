@@ -33,6 +33,7 @@
         "day": {"column": "date", "type": "date", "hover": {"format": "%e. %b"}},
         "gasHover": {"column": "gas", "type": "numeric", "hover": {"format": ",.0f"}},
         "year": {
+            "legend": {"symbol": "line"},
             "categories": {
                 "2019": {"opacity": 0.6},
                 "2020": {"opacity": 0.6},

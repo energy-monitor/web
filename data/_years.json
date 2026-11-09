@@ -4,7 +4,6 @@
     "dims": {
         "x": {
             "column": "date20",
-            "type": "date",
             "pad": 0,
             "tickSpacing": 59,
             "axis": {"format": "%b"},
@@ -12,7 +11,6 @@
         },
         "y": {
             "column": "value",
-            "type": "numeric",
             "zero": true,
             "pad": [0, 0.1],
             "ticks": 6,
@@ -22,26 +20,8 @@
         },
         "year": {
             "column": "year",
-            "legend": {
-                "symbol": {
-                    "size": 16,
-                    "elements": [
-                        {
-                            "type": "line",
-                            "props": {
-                                "x1": 0,
-                                "x2": 16,
-                                "y1": 8,
-                                "y2": 8,
-                                "stroke": "@color",
-                                "stroke-width": "@stroke-width",
-                                "opacity": "@opacity"
-                            }
-                        }
-                    ]
-                }
-            },
-            "common": {"stroke-width": 2, "highlight-stroke-width": 3, "opacity": 0.6, "highlight-opacity": 1},
+            "legend": {},
+            "common": {"opacity": 0.6},
             "categories": {
                 "2019": {"color": "#BBBBBB", "opacity": 0.2},
                 "2020": {"color": "#AAAAAA", "opacity": 0.2},
@@ -57,8 +37,8 @@
     "marks": {
         "type": "line",
         "by": "year",
-        "stroke-width": "@stroke-width",
+        "stroke-width": 2,
         "opacity": "@opacity",
-        "highlight": {"opacity": "@highlight-opacity", "stroke-width": "@highlight-stroke-width"}
+        "highlight": {"opacity": 1, "stroke-width": 3}
     }
 }

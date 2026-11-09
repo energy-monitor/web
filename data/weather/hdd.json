@@ -12,5 +12,6 @@
                 "cum": {"name": "Summe seit Jahresbeginn", "highlight-stroke-width": 4}
             }
         }
-    }
+    },
+    "marks": {"highlight": {"stroke-width": "@highlight-stroke-width"}}
 }
