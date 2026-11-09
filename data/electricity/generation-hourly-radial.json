@@ -18,8 +18,7 @@
             "name": "Jahr",
             "id": "period",
             "values": {"column": "period"}
-        },
-        {"id": "values", "values": [{"id": "valuesShare"}]}
+        }
     ],
     "filter": {"period": "@globals.period"},
     "dims": {

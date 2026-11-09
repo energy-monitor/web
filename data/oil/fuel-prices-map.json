@@ -12,11 +12,10 @@
             "type": "radio",
             "global": "type",
             "name": "Kraftstoff",
-            "id": "type",
             "values": [
-                {"id": "euroSuper95", "name": "Benzin", "value": "euroSuper95"},
-                {"id": "gasOil", "name": "Diesel", "value": "gasOil"},
-                {"id": "heatingOil", "name": "Heizöl", "value": "heatingOil"}
+                {"value": "euroSuper95", "name": "Benzin"},
+                {"value": "gasOil", "name": "Diesel"},
+                {"value": "heatingOil", "name": "Heizöl"}
             ]
         }
     ],

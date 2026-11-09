@@ -10,21 +10,14 @@
             "type": "radio",
             "global": "type",
             "name": "Quelle",
-            "id": "type",
             "values": [
-                {"id": "Renewable", "name": "Erneuerbar", "value": "Renewable"},
-                {"id": "Non-Renewable", "name": "Fossil", "value": "Non-Renewable"},
-                {"id": "Nuclear", "name": "Kernenergie", "value": "Nuclear"},
-                {"id": "others", "name": "Andere", "value": "others"}
+                {"value": "Renewable", "name": "Erneuerbar"},
+                {"value": "Non-Renewable", "name": "Fossil"},
+                {"value": "Nuclear", "name": "Kernenergie"},
+                {"value": "others", "name": "Andere"}
             ]
         },
-        {
-            "type": "slider",
-            "global": "year",
-            "name": "Jahr",
-            "id": "year",
-            "values": {"column": "year"}
-        }
+        {"type": "slider", "global": "year", "name": "Jahr", "values": {"column": "year"}}
     ],
     "filter": {"type": "@globals.type", "year": "@globals.year"},
     "dims": {

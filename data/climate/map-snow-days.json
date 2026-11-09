@@ -10,10 +10,9 @@
             "type": "radio",
             "global": "indicator",
             "name": "Werte",
-            "id": "indicator",
             "values": [
-                {"id": "absolute", "name": "Tage", "value": "days.snow"},
-                {"id": "anomaly", "name": "Abweichung", "value": "days.snow.anomaly"}
+                {"value": "days.snow", "name": "Tage"},
+                {"value": "days.snow.anomaly", "name": "Abweichung"}
             ]
         }
     ],

@@ -6,11 +6,7 @@
             "type": "radio",
             "global": "unit",
             "name": "Einheit",
-            "id": "unit",
-            "values": [
-                {"id": "unitTwh", "value": "twh", "name": "TWh"},
-                {"id": "unitCo2", "value": "mt.co2", "name": "Mt CO₂"}
-            ]
+            "values": [{"value": "twh", "name": "TWh"}, {"value": "mt.co2", "name": "Mt CO₂"}]
         }
     ]
 }

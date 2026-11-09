@@ -10,7 +10,6 @@
             "type": "radio",
             "global": "share",
             "name": "Werte",
-            "id": "values",
             "values": [
                 {"id": "valuesAbs", "value": "", "name": "Absolut"},
                 {"id": "valuesShare", "value": ".share", "name": "Anteil"}

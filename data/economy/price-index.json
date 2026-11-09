@@ -12,7 +12,6 @@
             "type": "slider",
             "global": "base",
             "name": "Basisjahr",
-            "id": "base",
             "values": {"column": "base"},
             "inImage": false
         }

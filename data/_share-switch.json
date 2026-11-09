@@ -6,11 +6,7 @@
             "type": "radio",
             "global": "values",
             "name": "Werte",
-            "id": "values",
-            "values": [
-                {"id": "valuesAbs", "value": "abs", "name": "Absolut"},
-                {"id": "valuesShare", "value": "share", "name": "Anteil"}
-            ]
+            "values": [{"value": "abs", "name": "Absolut"}, {"value": "share", "name": "Anteil"}]
         }
     ],
     "dims": {

@@ -5,15 +5,7 @@
     "coord": "geo",
     "hover": {"empty": true, "columns": []},
     "globals": {"year": "2025"},
-    "controls": [
-        {
-            "type": "slider",
-            "global": "year",
-            "name": "Jahr",
-            "id": "year",
-            "values": {"column": "year"}
-        }
-    ],
+    "controls": [{"type": "slider", "global": "year", "name": "Jahr", "values": {"column": "year"}}],
     "filter": {"indicator": "@globals.indicator", "year": "@globals.year"},
     "dims": {
         "district": {"column": "district", "type": "categorical"},

@@ -10,11 +10,7 @@
             "type": "radio",
             "global": "indicator",
             "name": "Werte",
-            "id": "indicator",
-            "values": [
-                {"id": "absolute", "name": "Jahressumme", "value": "rr"},
-                {"id": "anomaly", "name": "Abweichung", "value": "rr.anomaly"}
-            ]
+            "values": [{"value": "rr", "name": "Jahressumme"}, {"value": "rr.anomaly", "name": "Abweichung"}]
         }
     ],
     "dims": {

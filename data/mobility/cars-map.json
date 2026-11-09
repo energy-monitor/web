@@ -10,33 +10,25 @@
             "type": "radio",
             "global": "series",
             "name": "Daten",
-            "id": "series",
             "values": [
-                {"id": "registrations", "name": "Neuzulassungen", "value": "registrations"},
-                {"id": "stock", "name": "Bestand", "value": "stock"}
+                {"value": "registrations", "name": "Neuzulassungen"},
+                {"value": "stock", "name": "Bestand"}
             ]
         },
         {
             "type": "radio",
             "global": "type",
             "name": "Kraftstoff",
-            "id": "type",
             "values": [
-                {"id": "bev", "name": "Elektro", "value": "bev"},
-                {"id": "phev", "name": "Plug-in-Hybrid", "value": "phev"},
-                {"id": "hybrid", "name": "Hybrid (ohne Plug-in)", "value": "hybrid"},
-                {"id": "petrol", "name": "Benzin", "value": "petrol"},
-                {"id": "diesel", "name": "Diesel", "value": "diesel"},
-                {"id": "other", "name": "Sonstige", "value": "other"}
+                {"value": "bev", "name": "Elektro"},
+                {"value": "phev", "name": "Plug-in-Hybrid"},
+                {"value": "hybrid", "name": "Hybrid (ohne Plug-in)"},
+                {"value": "petrol", "name": "Benzin"},
+                {"value": "diesel", "name": "Diesel"},
+                {"value": "other", "name": "Sonstige"}
             ]
         },
-        {
-            "type": "slider",
-            "global": "year",
-            "name": "Jahr",
-            "id": "year",
-            "values": {"column": "year"}
-        }
+        {"type": "slider", "global": "year", "name": "Jahr", "values": {"column": "year"}}
     ],
     "filter": {"series": "@globals.series", "type": "@globals.type", "year": "@globals.year"},
     "dims": {

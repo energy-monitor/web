@@ -12,7 +12,7 @@
     "subtitle": "nach Kraftstoffart bzw. Energiequelle, monatlich",
     "source": "Quelle: Statistik Austria - Kfz-Neuzulassungen",
     "height": 220,
-    "controls": [{"id": "values", "values": [{"id": "valuesAbs", "name": "Anzahl"}, {"id": "valuesShare"}]}],
+    "controls": [{"global": "values", "values": [{"value": "abs", "name": "Anzahl"}]}],
     "dims": {
         "y": {
             "domain": "=match(@values, {share: literal([0, null])})",

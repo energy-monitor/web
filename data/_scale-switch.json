@@ -6,7 +6,6 @@
             "type": "radio",
             "global": "shareScale",
             "name": "Y-Skala",
-            "id": "scale",
             "values": [
                 {"id": "shareAxisOff", "value": ["x"], "name": "Getrennt"},
                 {"id": "shareAxisOn", "value": ["x", "y"], "name": "Geteilt"}

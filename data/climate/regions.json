@@ -11,33 +11,23 @@
             "type": "radio",
             "global": "indicator",
             "name": "Indikator",
-            "id": "indicator",
             "values": [
-                {"id": "tm", "name": "Temperatur (°C)", "value": "tm"},
-                {"id": "rr", "name": "Niederschlag (mm, Abweichung in %)", "value": "rr"},
-                {"id": "sa", "name": "Sonnenstunden", "value": "sa"},
-                {"id": "days.hot", "name": "Hitzetage (≥ 30 °C)", "value": "days.hot"},
-                {"id": "days.frost", "name": "Frosttage (< 0 °C)", "value": "days.frost"},
-                {"id": "days.snow", "name": "Schneedeckentage (≥ 1 cm)", "value": "days.snow"},
-                {
-                    "id": "swe.max",
-                    "name": "Max. Schneewasseräquivalent (mm, Abweichung in %)",
-                    "value": "swe.max"
-                }
+                {"value": "tm", "name": "Temperatur (°C)"},
+                {"value": "rr", "name": "Niederschlag (mm, Abweichung in %)"},
+                {"value": "sa", "name": "Sonnenstunden"},
+                {"value": "days.hot", "name": "Hitzetage (≥ 30 °C)"},
+                {"value": "days.frost", "name": "Frosttage (< 0 °C)"},
+                {"value": "days.snow", "name": "Schneedeckentage (≥ 1 cm)"},
+                {"value": "swe.max", "name": "Max. Schneewasseräquivalent (mm, Abweichung in %)"}
             ]
         },
         {
             "type": "radio",
             "global": "values",
             "name": "Werte",
-            "id": "values",
             "values": [
-                {"id": "valuesAbs", "name": "Absolut", "value": "abs"},
-                {
-                    "id": "valuesAnomaly",
-                    "name": "Abweichung vom Mittel 1961 - 1990",
-                    "value": "anomaly"
-                }
+                {"value": "abs", "name": "Absolut"},
+                {"value": "anomaly", "name": "Abweichung vom Mittel 1961 - 1990"}
             ]
         }
     ],

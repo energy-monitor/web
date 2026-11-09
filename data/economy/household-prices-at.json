@@ -12,11 +12,7 @@
             "type": "radio",
             "global": "product",
             "name": "Energieträger",
-            "id": "product",
-            "values": [
-                {"id": "electricity", "name": "Strom", "value": "electricity"},
-                {"id": "gas", "name": "Gas", "value": "gas"}
-            ]
+            "values": [{"value": "electricity", "name": "Strom"}, {"value": "gas", "name": "Gas"}]
         }
     ],
     "filter": {"product": "@globals.product"},
