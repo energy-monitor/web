@@ -55,6 +55,7 @@
         {
             "type": "line",
             "id": "lines",
+            "order": "rows",
             "by": "year",
             "curve": "catmullRom",
             "stroke-width": 2.2,
@@ -65,6 +66,7 @@
         {
             "type": "point",
             "id": "start",
+            "order": "rows",
             "by": "year",
             "select": "first",
             "fill": "white",
@@ -76,6 +78,7 @@
         {
             "type": "point",
             "id": "now",
+            "order": "rows",
             "select": "last",
             "filter": "@link == '0'",
             "r": 4,
@@ -98,6 +101,7 @@
         {
             "type": "text",
             "id": "startLabel",
+            "order": "rows",
             "by": "year",
             "select": "first",
             "halo": true,
