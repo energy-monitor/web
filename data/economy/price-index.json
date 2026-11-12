@@ -5,7 +5,7 @@
     "subtitle": "Preise in €, monatlich, Durchschnitt {base} = 100, logarithmische Skala",
     "source": "Quelle: cismo (Gas, CEGH), Macrobond, ICE (Brent, Kohle, EUA), ENTSO-E (Strom), Statistik Austria (Brennholz), proPellets Austria (Pellets); Brent und Kohle von $ umgerechnet",
     "height": "=steps(@totalWidth, {0: 250, 550: 280, 600: 320})",
-    "margins": {"right": 140},
+    "margins": {"right": "=@totalWidth >= 560 ? 'auto' : null"},
     "globals": {"base": "2019"},
     "controls": [
         {
@@ -65,6 +65,7 @@
             "type": "text",
             "id": "names",
             "by": "type",
+            "filter": "@totalWidth >= 560",
             "select": {"max": "x"},
             "x": "@x:scaled:max",
             "dx": 6,
