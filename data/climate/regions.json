@@ -67,6 +67,5 @@
         "stroke-width": "@stroke-width",
         "opacity": 0.8,
         "highlight": {"opacity": 1, "stroke-width": 3}
-    },
-    "hover": {"columns": []}
+    }
 }
