@@ -4,9 +4,7 @@
 // characters Century Gothic does not have, e.g. the 2 of CO₂ (a browser
 // loads its files only for texts which use it); Book and Demi with their
 // obliques, Demi also for bold (600 to 700, no synthetic bold)
-// --site-font-family: the font of the select of src/font-picker.js (in the
-// dev server with ?fonts)
-$font-family: var(--site-font-family, "Century Gothic"), "URW Gothic", sans-serif;
+$font-family: "Century Gothic", "URW Gothic", sans-serif;
 
 @each $style, $weight, $file in (normal, 400, book), (italic, 400, bookoblique), (normal, 600 700, demi), (italic, 600 700, demioblique) {
     @font-face {
